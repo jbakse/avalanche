@@ -1,0 +1,21 @@
+<body>
+  <div class="container">
+    <header>
+      <h1>Posts</h1>
+    </header>
+
+    <ul>
+      {{#each posts}}
+        {{> post}}
+      {{/each}}
+    </ul>
+  </div>
+</body>
+
+<template name="post">
+  <li class="post">
+    <div class="title">{{title}}</div>
+    <div class="author">{{author}}</div>
+    <div class="poster"><img src="{{poster}}"></div>
+  </li>
+</template>
