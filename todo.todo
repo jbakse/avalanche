@@ -1,0 +1,33 @@
+# Major Features
+
+
+## Accounts
+.Allow Login
+.Single Signon w/ Google
+.Admin Role
+.Student Role
+.Guest Role
+
+
+## Views
+.Avalanche
+.Student
+.Week
+.Tag
+.Search?
+.Overview (Show chart of posts per week/student)
+
+## Web Uploads
+.Upload images
+.Create thumbnails/resize images
+.Remote storage S3
+.Support PNG
+.Support JPG
+.Support GIF
+.Upload Videos
+.Upload "dumb" files
+
+
+## Realtime Code
+.Edit/Paste Code Snippets
+.Realtime running
