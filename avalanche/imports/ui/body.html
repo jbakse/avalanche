@@ -1,35 +1,21 @@
 <body>
   <div class="container">
+
     <header>
       <h1>The Avalanche</h1>
     </header>
 
-
-
-<div class="post-avalanche">
-  <div class="column-left">
-    <ul>
-      {{#each postsleft}}
-        {{> post}}
-      {{/each}}
-    </ul>
-  </div>
-
-  <div class="column-right">
-    <ul>
-      {{#each postsright}}
-        {{> post}}
-      {{/each}}
-    </ul>
-  </div>
+    <div class="post-avalanche">
+      <div class="column-left">
+        <ul>
+          {{#each posts}}
+            {{> post}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
 
   </div>
-  </div>
-
-
-
-
-
 </body>
 
 

@@ -1,9 +1,19 @@
 # Major Features
 
 
+## Posts
+x.hook up data (data in db, api, ui, viewing)
+.crud
+.create
+.read
+.update
+.delete
+
+
+
 ## Accounts
 .Allow Login
-.Single Signon w/ Google
+.Single Sign-on w/ Google
 .Admin Role
 .Student Role
 .Guest Role
@@ -31,3 +41,6 @@
 ## Realtime Code
 .Edit/Paste Code Snippets
 .Realtime running
+
+
+## Commenting (Or something like it)
