@@ -1,21 +1,49 @@
 <body>
   <div class="container">
     <header>
-      <h1>Posts</h1>
+      <h1>The Avalanche</h1>
     </header>
 
+
+
+<div class="post-avalanche">
+  <div class="column-left">
     <ul>
-      {{#each posts}}
+      {{#each postsleft}}
         {{> post}}
       {{/each}}
     </ul>
   </div>
+
+  <div class="column-right">
+    <ul>
+      {{#each postsright}}
+        {{> post}}
+      {{/each}}
+    </ul>
+  </div>
+
+  </div>
+  </div>
+
+
+
+
+
 </body>
 
+
 <template name="post">
-  <li class="post">
-    <div class="title">{{title}}</div>
-    <div class="author">{{author}}</div>
-    <div class="poster"><img src="{{poster}}"></div>
-  </li>
+    <li class="post">
+      <div class="poster"><img src="{{poster}}"></div>
+      <div class="post-info">
+        <div class="lesson"> Lesson: {{lesson}}  </div>
+        <div class="title">{{title}}</div>
+        <div class="description">{{description}}</div>
+        <div id="name-date">
+            <div id="author">{{author}}</div>
+            <div id="time">{{time}}</div>
+        </div>
+      </div>
+    </li>
 </template>

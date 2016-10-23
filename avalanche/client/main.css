@@ -1,9 +1,72 @@
 /* CSS declarations go here */
+* {margin: 0; padding: 0;}
+
+header {
+  position: fixed;
+  width: 100%;
+}
 
 body {
-  font-family: "Helvetica";
+  font-family: 'Muli', sans-serif;
+  background: #F7F7F7;
+  width: 100%;
+  text-align: center;
 }
 
-.post {
-  border: 1px dotted red;
+h1 {
+  text-align: center;
+  background-color: white;
+  padding: 50px;
 }
+
+ul { list-style: none; }
+
+.post-avalanche {height: 100%; width:100%; font-size:0; padding-top: 30px;}
+.column-left, .column-right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 20px; padding: 30px;  }
+.column-left {width: 40%;}
+.column-right {width: 40%;}
+
+
+.post {
+  padding: 0px;
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+  background-color:  #F7F7F7;
+}
+
+.poster {
+  width: 100%
+}
+
+.poster img {
+  width: 100%;
+  background-color:  #F7F7F7;
+  margin: 0px;
+}
+
+
+.title {
+  font-size: 60px;
+  padding-bottom: 20px;
+  font-weight: bolder;
+}
+
+.lesson {
+  padding-bottom: 30px;
+  font-size: 20px;
+}
+
+
+.post-info {
+  padding: 0px;
+  background: white;
+  padding: 20px;
+  margin: 0px;
+}
+
+
+#name-date {height: 100%; width:100%; font-size:0; padding-top: 50px;}
+#author, #time {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 20px;}
+#author {width: 50%; text-align: left}
+#time {width: 50%; text-align: right}
