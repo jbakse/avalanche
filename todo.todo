@@ -4,10 +4,11 @@
 ## Posts
 x.hook up data (data in db, api, ui, viewing)
 .crud
-.create
-.read
+x.create (from empty template)
+x.read
 .update
-.delete
+.create from user info
+x.delete
 
 
 
