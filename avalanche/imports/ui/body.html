@@ -29,7 +29,11 @@
       <div class="poster"><img src="{{poster}}"></div>
       <div class="post-info">
         <div class="lesson"> Lesson: {{lesson}}  </div>
-        <div class="title">{{title}}</div>
+        <div class="title" contenteditable>{{title}}</div>
+        Editable:
+        {{#with this}}
+            {{{editableTitle}}}
+        {{/with}}
         <div class="description">{{description}}</div>
         <button class="kill-post">kill</button>
         <div id="name-date">
