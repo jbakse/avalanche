@@ -40,17 +40,27 @@ Template.body.events({
 
 	},
 
+	'input .title-input': function(event) {
+		console.log("input", event.target.value);
 
-	'blur .post .title': function(event) {
-		let t = event.target.innerText;
+		let t = event.target.value;
 		t = t.trim();
-		console.log("edit", this);
 		Posts.update(this._id, {
-			$set: {title: t},
-		});
-		// event.target.innerText = t;
-
+				$set: {title: t},
+			});
 	},
+
+	//
+	// 'blur .post .title': function(event) {
+	// 	let t = event.target.innerText;
+	// 	t = t.trim();
+	// 	console.log("edit", this);
+	// 	Posts.update(this._id, {
+	// 		$set: {title: t},
+	// 	});
+	// 	// event.target.innerText = t;
+	//
+	// },
 
 	'click .kill-post': function(event) {
 		console.log("kill kill kill", this);

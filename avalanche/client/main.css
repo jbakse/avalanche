@@ -69,10 +69,19 @@ ul {
     margin: 0px;
 }
 
-.title {
+.title, .title-input {
     font-size: 60px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
     font-weight: bolder;
+    border: none;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+    outline: none;
+}
+
+.title-input:focus {
+    background: #bbffbb;
 }
 
 .lesson {
