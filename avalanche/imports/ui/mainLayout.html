@@ -1,0 +1,11 @@
+<template name="mainLayout">
+	<div class="main-layout">
+		<nav>
+			<h1>The Avalanche</h1>
+			{{> loginButtons}}
+		</nav>
+		<main>
+			{{>Template.dynamic template=content}}
+		</main>
+	</div>
+</template>

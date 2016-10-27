@@ -13,7 +13,7 @@ x.delete
 
 
 ## Accounts
-.Allow Login
+x.Allow Login
 .Single Sign-on w/ Google
 .Admin Role
 .Student Role
@@ -22,10 +22,9 @@ x.delete
 
 ## Views
 .Avalanche
-.Student
-.Week
-.Tag
-.Search?
+.Student Detail
+.Post Detail
+.Overview
 .Overview (Show chart of posts per week/student)
 
 ## Web Uploads

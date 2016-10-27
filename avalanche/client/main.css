@@ -5,118 +5,39 @@
     padding: 0;
 }
 
-header {
-    /*position: fixed;*/
-    width: 100%;
-}
-
 body {
     font-family: 'Muli', sans-serif;
     background: #F7F7F7;
-    width: 100%;
-    text-align: center;
-}
 
-h1 {
-    text-align: center;
-    background-color: white;
-    /*padding: 50px;*/
+    height: 100%;
 }
 
 ul {
     list-style: none;
 }
 
-.post-avalanche {
-    height: 100%;
-    width: 100%;
-    /*font-size: 0;*/
-    padding-top: 150px;
+
+
+.main-layout
+{
+    display: flex;
+
+    border: 1px solid red;
 }
 
-.column-left, .column-right {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    vertical-align: top;
-    font-size: 20px;
-    padding: 30px;
+
+nav {
+    background: red;
+    width: 300px;
+    flex: 0 auto;
 }
 
-.column-left {
-    width: 40%;
+main {
+    background: green;
+    flex: 1 auto;
 }
 
-.column-right {
-    width: 40%;
-}
-
-.post {
-    padding: 0px;
-    width: 100%;
-    margin-top: 100px;
-    text-align: center;
-    background-color: #F7F7F7;
-}
-
-.poster {
-    width: 100%
-}
-
-.poster img {
-    width: 100%;
-    background-color: #F7F7F7;
-    margin: 0px;
-}
-
-.title, .title-input {
-    font-size: 60px;
-    /*padding-bottom: 20px;*/
-    font-weight: bolder;
-    border: none;
-    width: 100%;
-    text-align: center;
-    font-weight: normal;
-    outline: none;
-}
-
-.title-input:focus {
-    background: #bbffbb;
-}
-
-.lesson {
-    padding-bottom: 30px;
-    font-size: 20px;
-}
-
-.post-info {
-    padding: 0px;
-    background: white;
+.post-summary {
+    border: 1px solid black;
     padding: 20px;
-    margin: 0px;
-}
-
-#name-date {
-    height: 100%;
-    width: 100%;
-    font-size: 0;
-    padding-top: 50px;
-}
-
-#author, #createdAt {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    vertical-align: top;
-    font-size: 20px;
-}
-
-#author {
-    width: 50%;
-    text-align: left
-}
-
-#createdAt {
-    width: 50%;
-    text-align: right
 }

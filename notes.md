@@ -28,6 +28,8 @@ Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 
 [pluralize](https://github.com/blakeembrey/pluralize) Pluralize/unpluralize english words.
 
+[Cloudinary Meteor Package](https://atmospherejs.com/lepozepo/cloudinary)
+
 # Services
 
 [Google Natural Language](https://cloud.google.com/natural-language/) Interesting
