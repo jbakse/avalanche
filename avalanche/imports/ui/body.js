@@ -30,7 +30,8 @@ Template.body.events({
 
 		Posts.insert({
 			title: 'untitled' + Math.floor(Math.random() * 100),
-			author: "unauthored",
+			author: Meteor.user().username,
+			author_id: Meteor.userId(),
 			poster: "",
 			description: "",
 			time: "",

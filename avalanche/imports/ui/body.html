@@ -1,44 +1,47 @@
 <body>
   <div class="container">
 
-    <header>
-      <h1>The Avalanche</h1>
-    </header>
+	<header>
+	  <h1>The Avalanche</h1>
+	  {{> loginButtons}}
+	</header>
 
 
 
-    <div class="post-avalanche">
-      <div><button id="create-post">Create Post</button></div>
+	<div class="post-avalanche">
+		{{#if currentUser}}
+			<div><button id="create-post">Create Post</button></div>
+		{{/if}}
 
-      <div class="column-left">
+	  <div class="column-left">
 
-        <ul>
-          {{#each posts}}
-            {{> post}}
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+		<ul>
+		  {{#each posts}}
+			{{> post}}
+		  {{/each}}
+		</ul>
+	  </div>
+	</div>
 
   </div>
 </body>
 
 
 <template name="post">
-    <li class="post">
-      <div class="poster"><img src="{{poster}}"></div>
-      <div class="post-info">
-        <div class="lesson"> Lesson: {{lesson}}  </div>
-        <!-- <div class="title">{{title}}</div> -->
-        <input class="title-input" value="{{title}}"/>
-        <div class="description">{{description}}</div>
-        <button class="kill-post">kill</button>
-        <div id="name-date">
-            <div id="author">{{author}}</div>
-            <!-- <div id="time">{{time}}</div> -->
-            <div id="createdAt">{{createdAt}}</div>
+	<li class="post">
+	  <div class="poster"><img src="{{poster}}"></div>
+	  <div class="post-info">
+		<div class="lesson"> Lesson: {{lesson}}  </div>
+		<!-- <div class="title">{{title}}</div> -->
+		<input class="title-input" value="{{title}}"/>
+		<div class="description">{{description}}</div>
+		<button class="kill-post">kill</button>
+		<div id="name-date">
+			<div id="author">{{author}}</div>
+			<!-- <div id="time">{{time}}</div> -->
+			<div id="createdAt">{{createdAt}}</div>
 
-        </div>
-      </div>
-    </li>
+		</div>
+	  </div>
+	</li>
 </template>
