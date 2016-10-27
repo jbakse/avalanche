@@ -9,6 +9,11 @@ An overview indented to bridge gap between Discover Meteor and latest version of
 
 [Mime Type List](https://www.sitepoint.com/web-foundations/mime-types-complete-list/)
 
+## Routing
+Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
+
+[Meteor Guide](https://guide.meteor.com/routing.html)
+[Kadira](https://kadira.io/academy/meteor-routing-guide/content/rendering-blaze-templates)
 
 # Packages
 [CollectionFS](https://github.com/CollectionFS/Meteor-CollectionFS) We used this package to deal with image upload and storage, backed on Amazon S3. **Now deprecated.**

@@ -8,7 +8,7 @@ import {
 
 import './body.html';
 
-Template.body.helpers({
+Template.avalanche.helpers({
 	posts() {
 		return Posts.find({}, {
 			sort: {
@@ -18,13 +18,23 @@ Template.body.helpers({
 	}
 });
 
+Template.post.helpers({
+	post() {
+		console.log("posthelper");
+		var id = FlowRouter.getParam("postId");
+		console.log(id);
+		var cursor = Posts.findOne(id);
+		return cursor;
+	}
+});
+
 Template.post.editableTitle = function () {
 	console.log("editableTitle");
   return '<div class="title" contenteditable="true">' + this.title + '</div>';
 };
 
 
-Template.body.events({
+Template.avalanche.events({
 	'click #create-post': function(event) {
 		event.preventDefault();
 
