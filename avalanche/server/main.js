@@ -1,4 +1,6 @@
 import '../imports/api/posts.js';
+import './secrets.js';
+
 
 // import { Meteor } from 'meteor/meteor';
 //

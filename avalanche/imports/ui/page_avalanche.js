@@ -14,15 +14,28 @@ Template.page_avalanche.helpers({
 				createdAt: -1
 			}
 		});
+	},
+
+	files() {
+		console.log("files", Cloudinary.collection.find({}));
+		return Cloudinary.collection.find({});
 	}
 });
 
 
 Template.post_create.events({
+	'dropped #dropzone': function(event, template) {
+		console.log("drop");
+		console.log(event.originalEvent.dataTransfer.files);
+		template.find('.poster').files = event.originalEvent.dataTransfer.files;
+	},
 	'submit .post-create': function(event, template) {
 		event.preventDefault();
 		let title = template.find('.title').value || "untitled";
-		Posts.insert({
+
+
+
+		let id = Posts.insert({
 			title: title,
 			author: Meteor.user().username,
 			author_id: Meteor.userId(),
@@ -32,7 +45,40 @@ Template.post_create.events({
 			lesson: "",
 			createdAt: Date.now()
 		});
+		console.log("id", id);
+
+		let files = template.find('.poster').files;
+		console.log(files);
+
+		let cid = Cloudinary.upload(files, {
+				folder: "avalanche"
+			},
+			(err, res) => {
+				console.log(`Upload Error:`, err);
+				console.log(`Upload Result:`, res);
+				if (!err) {
+					Posts.update(id, {
+						$set: {poster: res.public_id}
+					});
+				}
+			}
+		);
+
+		console.log("cid", cid);
+
 	},
+	// 'change .poster': function(event) {
+	// 	files = event.currentTarget.files;
+	// 	console.log(files);
+	// 	Cloudinary.upload(files, {
+	// 			folder: "avalanche"
+	// 		},
+	// 		(err, res) => {
+	// 			console.log(`Upload Error:`, err);
+	// 			console.log(`Upload Result:`, res);
+	// 		}
+	// 	);
+	// }
 });
 
 

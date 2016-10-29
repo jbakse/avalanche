@@ -4,11 +4,11 @@
 ## Posts
 x.hook up data (data in db, api, ui, viewing)
 .crud
-x.create (from empty template)
-x.read
-.update
-.create from user info
-x.delete
+    x.create (from form)
+    x.read
+    .update
+    x.create from loggedin user info
+    x.delete
 
 
 
@@ -21,9 +21,9 @@ x.Allow Login
 
 
 ## Views
-.Avalanche
-.Student Detail
-.Post Detail
+x.Avalanche (stub)
+x.User Detail (stub)
+x.Post Detail
 .Overview
 .Overview (Show chart of posts per week/student)
 
@@ -44,3 +44,7 @@ x.Allow Login
 
 
 ## Commenting (Or something like it)
+
+
+use autoform?
+pretty up login?

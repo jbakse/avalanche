@@ -10,6 +10,11 @@
 			{{/if}}
 			{{> loginButtons}}
 
+			{{#each files}}
+				a
+				{{percent_uploaded}}<br/>
+			{{/each}}
+
 		</nav>
 		<main>
 			<ul>
@@ -29,6 +34,8 @@
 <template name="post_create">
 	<form class="post-create">
 		<input class="title">
+		<input class="poster" type="file">
+		<div id="dropzone" class="dropzone">drop<br/>drop<br/>drop</div>
 		<input class="create" value="Create Post" type="submit">
 	</form>
 </template>
@@ -40,7 +47,8 @@
 		<!-- <div class="lesson"> Lesson: {{lesson}}	</div> -->
 		<!-- <input class="title-input" value="{{title}}"/> -->
 		<!-- <div class="description">Description: {{description}}</div> -->
-
+		<div class="poster">Poster: {{poster}}</div>
+		<img src="{{c.url poster width=250 height=250 crop='fill'}}" alt="" />
 		<div class="author">Title: {{title}}</div>
 		<div class="author">Author: {{author}}</div>
 		<div class="created-at">Created At: {{createdAt}}</div>
