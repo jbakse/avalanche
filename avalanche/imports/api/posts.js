@@ -1,13 +1,16 @@
- // {
- //    title: 'Currents',
- //    author: "George Constanza",
- //    poster: "https://autologousinteractive.files.wordpress.com/2010/10/htorsion104-m.jpg",
- //    description: "Should I make the waves bigger?",
- //    time: "7 hours ago",
- //    lesson: "Random"
- //  }
+// {
+//	title: string
+//	author: string
+//	author_id: id
+//	poster: url
+//	description: string
+//	lesson: string
+//	createdAt: Date.now()
+//  }
 
 
-import { Mongo } from 'meteor/mongo';
+import {
+	Mongo
+} from 'meteor/mongo';
 
 export const Posts = new Mongo.Collection('posts');

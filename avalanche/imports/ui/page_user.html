@@ -1,0 +1,16 @@
+<template name="page_user">
+	<div class = "page-user">
+		{{user.username}} ({{user._id}})
+
+		<div class="posts">
+		User's Posts:
+		<ul>
+			{{#each posts}}
+				<li>
+					{{title}}
+				</li>
+			{{/each}}
+		</ul>
+		</div>
+	</div>
+</template>

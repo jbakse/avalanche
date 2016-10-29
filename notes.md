@@ -9,6 +9,8 @@ An overview indented to bridge gap between Discover Meteor and latest version of
 
 [Mime Type List](https://www.sitepoint.com/web-foundations/mime-types-complete-list/)
 
+[SCSS Cheatsheet](https://sass-cheatsheet.brunoscopelliti.com/) Using SCSS for CSS preprocessing.
+
 ## Routing
 Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 
@@ -46,3 +48,7 @@ Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 # Snippets
 
 [Client Side Image Resize with Slingshot](http://stackoverflow.com/questions/28515789/resize-and-save-files-to-s3-in-meteor)
+
+
+# Issues
+[Blaze doesn't play well with Contenteditable](https://github.com/meteor/meteor/issues/1964)
