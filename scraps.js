@@ -49,3 +49,18 @@
 //     lesson: "Pixels"
 //   }, ],
 // }
+
+
+
+
+	// 'input .title-input': function(event) {
+	// 	console.log("input", event.target.value);
+	//
+	// 	let t = event.target.value;
+	// 	t = t.trim();
+	// 	Posts.update(this._id, {
+	// 		$set: {
+	// 			title: t
+	// 		}
+	// 	});
+	// },

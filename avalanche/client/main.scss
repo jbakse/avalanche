@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+@import '../imports/styles/reset.scss';
+
+$accentColor: red;
+$paperColor: #F7F7F7;
+
+
+
+////////////////////////////////////////////////
+/// Layout
+////////////////////////////////////////////////
+
+*
+{
+    box-sizing: border-box;
+}
+
+
+.page-avalanche
+{
+    display: flex;
+}
+
+
+nav {
+    width: 300px;
+    flex: 0 auto;
+}
+
+main {
+    flex: 1 auto;
+}
+
+
+////////////////////////////////////////////////
+/// Appearance
+////////////////////////////////////////////////
+
+body {
+    font-family: 'Muli', sans-serif;
+    background: $paperColor;
+    height: 100%;
+}
+
+h1 {
+    color: $accentColor;
+}
+
+
+.post-summary {
+    border: 1px solid black;
+    padding: 20px;
+}

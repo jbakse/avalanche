@@ -1,0 +1,20 @@
+<template name="page_user">
+	<div class = "page-user">
+		{{user.username}} ({{user._id}})
+		a {{user.first_name}} {{user.last_name}} {{user.email}}
+		<hr/>
+			{{> quickForm schema="UserSchema" collection="Meteor.users" type="update" id="updateUserForm"}}
+		<hr/>
+		<div class="posts">
+		User's Posts:
+		<ul>
+			{{#each posts}}
+				<li>
+					{{title}}
+					<img src="{{c.url poster width=250 height=250 crop='fill'}}" alt="" />
+				</li>
+			{{/each}}
+		</ul>
+		</div>
+	</div>
+</template>

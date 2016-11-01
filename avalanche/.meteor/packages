@@ -24,4 +24,9 @@ accounts-ui
 accounts-password
 kadira:flow-router
 kadira:blaze-layout
+fourseven:scss
 lepozepo:cloudinary
+raix:ui-dropped-event
+aldeed:autoform
+aldeed:collection2
+twbs:bootstrap
