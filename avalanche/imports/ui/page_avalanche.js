@@ -1,90 +1,91 @@
-import {
-	Template
-} from 'meteor/templating';
-import {
-	Posts
-} from '../api/posts.js';
+import {Template} from 'meteor/templating';
+import {Posts} from '../api/posts.js';
 import './page_avalanche.html';
 
 
+
 Template.page_avalanche.helpers({
-	posts() {
-		return Posts.find({}, {
-			sort: {
-				createdAt: -1
-			}
-		});
-	},
+    posts() {
+        return Posts.find({}, {
+            sort: {
+                createdAt: -1
+            }
+        });
+    },
 
-	files() {
-		console.log("files", Cloudinary.collection.find({}));
-		return Cloudinary.collection.find({});
-	}
+    files() {
+        // console.log("files", Cloudinary.collection.find({}));
+        return Cloudinary.collection.find({});
+    }
 });
 
+Template.page_avalanche.events({
+    // 'dropped #dropzone': function(event, template) {
+    // 	console.log("drop");
+    // 	console.log(event.originalEvent.dataTransfer.files);
+    // 	template.find('.poster').files = event.originalEvent.dataTransfer.files;
+    // },
+    'change .post-create-file': function(event, template) {
 
-Template.post_create.events({
-	'dropped #dropzone': function(event, template) {
-		console.log("drop");
-		console.log(event.originalEvent.dataTransfer.files);
-		template.find('.poster').files = event.originalEvent.dataTransfer.files;
-	},
-	'submit .post-create': function(event, template) {
-		event.preventDefault();
-		let title = template.find('.title').value || "untitled";
+        event.preventDefault();
+        // console.log("file");
 
+        // let title = template.find('.title').value || "untitled";
 
+        let id = Posts.insert({
+            title: "untitled",
+            author: Meteor.user().username,
+            author_id: Meteor.userId(),
+            poster: "",
+            description: "",
+            time: "",
+            lesson: "",
+            createdAt: Date.now()
+        });
+        // console.log("id", id);
 
-		let id = Posts.insert({
-			title: title,
-			author: Meteor.user().username,
-			author_id: Meteor.userId(),
-			poster: "",
-			description: "",
-			time: "",
-			lesson: "",
-			createdAt: Date.now()
-		});
-		console.log("id", id);
+        let files = template.find('.post-create-file').files;
+        // console.log(files);
 
-		let files = template.find('.poster').files;
-		console.log(files);
+        let cid = Cloudinary.upload(files, {
+            folder: "avalanche"
+        }, (err, res) => {
+            console.log(`Upload Error:`, err);
+            console.log(`Upload Result:`, res);
+            if (!err) {
+                Posts.update(id, {
+                    $set: {
+                        poster: res.public_id
+                    }
+                });
+            }
+        });
 
-		let cid = Cloudinary.upload(files, {
-				folder: "avalanche"
-			},
-			(err, res) => {
-				console.log(`Upload Error:`, err);
-				console.log(`Upload Result:`, res);
-				if (!err) {
-					Posts.update(id, {
-						$set: {poster: res.public_id}
-					});
-				}
-			}
-		);
+        console.log("cid", cid);
 
-		console.log("cid", cid);
-
-	},
-	// 'change .poster': function(event) {
-	// 	files = event.currentTarget.files;
-	// 	console.log(files);
-	// 	Cloudinary.upload(files, {
-	// 			folder: "avalanche"
-	// 		},
-	// 		(err, res) => {
-	// 			console.log(`Upload Error:`, err);
-	// 			console.log(`Upload Result:`, res);
-	// 		}
-	// 	);
-	// }
+    },
+    // 'change .poster': function(event) {
+    // 	files = event.currentTarget.files;
+    // 	console.log(files);
+    // 	Cloudinary.upload(files, {
+    // 			folder: "avalanche"
+    // 		},
+    // 		(err, res) => {
+    // 			console.log(`Upload Error:`, err);
+    // 			console.log(`Upload Result:`, res);
+    // 		}
+    // 	);
+    // }
 });
 
+Template.page_avalanche.onRendered ( function() {
 
-Template.post_summary.events({
-	'click .kill-post': function(event) {
-		console.log("kill kill kill", this);
-		Posts.remove(this._id);
-	}
+
+});
+
+Template.avalanche_post.events({
+    'click .kill-post': function(event) {
+        console.log("kill kill kill", this);
+        Posts.remove(this._id);
+    }
 });
