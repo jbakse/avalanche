@@ -2,26 +2,14 @@
 	<div class="page-avalanche">
 		<nav class="main">
 			<h1>Computational Form</h1>
-
 			<div class="right">
 				{{#if currentUser}}
-					<!-- <form class="post-create"> -->
 					<label class="button" for="post-create-file"><i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i></label>
 					<input class="post-create-file" id="post-create-file" name="post-create-file" type="file">
-					<!-- </form> -->
-					<!-- {{> post_create}} -->
 				{{/if}}
 
 				{{> loginButtons}}
 			</div>
-
-
-
-			<!-- {{#each files}}
-				a
-				{{percent_uploaded}}<br/>
-			{{/each}} -->
-
 		</nav>
 		<main>
 			<div class="avalanche-posts">
@@ -30,38 +18,30 @@
 				{{/each}}
 			</div>
 		</main>
-
-
-
-
-
 	</div>
 </template>
 
-<template name="post_create">
+<!-- <template name="post_create">
 	<form class="post-create">
 		<input class="title">
 		<input class="poster" type="file">
 		<div id="dropzone" class="dropzone">drop<br/>drop<br/>drop</div>
 		<input class="create" value="Create Post" type="submit">
 	</form>
-</template>
+</template> -->
 
 
 <template name="avalanche_post">
 	<div class="box avalanche-post">
 		<img src="{{c.url poster width=250 crop='fill'}}" alt="" />
-
+		<div class="info">
+			<button class="btn btn-default kill-post"><i class="fa fa-trash" aria-hidden="true"></i></button>
+		</div>
 	</div>
 </template>
 
-<template name="post_summary">
+<!-- <template name="post_summary">
 	<li class="post-summary">
-		<!-- <div class="poster"><img src="{{poster}}"></div> -->
-
-		<!-- <div class="lesson"> Lesson: {{lesson}}	</div> -->
-		<!-- <input class="title-input" value="{{title}}"/> -->
-		<!-- <div class="description">Description: {{description}}</div> -->
 		<div class="poster">Poster: {{poster}}</div>
 		<img src="{{c.url poster width=250 height=250 crop='fill'}}" alt="" />
 		<div class="author">Title: {{title}}</div>
@@ -71,4 +51,4 @@
 		<div class="id">ID: <a href="/post/{{_id}}">{{_id}}</a></div>
 		<button class="kill-post">kill</button>
 	</li>
-</template>
+</template> -->

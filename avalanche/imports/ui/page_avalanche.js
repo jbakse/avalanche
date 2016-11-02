@@ -2,8 +2,6 @@ import {Template} from 'meteor/templating';
 import {Posts} from '../api/posts.js';
 import './page_avalanche.html';
 
-
-
 Template.page_avalanche.helpers({
     posts() {
         return Posts.find({}, {
@@ -14,7 +12,9 @@ Template.page_avalanche.helpers({
     },
 
     files() {
-        // console.log("files", Cloudinary.collection.find({}));
+        // {{#each files}}
+        //     {{percent_uploaded}}<br/>
+        // {{/each}}
         return Cloudinary.collection.find({});
     }
 });
@@ -61,7 +61,7 @@ Template.page_avalanche.events({
             }
         });
 
-        console.log("cid", cid);
+
 
     },
     // 'change .poster': function(event) {
@@ -78,10 +78,12 @@ Template.page_avalanche.events({
     // }
 });
 
-Template.page_avalanche.onRendered ( function() {
 
 
-});
+Template.page_avalanche.rendered = function() {
+
+
+};
 
 Template.avalanche_post.events({
     'click .kill-post': function(event) {
