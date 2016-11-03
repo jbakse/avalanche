@@ -15,25 +15,45 @@ import {
 
 
 PostSchema = new SimpleSchema({
+	author: {
+		type: String,
+		label: "Author",
+		defaultValue: "",
+	},
+	author_id: {
+		type: String,
+		label: "Author ID",
+		defaultValue: "",
+		// optional: true,
+		// regex: SimpleSchema.RegEx.Id,
+	},
+	created_at: {
+		type: Date,
+		label: "Created At",
+
+	},
+	poster: {
+		type: String,
+		label: "Poster Image",
+		defaultValue: "",
+		// regex: SimpleSchema.RegEx.Url,
+	},
+	lesson: {
+		type: String,
+		label: "Lesson",
+		defaultValue: "",
+	},
 	title: {
 		type: String,
 		label: "Title",
-        defaultValue: "",
-		max: 200
+		defaultValue: "",
+		max: 10,
 	},
-    last_name: {
-        type: String,
-        label: "Last Name",
-        defaultValue: "",
-        max: 200
-    },
-    email: {
-        type: String,
-        label: "Email",
-        defaultValue: "",
-        regEx: SimpleSchema.RegEx.Email,
-        max: 200
-    },
+	description: {
+		type: String,
+		label: "Description",
+		defaultValue: "",
+	}
 });
 
 
@@ -41,3 +61,4 @@ PostSchema = new SimpleSchema({
 
 
 export const Posts = new Mongo.Collection('posts');
+Posts.attachSchema(PostSchema);

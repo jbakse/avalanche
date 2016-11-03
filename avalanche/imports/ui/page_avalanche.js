@@ -6,7 +6,7 @@ Template.page_avalanche.helpers({
     posts() {
         return Posts.find({}, {
             sort: {
-                createdAt: -1
+                created_at: -1
             }
         });
     },
@@ -33,14 +33,14 @@ Template.page_avalanche.events({
         // let title = template.find('.title').value || "untitled";
 
         let id = Posts.insert({
-            title: "untitled",
+            // title: "untitled",
             author: Meteor.user().username,
             author_id: Meteor.userId(),
-            poster: "",
-            description: "",
-            time: "",
-            lesson: "",
-            createdAt: Date.now()
+            // poster: "",
+            // description: "",
+            // time: "",
+            // lesson: "",
+            created_at: new Date(), //Date.now()
         });
         // console.log("id", id);
 
