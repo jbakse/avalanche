@@ -95,7 +95,7 @@ nav.main {
 ////////////////////////////////////////////////
 /// Page Post
 ////////////////////////////////////////////////
-.page-post {
+.page-post main {
     position: absolute;
     height: 100%;
     display: flex;
@@ -115,4 +115,15 @@ nav.main {
 .page-post .poster {
     max-width: 100%;
     max-height: 100%;
+}
+
+
+////////////////////////////////////////////////
+/// Page User
+////////////////////////////////////////////////
+.page-user {
+    .user-info {
+        padding: 10px;
+        // border: 1px solid red;
+    }
 }

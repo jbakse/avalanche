@@ -1,17 +1,8 @@
 <template name="page_avalanche">
 	<div class="page-avalanche">
-		<nav class="main">
-			<h1>Computational Form</h1>
-			<div class="right">
-				{{#if currentUser}}
-					<label class="button" for="post-create-file"><i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i></label>
-					<input class="post-create-file" id="post-create-file" name="post-create-file" type="file">
-				{{/if}}
-
-				{{> loginButtons}}
-			</div>
-		</nav>
+		{{> main_nav}}
 		<main>
+			{{> atForm}}
 			<div class="avalanche-posts">
 				{{#each posts}}
 					{{> avalanche_post}}
@@ -29,6 +20,25 @@
 		<input class="create" value="Create Post" type="submit">
 	</form>
 </template> -->
+
+
+<template name="main_nav">
+	<nav class="main">
+		<h1><a href="/">Computational Form</a></h1>
+		<div class="right">
+			{{#if currentUser}}
+				<label class="button" for="post-create-file"><i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i></label>
+				<input class="post-create-file" id="post-create-file" name="post-create-file" type="file">
+				<a href="/user/{{currentUser._id}}"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+			{{else}}
+				<a href="/user/{{currentUser._id}}"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
+			{{/if}}
+
+			<!-- {{> loginButtons}} -->
+		</div>
+
+	</nav>
+</template>
 
 
 <template name="avalanche_post">

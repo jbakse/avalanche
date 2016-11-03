@@ -5,6 +5,12 @@ import '../api/users.js';
 
 import './page_user.html';
 
+Template.page_user.events({
+	'click .log-out': function(event) {
+        Meteor.logout();
+    }
+
+});
 Template.page_user.helpers({
 	user() {
 		let id = FlowRouter.getParam("userId");

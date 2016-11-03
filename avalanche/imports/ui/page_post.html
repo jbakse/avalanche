@@ -1,18 +1,21 @@
 <template name="page_post">
 	<div class = "page-post">
-		<div class="left">
-			{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
-				Author: <a href="/user/{{post.author_id}}">{{post.author}}</a><br/>
-				Created At: {{formatDate post.created_at}} {{formatTime post.created_at}}<br/>
-				<hr>
-				{{> afQuickField name='lesson' options=lessons}}
-				{{> afQuickField name='title'}}
-				{{> afQuickField name='description' rows=6}}
-				<button type="submit" class="btn btn-primary">Update</button>
-			{{/autoForm}}
-		</div>
-		<div class="right">
-			<img class="poster" src="{{c.url post.poster}}" alt="" />
-		</div>
+		{{> main_nav}}
+		<main>
+			<div class="left">
+				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
+					Author: <a href="/user/{{post.author_id}}">{{post.author}}</a><br/>
+					Created At: {{formatDate post.created_at}} {{formatTime post.created_at}}<br/>
+					<hr>
+					{{> afQuickField name='lesson' options=lessons}}
+					{{> afQuickField name='title'}}
+					{{> afQuickField name='description' rows=6}}
+					<button type="submit" class="btn btn-primary">Update</button>
+				{{/autoForm}}
+			</div>
+			<div class="right">
+				<img class="poster" src="{{c.url post.poster}}" alt="" />
+			</div>
+		</main>
 	</div>
 </template>
