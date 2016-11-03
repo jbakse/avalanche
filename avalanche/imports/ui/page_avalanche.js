@@ -40,6 +40,7 @@ Template.page_avalanche.events({
             // description: "",
             // time: "",
             // lesson: "",
+            lesson: "design",
             created_at: new Date(), //Date.now()
         });
         // console.log("id", id);
