@@ -23,22 +23,41 @@ AccountsTemplates.configure( {
     showValidating: true,
 });
 
-AccountsTemplates.removeField('email');
-
+// AccountsTemplates.removeField('email');
+//
 AccountsTemplates.addField({
-    _id: "username",
+    _id: "first_name",
     type: "text",
-    displayName: "username",
-    required: true,
-    minLength: 5,
+    displayName: "First Name / Prefered Name",
+    required: true
 });
 
-AccountsTemplates.removeField('password');
 AccountsTemplates.addField({
-    _id: 'password',
-    type: 'password',
-    required: true,
-    minLength: 6,
-    re: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
-    errStr: 'At least 1 digit, 1 lowercase and 1 uppercase',
+    _id: "last_name",
+    type: "text",
+    displayName: "Last Name",
+    required: true
+});
+//
+// AccountsTemplates.removeField('password');
+// AccountsTemplates.addField({
+//     _id: 'password',
+//     type: 'password',
+//     required: true,
+//     minLength: 6,
+//     re: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
+//     errStr: 'At least 1 digit, 1 lowercase and 1 uppercase',
+// });
+
+
+Template.registerHelper('formatDate', function(date) {
+	return moment(date).format('MMMM Do');
+});
+
+Template.registerHelper('formatTime', function(date) {
+	return moment(date).format('h:mm a');
+});
+
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
 });

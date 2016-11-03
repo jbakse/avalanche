@@ -127,3 +127,14 @@ nav.main {
         // border: 1px solid red;
     }
 }
+
+
+div.info {
+    .name {
+        display: block;
+    }
+    .value {
+        display: block;
+        margin-bottom: 10px;
+    }
+}

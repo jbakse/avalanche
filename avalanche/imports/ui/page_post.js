@@ -8,18 +8,9 @@ import './page_post.html';
 
 window.Posts = Posts;
 
-Template.registerHelper('formatDate', function(date) {
-	return moment(date).format('MMMM Do');
-});
-
-Template.registerHelper('equals', function (a, b) {
-    return a === b;
-});
 
 
-Template.registerHelper('formatTime', function(date) {
-	return moment(date).format('h:mm a');
-});
+
 
 
 

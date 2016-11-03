@@ -1,4 +1,5 @@
 import '../imports/api/posts.js';
+import '../imports/api/users.js';
 import './secrets.js';
 
 

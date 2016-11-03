@@ -31,10 +31,10 @@ Template.page_avalanche.events({
         // console.log("file");
 
         // let title = template.find('.title').value || "untitled";
-
+        console.log(Meteor.user().profile.first_name);
         let id = Posts.insert({
             // title: "untitled",
-            author: Meteor.user().username,
+            author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
             author_id: Meteor.userId(),
             // poster: "",
             // description: "",

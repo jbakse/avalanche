@@ -3,15 +3,49 @@
 		{{> main_nav}}
 		<main>
 			<div class="left">
-				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
-					Author: <a href="/user/{{post.author_id}}">{{post.author}}</a><br/>
-					Created At: {{formatDate post.created_at}} {{formatTime post.created_at}}<br/>
-					<hr>
-					{{> afQuickField name='lesson' options=lessons}}
-					{{> afQuickField name='title'}}
-					{{> afQuickField name='description' rows=6}}
-					<button type="submit" class="btn btn-primary">Update</button>
-				{{/autoForm}}
+				<div class="info">
+					<span class="name">Author</span>
+					<span class="value"><a href="/user/{{post.author_id}}">
+						{{#if post.author}}
+							{{post.author}}
+						{{else}}
+							Unknown
+						{{/if}}
+					</a></span>
+				</div>
+				<div class="info">
+					<span class="name">Posted</span>
+					<span class="value">{{formatDate post.created_at}}, {{formatTime post.created_at}}</span>
+				</div>
+
+				<!-- {{currentUser._id}} / {{post.author_id}} -->
+
+
+				{{#if equals currentUser._id post.author_id}}
+
+					{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
+
+						{{> afQuickField name='lesson' options=lessons}}
+						{{> afQuickField name='title'}}
+						{{> afQuickField name='description' rows=6}}
+						<button type="submit" class="btn btn-primary">Update</button>
+					{{/autoForm}}
+				{{else}}
+					<div class="info">
+						<span class="name">Lesson</span>
+						<span class="value">{{post.lesson}}</span>
+					</div>
+					<div class="info">
+						<span class="name">Title</span>
+						<span class="value">{{post.title}}</span>
+					</div>
+					<div class="info">
+						<span class="name">Description</span>
+						<span class="value">{{post.description}}</span>
+					</div>
+				{{/if}}
+
+
 			</div>
 			<div class="right">
 				<img class="poster" src="{{c.url post.poster}}" alt="" />

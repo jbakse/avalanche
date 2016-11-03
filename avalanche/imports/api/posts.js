@@ -62,3 +62,19 @@ PostSchema = new SimpleSchema({
 
 export const Posts = new Mongo.Collection('posts');
 Posts.attachSchema(PostSchema);
+
+
+Meteor.methods({
+	'posts.updateAuthor' (author_id, name) {
+		// console.log("update author", value);
+		Posts.update({
+			author_id: author_id
+		}, {
+			$set: {
+				"author": name,
+			}
+		}, {
+			multi: true
+		});
+	},
+});

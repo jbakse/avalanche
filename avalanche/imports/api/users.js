@@ -19,3 +19,8 @@ UserSchema = new SimpleSchema({
         max: 200
     },
 });
+
+
+Meteor.users.allow({
+	remove: function() {return true;}
+});
