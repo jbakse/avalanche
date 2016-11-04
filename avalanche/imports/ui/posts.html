@@ -1,6 +1,12 @@
 <template name="post">
 	<div class="post">
-		<img src="{{c.url poster width=250 crop='fill'}}" alt="" />
+		{{#if equals resource_type "video"}}
+			<video src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}" controls></video>
+			<!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.jpg" alt="" /> -->
+		{{else}}
+			<img src="{{c.url poster width=250 crop='fill'}}" alt="" />
+		{{/if}}
+		<!-- {{poster}} -->
 		<div class="info">
 			<button class="btn btn-default remove-post">
 				<i class="fa fa-trash" aria-hidden="true"></i>

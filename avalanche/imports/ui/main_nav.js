@@ -18,14 +18,16 @@ Template.main_nav.events({
 		// upload image + add to post
 		let files = template.find('.create-post-file').files;
 		let cid = Cloudinary.upload(files, {
-			folder: "avalanche"
+			folder: "avalanche",
+			resource_type: "auto"
 		}, (err, res) => {
 			console.log(`Upload Error:`, err);
 			console.log(`Upload Result:`, res);
 			if (!err) {
 				Posts.update(id, {
 					$set: {
-						poster: res.public_id
+						poster: res.public_id,
+						resource_type: res.resource_type
 					}
 				});
 			}

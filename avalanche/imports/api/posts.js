@@ -23,6 +23,11 @@ PostSchema = new SimpleSchema({
 		defaultValue: "",
 		// regex: SimpleSchema.RegEx.Url,
 	},
+	resource_type: {
+		type: String,
+		label: "Resource Type",
+		defaultValue: "",
+	},
 	lesson: {
 		type: String,
 		label: "Lesson",
