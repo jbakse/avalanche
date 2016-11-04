@@ -53,9 +53,12 @@ pretty up login?
 .Server Side Timestamp
 .Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
 x.sign in with email
-.better allow rules (especially that i'm allowing users to delete users willy nilly)
-.list users
-.better roles, and helper for "owner" "admin" "owner or admin"
+.hamburger menu
+    .list users
+    .list weekly themes
+    .list tools
+.interface so uses can replace media (change "poster" to "media"?)
 
+.better roles, and helper for "owner" "admin" "owner or admin"
+.better allow rules (especially that i'm allowing users to delete users willy nilly)
 allow users to edit themselves, update their posts!
-replace media

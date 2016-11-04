@@ -26,7 +26,13 @@ PostSchema = new SimpleSchema({
 	resource_type: {
 		type: String,
 		label: "Resource Type",
-		defaultValue: "",
+		defaultValue: ""
+	},
+	cloudinary: {
+		type: Object,
+		label: "Cloudinary Data",
+		blackbox: true,
+		defaultValue: {}
 	},
 	lesson: {
 		type: String,
@@ -50,6 +56,24 @@ export const Posts = new Mongo.Collection('posts');
 Posts.attachSchema(PostSchema);
 
 Meteor.methods({
+	'posts.insert' (data) {
+		// create post
+		let id = Posts.insert({author: data.author, author_id: data.author_id, lesson: data.lesson, created_at: new Date()});
+
+		return id;
+
+	},
+
+	'posts.updateMedia' (id, data) {
+		Posts.update(id, {
+			$set: {
+				poster: data.public_id,
+				resource_type: data.resource_type,
+				cloudinary: data
+			}
+		});
+	},
+
 	'posts.updateAuthor' (author_id, name) {
 		// console.log("update author", value);
 		Posts.update({

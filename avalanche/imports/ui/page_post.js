@@ -7,7 +7,8 @@ window.Posts = Posts;
 Template.page_post.helpers({
 	post() {
 		let id = FlowRouter.getParam("postId");
-		var post = Posts.findOne(id);
+		let post = Posts.findOne(id);
+		console.log(post);
 		return post;
 	},
 

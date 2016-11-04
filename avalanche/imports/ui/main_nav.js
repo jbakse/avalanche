@@ -6,31 +6,29 @@ Template.main_nav.events({
 
 		event.preventDefault();
 
-		console.log("load");
-		// create post
-		let id = Posts.insert({
+		Meteor.call('posts.insert', {
 			author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
 			author_id: Meteor.userId(),
 			lesson: "design",
-			created_at: new Date()
+		}, function(error, id){
+			if (error) {
+				console.error(error);
+				return;
+			}
+			// upload image + add to post
+			let files = template.find('.create-post-file').files;
+			let cid = Cloudinary.upload(files, {
+				folder: "avalanche",
+				resource_type: "auto"
+			}, (err, res) => {
+				console.log(`Upload Error:`, err);
+				console.log(`Upload Result:`, res);
+				if (!err) {
+					Meteor.call('posts.updateMedia', id, res);
+				}
+			});
 		});
 
-		// upload image + add to post
-		let files = template.find('.create-post-file').files;
-		let cid = Cloudinary.upload(files, {
-			folder: "avalanche",
-			resource_type: "auto"
-		}, (err, res) => {
-			console.log(`Upload Error:`, err);
-			console.log(`Upload Result:`, res);
-			if (!err) {
-				Posts.update(id, {
-					$set: {
-						poster: res.public_id,
-						resource_type: res.resource_type
-					}
-				});
-			}
-		});
+
 	}
 });
