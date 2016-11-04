@@ -1,24 +1,10 @@
-// {
-//	title: string
-//	author: string
-//	author_id: id
-//	poster: url
-//	description: string
-//	lesson: string
-//	createdAt: Date.now()
-//  }
-
-
-import {
-	Mongo
-} from 'meteor/mongo';
-
+import {Mongo} from 'meteor/mongo';
 
 PostSchema = new SimpleSchema({
 	author: {
 		type: String,
 		label: "Author",
-		defaultValue: "",
+		defaultValue: ""
 	},
 	author_id: {
 		type: String,
@@ -29,8 +15,7 @@ PostSchema = new SimpleSchema({
 	},
 	created_at: {
 		type: Date,
-		label: "Created At",
-
+		label: "Created At"
 	},
 	poster: {
 		type: String,
@@ -41,28 +26,23 @@ PostSchema = new SimpleSchema({
 	lesson: {
 		type: String,
 		label: "Lesson",
-		defaultValue: "",
+		defaultValue: ""
 	},
 	title: {
 		type: String,
 		label: "Title",
 		defaultValue: "",
-		max: 10,
+		max: 10
 	},
 	description: {
 		type: String,
 		label: "Description",
-		defaultValue: "",
+		defaultValue: ""
 	}
 });
 
-
-
-
-
 export const Posts = new Mongo.Collection('posts');
 Posts.attachSchema(PostSchema);
-
 
 Meteor.methods({
 	'posts.updateAuthor' (author_id, name) {
@@ -71,10 +51,8 @@ Meteor.methods({
 			author_id: author_id
 		}, {
 			$set: {
-				"author": name,
+				"author": name
 			}
-		}, {
-			multi: true
-		});
-	},
+		}, {multi: true});
+	}
 });

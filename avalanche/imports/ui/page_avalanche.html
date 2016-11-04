@@ -2,65 +2,16 @@
 	<div class="page-avalanche">
 		{{> main_nav}}
 		<main>
-			{{> atForm}}
-			<div class="avalanche-posts">
+			<div class="info">
+				{{#if currentUser}}{{else}}
+					{{> atForm}}
+				{{/if}}
+			</div>
+			<div class="posts">
 				{{#each posts}}
-					{{> avalanche_post}}
+					{{> post}}
 				{{/each}}
 			</div>
 		</main>
 	</div>
 </template>
-
-<!-- <template name="post_create">
-	<form class="post-create">
-		<input class="title">
-		<input class="poster" type="file">
-		<div id="dropzone" class="dropzone">drop<br/>drop<br/>drop</div>
-		<input class="create" value="Create Post" type="submit">
-	</form>
-</template> -->
-
-
-<template name="main_nav">
-	<nav class="main">
-		<h1><a href="/">Computational Form</a></h1>
-		<div class="right">
-			{{#if currentUser}}
-				<label class="button" for="post-create-file"><i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i></label>
-				<input class="post-create-file" id="post-create-file" name="post-create-file" type="file">
-				<a href="/user/{{currentUser._id}}"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-			{{else}}
-				<a href="/user/{{currentUser._id}}"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
-			{{/if}}
-
-			<!-- {{> loginButtons}} -->
-		</div>
-
-	</nav>
-</template>
-
-
-<template name="avalanche_post">
-	<div class="box avalanche-post">
-		<img src="{{c.url poster width=250 crop='fill'}}" alt="" />
-		<div class="info">
-			<button class="btn btn-default kill-post"><i class="fa fa-trash" aria-hidden="true"></i></button>
-			<a href="/post/{{_id}}" class="btn btn-default show-post"><i class="fa fa-info" aria-hidden="true"></i></a>
-
-		</div>
-	</div>
-</template>
-
-<!-- <template name="post_summary">
-	<li class="post-summary">
-		<div class="poster">Poster: {{poster}}</div>
-		<img src="{{c.url poster width=250 height=250 crop='fill'}}" alt="" />
-		<div class="author">Title: {{title}}</div>
-		<div class="author">Author: {{author}}</div>
-		<div class="created-at">Created At: {{createdAt}}</div>
-		<div class="author-id">Author ID: <a href="/user/{{author_id}}">{{author_id}}</a></div>
-		<div class="id">ID: <a href="/post/{{_id}}">{{_id}}</a></div>
-		<button class="kill-post">kill</button>
-	</li>
-</template> -->

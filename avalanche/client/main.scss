@@ -1,7 +1,9 @@
 @import url( 'https://fonts.googleapis.com/css?family=Muli');
 @import '../imports/styles/reset.scss';
 $accent-color: red;
-$paper-color: #F7F7F7; ////////////////////////////////////////////////
+$paper-color: #F7F7F7;
+
+////////////////////////////////////////////////
 /// Layout
 ////////////////////////////////////////////////
 
@@ -13,23 +15,6 @@ $paper-color: #F7F7F7; ////////////////////////////////////////////////
     // display: flex;
 }
 
-nav {
-    position: relative;
-    flex: 0 auto;
-    background: white;
-    padding: 10px;
-}
-
-nav .right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-}
-
-main {
-    // flex: 1 auto;
-}
 ////////////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
@@ -39,62 +24,77 @@ body {
     background: $paper-color;
     height: 100%;
 }
+
 ////////////////////////////////////////////////
-/// nav.main
+/// main_nav
 ////////////////////////////////////////////////
 
-nav.main {
+.main-nav {
+    position: relative;
+    flex: 0 auto;
+    background: white;
+    padding: 10px;
+    // border: 1px solid red;
+}
+
+.main-nav .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.main-nav {
     .button {
         cursor: pointer;
+        margin: 0 10px;
+    }
+
+    a.button {
+        color: black;
     }
 
     .button:hover {
         color: $accent-color;
     }
 
-    .post-create-file {
+    .create-post-file {
         display: none;
     }
 }
+
 ////////////////////////////////////////////////
-/// Avalanche Posts
+/// posts
 ////////////////////////////////////////////////
 
-.avalanche-posts {
-    // border: 1px solid red;
+.posts {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-.avalanche-post {
-    // padding: 10px;
-    // border: 1px solid red;
-    // margin-bottom: 50px;
-    // margin-right: 20px;
+.post {
     margin: 20px 10px;
 }
 
-.avalanche-post .info {
-    // border: 1px solid red;
+.post .info {
     border: 1px solid #DDD;
     margin-top: 5px;
     background: white;
     padding: 10px;
 }
 
-.avalanche-post img {
+.post img {
     display: block;
     width: 250px;
     height: 250px;
     object-fit: cover;
-    // border: 1px solid rgba(0, 0, 0, .2);
 }
-
 
 ////////////////////////////////////////////////
 /// Page Post
 ////////////////////////////////////////////////
+
 .page-post main {
     position: absolute;
     height: 100%;
@@ -117,22 +117,25 @@ nav.main {
     max-height: 100%;
 }
 
-
 ////////////////////////////////////////////////
 /// Page User
 ////////////////////////////////////////////////
+
 .page-user {
     .user-info {
         padding: 10px;
-        // border: 1px solid red;
     }
 }
 
+////////////////////////////////////////////////
+/// Utils
+////////////////////////////////////////////////
 
-div.info {
+div.name-value {
     .name {
         display: block;
     }
+
     .value {
         display: block;
         margin-bottom: 10px;

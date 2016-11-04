@@ -64,3 +64,41 @@
 	// 		}
 	// 	});
 	// },
+
+
+    //
+    // AccountsTemplates.removeField('password');
+    // AccountsTemplates.addField({
+    //     _id: 'password',
+    //     type: 'password',
+    //     required: true,
+    //     minLength: 6,
+    //     re: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
+    //     errStr: 'At least 1 digit, 1 lowercase and 1 uppercase',
+    // });
+
+    <!-- <template name="post_summary">
+    	<li class="post-summary">
+    		<div class="poster">Poster: {{poster}}</div>
+    		<img src="{{c.url poster width=250 height=250 crop='fill'}}" alt="" />
+    		<div class="author">Title: {{title}}</div>
+    		<div class="author">Author: {{author}}</div>
+    		<div class="created-at">Created At: {{createdAt}}</div>
+    		<div class="author-id">Author ID: <a href="/users/{{author_id}}">{{author_id}}</a></div>
+    		<div class="id">ID: <a href="/post/{{_id}}">{{_id}}</a></div>
+    		<button class="kill-post">kill</button>
+    	</li>
+    </template> -->
+    <!-- <template name="post_create">
+    	<form class="post-create">
+    		<input class="title">
+    		<input class="poster" type="file">
+    		<div id="dropzone" class="dropzone">drop<br/>drop<br/>drop</div>
+    		<input class="create" value="Create Post" type="submit">
+    	</form>
+    </template> -->
+    // 'dropped #dropzone': function(event, template) {
+    // 	console.log("drop");
+    // 	console.log(event.originalEvent.dataTransfer.files);
+    // 	template.find('.poster').files = event.originalEvent.dataTransfer.files;
+    // },

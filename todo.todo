@@ -55,6 +55,7 @@ pretty up login?
 x.sign in with email
 .better allow rules (especially that i'm allowing users to delete users willy nilly)
 .list users
-
+.better roles, and helper for "owner" "admin" "owner or admin"
 
 allow users to edit themselves, update their posts!
+replace media

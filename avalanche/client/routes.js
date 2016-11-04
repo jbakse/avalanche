@@ -5,7 +5,7 @@ FlowRouter.route('/', {
     }
 });
 
-FlowRouter.route('/post/:postId', {
+FlowRouter.route('/posts/:postId', {
     name: 'post',
     action: function(params) {
         BlazeLayout.render("layout_main", {content: "page_post"});
@@ -13,7 +13,7 @@ FlowRouter.route('/post/:postId', {
 });
 
 
-FlowRouter.route('/user/:userId', {
+FlowRouter.route('/users/:userId', {
     name: 'user',
     action: function(params) {
         BlazeLayout.render("layout_main", {content: "page_user"});

@@ -1,0 +1,21 @@
+<template name="main_nav">
+    <nav class="main-nav">
+        <h1><a href="/">Computational Form</a></h1>
+
+        <div class="right">
+            {{#if currentUser}}
+                <label class="button" for="create-post-file">
+                    <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+                </label>
+                <input class="create-post-file" id="create-post-file" name="create-post-file" type="file">
+                <a class="button" href="/users/{{currentUser._id}}">
+                    <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                </a>
+            {{else}}
+                <a href="/users/{{currentUser._id}}">
+                    <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>
+                </a>
+            {{/if}}
+        </div>
+    </nav>
+</template>
