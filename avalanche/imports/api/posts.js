@@ -1,6 +1,6 @@
-import {Mongo} from 'meteor/mongo';
+import {Mongo} from "meteor/mongo";
 
-PostSchema = new SimpleSchema({
+let PostSchema = new SimpleSchema({
 	author: {
 		type: String,
 		label: "Author",
@@ -11,7 +11,7 @@ PostSchema = new SimpleSchema({
 		label: "Author ID",
 		defaultValue: "",
 		// optional: true,
-		// regex: SimpleSchema.RegEx.Id,
+		// regex: SimpleSchema.RegEx.Id,,,,,,,,,,,
 	},
 	created_at: {
 		type: Date,
@@ -21,7 +21,7 @@ PostSchema = new SimpleSchema({
 		type: String,
 		label: "Poster Image",
 		defaultValue: "",
-		// regex: SimpleSchema.RegEx.Url,
+		// regex: SimpleSchema.RegEx.Url,,,,,,,,,,,
 	},
 	resource_type: {
 		type: String,
@@ -52,7 +52,7 @@ PostSchema = new SimpleSchema({
 	}
 });
 
-export const Posts = new Mongo.Collection('posts');
+export const Posts = new Mongo.Collection("posts");
 Posts.attachSchema(PostSchema);
 
 Posts.allow({
@@ -62,24 +62,53 @@ Posts.allow({
 	}
 });
 
-
-
+function postEditableBy(post, user_id) {
+	return post.author_id === user_id;
+}
 
 Meteor.methods({
-	'posts.insert' (data) {
+	"posts.insert" () {
 		// create post
-		let id = Posts.insert({author: data.author, author_id: data.author_id, lesson: data.lesson, created_at: new Date()});
+		let data = {
+			author_id: this.userId,
+			author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
+			lesson: "design",
+			created_at: new Date()
+		};
+
+		let id = Posts.insert(data);
 
 		return id;
 
 	},
 
-	'posts.remove' (id) {
-		console.error("verify!");
-		Posts.remove(id);
+	"posts.remove" (id) {
+		let post = Posts.findOne(id);
+		if (!postEditableBy(post, this.userId)) {
+			throw new Meteor.Error("unauthorized");
+		}
+
+		if (Meteor.isServer) {
+
+			if (!post.poster) {
+				Posts.remove(id);
+				return;
+			}
+
+			Cloudinary.uploader.destroy(post.poster, Meteor.bindEnvironment((result) => {
+				if (result.result === "ok" || result.result === "not found") {
+					Posts.remove(id);
+				}
+			}));
+		}
 	},
 
-	'posts.updateMedia' (id, data) {
+	"posts.updateMedia" (id, data) {
+		let post = Posts.findOne(id);
+		if (!postEditableBy(post, this.userId)) {
+			throw new Meteor.Error("unauthorized");
+		}
+
 		Posts.update(id, {
 			$set: {
 				poster: data.public_id,
@@ -88,16 +117,4 @@ Meteor.methods({
 			}
 		});
 	},
-
-
-	'posts.updateAuthor' (author_id, name) {
-		// console.log("update author", value);
-		Posts.update({
-			author_id: author_id
-		}, {
-			$set: {
-				"author": name
-			}
-		}, {multi: true});
-	}
 });

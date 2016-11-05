@@ -1,6 +1,6 @@
-import {Template} from 'meteor/templating';
-import {Posts} from '../api/posts.js';
-import './page_post.html';
+import {Template} from "meteor/templating";
+import {Posts} from "../api/posts.js";
+import "./page_post.html";
 
 window.Posts = Posts;
 

@@ -1,7 +1,7 @@
-import {Template} from 'meteor/templating';
-import {Posts} from '../api/posts.js';
-import '../api/users.js';
-import './page_user.html';
+import {Template} from "meteor/templating";
+import {Posts} from "../api/posts.js";
+import "../api/users.js";
+import "./page_user.html";
 
 
 Template.page_user.helpers({
@@ -26,29 +26,27 @@ Template.page_user.helpers({
 
 
 Template.page_user.events({
-	'click .log-out': function(event) {
+	"click .log-out": function(/*event*/) {
+		console.log("logoyt");
 		Meteor.logout();
 	},
 
-	'click .remove-user': function(event) {
-		console.log('dead', FlowRouter.getParam("userId"));
+	"click .remove-user": function(/*event*/) {
+		console.log("dead", FlowRouter.getParam("userId"));
 		Meteor.users.remove(FlowRouter.getParam("userId"));
 	},
 
-	'submit #updateUserForm': function(event, template) {
+	"submit #updateUserForm": function(event, template) {
 		event.preventDefault();
 		console.log("submit #updateUserForm");
 
-		let first_name = template.find('.first-name').value || "Unknown";
-		let last_name = template.find('.last-name').value || "Author";
+		let first_name = template.find(".first-name").value || "Unknown";
+		let last_name = template.find(".last-name").value || "Author";
 
-		Meteor.users.update(this._id, {
-			$set: {
-				"profile.first_name": first_name,
-				"profile.last_name": last_name
-			}
+
+		Meteor.call("users.updateName", {
+			first_name,
+			last_name
 		});
-
-		Meteor.call('posts.updateAuthor', this._id, first_name + " " + last_name);
 	}
 });
