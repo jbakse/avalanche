@@ -1,3 +1,3 @@
-Meteor.users.allow({
-	remove: function() {return true;}
-});
+// Meteor.users.allow({
+// 	remove: function() {return true;}
+// });

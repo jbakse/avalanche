@@ -55,6 +55,16 @@ PostSchema = new SimpleSchema({
 export const Posts = new Mongo.Collection('posts');
 Posts.attachSchema(PostSchema);
 
+Posts.allow({
+	update: function() {
+		console.log("validate");
+		return true;
+	}
+});
+
+
+
+
 Meteor.methods({
 	'posts.insert' (data) {
 		// create post
@@ -62,6 +72,11 @@ Meteor.methods({
 
 		return id;
 
+	},
+
+	'posts.remove' (id) {
+		console.error("verify!");
+		Posts.remove(id);
 	},
 
 	'posts.updateMedia' (id, data) {
@@ -73,6 +88,7 @@ Meteor.methods({
 			}
 		});
 	},
+
 
 	'posts.updateAuthor' (author_id, name) {
 		// console.log("update author", value);

@@ -37,6 +37,7 @@ Template.page_user.events({
 
 	'submit #updateUserForm': function(event, template) {
 		event.preventDefault();
+		console.log("submit #updateUserForm");
 
 		let first_name = template.find('.first-name').value || "Unknown";
 		let last_name = template.find('.last-name').value || "Author";

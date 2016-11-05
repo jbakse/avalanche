@@ -7,7 +7,7 @@ Template.post.events({
 			console.log(`Delete Error:`, err);
 			console.log(`Delete Result:`, res);
 			if (!err) {
-				Posts.remove(this._id);
+				Meteor.call('posts.remove', this._id);
 			}
 		});
 
