@@ -5,6 +5,7 @@
 			<!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.jpg" alt="" /> -->
 			<!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.gif" alt="" /> -->
 		{{else}}
+			<!-- <img src="{{c.url poster width=250 crop='fill'}}" alt="" /> -->
 			<img src="{{c.url poster width=250 crop='fill'}}" alt="" />
 		{{/if}}
 		<!-- {{poster}} -->
@@ -15,6 +16,8 @@
 			<a href="/posts/{{_id}}" class="btn btn-default show-post">
 				<i class="fa fa-info" aria-hidden="true"></i>
 			</a>
+			{{i}}
+
 		</div>
 	</div>
 </template>

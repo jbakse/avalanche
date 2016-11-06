@@ -50,3 +50,22 @@ Template.page_user.events({
 		});
 	}
 });
+
+
+Template.page_user.rendered = function() {
+	console.log("rendered posts");
+	let posts=  this.find(".posts");
+	window.isotope = new Isotope(posts, {
+		// options...
+		itemSelector: ".post",
+		sortBy: "original-order",
+		transitionDuration: 0,
+		masonry: {
+			isFitWidth: true,
+			// columnWidth: 250
+		},
+	});
+
+
+
+};

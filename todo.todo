@@ -6,7 +6,7 @@ x.hook up data (data in db, api, ui, viewing)
 .crud
     x.create (from form)
     x.read
-    .update
+    x.update
     x.create from loggedin user info
     x.delete
 
@@ -14,10 +14,10 @@ x.hook up data (data in db, api, ui, viewing)
 
 ## Accounts
 x.Allow Login
-.Single Sign-on w/ Google
 .Admin Role
 .Student Role
 .Guest Role
+?.Single Sign-on w/ Google
 
 
 ## Views
@@ -28,14 +28,14 @@ x.Post Detail
 .Overview (Show chart of posts per week/student)
 
 ## Web Uploads
-.Upload images
-.Create thumbnails/resize images
-.Remote storage S3
-.Support PNG
-.Support JPG
-.Support GIF
-.Upload Videos
+x.Upload images
+x.Create thumbnails/resize images
+x.Support PNG
+x.Support JPG
+x.Support GIF
+x.Upload Videos
 .Upload "dumb" files
+?.Remote storage S3
 
 
 ## Realtime Code
@@ -46,22 +46,22 @@ x.Post Detail
 ## Commenting (Or something like it)
 
 
-use autoform?
-pretty up login?
 
 ## LEFT FOR FUTURE ME
+x.use autoform?
 x.Server Side Timestamp
-.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
 x.sign in with email
-.hamburger menu
-    .list users
-    .list weekly themes
-    .list tools
+x.allow users to edit themselves, update their posts!
+x.better allow rules (especially that i'm allowing users to delete users willy nilly)
+x.js hint with .settings file.
+
+.pretty up login more?
+
+.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
 .interface so uses can replace media (change "poster" to "media"?)
 
-x.allow users to edit themselves, update their posts!
 .better roles, and helper for "owner" "admin" "owner or admin"
-.better allow rules (especially that i'm allowing users to delete users willy nilly)
-
-
-x.js hint with .settings file.
+.hamburger menu
+.list users
+.list weekly themes
+.list tools

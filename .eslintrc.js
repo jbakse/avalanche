@@ -12,7 +12,8 @@ module.exports = {
         "Template": true,
         "FlowRouter": true,
         "SimpleSchema": true,
-        "Cloudinary": true
+        "Cloudinary": true,
+        "Isotope": true
     },
     "rules": {
         "no-console": "off",
