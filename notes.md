@@ -56,3 +56,9 @@ Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 
 # Issues
 [Blaze doesn't play well with Contenteditable](https://github.com/meteor/meteor/issues/1964)
+
+
+# Settings/Security
+[themeteorchef Settins.json](https://themeteorchef.com/snippets/making-use-of-settings-json/)
+
+heroku config:add METEOR_SETTINGS="$(cat settings.json)"
