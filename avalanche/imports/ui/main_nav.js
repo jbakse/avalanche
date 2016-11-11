@@ -6,11 +6,7 @@ Template.main_nav.events({
 
 		event.preventDefault();
 
-		Meteor.call("posts.insert", {
-			// author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
-			// author_id: Meteor.userId(),
-			// lesson: "design",
-		}, function(error, id){
+		Meteor.call("posts.insert", {}, function(error, id){
 			if (error) {
 				console.error(error);
 				return;
@@ -30,5 +26,11 @@ Template.main_nav.events({
 		});
 
 
+	},
+
+	"click #at-signIn, click #at-signUp": function (event) {
+		console.log("click");
+		event.stopPropagation();
+		event.preventDefault();
 	}
 });

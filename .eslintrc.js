@@ -10,10 +10,13 @@ module.exports = {
     "globals" : {
         "Meteor": true,
         "Template": true,
+        "Tracker": true,
         "FlowRouter": true,
         "SimpleSchema": true,
         "Cloudinary": true,
-        "Isotope": true
+        "Isotope": true,
+        "moment": true,
+        "$": true
     },
     "rules": {
         "no-console": "off",

@@ -1,6 +1,10 @@
 # Major Features
 
 
+## Hosting
+x.Heroku (app/db)
+x.Cloudinary (images)
+
 ## Posts
 x.hook up data (data in db, api, ui, viewing)
 .crud
@@ -18,7 +22,11 @@ x.Allow Login
 .Student Role
 .Guest Role
 ?.Single Sign-on w/ Google
-
+.profile
+    .picture
+    .better edit flow?
+    .description?
+    .other fields?
 
 ## Views
 x.Avalanche (stub)
@@ -34,6 +42,7 @@ x.Support PNG
 x.Support JPG
 x.Support GIF
 x.Upload Videos
+.upload sounds
 .Upload "dumb" files
 ?.Remote storage S3
 
@@ -55,13 +64,15 @@ x.allow users to edit themselves, update their posts!
 x.better allow rules (especially that i'm allowing users to delete users willy nilly)
 x.js hint with .settings file.
 
-.pretty up login more?
+x.pretty up login more?
 
-.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
+.hamburger menu (list users, list topics?)
+    .list users
+    .list weekly themes
+    .list tools
+    
 .interface so uses can replace media (change "poster" to "media"?)
 
+.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
+
 .better roles, and helper for "owner" "admin" "owner or admin"
-.hamburger menu
-.list users
-.list weekly themes
-.list tools

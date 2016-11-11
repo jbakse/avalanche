@@ -33,7 +33,7 @@ body {
     position: relative;
     flex: 0 auto;
     background: white;
-    padding: 10px;
+    padding: 20px;
     // border: 1px solid red;
 }
 
@@ -63,6 +63,28 @@ body {
     }
 }
 
+.dropdown {
+    display: inline;
+}
+
+.dropdown-menu.sign-in {
+    // border: 1px solid red;
+    width: 350px;
+
+    .at-form,
+    form {
+        margin: 0;
+    }
+
+    .at-title {
+        display: none;
+    }
+
+    .at-signin-link,
+    .at-signup-link {
+        margin-bottom: 0;
+    }
+}
 ////////////////////////////////////////////////
 /// posts
 ////////////////////////////////////////////////

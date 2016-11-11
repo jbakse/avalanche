@@ -102,3 +102,7 @@
     // 	console.log(event.originalEvent.dataTransfer.files);
     // 	template.find('.poster').files = event.originalEvent.dataTransfer.files;
     // },
+    <!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.jpg" alt="" /> -->
+    <!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.gif" alt="" /> -->
+    <!-- <img src="{{c.url poster width=250 crop='fill'}}" alt="" /> -->
+    <!-- {{poster}} -->

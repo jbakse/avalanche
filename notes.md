@@ -36,6 +36,9 @@ Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 [meteor-simple-schmea](https://github.com/aldeed/meteor-simple-schema#allowedvalues)
 [meteor-autoform](https://github.com/aldeed/meteor-autoform#afquickfield)
 
+[momentum](https://atmospherejs.com/percolate/momentum)
+
+
 # Services
 
 [Google Natural Language](https://cloud.google.com/natural-language/) Interesting

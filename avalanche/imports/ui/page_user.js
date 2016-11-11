@@ -26,10 +26,7 @@ Template.page_user.helpers({
 
 
 Template.page_user.events({
-	"click .log-out": function(/*event*/) {
-		console.log("logoyt");
-		Meteor.logout();
-	},
+	
 
 	"click .remove-user": function(/*event*/) {
 		console.log("dead", FlowRouter.getParam("userId"));
