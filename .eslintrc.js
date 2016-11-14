@@ -16,7 +16,8 @@ module.exports = {
         "Cloudinary": true,
         "Isotope": true,
         "moment": true,
-        "$": true
+        "$": true,
+        "Roles": true
     },
     "rules": {
         "no-console": "off",

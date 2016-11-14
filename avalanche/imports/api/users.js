@@ -16,8 +16,19 @@ Meteor.methods({
 			author_id: this.userId
 		}, {
 			$set: {
-				"author":  data.first_name + " " +  data.last_name
+				"author": data.first_name + " " + data.last_name
 			}
 		}, {multi: true});
+	},
+
+	"toggleAdmin" () {
+		let userIsAdmin = Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
+
+		if (userIsAdmin) {
+			Roles.removeUsersFromRoles(Meteor.userId(), "admin", Roles.GLOBAL_GROUP);
+		} else {
+			Roles.addUsersToRoles(Meteor.userId(), "admin", Roles.GLOBAL_GROUP);
+		}
+
 	}
 });

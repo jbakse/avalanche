@@ -28,9 +28,24 @@ Template.main_nav.events({
 
 	},
 
+	"click .toggle-admin": function(event) {
+		console.log("click");
+		event.stopPropagation();
+		event.preventDefault();
+
+		Meteor.call("toggleAdmin");
+	},
+
 	"click #at-signIn, click #at-signUp": function (event) {
 		console.log("click");
 		event.stopPropagation();
 		event.preventDefault();
 	}
+});
+
+Template.main_nav.helpers({
+	userIsAdmin() {
+		return Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
+	}
+
 });
