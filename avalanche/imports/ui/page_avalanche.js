@@ -30,7 +30,7 @@ Template.page_avalanche.helpers({
 });
 
 Template.page_avalanche.rendered = function() {
-	console.log("rendered posts");
+	// console.log("rendered posts");
 	let posts=  this.find(".posts");
 	window.isotope = new Isotope(posts, {
 		// options...

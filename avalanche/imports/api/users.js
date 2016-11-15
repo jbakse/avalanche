@@ -21,6 +21,7 @@ Meteor.methods({
 		}, {multi: true});
 	},
 
+<<<<<<< Updated upstream
 	"toggleAdmin" () {
 		let userIsAdmin = Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
 
@@ -30,5 +31,13 @@ Meteor.methods({
 			Roles.addUsersToRoles(Meteor.userId(), "admin", Roles.GLOBAL_GROUP);
 		}
 
+=======
+	"users.updateHeadshot" (data) {
+		Meteor.users.update(this.userId, {
+			$set: {
+				"profile.headshot": data.res.public_id,
+			}
+		});
+>>>>>>> Stashed changes
 	}
 });

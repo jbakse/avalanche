@@ -23,7 +23,7 @@ x.Allow Login
 .Guest Role
 ?.Single Sign-on w/ Google
 .profile
-    .picture
+    x.picture
     .better edit flow?
     .description?
     .other fields?
@@ -70,7 +70,7 @@ x.pretty up login more?
     .list users
     .list weekly themes
     .list tools
-    
+
 .interface so uses can replace media (change "poster" to "media"?)
 
 .Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)

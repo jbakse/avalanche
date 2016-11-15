@@ -14,16 +14,16 @@ Template.post.rendered = function() {
 		window.isotope.reloadItems();
 		window.isotope.arrange({sortBy: "original-order"});
 		// window.isotope.layout();
-		console.log("arrange");
+		//console.log("arrange");
 	}
 
-	function handleMutation(mutation) {
+	function handleMutation(/*mutation*/) {
 
-		console.log("mutation", mutation.type);
+		//console.log("mutation", mutation.type);
 
 		let image = $(post).find("img")[0];
 		let video = $(post).find("video")[0];
-		console.log("info", post.innerHTML, image, video);
+		//console.log("info", post.innerHTML, image, video);
 
 		//image.complete?
 		if (image) {
@@ -49,11 +49,12 @@ Template.post.rendered = function() {
 		childList: true,
 	};
 
-	window.isotope.addItems(post);
-	updateIsotope();
+	if (window.isotope) {
+		window.isotope.addItems(post);
+		updateIsotope();
+	}
 
-
-	console.log("rendered");
+	//console.log("rendered");
 	handleMutation({type: "added"});
 	observer.observe(post, config);
 

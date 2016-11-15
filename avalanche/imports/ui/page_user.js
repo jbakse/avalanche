@@ -26,7 +26,28 @@ Template.page_user.helpers({
 
 
 Template.page_user.events({
-	
+	"change .upload-headshot-file": function(event, template) {
+
+		event.preventDefault();
+		console.log("upload");
+		let files = template.find(".upload-headshot-file").files;
+		Cloudinary.upload(files, {
+			folder: "avalanche",
+			resource_type: "image"
+		}, (err, res) => {
+			console.log("Upload Error:", err);
+			console.log("Upload Result:", res);
+			console.log(res);
+			Meteor.call("users.updateHeadshot", {
+				res
+			});
+
+		});
+
+
+	},
+
+
 
 	"click .remove-user": function(/*event*/) {
 		console.log("dead", FlowRouter.getParam("userId"));

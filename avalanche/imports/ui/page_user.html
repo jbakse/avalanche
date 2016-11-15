@@ -5,12 +5,23 @@
 		<div class="user-info">
 
 
-			<!-- <button class="btn btn-default remove-user"><i class="fa fa-trash" aria-hidden="true"></i> Delete User</button><br/> -->
+			<!-- 0<button class="btn btn-default remove-user"><i class="fa fa-trash" aria-hidden="true"></i> Delete User</button><br/> -->
+
+
+
+			<h1>{{user.profile.first_name}} {{user.profile.last_name}}</h1>
+			<img class="headshot" src="{{c.url user.profile.headshot width=250 height=250 crop='fill'}}" alt="" />
+
+			<label class="button" for="upload-headshot-file">
+				<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+			</label>
+
+			<input class="upload-headshot-file" id="upload-headshot-file" name="upload-headshot-file" type="file">
+
 
 
 			<!-- Locked Info -->
-
-			<div class="info">
+			<!-- <div class="info">
 				<span class="name">Email</span>
 				<span class="value">{{user.emails.[0].address}}</span>
 			</div>
@@ -18,25 +29,25 @@
 			<div class="info">
 				<span class="name">Name</span>
 				<span class="value">{{user.profile.first_name}} {{user.profile.last_name}}</span>
-			</div>
+			</div> -->
 
 			<!-- Editable Info -->
 
-			{{#if equals currentUser._id user._id}}
+			<!-- {{#if equals currentUser._id user._id}}
 			{{#with user}}
 				<form id="updateUserForm">
 					<div class="form-group">
 						<label for="first-name" class="control-label">First Name</label>
-						<input class="form-control first-name" type="text" name="first-name" />
+						<input class="form-control first-name" type="text" name="first-name" value="{{user.profile.first_name}}" />
 					</div>
 					<div class="form-group">
 						<label for="last-name" class="control-label">Last Name</label>
-						<input class="form-control last-name" type="text" name="last-name" />
+						<input class="form-control last-name" type="text" name="last-name" value="{{user.profile.last_name}}"/>
 					</div>
 					<button type="submit" class="btn btn-primary update-post">Update</button>
 				</form>
 			{{/with}}
-			{{/if}}
+			{{/if}} -->
 
 		</div>
 
