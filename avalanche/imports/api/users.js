@@ -48,9 +48,9 @@ Meteor.methods({
 		} else {
 			throw new Meteor.Error("unauthorized");
 		}
+		console.log(data);
 
-
-		Meteor.users.update(data.userId, {
+		Meteor.users.update(data.user_id, {
 			$set: {
 				"profile.headshot": data.res.public_id
 			}

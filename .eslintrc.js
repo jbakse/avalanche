@@ -17,7 +17,8 @@ module.exports = {
         "Isotope": true,
         "moment": true,
         "$": true,
-        "Roles": true
+        "Roles": true,
+        "AccountsTemplates": true
     },
     "rules": {
         "no-console": "off",

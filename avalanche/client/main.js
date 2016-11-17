@@ -1,41 +1,42 @@
-import '../imports/startup/accounts-config.js';
+import "../imports/startup/accounts-config.js";
 
-import './helpers.js';
+import "./helpers.js";
 
-import '../imports/ui/layout_main.js';
-import '../imports/ui/main_nav.js';
-import '../imports/ui/posts.js';
-import '../imports/ui/page_avalanche.js';
-import '../imports/ui/page_post.js';
-import '../imports/ui/page_user.js';
+import "../imports/ui/layout_main.js";
+import "../imports/ui/main_nav.js";
+import "../imports/ui/posts.js";
+import "../imports/ui/page_avalanche.js";
+import "../imports/ui/page_post.js";
+import "../imports/ui/page_user.js";
+import "../imports/ui/users.js";
 
 $.cloudinary.config( {
-    cloud_name:"jbakse"
+	cloud_name:"jbakse"
 });
 
 AccountsTemplates.configure( {
-    enablePasswordChange: true,
-    sendVerificationEmail: true,
-    showForgotPasswordLink: true,
-    // showResendVerificationEmailLink: true,
-    continuousValidation: true,
-    negativeValidation: true,
-    positiveValidation: true,
-    negativeFeedback: true,
-    positiveFeedback: true,
-    showValidating: true,
+	enablePasswordChange: true,
+	sendVerificationEmail: true,
+	showForgotPasswordLink: true,
+	// showResendVerificationEmailLink: true,
+	continuousValidation: true,
+	negativeValidation: true,
+	positiveValidation: true,
+	negativeFeedback: true,
+	positiveFeedback: true,
+	showValidating: true,
 });
 
 AccountsTemplates.addField({
-    _id: "first_name",
-    type: "text",
-    displayName: "First Name / Prefered Name",
-    required: true
+	_id: "first_name",
+	type: "text",
+	displayName: "First Name / Prefered Name",
+	required: true
 });
 
 AccountsTemplates.addField({
-    _id: "last_name",
-    type: "text",
-    displayName: "Last Name",
-    required: true
+	_id: "last_name",
+	type: "text",
+	displayName: "Last Name",
+	required: true
 });

@@ -3,7 +3,6 @@ import {Posts} from "../api/posts.js";
 import "../api/users.js";
 import "./page_user.html";
 
-
 Template.page_user.helpers({
 	user() {
 		let id = FlowRouter.getParam("userId");
@@ -23,13 +22,11 @@ Template.page_user.helpers({
 	}
 });
 
-
-
 Template.page_user.events({
 	"change .upload-headshot-file": function(event, template) {
 
 		event.preventDefault();
-		console.log("upload");
+		console.log("upload", this);
 		let files = template.find(".upload-headshot-file").files;
 		Cloudinary.upload(files, {
 			folder: "avalanche",
@@ -38,17 +35,18 @@ Template.page_user.events({
 			console.log("Upload Error:", err);
 			console.log("Upload Result:", res);
 			console.log(res);
-			Meteor.call("users.updateHeadshot", {
+
+			let data = {
 				user_id: this._id,
 				res
-			});
-
+			};
+			if (!err) {
+				console.log("data in", data);
+				Meteor.call("users.updateHeadshot", data);
+			}
 		});
 
-
 	},
-
-
 
 	"click .remove-user": function(/*event*/) {
 		console.log("dead", FlowRouter.getParam("userId"));
@@ -62,7 +60,6 @@ Template.page_user.events({
 		let first_name = template.find(".first-name").value || "Unknown";
 		let last_name = template.find(".last-name").value || "Author";
 
-
 		Meteor.call("users.updateName", {
 			user_id: this._id,
 			first_name,
@@ -71,10 +68,9 @@ Template.page_user.events({
 	}
 });
 
-
 Template.page_user.rendered = function() {
 	console.log("rendered posts");
-	let posts=  this.find(".posts");
+	let posts = this.find(".posts");
 	window.isotope = new Isotope(posts, {
 		// options...
 		itemSelector: ".post",
@@ -83,9 +79,7 @@ Template.page_user.rendered = function() {
 		masonry: {
 			isFitWidth: true,
 			// columnWidth: 250
-		},
+		}
 	});
-
-
 
 };

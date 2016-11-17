@@ -8,8 +8,8 @@
 			<!-- 0<button class="btn btn-default remove-user"><i class="fa fa-trash" aria-hidden="true"></i> Delete User</button><br/> -->
 
 
-
-			<h1>{{user.profile.first_name}} {{user.profile.last_name}}</h1>
+			{{#with user}}
+			<h1>{{profile.first_name}} {{profile.last_name}}</h1>
 			<img class="headshot" src="{{c.url user.profile.headshot width=250 height=250 crop='fill'}}" alt="" />
 
 			<label class="button" for="upload-headshot-file">
@@ -18,7 +18,7 @@
 
 			<input class="upload-headshot-file" id="upload-headshot-file" name="upload-headshot-file" type="file">
 
-
+			{{/with}}
 
 			<!-- Locked Info -->
 			<!-- <div class="info">

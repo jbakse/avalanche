@@ -1,0 +1,19 @@
+<template name="user_summaries">
+    <div class="user-summaries">
+
+        {{#each users}}
+            {{> user_summary}}
+        {{/each}}
+
+    </div>
+</template>
+
+<template name="user_summary">
+    <div class="user-summary">
+        <a href="users/{{_id}}">
+            <div class="name">{{profile.first_name}}</div>
+
+            <img class="headshot" src="{{c.url profile.headshot width=50 height=50 crop='fill'}}" alt="" />
+        </a>
+    </div>
+</template>
