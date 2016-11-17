@@ -26,9 +26,13 @@ Phase 3: Special Media
 			?.and helper for "owner" "admin" "owner or admin"
 
 
-	.user list
+	x.user list (summary)
+
 	.interface to replace media on post (factoring: change "poster" to "media"?)
 
+
+Admin tools:
+	.home page message? Maybe I control the "Week 2: Random" headline directly + "alerts" or "notes"?
 	.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
 
 
