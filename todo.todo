@@ -75,4 +75,6 @@ x.pretty up login more?
 
 .Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
 
-.better roles, and helper for "owner" "admin" "owner or admin"
+.better roles
+    x.roles package
+    .and helper for "owner" "admin" "owner or admin"
