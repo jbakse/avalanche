@@ -39,6 +39,7 @@ Template.page_user.events({
 			console.log("Upload Result:", res);
 			console.log(res);
 			Meteor.call("users.updateHeadshot", {
+				user_id: this._id,
 				res
 			});
 
@@ -63,6 +64,7 @@ Template.page_user.events({
 
 
 		Meteor.call("users.updateName", {
+			user_id: this._id,
 			first_name,
 			last_name
 		});

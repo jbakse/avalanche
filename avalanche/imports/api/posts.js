@@ -1,4 +1,5 @@
 import {Mongo} from "meteor/mongo";
+import {userIsAdmin} from "./users.js";
 
 let PostSchema = new SimpleSchema({
 	author: {
@@ -56,14 +57,19 @@ export const Posts = new Mongo.Collection("posts");
 Posts.attachSchema(PostSchema);
 
 Posts.allow({
-	update: function() {
-		console.log("validate");
-		return true;
+	update: function(userId, doc/*, fields, modifier*/) {
+		if (userIsAdmin()) {
+			return true;
+		}
+		if (userId === doc.author_id) {
+			return true;
+		}
+		return false;
 	}
 });
 
 function postEditableBy(post, user_id) {
-	return post.author_id === user_id;
+	return (post.author_id === user_id) || userIsAdmin();
 }
 
 Meteor.methods({
@@ -79,7 +85,6 @@ Meteor.methods({
 		let id = Posts.insert(data);
 
 		return id;
-
 	},
 
 	"posts.remove" (id) {
@@ -89,12 +94,10 @@ Meteor.methods({
 		}
 
 		if (Meteor.isServer) {
-
 			if (!post.poster) {
 				Posts.remove(id);
 				return;
 			}
-
 			Cloudinary.uploader.destroy(post.poster, Meteor.bindEnvironment((result) => {
 				if (result.result === "ok" || result.result === "not found") {
 					Posts.remove(id);

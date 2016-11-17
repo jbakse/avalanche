@@ -1,4 +1,44 @@
-# Major Features
+# PLAN
+
+Phase 1: Posting
+	Users
+	Posts
+	Images
+	Videos
+	Post Counting/Reporting
+
+Phase 2: Social
+	Voting
+	Replies?
+	1Inspiration Posts (external links)
+
+Phase 3: Special Media
+	Sounds
+	Live Code
+
+
+
+## Active Tasks
+	.better roles
+		x.roles package
+		x.set up so user can have "admin mode" on or off
+		x.allow owner -or- users with admin mode to do stuffs
+			?.and helper for "owner" "admin" "owner or admin"
+
+
+	.user list
+	.interface to replace media on post (factoring: change "poster" to "media"?)
+
+	.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
+
+
+
+
+## Navigation
+.hamburger menu (list users, list topics?)
+	.list users
+	.list weekly themes
+	.list tools
 
 
 ## Hosting
@@ -7,33 +47,33 @@ x.Cloudinary (images)
 
 ## Posts
 x.hook up data (data in db, api, ui, viewing)
-.crud
-    x.create (from form)
-    x.read
-    x.update
-    x.create from loggedin user info
-    x.delete
+x.crud basics
+	x.create (from form)
+	x.read
+	x.update
+	x.create from loggedin user info
+	x.delete
 
 
 
 ## Accounts
 x.Allow Login
-.Admin Role
-.Student Role
-.Guest Role
+x.Admin Role
+2.Student Role
+2.Guest Role
 ?.Single Sign-on w/ Google
-.profile
-    x.picture
-    .better edit flow?
-    .description?
-    .other fields?
+@design.profile
+	x.picture
+	.better edit flow?
+	.description?
+	.other fields?
 
 ## Views
 x.Avalanche (stub)
 x.User Detail (stub)
 x.Post Detail
-.Overview
-.Overview (Show chart of posts per week/student)
+1.Overview
+1.Overview (Show chart of posts per week/student)
 
 ## Web Uploads
 x.Upload images
@@ -42,39 +82,10 @@ x.Support PNG
 x.Support JPG
 x.Support GIF
 x.Upload Videos
-.upload sounds
-.Upload "dumb" files
+3.upload sounds
+3.Upload "dumb" files
 ?.Remote storage S3
 
-
 ## Realtime Code
-.Edit/Paste Code Snippets
-.Realtime running
-
-
-## Commenting (Or something like it)
-
-
-
-## LEFT FOR FUTURE ME
-x.use autoform?
-x.Server Side Timestamp
-x.sign in with email
-x.allow users to edit themselves, update their posts!
-x.better allow rules (especially that i'm allowing users to delete users willy nilly)
-x.js hint with .settings file.
-
-x.pretty up login more?
-
-.hamburger menu (list users, list topics?)
-    .list users
-    .list weekly themes
-    .list tools
-
-.interface so uses can replace media (change "poster" to "media"?)
-
-.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
-
-.better roles
-    x.roles package
-    .and helper for "owner" "admin" "owner or admin"
+3.Edit/Paste Code Snippets
+3.Realtime running
