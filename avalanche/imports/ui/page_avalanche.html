@@ -14,6 +14,9 @@
 
 				{{/each}}
 			</div>
+			{{#if creating_post}}
+				{{> create_post_form}}
+			{{/if}}
 		</main>
 	</div>
 </template>

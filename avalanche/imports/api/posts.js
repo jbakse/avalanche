@@ -69,6 +69,9 @@ Posts.allow({
 });
 
 function postEditableBy(post, user_id) {
+	if (!post) {
+		return false;
+	}
 	return (post.author_id === user_id) || userIsAdmin();
 }
 
@@ -88,11 +91,13 @@ Meteor.methods({
 	},
 
 	"posts.remove" (id) {
+		console.log("id", id);
 		let post = Posts.findOne(id);
 		if (!postEditableBy(post, this.userId)) {
 			throw new Meteor.Error("unauthorized");
 		}
 
+		console.log("killing "+id);
 		if (Meteor.isServer) {
 			if (!post.poster) {
 				Posts.remove(id);

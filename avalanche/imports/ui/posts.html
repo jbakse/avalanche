@@ -21,3 +21,41 @@
 		</div>
 	</div>
 </template>
+
+
+
+<template name="create_post_form">
+	<div id="create-post-form" class="overlay">
+		<div class="overlay-content">
+			<div class="title-bar">Post a Sketch {{creating_post}}</div>
+
+
+
+			<div class="content">
+
+				<div class="poster-wrap">
+					<img src="{{c.url post.poster height=250 crop='fill' quality=90}}" alt="" />
+				</div>
+
+				<label for="upload-file" class="button">
+					<!-- <button class="btn"> -->
+						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File
+					<!-- </button> -->
+				</label>
+				<input class="upload-file hidden" id="upload-file" name="upload-file" type="file">
+
+
+				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
+
+					{{> afQuickField name='lesson' options=lessons}}
+					{{> afQuickField name='title'}}
+					{{> afQuickField name='description' rows=6}}
+					<button type="button" class="cancel btn">Cancel</button>
+					<button type="submit" class="submit btn btn-primary">Update</button>
+				{{/autoForm}}
+
+			</div>
+
+		</div>
+	</div>
+</template>

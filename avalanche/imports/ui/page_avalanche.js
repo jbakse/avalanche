@@ -1,6 +1,10 @@
 import {Template} from "meteor/templating";
+
 import {Posts} from "../api/posts.js";
 import "./page_avalanche.html";
+
+
+
 
 Template.page_avalanche.helpers({
 	posts() {

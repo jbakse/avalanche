@@ -18,7 +18,8 @@ module.exports = {
         "moment": true,
         "$": true,
         "Roles": true,
-        "AccountsTemplates": true
+        "AccountsTemplates": true,
+        "Session": true
     },
     "rules": {
         "no-console": "off",

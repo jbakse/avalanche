@@ -36,6 +36,10 @@ Admin tools:
 	.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
 
 
+.fix shame:
+	.#create-post-form label.button {
+	.use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
+
 
 
 ## Navigation

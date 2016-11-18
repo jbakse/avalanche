@@ -1,5 +1,7 @@
 import "./main_nav.html";
 
+Template.registerHelper("creating_post",()=>{return Session.get("creating_post");});
+
 Template.main_nav.events({
 
 	"change .create-post-file": function(event, template) {
@@ -26,6 +28,13 @@ Template.main_nav.events({
 		});
 
 
+	},
+	"click .create-post": function(/*event*/){
+		console.log("start");
+		//Session.set("creating_post", true);
+		Meteor.call("posts.insert", {}, function(error, id) {
+			Session.set("creating_post", id);
+		});
 	},
 
 	"click .toggle-admin": function(event) {
