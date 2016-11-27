@@ -1,101 +1,105 @@
 @import url( 'https://fonts.googleapis.com/css?family=Muli');
 @import '../imports/styles/reset.scss';
-$paper-color: #F7F7F7;
+$paper-color: #F3F3F3;
 $brand-color: #33AACC;
-$accent-color: red; ////////////////////////////////////////////////
+$accent-color: red;
+
+
+
+////////////////////////////////////////////////
 /// Layout
 ////////////////////////////////////////////////
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .page-avalanche {
-    // display: flex;
+	// display: flex;
 }
 ////////////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
 
 body {
-    font-family: 'Muli', sans-serif;
-    background: $paper-color;
-    height: 100%;
+	font-family: 'Muli', sans-serif;
+	background: $paper-color;
+	height: 100%;
 }
 
 h1 {
-    font-size: 3em;
+	font-size: 3em;
 }
 ////////////////////////////////////////////////
 /// main_nav
 ////////////////////////////////////////////////
 
 .main-nav {
-    position: relative;
-    flex: 0 auto;
-    background: white;
-    padding: 20px;
-    // border: 1px solid red;
+	position: relative;
+	flex: 0 auto;
+	background: white;
+	padding: 20px;
+	// border: 1px solid red;
 }
 
 .main-nav .right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 10px;
 }
 
 .main-nav {
-    .button {
-        cursor: pointer;
-        margin: 0 10px;
-    }
+	.button {
+		cursor: pointer;
+		margin: 0 10px;
+	}
 
-    a.button {
-        color: black;
-    }
+	a.button {
+		color: black;
+	}
 
-    .button:hover {
-        color: $accent-color;
-    }
+	.button:hover {
+		color: $accent-color;
+	}
 
-    .create-post-file {
-        display: none;
-    }
+	.create-post-file {
+		display: none;
+	}
 }
 
 .dropdown {
-    display: inline;
+	display: inline;
 }
 
 .dropdown-menu.sign-in {
-    // border: 1px solid red;
-    width: 350px;
+	// border: 1px solid red;
+	width: 350px;
 
-    .at-form,
-    form {
-        margin: 0;
-    }
+	.at-form,
+	form {
+		margin: 0;
+	}
 
-    .at-title {
-        display: none;
-    }
+	.at-title {
+		display: none;
+	}
 
-    .at-signin-link,
-    .at-signup-link {
-        margin-bottom: 0;
-    }
+	.at-signin-link,
+	.at-signup-link {
+		margin-bottom: 0;
+	}
 }
 ////////////////////////////////////////////////
 /// posts
 ////////////////////////////////////////////////
 
 .posts {
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    // border: 1px solid red;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	// border: 1px solid red;
 }
 // .posts {
 //     display: flex;
@@ -110,169 +114,222 @@ h1 {
 // }
 
 .post {
-    width: 250px;
-    // border: 1px solid green;
-    // flex: 1 1 auto;
-    margin: 20px 10px;
+	width: 250px;
+	// border: 1px solid green;
+	// flex: 1 1 auto;
+	margin: 20px 10px;
 }
 
 .post .info {
-    border: 1px solid #DDD;
-    margin-top: 5px;
-    background: white;
-    padding: 10px;
+	border: 1px solid #DDD;
+	margin-top: 5px;
+	background: white;
+	padding: 10px;
 }
 
 .post img {
-    display: block;
-    // width: 250px;
-    // width: 100%;
-    // height: 250px;
-    object-fit: cover;
+	display: block;
+	// width: 250px;
+	// width: 100%;
+	// height: 250px;
+	object-fit: cover;
 }
 ////////////////////////////////////////////////
 /// Page Post
 ////////////////////////////////////////////////
 
 .page-post main {
-    position: absolute;
-    height: 100%;
-    display: flex;
+	position: absolute;
+	height: 100%;
+	display: flex;
 
-    .left {
-        padding: 10px;
-        width: 300px;
-        flex: 0 0 auto;
-    }
+	.left {
+		padding: 10px;
+		width: 300px;
+		flex: 0 0 auto;
+	}
 
-    .right {
-        flex: 1 1 auto;
-        height: 100%;
-    }
+	.right {
+		flex: 1 1 auto;
+		height: 100%;
+	}
 }
 
 .page-post .poster {
-    max-width: 100%;
-    max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 ////////////////////////////////////////////////
 /// Page User
 ////////////////////////////////////////////////
 
-.page-user {
-    .user-info {
-        padding: 10px;
-    }
+
+.user-info {
+	padding: 10px;
+	// border: 1px solid red;
+	background: white;
+	padding: 2em;
+	margin: 2em;
+	text-align: center;
+	position: relative;
 }
 
-.page-user .headshot {
-    // border: 1px solid red;
-    border-radius: 50%;
+
+.user-info .headshot {
+	// border: 1px solid red;
+	border-radius: 50%;
+	margin-bottom: 1em;
 }
+
+.user-info .name {
+	font-size: 64px;
+	font-weight: bold;
+	margin-bottom: .5em;
+}
+
+.user-info .description {
+	font-size: 24px;
+}
+
+.user-info button.edit-user {
+	position: absolute;
+	right: 1em;
+	top: 1em;
+}
+
+.page-user .sketch-count {
+	text-align: center;
+}
+
+
+
+#edit-user-form .headshot-wrap {
+	// border: 1px solid red;
+	width: 100%;
+	margin-bottom: 1em;
+	text-align: center;
+	img {
+		// border: 1px solid red;
+		border-radius: 50%;
+
+
+	}
+}
+
+#edit-user-form .upload {
+	// border: 1px solid red;
+	margin: auto;
+	text-align: center;
+}
+
+
+
+
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////
 
 .user-summaries {
-    // border: 1px solid red;
-    margin: 1em;
-    // margin: auto;
-    display: flex;
-    justify-content: center;
+	// border: 1px solid red;
+	margin: 1em;
+	// margin: auto;
+	display: flex;
+	justify-content: center;
 }
 
 .user-summary {
-    // border: 1px solid red;
-    background: white;
-    padding: 5px 10px;
-    text-align: center;
-    border-top: 10px solid aqua;
+	// border: 1px solid red;
+	background: white;
+	padding: 5px 10px;
+	text-align: center;
+	border-top: 10px solid aqua;
 }
 
 .user-summary a {
-    color: black;
+	color: black;
 }
 
 .user-summary .name {
-    font-size: 12px;
-    margin: 4px;
+	font-size: 12px;
+	margin: 4px;
 }
 
 .user-summary .headshot {
-    border-radius: 50%;
+	border-radius: 50%;
 }
+
 ////////////////////////////////////////////////
 /// Utils
 ////////////////////////////////////////////////
 
 div.name-value {
-    .name {
-        display: block;
-    }
+	.name {
+		display: block;
+	}
 
-    .value {
-        display: block;
-        margin-bottom: 10px;
-    }
+	.value {
+		display: block;
+		margin-bottom: 10px;
+	}
 }
 ////////////////////////////////////////////////
 /// overlay
 ////////////////////////////////////////////////
 
 .overlay {
-    background: rgba(0,0,0,.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
+	background: rgba(0,0,0,.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
 }
 
 .overlay-content {
-    width: 500px;
-    margin: 3em auto;
-    background: white;
-    border-radius: 6px;
-    overflow: hidden;
+	width: 500px;
+	margin: 3em auto;
+	background: white;
+	border-radius: 6px;
+	overflow: hidden;
 }
 
 .overlay-content .title-bar {
-    background-color: $brand-color;
-    text-align: center;
-    font-size: 1em;
-    padding: 1em;
+	background-color: $brand-color;
+	text-align: center;
+	font-size: 1em;
+	padding: 1em;
 }
 
 .overlay-content .content {
-    padding: 1em;
+	padding: 1em;
 }
 ////////////////////////////////////////////////
 /// #create-post-form
 ////////////////////////////////////////////////
 
 #create-post-form .poster-wrap {
-    width: 100%;
-    // height: 100px;
-    // max-height: 300px;
-    // overflow: auto;
-    // background-color: gray;
-    margin-bottom: 1em;
+	width: 100%;
+	// height: 100px;
+	// max-height: 300px;
+	// overflow: auto;
+	// background-color: gray;
+	margin-bottom: 1em;
 }
 
 #create-post-form label.button {
-    cursor: pointer;
-    margin-bottom: 1em;
-    background: blue;
-    padding: 6px 12px;
-    border-radius: 3px;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+	cursor: pointer;
+	margin-bottom: 1em;
+	background: blue;
+	padding: 6px 12px;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
 }

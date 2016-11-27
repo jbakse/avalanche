@@ -19,6 +19,15 @@ Template.page_user.helpers({
 				created_at: -1
 			}
 		});
+	},
+
+	sketch_count() {
+		let id = FlowRouter.getParam("userId");
+		let sketch_count = Posts.find({
+			author_id: id
+		}).count();
+
+		return sketch_count;
 	}
 });
 
@@ -46,6 +55,16 @@ Template.page_user.events({
 			}
 		});
 
+	},
+
+
+	"click .edit-user": function(/*event*/){
+		console.log("edit-user", this._id);
+		Session.set("editing_user", this._id);
+		//Session.set("creating_post", true);
+		// Meteor.call("posts.insert", {}, function(error, id) {
+		// 	Session.set("creating_post", id);
+		// });
 	},
 
 	"click .remove-user": function(/*event*/) {

@@ -9,16 +9,21 @@
 
 
 			{{#with user}}
-			<h1>{{profile.first_name}} {{profile.last_name}}</h1>
 			<img class="headshot" src="{{c.url user.profile.headshot width=250 height=250 crop='fill'}}" alt="" />
+			<h1 class="name">{{profile.first_name}} {{profile.last_name}}</h1>
+			<div class="description">{{profile.description}}</div>
+			<button class="btn edit-user">Edit Info</button>
+			{{/with}}
 
+			<!--
+			{{#with user}}
 			<label class="button" for="upload-headshot-file">
 				<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
 			</label>
 
 			<input class="upload-headshot-file" id="upload-headshot-file" name="upload-headshot-file" type="file">
-
 			{{/with}}
+			-->
 
 			<!-- Locked Info -->
 			<!-- <div class="info">
@@ -33,7 +38,7 @@
 
 			<!-- Editable Info -->
 
-			{{#if equals currentUser._id user._id}}
+			<!-- {{#if equals currentUser._id user._id}}
 			{{#with user}}
 				<form id="updateUserForm">
 					<div class="form-group">
@@ -47,16 +52,20 @@
 					<button type="submit" class="btn btn-primary update-post">Update</button>
 				</form>
 			{{/with}}
-			{{/if}}
+			{{/if}} -->
 
 		</div>
-
+		<div class="sketch-count">{{sketch_count}} sketches</div>
 
 		<div class="posts">
 			{{#each posts}}
 				{{> post}}
 			{{/each}}
 		</div>
+
+		{{#if editing_user}}
+			{{> edit_user_form}}
+		{{/if}}
 
 	</div>
 </template>

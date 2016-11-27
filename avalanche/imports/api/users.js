@@ -32,6 +32,20 @@ Meteor.methods({
 		}, {multi: true});
 	},
 
+	"users.updateDescription" (data) {
+		if (userIsAdmin() || (data.user_id === this.userId)) {
+			//okay
+		} else {
+			throw new Meteor.Error("unauthorized");
+		}
+
+		Meteor.users.update(data.user_id, {
+			$set: {
+				"profile.description": data.description
+			}
+		});
+	},
+
 	"toggleAdmin" () {
 		// let userIsAdmin = Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
 

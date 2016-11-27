@@ -1,19 +1,77 @@
 <template name="user_summaries">
-    <div class="user-summaries">
+	<div class="user-summaries">
 
-        {{#each users}}
-            {{> user_summary}}
-        {{/each}}
+		{{#each users}}
+			{{> user_summary}}
+		{{/each}}
 
-    </div>
+	</div>
 </template>
 
 <template name="user_summary">
-    <div class="user-summary">
-        <a href="users/{{_id}}">
-            <div class="name">{{profile.first_name}}</div>
+	<div class="user-summary">
+		<a href="users/{{_id}}">
+			<div class="name">{{profile.first_name}}</div>
 
-            <img class="headshot" src="{{c.url profile.headshot width=50 height=50 crop='fill'}}" alt="" />
-        </a>
-    </div>
+			<img class="headshot" src="{{c.url profile.headshot width=50 height=50 crop='fill'}}" alt="" />
+		</a>
+	</div>
+</template>
+
+
+
+<template name="edit_user_form">
+	<div id="edit-user-form" class="overlay">
+		<div class="overlay-content">
+			<div class="title-bar">Edit Profile {{editing_user}}</div>
+
+
+
+			<div class="content">
+
+				<div class="headshot-wrap">
+					<img src="{{c.url user.profile.headshot height=250 width=250 crop='fill' quality=90}}" alt="" />
+				</div>
+
+				<div class="upload">
+					<label for="upload-file" class="btn">
+							<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload Profile Picture
+					</label>
+
+					<input class="upload-file hidden" id="upload-file" name="upload-file" type="file">
+				</div>
+
+
+				<div class="form-group">
+					<label for="first-name" class="control-label">First Name</label>
+					<input type="text" id="first-name" class="form-control">
+					<span class="help-block"></span>
+				</div>
+
+				<div class="form-group">
+					<label for="last-name" class="control-label">Last Name</label>
+					<input type="text" id="last-name" class="form-control">
+					<span class="help-block"></span>
+				</div>
+
+
+				<div class="form-group">
+					<label for="description" class="control-label">[Description]</label>
+					<input type="text" id="description" class="form-control">
+					<span class="help-block"></span>
+				</div>
+
+
+
+				<div>
+					{{#with user}}
+					<button type="button" class="cancel btn">Cancel</button>
+					<button type="submit" class="submit btn btn-primary">Update</button>
+					{{/with}}
+				</div>
+
+			</div>
+
+		</div>
+	</div>
 </template>

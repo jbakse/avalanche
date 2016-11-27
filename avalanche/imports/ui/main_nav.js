@@ -1,6 +1,6 @@
 import "./main_nav.html";
 
-Template.registerHelper("creating_post",()=>{return Session.get("creating_post");});
+
 
 Template.main_nav.events({
 

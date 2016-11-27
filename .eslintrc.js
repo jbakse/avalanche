@@ -19,7 +19,8 @@ module.exports = {
         "$": true,
         "Roles": true,
         "AccountsTemplates": true,
-        "Session": true
+        "Session": true,
+        "BlazeLayout": true
     },
     "rules": {
         "no-console": "off",
