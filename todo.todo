@@ -1,3 +1,8 @@
+# BUGS
+
+Move Forms to Light Boxes
+Lesson Dropdown is text field on Post a Sketch
+
 # PLAN
 
 Phase 1: Posting
@@ -40,6 +45,7 @@ Admin tools:
 	.#create-post-form label.button {
 	.use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
 
+	why no dropdown on the new post form? the edit post page has a dropdown. (missing helper for tools/whatever)
 
 
 ## Navigation

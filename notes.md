@@ -1,3 +1,6 @@
+# Running Meteor
+`meteor --settings server/settings.json`
+
 # Reference
 
 [Creating a Photo Blog in Meteor](http://experimentsinmeteor.com/photo-blog-part-1/) Older tutorial.
