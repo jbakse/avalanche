@@ -5,17 +5,13 @@
 
 
 		{{else}}
-
+	<a href="/posts/{{_id}}" >
 			<img src="{{c.url poster width=250 crop='fill' quality=90}}" alt="" />
+		</a>
 		{{/if}}
 
 		<div class="info">
-			<button class="btn btn-default remove-post">
-				<i class="fa fa-trash" aria-hidden="true"></i>
-			</button>
-			<a href="/posts/{{_id}}" class="btn btn-default show-post">
-				<i class="fa fa-info" aria-hidden="true"></i>
-			</a>
+
 			{{i}}
 
 		</div>
