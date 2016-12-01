@@ -5,13 +5,22 @@
 
 
 		{{else}}
+
+
 	<a href="/posts/{{_id}}" >
 			<img src="{{c.url poster width=250 crop='fill' quality=90}}" alt="" />
 		</a>
 		{{/if}}
 
 		<div class="info">
+			<button class="btn btn-default remove-post">
+				<i class="fa fa-trash" aria-hidden="true"></i>
+			</button>
 
+			Inspired by: Link, Longer Link,
+
+			Brinna Thomsen
+			Date
 			{{i}}
 
 		</div>
@@ -44,7 +53,8 @@
 				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
 
 					{{> afQuickField name='lesson' options=lessons}}
-					{{> afQuickField name='title'}}
+					{{> afQuickField name='inspiration_name'}}
+					{{> afQuickField name='inspiration_url'}}
 					{{> afQuickField name='description' rows=6}}
 					<button type="button" class="cancel btn">Cancel</button>
 					<button type="submit" class="submit btn btn-primary">Update</button>

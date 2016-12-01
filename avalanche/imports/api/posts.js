@@ -50,7 +50,21 @@ let PostSchema = new SimpleSchema({
 		type: String,
 		label: "Description",
 		defaultValue: ""
-	}
+	},
+
+inspiration_name: {
+		type: String,
+		label: "Inspiration Name",
+		defaultValue: ""
+	},
+
+	inspiration_url: {
+			type: String,
+			label: "Inspiration URL",
+			defaultValue: ""
+		},
+
+
 });
 
 export const Posts = new Mongo.Collection("posts");

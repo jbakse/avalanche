@@ -32,6 +32,9 @@
 						{{> afQuickField name='title'}}
 						{{> afQuickField name='description' rows=6}}
 						<button type="submit" class="btn btn-primary">Update</button>
+						<button class="btn btn-default remove-post">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</button>
 					{{/autoForm}}
 				{{else}}
 					<div class="name-value">
@@ -46,14 +49,11 @@
 						<span class="name">Description</span>
 						<span class="value">{{post.description}}</span>
 					</div>
-					<button class="btn btn-default remove-post">
-						<i class="fa fa-trash" aria-hidden="true"></i>
-					</button>
-				
+
 				{{/if}}
 			</div>
 
-			<div class="right">
+			<!-- <div class="right"> -->
 
 
 				{{#if equals post.resource_type "video"}}
@@ -66,8 +66,37 @@
 				{{/if}}
 
 
-			</div>
+			<!-- </div> -->
 
 		</main>
+	</div>
+</template>
+
+
+<template name="overlay">
+	<div class="overlay">
+<div class="post-detail">
+
+	<div class="name-value">
+		<span class="name">Author</span>
+		<span class="value"><a href="/users/{{post.author_id}}">
+			{{#if post.author}}
+				{{post.author}}
+			{{else}}
+				Unknown
+			{{/if}}
+		</a></span>
+	</div>
+	<div class="name-value">
+		<span class="name">Posted</span>
+		<span class="value">{{formatDate post.created_at}}, {{formatTime post.created_at}}</span>
+	</div>
+
+	<img class="poster" src="{{c.url post.poster}}" alt="" />
+
+</div>
+
+
+
 	</div>
 </template>
