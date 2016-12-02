@@ -99,6 +99,9 @@ Template.create_post_form.events({
 Template.create_post_form.helpers({
 	post() {
 		return Posts.findOne(Session.get("creating_post"));
+	},
+	lessons() {
+		return {art: "art", design: "design", science: "science"};
 	}
 });
 
