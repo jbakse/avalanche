@@ -20,7 +20,8 @@ module.exports = {
         "Roles": true,
         "AccountsTemplates": true,
         "Session": true,
-        "BlazeLayout": true
+        "BlazeLayout": true,
+        "AutoForm": true,
     },
     "rules": {
         "no-console": "off",

@@ -10,7 +10,7 @@ Template.post.events({
 
 	"click .remove-post": function() {
 		Meteor.call("posts.remove", this._id);
-	}
+	},
 });
 
 Template.post_overlay.helpers({
@@ -23,8 +23,22 @@ Template.post_overlay.helpers({
 });
 
 Template.post_overlay.events({
-	"click #post-overlay" : function(){
+	"click #post-overlay": function() {
 		Session.set("previewing_post", false);
+	}
+});
+
+AutoForm.hooks({
+	"updatePostForm": {
+		"onSuccess": function(formType, result) {
+			console.log("success");
+			console.log(formType, result);
+			Session.set("creating_post", false);
+		},
+		"onError": function(formType, result) {
+			console.log("error");
+			console.log(formType, result);
+		}
 	}
 });
 
@@ -35,7 +49,7 @@ Template.create_post_form.events({
 	},
 
 	"click .submit": function() {
-		Session.set("creating_post", false);
+		// Session.set("creating_post", false);
 	},
 
 	"change .upload-file": function(event, template) {
@@ -44,7 +58,7 @@ Template.create_post_form.events({
 		let files = template.find(".upload-file").files;
 		Cloudinary.upload(files, {
 			folder: "avalanche",
-			resource_type: "auto"
+			resource_type: "auto",
 		}, (err, res) => {
 			console.log("Upload Error:", err);
 			console.log("Upload Result:", res);
@@ -79,7 +93,7 @@ Template.create_post_form.events({
 	// 	});
 	//
 	//
-	// },
+	// },,
 });
 
 Template.create_post_form.helpers({
@@ -116,19 +130,14 @@ Template.post.rendered = function() {
 			video.onloadeddata = updateIsotope;
 		}
 
-
-
 	}
-
-
-
 
 	let observer = new MutationObserver(function(mutations) {
 		mutations.forEach(handleMutation);
 	});
 
 	let config = {
-		childList: true,
+		childList: true
 	};
 
 	if (window.isotope) {
@@ -139,6 +148,5 @@ Template.post.rendered = function() {
 	//console.log("rendered");
 	handleMutation({type: "added"});
 	observer.observe(post, config);
-
 
 };

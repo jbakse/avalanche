@@ -55,12 +55,14 @@ let PostSchema = new SimpleSchema({
 	inspiration_name: {
 		type: String,
 		label: "Inspiration Name",
+		optional: true,
 		defaultValue: ""
 	},
 
 	inspiration_url: {
 		type: String,
 		label: "Inspiration URL",
+		optional: true,
 		defaultValue: ""
 	},
 
