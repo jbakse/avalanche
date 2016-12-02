@@ -11,15 +11,27 @@
 		{{/if}}
 
 		<div class="info">
-			<button class="btn btn-default remove-post">
+			<!-- <button class="btn btn-default remove-post">
 				<i class="fa fa-trash" aria-hidden="true"></i>
-			</button>
+			</button> -->
 
-			Inspired by: Link, Longer Link,
+			<div class="inspiration">
+				{{#if inspiration_url}}
+					<span class="">Inspired by: </span>
+					<a href="{{inspiration_url}}">{{inspiration_name}}</a>
+				{{/if}}
+			</div>
 
-			Brinna Thomsen
-			Date
-			{{i}}
+			<div class="author">
+				{{author}}
+			</div>
+
+			<div class="date">
+				{{formatDate post.created_at}}, {{formatTime post.created_at}}
+			</div>
+
+
+			<!-- {{i}} -->
 
 		</div>
 	</div>

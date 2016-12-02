@@ -4,8 +4,6 @@ $paper-color: #F3F3F3;
 $brand-color: #33AACC;
 $accent-color: red;
 
-
-
 ////////////////////////////////////////////////
 /// Layout
 ////////////////////////////////////////////////
@@ -143,7 +141,7 @@ h1 {
 	position: absolute;
 	height: 100%;
 	display: flex;
-	opacity: 0px;
+	opacity: 0;
 
 	.left {
 		padding: 10px;
@@ -160,12 +158,11 @@ h1 {
 .page-post .poster {
 	max-width: 100%;
 	max-height: 100%;
-	margin: 0px;
+	margin: 0;
 }
 ////////////////////////////////////////////////
 /// Page User
 ////////////////////////////////////////////////
-
 
 .user-info {
 	padding: 10px;
@@ -177,7 +174,6 @@ h1 {
 	position: relative;
 }
 
-
 .user-info .headshot {
 	// border: 1px solid red;
 	border-radius: 50%;
@@ -187,7 +183,7 @@ h1 {
 .user-info .name {
 	font-size: 64px;
 	font-weight: bold;
-	margin-bottom: .5em;
+	margin-bottom: 0.5em;
 }
 
 .user-info .description {
@@ -204,17 +200,15 @@ h1 {
 	text-align: center;
 }
 
-
-
 #edit-user-form .headshot-wrap {
 	// border: 1px solid red;
 	width: 100%;
 	margin-bottom: 1em;
 	text-align: center;
+
 	img {
 		// border: 1px solid red;
 		border-radius: 50%;
-
 
 	}
 }
@@ -224,9 +218,6 @@ h1 {
 	margin: auto;
 	text-align: center;
 }
-
-
-
 
 ////////////////////////////////////////////////
 /// user-summary
@@ -338,11 +329,11 @@ div.name-value {
 }
 
 .info {
-margin-top: 0px;
+	margin-top: 0;
 }
 
 .overlay {
-background: rgba(0,0,0,.8);
+	background: rgba(0,0,0,.8);
 	width: 100%;
 	height: 100%;
 	z-index: 5;
@@ -352,6 +343,5 @@ background: rgba(0,0,0,.8);
 .post-detail {
 	background: white;
 	width: 80%;
-	margin: 0 auto;
-	margin-top: 50px;
+	margin: 50px auto 0;
 }
