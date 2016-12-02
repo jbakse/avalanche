@@ -1,15 +1,13 @@
 <template name="post">
 	<div class="post">
 		{{#if equals resource_type "video"}}
-			<video src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.mp4" autoplay=true loop=true></video>
-
-
+			<a class="poster-link" href="/posts/{{_id}}" >
+				<video src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.mp4" autoplay=true loop=true></video>
+			</a>
 		{{else}}
-
-
-	<a href="/posts/{{_id}}" >
-			<img src="{{c.url poster width=250 crop='fill' quality=90}}" alt="" />
-		</a>
+			<a class="poster-link" href="/posts/{{_id}}" >
+				<img src="{{c.url poster width=250 crop='fill' quality=90}}" alt="" />
+			</a>
 		{{/if}}
 
 		<div class="info">
@@ -63,5 +61,32 @@
 			</div>
 
 		</div>
+	</div>
+</template>
+
+
+<template name="post_overlay">
+	<div id="post-overlay" class="overlay">
+		<div class="overlay-content">
+
+			<div class="name-value">
+				<span class="name">Author</span>
+				<span class="value"><a href="/users/{{post.author_id}}">{{post.author}}</a></span>
+			</div>
+			<div class="name-value">
+				<span class="name">Posted</span>
+				<span class="value">{{formatDate post.created_at}}, {{formatTime post.created_at}}</span>
+			</div>
+
+			{{#if equals post.resource_type "video"}}
+				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.poster}}.mp4" controls=true autoplay=true loop=true></video>
+			{{else}}
+				<img class="poster" src="{{c.url post.poster}}" alt="" />
+			{{/if}}
+
+		</div>
+
+
+
 	</div>
 </template>

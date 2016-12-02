@@ -71,32 +71,3 @@
 		</main>
 	</div>
 </template>
-
-
-<template name="overlay">
-	<div class="overlay">
-<div class="post-detail">
-
-	<div class="name-value">
-		<span class="name">Author</span>
-		<span class="value"><a href="/users/{{post.author_id}}">
-			{{#if post.author}}
-				{{post.author}}
-			{{else}}
-				Unknown
-			{{/if}}
-		</a></span>
-	</div>
-	<div class="name-value">
-		<span class="name">Posted</span>
-		<span class="value">{{formatDate post.created_at}}, {{formatTime post.created_at}}</span>
-	</div>
-
-	<img class="poster" src="{{c.url post.poster}}" alt="" />
-
-</div>
-
-
-
-	</div>
-</template>

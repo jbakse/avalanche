@@ -8,13 +8,16 @@
 				{{/if}} -->
 			</div>
 			{{> user_summaries}}
-			{{> overlay}}
+
 			<div class="posts">
 				{{#each posts}}
 					{{> post}}
 
 				{{/each}}
 			</div>
+			{{#if previewing_post}}
+				{{> post_overlay}}
+			{{/if}}
 			{{#if creating_post}}
 				{{> create_post_form}}
 			{{/if}}

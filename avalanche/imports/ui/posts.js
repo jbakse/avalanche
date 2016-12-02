@@ -2,8 +2,29 @@ import {Posts} from "../api/posts.js";
 import "./posts.html";
 
 Template.post.events({
+	"click .poster-link": function(event, template) {
+		console.log(event, template, this._id);
+		Session.set("previewing_post", this._id);
+		event.preventDefault();
+	},
+
 	"click .remove-post": function() {
 		Meteor.call("posts.remove", this._id);
+	}
+});
+
+Template.post_overlay.helpers({
+	post() {
+		let _id = Session.get("previewing_post");
+		console.log(_id);
+		console.log(Posts.findOne(_id));
+		return Posts.findOne(_id);
+	}
+});
+
+Template.post_overlay.events({
+	"click #post-overlay" : function(){
+		Session.set("previewing_post", false);
 	}
 });
 

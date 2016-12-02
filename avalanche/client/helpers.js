@@ -14,7 +14,7 @@ Template.registerHelper("equals", function (a, b) {
 
 Template.registerHelper("creating_post",()=>{return Session.get("creating_post");});
 Template.registerHelper("editing_user",()=>{return Session.get("editing_user");});
-
+Template.registerHelper("previewing_post",()=>{return Session.get("previewing_post");});
 
 // Template.registerHelper("user_profile", function () {
 // 	return Meteor.user().profile;
