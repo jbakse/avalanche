@@ -1,7 +1,7 @@
 @import url( 'https://fonts.googleapis.com/css?family=Muli');
 @import '../imports/styles/reset.scss';
 $paper-color: #F3F3F3;
-$brand-color: #33AACC;
+$brand-color: #50E3C2;
 $accent-color: red;
 
 ////////////////////////////////////////////////
@@ -64,6 +64,10 @@ h1 {
 	.create-post-file {
 		display: none;
 	}
+}
+
+.create-post {
+	background: $brand-color;
 }
 
 .dropdown {
