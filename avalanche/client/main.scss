@@ -223,6 +223,8 @@ h1 {
 	text-align: center;
 }
 
+
+
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////
@@ -299,20 +301,29 @@ div.name-value {
 	padding: 1em;
 }
 
-.overlay-content .content {
 
+#layout-main input {
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	border-bottom: 1px solid lightgrey;
+	color: black;
 }
+
 ////////////////////////////////////////////////
 /// #create-post-form
 ////////////////////////////////////////////////
 
 #create-post-form .poster-wrap {
 	width: 100%;
-	// height: 100px;
-	// max-height: 300px;
-	// overflow: auto;
-	// background-color: gray;
+
+		margin: 0 auto;
+		text-align: center;
+
+	overflow: auto;
+	background-color: white;
 	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 #create-post-form label.button {
@@ -345,6 +356,15 @@ background-color: white;
 	width: 100%;
 	text-align: center;
 
+}
+
+#create-post-form .content {
+	padding: 10px;
+}
+
+.input {
+	border-style: solid;
+    border-bottom: thick dotted #ff0000;
 }
 
 .info {
