@@ -9,6 +9,8 @@ import "../imports/ui/page_avalanche.js";
 import "../imports/ui/page_post.js";
 import "../imports/ui/page_user.js";
 import "../imports/ui/users.js";
+import "../imports/ui/classie.js";
+import "../imports/ui/selectFx.js";
 
 $.cloudinary.config( {
 	cloud_name:"jbakse"

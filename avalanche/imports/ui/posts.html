@@ -60,9 +60,35 @@
 				<input class="upload-file hidden" id="upload-file" name="upload-file" type="file">
 
 
+				<script>
+				(function() {
+					[].slice.call( document.querySelectorAll( '#create-post-form select.cs-select' ) ).forEach( function(el) {
+						new SelectFx(el);
+					} );
+				})();
+				</script>
+
 				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
 
-					{{> afQuickField name='lesson' options=lessons}}
+				<section>
+					<label class="select-label">Topic</label>
+					<select class="cs-select cs-skin-slide">
+						<option value="sightseeing">Week 1: Tiles</option>
+						<option value="business">Week 2: Random</option>
+						<option value="honeymoon">Week 3: Pixels</option>
+						<option value="food">Week 4: Turtles</option>
+						<option value="shopping">Week 5: SVG</option>
+						<option value="shopping">Week 6: Animation</option>
+						<option value="shopping">Week 7: Quartz Composer </option>
+						<option value="shopping">Week 8: Sound Visualization</option>
+						<option value="shopping">Week 9: Sound Creation</option>
+						<option value="shopping">Week 10: Text</option>
+						<option value="shopping">Week 11: 3D</option>
+					</select>
+				</section>
+
+          <!-- trying to replace with animated form -->
+					<!-- {{> afQuickField name='lesson' options=lessons}} -->
 					{{> afQuickField name='inspiration_name'}}
 					{{> afQuickField name='inspiration_url'}}
 					{{> afQuickField name='description' rows=6}}
