@@ -2,11 +2,11 @@
 	<div class="post">
 		{{#if equals resource_type "video"}}
 			<a class="poster-link" href="/posts/{{_id}}" >
-				<video src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{poster}}.mp4" autoplay=true loop=true></video>
+				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{poster}}.mp4" autoplay=true loop=true></video>
 			</a>
 		{{else}}
 			<a class="poster-link" href="/posts/{{_id}}" >
-				<img src="{{c.url poster width=250 crop='fill' quality=90}}" alt="" />
+				<img src="{{c.url poster width=400 crop='fill' quality=90}}" alt="" />
 			</a>
 		{{/if}}
 
