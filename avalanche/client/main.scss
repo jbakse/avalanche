@@ -137,6 +137,11 @@ h1 {
 	object-fit: cover;
 
 }
+
+.post video {
+	// border: 1px solid red;
+	display: block;
+}
 ////////////////////////////////////////////////
 /// Page Post
 ////////////////////////////////////////////////
@@ -679,8 +684,7 @@ label.select-label {
 	padding: 1em;
 }
 
-#create-post-form .cs-select ul li.cs-focus span {
-	}
+#create-post-form .cs-select ul li.cs-focus span {}
 
 /* Optgroup and optgroup label */
 #create-post-form .cs-select li.cs-optgroup ul {

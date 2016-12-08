@@ -16,9 +16,15 @@ Brinna
 Justin
 	x.bigger summaries
 	x.prepare for three media items by migrating to array of cloudinary media items in post
-	.three media items
-	.prefrences system
-	.counting
+	x.three media items
+	.edit-post overlay
+		.make create post take title param, use for create and edit.
+		.make template take post id param, this will be more flexibile than accessing the session variable directly.
+		.in general make sure session variables are being abused as globals too much
+
+	.better observer on posts list (update isotope)
+	.preferences system
+	.weekly post counting
 
 Phase 1: Posting
 	Users

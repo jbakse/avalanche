@@ -2,14 +2,39 @@
 	<div class="post">
 
 		{{#if equals cloudinary_media.[0].resource_type "video"}}
-			<a class="poster-link" href="/posts/{{_id}}" >
+			<div class="poster-link" href="/posts/{{_id}}" >
 				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-			</a>
-		{{else}}
-			<a class="poster-link" href="/posts/{{_id}}" >
-				<img src="{{c.url cloudinary_media.[0].public_id width=400 crop='fill' quality=90}}" alt="" />
-			</a>
+			</div>
 		{{/if}}
+		{{#if equals cloudinary_media.[0].resource_type "image"}}
+			<div class="poster-link" href="/posts/{{_id}}" >
+				<img src="{{c.url cloudinary_media.[0].public_id width=400 crop='fill' quality=90}}" alt="" />
+			</div>
+		{{/if}}
+
+		{{#if equals cloudinary_media.[1].resource_type "video"}}
+			<div class="poster-link" href="/posts/{{_id}}" >
+				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true muted=true></video>
+			</div>
+		{{/if}}
+		{{#if equals cloudinary_media.[1].resource_type "image"}}
+			<div class="poster-link" href="/posts/{{_id}}" >
+				<img src="{{c.url cloudinary_media.[1].public_id width=400 crop='fill' quality=90}}" alt="" />
+			</div>
+		{{/if}}
+
+		{{#if equals cloudinary_media.[2].resource_type "video"}}
+			<div class="poster-link" href="/posts/{{_id}}" >
+				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true muted=true></video>
+			</div>
+		{{/if}}
+		{{#if equals cloudinary_media.[2].resource_type "image"}}
+			<div class="poster-link" href="/posts/{{_id}}" >
+				<img src="{{c.url cloudinary_media.[2].public_id width=400 crop='fill' quality=90}}" alt="" />
+			</div>
+		{{/if}}
+
+
 
 		<div class="info">
 			<button class="btn btn-default remove-post">
@@ -46,7 +71,6 @@
 			<!-- {{creating_post}} -->
 
 			<div class="poster-wrap">
-
 				{{#if equals post.cloudinary_media.[0].resource_type "video"}}
 					<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true></video>
 				{{else}}
@@ -54,18 +78,24 @@
 				{{/if}}
 			</div>
 
-			<label for="upload-file" class="button">
-				<!-- <button class="btn"> -->
-					<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File
-				<!-- </button> -->
+			<label for="upload-file-0" class="button">
+				<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 0
 			</label>
-			<input class="upload-file hidden" id="upload-file" name="upload-file" type="file">
+			<input class="upload-file-0 hidden" id="upload-file-0" name="upload-file-0" type="file">
+
+			<label for="upload-file-1" class="button">
+				<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 1
+			</label>
+			<input class="upload-file-1 hidden" id="upload-file-1" name="upload-file-1" type="file">
+
+			<label for="upload-file-2" class="button">
+				<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 2
+			</label>
+			<input class="upload-file-2 hidden" id="upload-file-2" name="upload-file-2" type="file">
+
+
 
 			<div class="content">
-
-
-
-
 				<script>
 				(function() {
 					[].slice.call( document.querySelectorAll( '#create-post-form select.cs-select' ) ).forEach( function(el) {
@@ -129,8 +159,23 @@
 
 			{{#if equals post.cloudinary_media.[0].resource_type "video"}}
 				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true loop=true></video>
-			{{else}}
+			{{/if}}
+			{{#if equals post.cloudinary_media.[0].resource_type "image"}}
 				<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt="" />
+			{{/if}}
+
+			{{#if equals post.cloudinary_media.[1].resource_type "video"}}
+				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true></video>
+			{{/if}}
+			{{#if equals post.cloudinary_media.[1].resource_type "image"}}
+				<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt="" />
+			{{/if}}
+
+			{{#if equals post.cloudinary_media.[2].resource_type "video"}}
+				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true></video>
+			{{/if}}
+			{{#if equals post.cloudinary_media.[2].resource_type "image"}}
+				<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt="" />
 			{{/if}}
 
 		</div>

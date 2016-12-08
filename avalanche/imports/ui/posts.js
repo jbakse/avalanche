@@ -42,6 +42,20 @@ AutoForm.hooks({
 	}
 });
 
+function uploadFile(post, slot, files) {
+	Cloudinary.upload(files, {
+		folder: "avalanche",
+		resource_type: "auto",
+	}, (err, res) => {
+		console.log("Upload Error:", err);
+		console.log("Upload Result:", res);
+		if (!err) {
+			Meteor.call("posts.updateMedia", post, slot, res);
+		}
+	});
+}
+
+
 Template.create_post_form.events({
 	"click .cancel": function() {
 		Meteor.call("posts.remove", Session.get("creating_post"));
@@ -52,22 +66,27 @@ Template.create_post_form.events({
 		// Session.set("creating_post", false);
 	},
 
-	"change .upload-file": function(event, template) {
-		console.log("clicknow");
-
-		let files = template.find(".upload-file").files;
-		Cloudinary.upload(files, {
-			folder: "avalanche",
-			resource_type: "auto",
-		}, (err, res) => {
-			console.log("Upload Error:", err);
-			console.log("Upload Result:", res);
-			if (!err) {
-				Meteor.call("posts.updateMedia", Session.get("creating_post"), res);
-			}
-		});
-
+	"change .upload-file-0": function(event, template) {
+		let post = Session.get("creating_post");
+		let slot = 0;
+		let files = template.find(".upload-file-0").files;
+		uploadFile(post, slot, files);
 	},
+
+	"change .upload-file-1": function(event, template) {
+		let post = Session.get("creating_post");
+		let slot = 1;
+		let files = template.find(".upload-file-1").files;
+		uploadFile(post, slot, files);
+	},
+
+	"change .upload-file-2": function(event, template) {
+		let post = Session.get("creating_post");
+		let slot = 2;
+		let files = template.find(".upload-file-2").files;
+		uploadFile(post, slot, files);
+	},
+
 
 	// "change .create-post-file": function(event, template) {
 	//

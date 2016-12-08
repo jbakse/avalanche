@@ -138,18 +138,18 @@ Meteor.methods({
 		}
 	},
 
-	"posts.updateMedia" (id, data) {
+	"posts.updateMedia" (id, slot, cloudinary_data) {
 		let post = Posts.findOne(id);
 		if (!postEditableBy(post, this.userId)) {
 			throw new Meteor.Error("unauthorized");
 		}
 
+		let key = "cloudinary_media."+slot;
+		let data = {};
+		data[key] = cloudinary_data;
+
 		Posts.update(id, {
-			$set: {
-				// poster: data.public_id,
-				// resource_type: data.resource_type,
-				"cloudinary_media.0": data
-			}
+			$set: data
 		});
 	},
 });
