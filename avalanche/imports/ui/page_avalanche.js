@@ -8,7 +8,9 @@ import "./page_avalanche.html";
 
 Template.page_avalanche.helpers({
 	posts() {
-		let posts = Posts.find({}, {
+		let posts = Posts.find({
+			posted: true
+		}, {
 			sort: {
 				created_at: -1
 			}

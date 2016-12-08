@@ -31,9 +31,9 @@ Template.main_nav.events({
 	},
 	"click .create-post": function(/*event*/){
 		console.log("start");
-		//Session.set("creating_post", true);
+		//Session.set("editing_post", true);
 		Meteor.call("posts.insert", {}, function(error, id) {
-			Session.set("creating_post", id);
+			Session.set("editing_post", id);
 		});
 	},
 

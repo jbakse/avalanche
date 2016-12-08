@@ -17,10 +17,12 @@ Justin
 	x.bigger summaries
 	x.prepare for three media items by migrating to array of cloudinary media items in post
 	x.three media items
-	.edit-post overlay
-		.make create post take title param, use for create and edit.
-		.make template take post id param, this will be more flexibile than accessing the session variable directly.
-		.in general make sure session variables are being abused as globals too much
+	x.edit-post overlay
+		no.make create post take title param, use for create and edit.
+		x.make template take post id param, this will be more flexibile than accessing the session variable directly.
+		x.in general make sure session variables are being abused as globals too much
+
+	x.make cancel button only delete unposted posts
 
 	.better observer on posts list (update isotope)
 	.preferences system
@@ -102,6 +104,8 @@ Admin tools:
 	.use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
 
 	why no dropdown on the new post form? the edit post page has a dropdown. (missing helper for tools/whatever)
+
+	.no way to clear an image from post
 
 
 ## Navigation

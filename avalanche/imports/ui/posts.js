@@ -11,6 +11,11 @@ Template.post.events({
 	"click .remove-post": function() {
 		Meteor.call("posts.remove", this._id);
 	},
+
+	"click .edit-post": function() {
+		console.log("dedit", this);
+		Session.set("editing_post", this._id);
+	},
 });
 
 Template.post_overlay.helpers({
@@ -33,7 +38,9 @@ AutoForm.hooks({
 		"onSuccess": function(formType, result) {
 			console.log("success");
 			console.log(formType, result);
-			Session.set("creating_post", false);
+			console.log(this);
+			Meteor.call("posts.mark_posted", this.docId);
+			Session.set("editing_post", false);
 		},
 		"onError": function(formType, result) {
 			console.log("error");
@@ -56,32 +63,36 @@ function uploadFile(post, slot, files) {
 }
 
 
-Template.create_post_form.events({
+Template.edit_post_form.events({
 	"click .cancel": function() {
-		Meteor.call("posts.remove", Session.get("creating_post"));
-		Session.set("creating_post", false);
+		console.log("hi cancel", this);
+		// console.log(this);
+		if (!this.posted) {
+			Meteor.call("posts.remove", this._id);
+		}
+		Session.set("editing_post", false);
 	},
 
 	"click .submit": function() {
-		// Session.set("creating_post", false);
+		// Session.set("editing_post", false);
 	},
 
 	"change .upload-file-0": function(event, template) {
-		let post = Session.get("creating_post");
+		let post = this.post_id;
 		let slot = 0;
 		let files = template.find(".upload-file-0").files;
 		uploadFile(post, slot, files);
 	},
 
 	"change .upload-file-1": function(event, template) {
-		let post = Session.get("creating_post");
+		let post = this.post_id;
 		let slot = 1;
 		let files = template.find(".upload-file-1").files;
 		uploadFile(post, slot, files);
 	},
 
 	"change .upload-file-2": function(event, template) {
-		let post = Session.get("creating_post");
+		let post = this.post_id;
 		let slot = 2;
 		let files = template.find(".upload-file-2").files;
 		uploadFile(post, slot, files);
@@ -115,9 +126,10 @@ Template.create_post_form.events({
 	// },,
 });
 
-Template.create_post_form.helpers({
+Template.edit_post_form.helpers({
 	post() {
-		return Posts.findOne(Session.get("creating_post"));
+		console.log("hi", this.post_id);
+		return Posts.findOne(this.post_id);
 	},
 	lessons() {
 		return {art: "art", design: "design", science: "science"};

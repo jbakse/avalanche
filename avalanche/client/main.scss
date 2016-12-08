@@ -289,7 +289,7 @@ div.name-value {
 	overflow-y: auto;
 }
 
-.overlay-content {
+.overlay-form {
 	width: 500px;
 	margin: 3em auto;
 	background: white;
@@ -297,7 +297,7 @@ div.name-value {
 	overflow: hidden;
 }
 
-.overlay-content .title-bar {
+.overlay-form .title-bar {
 	background-color: $brand-color;
 	text-align: center;
 	font-size: 1em;
@@ -313,10 +313,10 @@ div.name-value {
 }
 
 ////////////////////////////////////////////////
-/// #create-post-form
+/// #edit-post-form
 ////////////////////////////////////////////////
 
-#create-post-form .poster-wrap {
+#edit-post-form .poster-wrap {
 	width: 100%;
 
 	margin: 0 auto;
@@ -328,7 +328,7 @@ div.name-value {
 	margin-top: 1em;
 }
 
-#create-post-form label.button {
+#edit-post-form label.button {
 	cursor: pointer;
 	margin-bottom: 1em;
 	background: blue;
@@ -346,21 +346,21 @@ div.name-value {
 	width: 100%;
 }
 
-#create-post-form .submit {
+#edit-post-form .submit {
 	background-color: $brand-color;
 	border: none;
 	width: 100%;
 	color: black;
 }
 
-#create-post-form .cancel {
+#edit-post-form .cancel {
 	background-color: white;
 	width: 100%;
 	text-align: center;
 
 }
 
-#create-post-form .content {
+#edit-post-form .content {
 	padding: 10px;
 }
 
@@ -373,13 +373,13 @@ div.name-value {
 	margin-top: 0;
 }
 
-.overlay {
-	background: rgba(0,0,0,.8);
-	width: 100%;
-	height: 100%;
-	z-index: 5;
-
-}
+// .overlay {
+// 	background: rgba(0,0,0,.8);
+// 	width: 100%;
+// 	height: 100%;
+// 	z-index: 5;
+//
+// }
 
 .post-detail {
 	background: white;
@@ -395,13 +395,13 @@ div.cs-skin-slide {
 	width: 110%;
 }
 @media screen and (max-width: 30em) {
-	#create-post-form div.cs-skin-slide {
+	#edit-post-form div.cs-skin-slide {
 		font-size: 1em;
 		width: 250px;
 	}
 }
 
-#create-post-form .cs-skin-slide::before {
+#edit-post-form .cs-skin-slide::before {
 	content: '';
 	background: white;
 	position: absolute;
@@ -415,12 +415,12 @@ div.cs-skin-slide {
 	transition: transform 0.3s;
 }
 
-#create-post-form .cs-skin-slide.cs-active::before {
+#edit-post-form .cs-skin-slide.cs-active::before {
 	-webkit-transform: scale3d(1.1,3.5,1);
 	transform: scale3d(1.1,3.5,1);
 }
 
-#create-post-form .cs-skin-slide > span {
+#edit-post-form .cs-skin-slide > span {
 	height: 80px;
 	line-height: 32px;
 	-webkit-transition: text-indent 0.3s, opacity 0.3s;
@@ -433,13 +433,13 @@ div.cs-skin-slide {
 	}
 }
 
-#create-post-form .cs-skin-slide.cs-active > span {
+#edit-post-form .cs-skin-slide.cs-active > span {
 	text-indent: -290px;
 	opacity: 0;
 }
 
-#create-post-form .cs-skin-slide > span::after,
-#create-post-form .cs-skin-slide.cs-active > span::after {
+#edit-post-form .cs-skin-slide > span::after,
+#edit-post-form .cs-skin-slide.cs-active > span::after {
 	font-family: 'icomoon';
 	content: '\e00f';
 	color: black;
@@ -447,12 +447,12 @@ div.cs-skin-slide {
 	backface-visibility: hidden;
 }
 
-#create-post-form .cs-skin-slide.cs-active > span::after {
+#edit-post-form .cs-skin-slide.cs-active > span::after {
 	-webkit-transform: translate3d(0,-50%,0);
 	transform: translate3d(0,-50%,0);
 }
 
-#create-post-form .cs-skin-slide .cs-options {
+#edit-post-form .cs-skin-slide .cs-options {
 	background: white;
 	width: 10px;
 	padding: 0;
@@ -552,14 +552,14 @@ div.cs-skin-slide {
 	background: grey;
 }
 
-#create-post-form .cs-skin-slide .cs-options li span:hover,
-#create-post-form .cs-skin-slide .cs-options li.cs-focus span,
-#create-post-form .cs-skin-slide .cs-options li.cs-selected span {
+#edit-post-form .cs-skin-slide .cs-options li span:hover,
+#edit-post-form .cs-skin-slide .cs-options li.cs-focus span,
+#edit-post-form .cs-skin-slide .cs-options li.cs-selected span {
 	color: $brand-color;
 	background: transparent;
 }
 
-#create-post-form .cs-skin-slide .cs-selected span::after {
+#edit-post-form .cs-skin-slide .cs-selected span::after {
 	content: '';
 }
 @font-face {
@@ -587,7 +587,7 @@ label.select-label {
 }
 
 /* Default custom select styles */
-#create-post-form div.cs-select {
+#edit-post-form div.cs-select {
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
@@ -603,16 +603,16 @@ label.select-label {
 	user-select: none;
 }
 
-#create-post-form div.cs-select:focus {
+#edit-post-form div.cs-select:focus {
 	outline: none;
 	/* For better accessibility add a style for this in your skin */
 }
 
-#create-post-form .cs-select select {
+#edit-post-form .cs-select select {
 	display: none;
 }
 
-#create-post-form .cs-select span {
+#edit-post-form .cs-select span {
 	display: block;
 	position: relative;
 	cursor: pointer;
@@ -625,13 +625,13 @@ label.select-label {
 }
 
 /* Placeholder and selected option */
-#create-post-form .cs-select > span {
+#edit-post-form .cs-select > span {
 	padding-right: 3em;
 
 }
 
-#create-post-form .cs-select .cs-selected span::after,
-#create-post-form .cs-select > span::after {
+#edit-post-form .cs-select .cs-selected span::after,
+#edit-post-form .cs-select > span::after {
 	speak: none;
 	position: absolute;
 	top: 50%;
@@ -641,27 +641,27 @@ label.select-label {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-#create-post-form .cs-select > span::after {
+#edit-post-form .cs-select > span::after {
 	content: '\25BE';
 	right: 1em;
 }
 
-#create-post-form .cs-select .cs-selected span::after {
+#edit-post-form .cs-select .cs-selected span::after {
 	content: '\2713';
 	margin-left: 1em;
 }
 
-#create-post-form .cs-select.cs-active > span::after {
+#edit-post-form .cs-select.cs-active > span::after {
 	-webkit-transform: translateY(-50%) rotate(180deg);
 	transform: translateY(-50%) rotate(180deg);
 }
 
-#create-post-form div.cs-active {
+#edit-post-form div.cs-active {
 	z-index: 200;
 }
 
 /* Options */
-#create-post-form .cs-select .cs-options {
+#edit-post-form .cs-select .cs-options {
 	position: absolute;
 	overflow: hidden;
 	width: 100%;
@@ -669,28 +669,28 @@ label.select-label {
 	visibility: hidden;
 }
 
-#create-post-form .cs-select.cs-active .cs-options {
+#edit-post-form .cs-select.cs-active .cs-options {
 	visibility: visible;
 }
 
-#create-post-form .cs-select ul {
+#edit-post-form .cs-select ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	width: 100%;
 }
 
-#create-post-form .cs-select ul span {
+#edit-post-form .cs-select ul span {
 	padding: 1em;
 }
 
-#create-post-form .cs-select ul li.cs-focus span {}
+#edit-post-form .cs-select ul li.cs-focus span {}
 
 /* Optgroup and optgroup label */
-#create-post-form .cs-select li.cs-optgroup ul {
+#edit-post-form .cs-select li.cs-optgroup ul {
 	padding-left: 1em;
 }
 
-#create-post-form .cs-select li.cs-optgroup > span {
+#edit-post-form .cs-select li.cs-optgroup > span {
 	cursor: default;
 }

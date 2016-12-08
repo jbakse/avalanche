@@ -18,6 +18,11 @@ let PostSchema = new SimpleSchema({
 		type: Date,
 		label: "Created At"
 	},
+	posted: {
+		type: Boolean,
+		label: "Posted",
+		defaultValue: false
+	},
 	// poster: {
 	// 	type: String,
 	// 	label: "Poster Image",
@@ -137,6 +142,19 @@ Meteor.methods({
 			Posts.remove(id);
 		}
 	},
+
+	"posts.mark_posted" (id) {
+		let post = Posts.findOne(id);
+		if (!postEditableBy(post, this.userId)) {
+			throw new Meteor.Error("unauthorized");
+		}
+		Posts.update(id, {
+			$set: {
+				posted: true
+			}
+		});
+	},
+
 
 	"posts.updateMedia" (id, slot, cloudinary_data) {
 		let post = Posts.findOne(id);

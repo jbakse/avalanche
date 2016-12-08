@@ -18,9 +18,10 @@
 			{{#if previewing_post}}
 				{{> post_overlay}}
 			{{/if}}
-			{{#if creating_post}}
-				{{> create_post_form}}
+			{{#if editing_post}}
+				{{> edit_post_form post_id=editing_post}}
 			{{/if}}
+			
 		</main>
 	</div>
 </template>
