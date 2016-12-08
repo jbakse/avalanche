@@ -7,12 +7,50 @@ Verify success before closing light box.
 
 # PLAN
 
+Brinna
+	.Post Sketch Form
+	.what justin likes for this. simple, clear, direct
+	.Post Summaris (avalanche)
+	.Header 
+
+Justin
+	.bigger summaries
+
 Phase 1: Posting
 	Users
+		Create Account
+		Edit Account
+		Profile Page
+
 	Posts
-	Images
-	Videos
+		Create Post /Edit Post
+		Post Summary (Avalanche)
+		Post Summary (User Page)
+		Post Overlay ?
+		Post Page ?
+
+		Data
+			1,2,3 Videos/Images
+			Topic
+			Inspiratoin Name/URL (optional)
+			Description (optional)
+			Author (Auto)
+			Date (Auto)
+
+	User Summary
+		Color Coded Tops
+		Weekly Counts
+
+
+	Design Questions
+		Allow multiple inspiration
+
 	Post Counting/Reporting
+
+	Admin
+		Delete Account
+		Set Account as Admin
+		Toggle Admin active
 
 Phase 2: Social
 	Voting
