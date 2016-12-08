@@ -14,7 +14,8 @@ Brinna
 	.Header
 
 Justin
-	.bigger summaries
+	x.bigger summaries
+	x.prepare for three media items by migrating to array of cloudinary media items in post
 	.three media items
 	.prefrences system
 	.counting
@@ -26,7 +27,7 @@ Phase 1: Posting
 		Profile Page
 
 	Posts
-		Create Post /Edit Post
+		Create Post / Edit Post
 		Post Summary (Avalanche)
 		Post Summary (User Page)
 		Post Overlay ?
@@ -40,7 +41,7 @@ Phase 1: Posting
 			Author (Auto)
 			Date (Auto)
 
-	Prefrences System
+	Preferences System
 		Add in manual FFE on homepage
 		Set weekly topics
 		Set start/end ranges for reporting
@@ -81,7 +82,8 @@ Phase 3: Special Media
 
 	x.user list (summary)
 
-	.interface to replace media on post (factoring: change "poster" to "media"?)
+	.interface to replace media on post
+		x.(factoring: change "poster" to "media"?)
 
 
 Admin tools:

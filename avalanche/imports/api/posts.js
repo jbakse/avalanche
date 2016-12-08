@@ -18,22 +18,22 @@ let PostSchema = new SimpleSchema({
 		type: Date,
 		label: "Created At"
 	},
-	poster: {
-		type: String,
-		label: "Poster Image",
-		defaultValue: "",
-		// regex: SimpleSchema.RegEx.Url,,,,,,,,,,,
-	},
-	resource_type: {
-		type: String,
-		label: "Resource Type",
-		defaultValue: ""
-	},
-	cloudinary: {
-		type: Object,
+	// poster: {
+	// 	type: String,
+	// 	label: "Poster Image",
+	// 	defaultValue: "",
+	// 	// regex: SimpleSchema.RegEx.Url,,,,,,,,,,,
+	// },
+	// resource_type: {
+	// 	type: String,
+	// 	label: "Resource Type",
+	// 	defaultValue: ""
+	// },
+	cloudinary_media: {
+		type: [Object],
 		label: "Cloudinary Data",
 		blackbox: true,
-		defaultValue: {}
+		defaultValue: [{}, {}, {}]
 	},
 	lesson: {
 		type: String,
@@ -115,15 +115,26 @@ Meteor.methods({
 
 		console.log("killing "+id);
 		if (Meteor.isServer) {
-			if (!post.poster) {
-				Posts.remove(id);
-				return;
+			// if (!post.poster) {
+			// 	Posts.remove(id);
+			// 	return;
+			// }
+			// Cloudinary.uploader.destroy(post.poster, Meteor.bindEnvironment((result) => {
+			// 	if (result.result === "ok" || result.result === "not found") {
+			// 		Posts.remove(id);
+			// 	}
+			// }));
+
+			if(post.cloudinary_media[0].public_id) {
+				Cloudinary.uploader.destroy(post.cloudinary_media[0].public_id);
 			}
-			Cloudinary.uploader.destroy(post.poster, Meteor.bindEnvironment((result) => {
-				if (result.result === "ok" || result.result === "not found") {
-					Posts.remove(id);
-				}
-			}));
+			if(post.cloudinary_media[1].public_id) {
+				Cloudinary.uploader.destroy(post.cloudinary_media[1].public_id);
+			}
+			if(post.cloudinary_media[2].public_id) {
+				Cloudinary.uploader.destroy(post.cloudinary_media[2].public_id);
+			}
+			Posts.remove(id);
 		}
 	},
 
@@ -135,9 +146,9 @@ Meteor.methods({
 
 		Posts.update(id, {
 			$set: {
-				poster: data.public_id,
-				resource_type: data.resource_type,
-				cloudinary: data
+				// poster: data.public_id,
+				// resource_type: data.resource_type,
+				"cloudinary_media.0": data
 			}
 		});
 	},

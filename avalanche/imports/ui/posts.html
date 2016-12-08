@@ -1,19 +1,20 @@
 <template name="post">
 	<div class="post">
-		{{#if equals resource_type "video"}}
+
+		{{#if equals cloudinary_media.[0].resource_type "video"}}
 			<a class="poster-link" href="/posts/{{_id}}" >
-				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{poster}}.mp4" autoplay=true loop=true></video>
+				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 			</a>
 		{{else}}
 			<a class="poster-link" href="/posts/{{_id}}" >
-				<img src="{{c.url poster width=400 crop='fill' quality=90}}" alt="" />
+				<img src="{{c.url cloudinary_media.[0].public_id width=400 crop='fill' quality=90}}" alt="" />
 			</a>
 		{{/if}}
 
 		<div class="info">
-			<!-- <button class="btn btn-default remove-post">
+			<button class="btn btn-default remove-post">
 				<i class="fa fa-trash" aria-hidden="true"></i>
-			</button> -->
+			</button>
 
 			<div class="inspiration">
 				{{#if inspiration_url}}
@@ -30,9 +31,6 @@
 				{{formatDate post.created_at}}, {{formatTime post.created_at}}
 			</div>
 
-
-			<!-- {{i}} -->
-
 		</div>
 	</div>
 </template>
@@ -48,7 +46,12 @@
 			<!-- {{creating_post}} -->
 
 			<div class="poster-wrap">
-				<img src="{{c.url post.poster height=250 crop='fill' quality=90}}" alt="" />
+
+				{{#if equals post.cloudinary_media.[0].resource_type "video"}}
+					<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true></video>
+				{{else}}
+					<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt="" />
+				{{/if}}
 			</div>
 
 			<label for="upload-file" class="button">
@@ -124,10 +127,10 @@
 				<span class="value">{{formatDate post.created_at}}, {{formatTime post.created_at}}</span>
 			</div>
 
-			{{#if equals post.resource_type "video"}}
-				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.poster}}.mp4" controls=true autoplay=true loop=true></video>
+			{{#if equals post.cloudinary_media.[0].resource_type "video"}}
+				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true loop=true></video>
 			{{else}}
-				<img class="poster" src="{{c.url post.poster}}" alt="" />
+				<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt="" />
 			{{/if}}
 
 		</div>
