@@ -17,7 +17,9 @@ Template.registerHelper("json", function (data) {
 	return `<pre>${data}</pre>`;
 });
 
-Template.registerHelper("prefs", function() {	
+import {Prefs} from "../imports/api/prefs.js";
+
+Template.registerHelper("prefs", function() {
 	let prefs = Prefs.find({});
 	return prefs.fetch()[0];
 });

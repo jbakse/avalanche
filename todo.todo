@@ -5,7 +5,9 @@ Move Forms to Light Boxes
 Lesson Dropdown is text field on Post a Sketch
 Verify success before closing light box.
 
-# PLAN
+# PLAN 3.1 33
+
+this if that
 
 Brinna
 	.Post Sketch Form
@@ -28,8 +30,7 @@ Justin
 	x.preferences system
 		x.lock out non admin
 
-	.preferences system enhancements
-		.hide from non admin
+
 
 	.weekly post counting
 
@@ -120,6 +121,9 @@ Admin tools:
 	.list users
 	.list weekly themes
 	.list tools
+
+	.preferences system enhancements
+		.hide from non admin
 
 
 ## Hosting
