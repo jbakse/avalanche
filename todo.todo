@@ -24,7 +24,7 @@ Justin
 
 	x.make cancel button only delete unposted posts
 
-	.better observer on posts list (update isotope)
+	x.better observer on posts list (update isotope)
 	.preferences system
 	.weekly post counting
 
@@ -107,7 +107,7 @@ Admin tools:
 
 	.no way to clear an image from post
 
-
+	.isotope works on avalanche, doesn't have event hooks on users. factor isotope and posts into posts.js?
 ## Navigation
 .hamburger menu (list users, list topics?)
 	.list users
