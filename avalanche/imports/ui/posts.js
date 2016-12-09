@@ -46,6 +46,14 @@ AutoForm.hooks({
 			// console.log("error");
 			// console.log(formType, result);
 		}
+	},
+
+	"updatePrefsForm": {
+		"onError": function(insertDoc, updateDoc, currentDoc) {
+			console.log(JSON.stringify(this.updateDoc));
+			this.event.preventDefault();
+			return false;
+		}
 	}
 });
 

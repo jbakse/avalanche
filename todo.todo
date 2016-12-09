@@ -25,8 +25,15 @@ Justin
 	x.make cancel button only delete unposted posts
 
 	x.better observer on posts list (update isotope)
-	.preferences system
+	x.preferences system
+		x.lock out non admin
+
+	.preferences system enhancements
+		.hide from non admin
+
 	.weekly post counting
+
+	.!CLEAR OUT LEAKED PASSWORD!
 
 Phase 1: Posting
 	Users

@@ -7,6 +7,11 @@
 					{{> atForm}}
 				{{/if}} -->
 			</div>
+
+			<div class="avalanche-message">
+				{{{prefs.avalanche_message}}}
+			</div>
+
 			{{> user_summaries}}
 
 			<div class="posts">
@@ -21,7 +26,7 @@
 			{{#if editing_post}}
 				{{> edit_post_form post_id=editing_post}}
 			{{/if}}
-			
+
 		</main>
 	</div>
 </template>

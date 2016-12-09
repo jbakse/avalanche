@@ -20,3 +20,11 @@ FlowRouter.route("/users/:userId", {
 		BlazeLayout.render("layout_main", {content: "page_user"});
 	}
 });
+
+
+FlowRouter.route("/prefs", {
+	name: "user",
+	action: function(/*params*/) {
+		BlazeLayout.render("layout_main", {content: "page_prefs"});
+	}
+});

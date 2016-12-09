@@ -1,5 +1,19 @@
 import "../imports/api/posts.js";
 import "../imports/api/users.js";
+import {Prefs} from "../imports/api/prefs.js";
+
+function initPrefs() {
+	let prefs = Prefs.find({});
+	if (prefs.count() < 0) {
+		return;
+	}
+	Prefs.insert({});
+}
+
+initPrefs();
+
+
+
 // import "./secrets.js";
 
 Cloudinary.config ({

@@ -12,10 +12,7 @@ $accent-color: red;
 	box-sizing: border-box;
 }
 
-.page-avalanche {
-	// display: flex;
-}
-////////////////////////////////////////////////
+/////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
 
@@ -27,6 +24,17 @@ body {
 
 h1 {
 	font-size: 3em;
+}
+
+b,
+strong {
+	font-weight: 900;
+	color: darken($brand-color, 20);
+}
+
+em,
+i {
+	font-style: italic;
 }
 ////////////////////////////////////////////////
 /// main_nav
@@ -92,6 +100,28 @@ h1 {
 		margin-bottom: 0;
 	}
 }
+
+////////////////////////////////////////////////
+/// posts
+////////////////////////////////////////////////
+
+#updatePrefsForm {
+	// border: 1px solid red;
+	margin: 2em;
+}
+
+.debug-info {
+	margin: 2em;
+	padding: 1em;
+	border: 1px solid $brand-color;
+	border-radius: 5px;
+	overflow: auto;
+
+	pre {
+		overflow: hidden;
+	}
+}
+
 ////////////////////////////////////////////////
 /// posts
 ////////////////////////////////////////////////
@@ -142,6 +172,19 @@ h1 {
 	// border: 1px solid red;
 	display: block;
 }
+
+////////////////////////////////////////////////
+/// Page Post
+////////////////////////////////////////////////
+.avalanche-message {
+	border: 1px solid $brand-color;
+	border-radius: 5px;
+	margin: 2em;
+	padding: 1em;
+	text-align: center;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+
 ////////////////////////////////////////////////
 /// Page Post
 ////////////////////////////////////////////////
