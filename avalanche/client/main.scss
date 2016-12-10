@@ -277,38 +277,40 @@ div.name-value {
 ////////////////////////////////////////////////
 
 .overlay {
-	background: rgba(0,0,0,.7);
+	background: rgba(203,223,255,.9);
+	// background-color: #B8D5FE;
+
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	overflow-y: auto;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+
 }
 
 .overlay-content {
 	width: 500px;
 	margin: 3em auto;
 	background: white;
-	border-radius: 6px;
-	overflow: hidden;
+	// border-radius: 6px;
+
+	margin-bottom: 50px;
+		 box-shadow: 1px 5px 30px #81A7D9;
 }
 
 .overlay-content .title-bar {
-	background-color: $brand-color;
+	// background-color: $brand-color;
 	text-align: center;
 	font-size: 1em;
 	padding: 1em;
 }
 
 
-#layout-main input {
-	border: none;
-	box-shadow: none;
-	border-radius: 0;
-	border-bottom: 1px solid lightgrey;
-	color: black;
-}
+
 
 ////////////////////////////////////////////////
 /// #create-post-form
@@ -322,387 +324,213 @@ div.name-value {
 
 	overflow: auto;
 	background-color: white;
-	margin-bottom: 1em;
 	margin-top: 1em;
 }
 
 #create-post-form label.button {
+
 	cursor: pointer;
 	margin-bottom: 1em;
-	background: blue;
-	padding: 6px 12px;
-	border-radius: 3px;
-	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	font-size: 24px;
 	font-weight: normal;
 	line-height: 1.42857143;
 	text-align: center;
 	white-space: nowrap;
 	vertical-align: middle;
-	color: #000;
-	background-color: $brand-color;
-	border-color: #2e6da4;
+	color: #6C7A89;
+	border-color: black;
 	width: 100%;
+	background-color: #F4F7FF;
+
+
+}
+
+// #create-post-form {
+// 	position: relative;
+// }
+
+
+
+#create-post-form .content {
+	display:block;
+	// overflow: auto;
+
+}
+
+#create-post-form .submit-cancel-container {
+	width: 100%;
+	position: relative;
+
+
 }
 
 #create-post-form .submit {
+	position: absolute;
 	background-color: $brand-color;
 	border: none;
-	width: 100%;
+	width: 20%;
 	color: black;
+	right: 0px;
 }
+
+
 
 #create-post-form .cancel {
 background-color: white;
-	width: 100%;
+	width: 20%;
 	text-align: center;
+	position: absolute;
+	left: 0px;
 
 }
 
+
+
+
+
 #create-post-form .content {
+	padding: 20px;
+}
+
+#create-post-form .fa-cloud-upload {
+	font-size: 75px;
+	margin-bottom: 10px;
+	color: #D5E0FA;
+}
+
+
+.drag-drop-browse {
+	align: center;
+	margin: 0 auto;
+	width: 100%;
+	color: #D5E0FA;
+}
+
+.browse {
+	color: #539FFC;
+}
+
+
+#layout-main #create-post-form  .upload-file-container label {
+margin: 0 auto;
+}
+
+
+.upload-file-container {
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-style: dashed;
+	border-width: 4px;
+	border-radius: 20px;
+	border-color: #D5E0FA;
+	width: 100%;
+
+}
+
+#layout-main #create-post-form form label {
+	display: none;
+
+}
+
+#layout-main form .inspiration {
+display: inline-block;
+margin-right: 10px;
+}
+
+
+.inspiration-name input {
+	width: 33%;
+		display: inline-block;
+}
+.inspiration-url input {
+	display: inline-block;
+	width: 33%;
+}
+
+#create-post-form .inspiration-button {
+	cursor:pointer;
+	box-shadow: none;
+	border: 1px solid lightgrey;
+	border-radius: 50%;
+	color: black;
+	width: 30px;
+	height: 30px;
+  text-align: center;
+  line-height: 25px;
+	margin-left: 10px;
+}
+
+
+// inputs on create-a-post form
+
+#layout-main input {
+	border: none;
+	box-shadow: none;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	color: black;
+}
+
+#layout-main label {
+
+	font-size: 10px;
 	padding: 10px;
 }
 
-.input {
-	border-style: solid;
-    border-bottom: thick dotted #ff0000;
+#layout-main textarea {
+	border: none;
+	box-shadow: none;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	color: black;
+
 }
+
+#layout-main select  {
+	border: none;
+	box-shadow: none;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	color: black;
+	// -webkit-appearance: none;
+	width: 50%;
+
+}
+
+
 
 .info {
 	margin-top: 0;
 }
 
-.overlay {
-	background: rgba(0,0,0,.8);
-	width: 100%;
-	height: 100%;
-	z-index: 5;
 
-}
+
+
+
+#layout-main form .form-group [name="inspiration_url"] {
+		width: 110%;
+
+	}
+
+
+	#layout-main form .form-group [name="inspiration_name"] {
+			width: 100%;
+
+		}
+
+
+
+	#layout-main form .form-group [name="description"] {
+		// margin-bottom: 50px;
+		}
+
+
 
 .post-detail {
 	background: white;
 	width: 80%;
 	margin: 50px auto 0;
-}
-
-
-
-// ------------- topic week selection ------------- //
-
-
- div.cs-skin-slide {
-	color: #fff;
-	font-size: 1.5em;
-	width: 110%;
-}
-
-@media screen and (max-width: 30em) {
-#create-post-form	div.cs-skin-slide { font-size: 1em; width: 250px; }
-}
-
-
-#create-post-form .cs-skin-slide::before {
-	content: '';
-	background: white;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transition: -webkit-transform 0.3s;
-	transition: transform 0.3s;
-}
-
-#create-post-form .cs-skin-slide.cs-active::before {
-	-webkit-transform: scale3d(1.1,3.5,1);
-	transform: scale3d(1.1,3.5,1);
-}
-
- #create-post-form .cs-skin-slide > span {
-	height: 80px;
-	line-height: 32px;
-	-webkit-transition: text-indent 0.3s, opacity 0.3s;
-	transition: text-indent 0.3s, opacity 0.3s;
-}
-
-@media screen and (max-width: 300em) {
-	.cs-skin-slide > span { height: 60px; line-height: 28px; }
-}
-
-#create-post-form .cs-skin-slide.cs-active > span {
-	text-indent: -290px;
-	opacity: 0;
-}
-
-#create-post-form .cs-skin-slide > span::after,
- #create-post-form .cs-skin-slide.cs-active > span::after {
-	font-family: 'icomoon';
-	content: '\e00f';
-	color: black;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
- #create-post-form .cs-skin-slide.cs-active > span::after {
-	-webkit-transform: translate3d(0,-50%,0);
-	transform: translate3d(0,-50%,0);
-}
-
-#create-post-form .cs-skin-slide .cs-options {
-	background: white;
-	width: 10px;
-	padding: 0;
-	top: 40px;
-	left: 50%;
-	-webkit-transform: translate3d(-50%,-50%,0);
-	transform: translate3d(-50%,-50%,0);
-}
-
-@media screen and (max-width: 30em) {
-	.cs-skin-slide .cs-options { padding-top: 3em; }
-}
-
-
-
-.cs-options {
-	margin-top: 100px;
-	position: absolute;
-}
-
-// option animation
- .cs-skin-slide .cs-options li {
-	opacity: 0;
-	-webkit-transform: translate3d(30%,0,0);
-	transform: translate3d(30%,0,0);
-	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-	transition: transform 0.3s, opacity 0.3s;
-}
-
-.cs-skin-slide.cs-active .cs-options li {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-	opacity: 1;
-}
-
- .cs-skin-slide.cs-active .cs-options li:first-child {
-	-webkit-transition-delay: 0.05s;
-	transition-delay: 0.05s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(2) {
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(3) {
-	-webkit-transition-delay: 0.15s;
-	transition-delay: 0.15s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(4) {
-	-webkit-transition-delay: 0.2s;
-	transition-delay: 0.2s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(5) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.25s;
-}
-.cs-skin-slide.cs-active .cs-options li:nth-child(6) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.3s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(7) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.35s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(8) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.4s;
-}
-
-.cs-skin-slide.cs-active .cs-options li:nth-child(9) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.45s;
-}
-.cs-skin-slide.cs-active .cs-options li:nth-child(10) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.50s;
-}
-.cs-skin-slide.cs-active .cs-options li:nth-child(11) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.55s;
-}
-/* more options need more delay declaration */
-
-
-
-
-
-
-.cs-skin-slide .cs-options li span {
-	text-transform: uppercase;
-	font-weight: 500;
-	letter-spacing: 2px;
-	font-size: 65%;
-	padding: 0.8em 1em 0.8em 2.5em;
-	background: grey;
-}
-
-#create-post-form .cs-skin-slide .cs-options li span:hover,
-#create-post-form .cs-skin-slide .cs-options li.cs-focus span,
-#create-post-form .cs-skin-slide .cs-options li.cs-selected span {
-	color: $brand-color;
-	background: transparent;
-}
-
-#create-post-form .cs-skin-slide .cs-selected span::after {
-	content: '';
-}
-
-
-
-
-@font-face {
-	font-weight: normal;
-	font-style: normal;
-	src:url('../fonts/codropsicons/codropsicons.eot');
-	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
-		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
-		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
-}
-
-
- section {
-	padding: 4% 1em 10%;
-	text-align: center;
-}
-
-label.select-label {
-	display: block;
-	text-transform: uppercase;
-	font-size: 75%;
-	letter-spacing: 1px;
-	font-weight: bold;
-	width: 100%;
-	text-align: left;
-	margin: 0 auto;
-
-}
-
-
-
-/* Default custom select styles */
-#create-post-form div.cs-select {
-	display: inline-block;
-	vertical-align: middle;
-	position: relative;
-	text-align: left;
-	z-index: 100;
-	width: 100%;
-	max-width: 500px;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-#create-post-form div.cs-select:focus {
-	outline: none; /* For better accessibility add a style for this in your skin */
-}
-
-#create-post-form .cs-select select {
-	display: none;
-}
-
-#create-post-form .cs-select span {
-	display: block;
-	position: relative;
-	cursor: pointer;
-	padding: 1em;
-	white-space: nowrap;
-	// overflow: hidden;
-	text-overflow: ellipsis;
-	background: white;
-	color: black;
-}
-
-/* Placeholder and selected option */
-#create-post-form .cs-select > span {
-	padding-right: 3em;
-
-}
-
-#create-post-form .cs-select > span::after,
-#create-post-form .cs-select .cs-selected span::after {
-	speak: none;
-	position: absolute;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-#create-post-form .cs-select > span::after {
-	content: '\25BE';
-	right: 1em;
-}
-
-#create-post-form .cs-select .cs-selected span::after {
-	content: '\2713';
-	margin-left: 1em;
-}
-
-#create-post-form .cs-select.cs-active > span::after {
-	-webkit-transform: translateY(-50%) rotate(180deg);
-	transform: translateY(-50%) rotate(180deg);
-}
-
-#create-post-form div.cs-active {
-	z-index: 200;
-}
-
-/* Options */
-#create-post-form .cs-select .cs-options {
-	position: absolute;
-	overflow: hidden;
-	width: 100%;
-
-	visibility: hidden;
-}
-
-#create-post-form .cs-select.cs-active .cs-options {
-	visibility: visible;
-}
-
-#create-post-form .cs-select ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-#create-post-form .cs-select ul span {
-	padding: 1em;
-}
-
-#create-post-form .cs-select ul li.cs-focus span {
-
-}
-
-/* Optgroup and optgroup label */
-#create-post-form .cs-select li.cs-optgroup ul {
-	padding-left: 1em;
-}
-
-#create-post-form .cs-select li.cs-optgroup > span {
-	cursor: default;
 }
