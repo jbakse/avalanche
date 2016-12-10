@@ -1,14 +1,24 @@
+// config
 import "../imports/startup/accounts-config.js";
 
+// global
 import "./helpers.js";
 
+// layouts
 import "../imports/ui/layout_main.js";
-import "../imports/ui/main_nav.js";
-import "../imports/ui/posts.js";
+
+// pages
 import "../imports/ui/page_avalanche.js";
 import "../imports/ui/page_post.js";
 import "../imports/ui/page_user.js";
+import "../imports/ui/page_prefs.js";
+
+// modules
+import "../imports/ui/main_nav.js";
+import "../imports/ui/posts.js";
 import "../imports/ui/users.js";
+
+// libs
 import "../imports/ui/classie.js";
 import "../imports/ui/selectFx.js";
 

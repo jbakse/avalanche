@@ -4,6 +4,13 @@ $paper-color: #F3F3F3;
 $brand-color: #50E3C2;
 $accent-color: red;
 
+$dropshadow: 2px 2px 5px #D8D8D8;
+$border-radius: 25px;
+
+$lightest: #F4F7FF;
+$light: #D5E0FA;
+
+
 ////////////////////////////////////////////////
 /// Layout
 ////////////////////////////////////////////////
@@ -12,10 +19,7 @@ $accent-color: red;
 	box-sizing: border-box;
 }
 
-.page-avalanche {
-	// display: flex;
-}
-////////////////////////////////////////////////
+/////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
 
@@ -28,15 +32,30 @@ body {
 h1 {
 	font-size: 3em;
 }
+
+b,
+strong {
+	font-weight: 900;
+	color: darken($brand-color, 20);
+}
+
+em,
+i {
+	font-style: italic;
+}
 ////////////////////////////////////////////////
 /// main_nav
 ////////////////////////////////////////////////
-
+a {
+	text-decoration: none;
+}
 .main-nav {
 	position: relative;
 	flex: 0 auto;
 	background: white;
 	padding: 20px;
+	height: 70px;
+	// box-shadow: 2px 2px 5px #D8D8D8;
 	// border: 1px solid red;
 }
 
@@ -47,10 +66,19 @@ h1 {
 	padding: 10px;
 }
 
+.site-title {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 25px;
+
+}
+
+
 .main-nav {
 	.button {
 		cursor: pointer;
-		margin: 0 10px;
+		margin: 0px;
 	}
 
 	a.button {
@@ -66,8 +94,59 @@ h1 {
 	}
 }
 
-.create-post {
+
+.buttons {
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.emphasis-button {
+	border-radius: $border-radius;
 	background: $brand-color;
+	box-shadow: $dropshadow;
+	color: white;
+	text-align: center;
+	border: none;
+}
+
+.plain-button {
+		border-radius: $border-radius;
+		background: white;
+		box-shadow: $dropshadow;
+		color: black;
+		text-align: center;
+		border: none;
+}
+
+.field {
+	box-shadow: none;
+}
+
+.create-post {
+
+	margin-right:50px;
+		margin-top:5px;
+
+}
+
+.create-post:hover {
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: $border-radius;
+	background: #30D9B3;
+	color: white;
+
+}
+
+
+
+.user-profile-photo {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
 
 .dropdown {
@@ -92,6 +171,28 @@ h1 {
 		margin-bottom: 0;
 	}
 }
+
+////////////////////////////////////////////////
+/// posts
+////////////////////////////////////////////////
+
+#updatePrefsForm {
+	// border: 1px solid red;
+	margin: 2em;
+}
+
+.debug-info {
+	margin: 2em;
+	padding: 1em;
+	border: 1px solid $brand-color;
+	border-radius: 5px;
+	overflow: auto;
+
+	pre {
+		overflow: hidden;
+	}
+}
+
 ////////////////////////////////////////////////
 /// posts
 ////////////////////////////////////////////////
@@ -116,7 +217,7 @@ h1 {
 // }
 
 .post {
-	width: 250px;
+	width: 400px;
 	// border: 1px solid green;
 	// flex: 1 1 auto;
 	margin: 20px 10px;
@@ -137,6 +238,24 @@ h1 {
 	object-fit: cover;
 
 }
+
+.post video {
+	// border: 1px solid red;
+	display: block;
+}
+
+////////////////////////////////////////////////
+/// Page Post
+////////////////////////////////////////////////
+.avalanche-message {
+	border: 1px solid $brand-color;
+	border-radius: 5px;
+	margin: 2em;
+	padding: 1em;
+	text-align: center;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+
 ////////////////////////////////////////////////
 /// Page Post
 ////////////////////////////////////////////////
@@ -223,8 +342,6 @@ h1 {
 	text-align: center;
 }
 
-
-
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////
@@ -272,6 +389,11 @@ div.name-value {
 		margin-bottom: 10px;
 	}
 }
+
+////////////////////////////////////////////////
+/// forms
+////////////////////////////////////////////////
+
 ////////////////////////////////////////////////
 /// overlay
 ////////////////////////////////////////////////
@@ -292,7 +414,7 @@ div.name-value {
 
 }
 
-.overlay-content {
+.overlay-form {
 	width: 500px;
 	margin: 3em auto;
 	background: white;
@@ -302,33 +424,52 @@ div.name-value {
 		 box-shadow: 1px 5px 30px #81A7D9;
 }
 
+<<<<<<< HEAD
 .overlay-content .title-bar {
 	// background-color: $brand-color;
+=======
+.overlay-form .title-bar {
+	background-color: $brand-color;
+>>>>>>> origin/master
 	text-align: center;
 	font-size: 1em;
 	padding: 1em;
 }
 
+<<<<<<< HEAD
 
 
+=======
+#layout-main input {
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	border-bottom: 1px solid lightgrey;
+	color: black;
+}
+>>>>>>> origin/master
 
 ////////////////////////////////////////////////
-/// #create-post-form
+/// #edit-post-form
 ////////////////////////////////////////////////
 
-#create-post-form .poster-wrap {
+#edit-post-form .poster-wrap {
 	width: 100%;
 
-		margin: 0 auto;
-		text-align: center;
+	margin: 0 auto;
+	text-align: center;
 
 	overflow: auto;
 	background-color: white;
 	margin-top: 1em;
 }
 
+<<<<<<< HEAD
 #create-post-form label.button {
 
+=======
+#edit-post-form label.button {
+>>>>>>> origin/master
 	cursor: pointer;
 	margin-bottom: 1em;
 	padding-top: 10px;
@@ -340,26 +481,68 @@ div.name-value {
 	text-align: center;
 	white-space: nowrap;
 	vertical-align: middle;
+<<<<<<< HEAD
 	color: #6C7A89;
 	border-color: black;
 	width: 100%;
-	background-color: #F4F7FF;
+	background-color: $lightest;
+=======
+	color: #000;
+	background-color: $brand-color;
+	border-color: #2e6da4;
+	width: 100%;
+}
+
+#edit-post-form .submit {
+	background-color: $brand-color;
+	border: none;
+	width: 100%;
+	color: black;
+}
+
+#edit-post-form .cancel {
+	background-color: white;
+	width: 100%;
+	text-align: center;
+>>>>>>> origin/master
 
 
+<<<<<<< HEAD
 }
 
 // #create-post-form {
 // 	position: relative;
 // }
+=======
+#edit-post-form .content {
+	padding: 10px;
+}
+
+.input {
+	border-style: solid;
+	border-bottom: thick dotted #ff0000;
+}
+>>>>>>> origin/master
 
 
+<<<<<<< HEAD
 
 #create-post-form .content {
 	display:block;
 	// overflow: auto;
+=======
+// .overlay {
+// 	background: rgba(0,0,0,.8);
+// 	width: 100%;
+// 	height: 100%;
+// 	z-index: 5;
+//
+// }
+>>>>>>> origin/master
 
 }
 
+<<<<<<< HEAD
 #create-post-form .submit-cancel-container {
 	width: 100%;
 	position: relative;
@@ -368,22 +551,24 @@ div.name-value {
 }
 
 #create-post-form .submit {
-	position: absolute;
-	background-color: $brand-color;
-	border: none;
-	width: 20%;
-	color: black;
-	right: 0px;
+	// position: absolute;
+	// background-color: $brand-color;
+	// border: none;
+	// width: 20%;
+	// color: black;
+	// right: 0px;
+	// border-radius: $border-radius;
 }
 
 
 
 #create-post-form .cancel {
-background-color: white;
-	width: 20%;
-	text-align: center;
-	position: absolute;
-	left: 0px;
+// background-color: white;
+// 	width: 20%;
+// 	text-align: center;
+// 	position: absolute;
+// 	left: 0px;
+// 	border-radius: $border-radius;
 
 }
 
@@ -411,11 +596,111 @@ background-color: white;
 
 .browse {
 	color: #539FFC;
+=======
+// ------------- topic week selection ------------- //
+
+div.cs-skin-slide {
+	color: #fff;
+	font-size: 1.5em;
+	width: 110%;
+}
+@media screen and (max-width: 30em) {
+	#edit-post-form div.cs-skin-slide {
+		font-size: 1em;
+		width: 250px;
+	}
+}
+
+#edit-post-form .cs-skin-slide::before {
+	content: '';
+	background: white;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+#edit-post-form .cs-skin-slide.cs-active::before {
+	-webkit-transform: scale3d(1.1,3.5,1);
+	transform: scale3d(1.1,3.5,1);
+}
+
+#edit-post-form .cs-skin-slide > span {
+	height: 80px;
+	line-height: 32px;
+	-webkit-transition: text-indent 0.3s, opacity 0.3s;
+	transition: text-indent 0.3s, opacity 0.3s;
+}
+@media screen and (max-width: 300em) {
+	.cs-skin-slide > span {
+		height: 60px;
+		line-height: 28px;
+	}
+}
+
+#edit-post-form .cs-skin-slide.cs-active > span {
+	text-indent: -290px;
+	opacity: 0;
+}
+
+#edit-post-form .cs-skin-slide > span::after,
+#edit-post-form .cs-skin-slide.cs-active > span::after {
+	font-family: 'icomoon';
+	content: '\e00f';
+	color: black;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+#edit-post-form .cs-skin-slide.cs-active > span::after {
+	-webkit-transform: translate3d(0,-50%,0);
+	transform: translate3d(0,-50%,0);
+}
+
+#edit-post-form .cs-skin-slide .cs-options {
+	background: white;
+	width: 10px;
+	padding: 0;
+	top: 40px;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+}
+@media screen and (max-width: 30em) {
+	.cs-skin-slide .cs-options {
+		padding-top: 3em;
+	}
+}
+
+.cs-options {
+	margin-top: 100px;
+	position: absolute;
+}
+
+// option animation
+.cs-skin-slide .cs-options li {
+	opacity: 0;
+	-webkit-transform: translate3d(30%,0,0);
+	transform: translate3d(30%,0,0);
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+>>>>>>> origin/master
 }
 
 
+<<<<<<< HEAD
 #layout-main #create-post-form  .upload-file-container label {
 margin: 0 auto;
+=======
+.cs-skin-slide.cs-active .cs-options li:first-child {
+	-webkit-transition-delay: 0.05s;
+	transition-delay: 0.05s;
+>>>>>>> origin/master
 }
 
 
@@ -425,13 +710,25 @@ margin: 0 auto;
 	border-style: dashed;
 	border-width: 4px;
 	border-radius: 20px;
-	border-color: #D5E0FA;
+	border-color: $light;
 	width: 100%;
 
 }
 
+<<<<<<< HEAD
 #layout-main #create-post-form form label {
 	display: none;
+=======
+.cs-skin-slide.cs-active .cs-options li:nth-child(5) {
+	-webkit-transition-delay: 0.25s;
+	transition-delay: 0.25s;
+}
+
+.cs-skin-slide.cs-active .cs-options li:nth-child(6) {
+	-webkit-transition-delay: 0.25s;
+	transition-delay: 0.3s;
+}
+>>>>>>> origin/master
 
 }
 
@@ -440,6 +737,7 @@ display: inline-block;
 margin-right: 10px;
 }
 
+<<<<<<< HEAD
 
 .inspiration-name input {
 	width: 33%;
@@ -452,15 +750,16 @@ margin-right: 10px;
 
 #create-post-form .inspiration-button {
 	cursor:pointer;
-	box-shadow: none;
-	border: 1px solid lightgrey;
+	border: none;
 	border-radius: 50%;
-	color: black;
+	color: white;
 	width: 30px;
 	height: 30px;
   text-align: center;
   line-height: 25px;
 	margin-left: 10px;
+	background-color: $brand-color;
+
 }
 
 
@@ -478,6 +777,53 @@ margin-right: 10px;
 
 	font-size: 10px;
 	padding: 10px;
+=======
+.cs-skin-slide.cs-active .cs-options li:nth-child(9) {
+	-webkit-transition-delay: 0.25s;
+	transition-delay: 0.45s;
+}
+
+.cs-skin-slide.cs-active .cs-options li:nth-child(10) {
+	-webkit-transition-delay: 0.25s;
+	transition-delay: 0.50s;
+}
+
+.cs-skin-slide.cs-active .cs-options li:nth-child(11) {
+	-webkit-transition-delay: 0.25s;
+	transition-delay: 0.55s;
+}
+/* more options need more delay declaration */
+
+.cs-skin-slide .cs-options li span {
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 2px;
+	font-size: 65%;
+	padding: 0.8em 1em 0.8em 2.5em;
+	background: grey;
+}
+
+#edit-post-form .cs-skin-slide .cs-options li span:hover,
+#edit-post-form .cs-skin-slide .cs-options li.cs-focus span,
+#edit-post-form .cs-skin-slide .cs-options li.cs-selected span {
+	color: $brand-color;
+	background: transparent;
+}
+
+#edit-post-form .cs-skin-slide .cs-selected span::after {
+	content: '';
+}
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/codropsicons/codropsicons.eot');
+	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+section {
+	padding: 4% 1em 10%;
+	text-align: center;
+>>>>>>> origin/master
 }
 
 #layout-main textarea {
@@ -489,6 +835,7 @@ margin-right: 10px;
 
 }
 
+<<<<<<< HEAD
 #layout-main select  {
 	border: none;
 	box-shadow: none;
@@ -515,10 +862,92 @@ margin-right: 10px;
 
 	}
 
+=======
+/* Default custom select styles */
+#edit-post-form div.cs-select {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	text-align: left;
+	z-index: 100;
+	width: 100%;
+	max-width: 500px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#edit-post-form div.cs-select:focus {
+	outline: none;
+	/* For better accessibility add a style for this in your skin */
+}
+
+#edit-post-form .cs-select select {
+	display: none;
+}
+
+#edit-post-form .cs-select span {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	padding: 1em;
+	white-space: nowrap;
+	// overflow: hidden;
+	text-overflow: ellipsis;
+	background: white;
+	color: black;
+}
+
+/* Placeholder and selected option */
+#edit-post-form .cs-select > span {
+	padding-right: 3em;
+
+}
+
+#edit-post-form .cs-select .cs-selected span::after,
+#edit-post-form .cs-select > span::after {
+	speak: none;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#edit-post-form .cs-select > span::after {
+	content: '\25BE';
+	right: 1em;
+}
+
+#edit-post-form .cs-select .cs-selected span::after {
+	content: '\2713';
+	margin-left: 1em;
+}
+
+#edit-post-form .cs-select.cs-active > span::after {
+	-webkit-transform: translateY(-50%) rotate(180deg);
+	transform: translateY(-50%) rotate(180deg);
+}
+
+#edit-post-form div.cs-active {
+	z-index: 200;
+}
+
+/* Options */
+#edit-post-form .cs-select .cs-options {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+>>>>>>> origin/master
 
 	#layout-main form .form-group [name="inspiration_name"] {
 			width: 100%;
 
+<<<<<<< HEAD
 		}
 
 
@@ -533,4 +962,30 @@ margin-right: 10px;
 	background: white;
 	width: 80%;
 	margin: 50px auto 0;
+=======
+#edit-post-form .cs-select.cs-active .cs-options {
+	visibility: visible;
+}
+
+#edit-post-form .cs-select ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#edit-post-form .cs-select ul span {
+	padding: 1em;
+}
+
+#edit-post-form .cs-select ul li.cs-focus span {}
+
+/* Optgroup and optgroup label */
+#edit-post-form .cs-select li.cs-optgroup ul {
+	padding-left: 1em;
+}
+
+#edit-post-form .cs-select li.cs-optgroup > span {
+	cursor: default;
+>>>>>>> origin/master
 }

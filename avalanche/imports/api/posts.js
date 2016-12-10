@@ -18,22 +18,27 @@ let PostSchema = new SimpleSchema({
 		type: Date,
 		label: "Created At"
 	},
-	poster: {
-		type: String,
-		label: "Poster Image",
-		defaultValue: "",
-		// regex: SimpleSchema.RegEx.Url,,,,,,,,,,,
+	posted: {
+		type: Boolean,
+		label: "Posted",
+		defaultValue: false
 	},
-	resource_type: {
-		type: String,
-		label: "Resource Type",
-		defaultValue: ""
-	},
-	cloudinary: {
-		type: Object,
+	// poster: {
+	// 	type: String,
+	// 	label: "Poster Image",
+	// 	defaultValue: "",
+	// 	// regex: SimpleSchema.RegEx.Url,,,,,,,,,,,
+	// },
+	// resource_type: {
+	// 	type: String,
+	// 	label: "Resource Type",
+	// 	defaultValue: ""
+	// },
+	cloudinary_media: {
+		type: [Object],
 		label: "Cloudinary Data",
 		blackbox: true,
-		defaultValue: {}
+		defaultValue: [{}, {}, {}]
 	},
 	lesson: {
 		type: String,
@@ -115,30 +120,54 @@ Meteor.methods({
 
 		console.log("killing "+id);
 		if (Meteor.isServer) {
-			if (!post.poster) {
-				Posts.remove(id);
-				return;
+			// if (!post.poster) {
+			// 	Posts.remove(id);
+			// 	return;
+			// }
+			// Cloudinary.uploader.destroy(post.poster, Meteor.bindEnvironment((result) => {
+			// 	if (result.result === "ok" || result.result === "not found") {
+			// 		Posts.remove(id);
+			// 	}
+			// }));
+
+			if(post.cloudinary_media[0].public_id) {
+				Cloudinary.uploader.destroy(post.cloudinary_media[0].public_id);
 			}
-			Cloudinary.uploader.destroy(post.poster, Meteor.bindEnvironment((result) => {
-				if (result.result === "ok" || result.result === "not found") {
-					Posts.remove(id);
-				}
-			}));
+			if(post.cloudinary_media[1].public_id) {
+				Cloudinary.uploader.destroy(post.cloudinary_media[1].public_id);
+			}
+			if(post.cloudinary_media[2].public_id) {
+				Cloudinary.uploader.destroy(post.cloudinary_media[2].public_id);
+			}
+			Posts.remove(id);
 		}
 	},
 
-	"posts.updateMedia" (id, data) {
+	"posts.mark_posted" (id) {
+		let post = Posts.findOne(id);
+		if (!postEditableBy(post, this.userId)) {
+			throw new Meteor.Error("unauthorized");
+		}
+		Posts.update(id, {
+			$set: {
+				posted: true
+			}
+		});
+	},
+
+
+	"posts.updateMedia" (id, slot, cloudinary_data) {
 		let post = Posts.findOne(id);
 		if (!postEditableBy(post, this.userId)) {
 			throw new Meteor.Error("unauthorized");
 		}
 
+		let key = "cloudinary_media."+slot;
+		let data = {};
+		data[key] = cloudinary_data;
+
 		Posts.update(id, {
-			$set: {
-				poster: data.public_id,
-				resource_type: data.resource_type,
-				cloudinary: data
-			}
+			$set: data
 		});
 	},
 });

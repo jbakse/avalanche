@@ -5,14 +5,77 @@ Move Forms to Light Boxes
 Lesson Dropdown is text field on Post a Sketch
 Verify success before closing light box.
 
-# PLAN
+# PLAN 3.1 33
+
+this if that
+
+Brinna
+	.Post Sketch Form
+	.what justin likes for this. simple, clear, direct
+	.Post Summaris (avalanche)
+	.Header
+
+Justin
+	x.bigger summaries
+	x.prepare for three media items by migrating to array of cloudinary media items in post
+	x.three media items
+	x.edit-post overlay
+		no.make create post take title param, use for create and edit.
+		x.make template take post id param, this will be more flexibile than accessing the session variable directly.
+		x.in general make sure session variables are being abused as globals too much
+
+	x.make cancel button only delete unposted posts
+
+	x.better observer on posts list (update isotope)
+	x.preferences system
+		x.lock out non admin
+
+
+
+	.weekly post counting
+
+	.!CLEAR OUT LEAKED PASSWORD!
 
 Phase 1: Posting
 	Users
+		Create Account
+		Edit Account
+		Profile Page
+
 	Posts
-	Images
-	Videos
+		Create Post / Edit Post
+		Post Summary (Avalanche)
+		Post Summary (User Page)
+		Post Overlay ?
+		Post Page ?
+
+		Data
+			1,2,3 Videos/Images
+			Topic
+			Inspiratoin Name/URL (optional)
+			Description (optional)
+			Author (Auto)
+			Date (Auto)
+
+	Preferences System
+		Add in manual FFE on homepage
+		Set weekly topics
+		Set start/end ranges for reporting
+
+	User Summary
+		Color Coded Tops
+		Weekly Counts
+
+
+	Design Questions
+		Allow multiple inspiration
+
 	Post Counting/Reporting
+
+	Admin
+		Delete Account
+		Set Account as Admin
+		Toggle Admin active
 
 Phase 2: Social
 	Voting
@@ -35,7 +98,8 @@ Phase 3: Special Media
 
 	x.user list (summary)
 
-	.interface to replace media on post (factoring: change "poster" to "media"?)
+	.interface to replace media on post
+		x.(factoring: change "poster" to "media"?)
 
 
 Admin tools:
@@ -49,12 +113,17 @@ Admin tools:
 
 	why no dropdown on the new post form? the edit post page has a dropdown. (missing helper for tools/whatever)
 
+	.no way to clear an image from post
 
+	.isotope works on avalanche, doesn't have event hooks on users. factor isotope and posts into posts.js?
 ## Navigation
 .hamburger menu (list users, list topics?)
 	.list users
 	.list weekly themes
 	.list tools
+
+	.preferences system enhancements
+		.hide from non admin
 
 
 ## Hosting
