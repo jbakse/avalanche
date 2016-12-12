@@ -81,7 +81,13 @@
 					{{/if}}
 				</div>
 				<label for="upload-file-0" class="button">
-					<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 0
+					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 0 -->
+					<div class="upload-file-container">
+						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
+					</div>
+
+
 				</label>
 				<input class="upload-file-0 hidden" id="upload-file-0" name="upload-file-0" type="file">
 
@@ -95,7 +101,11 @@
 					{{/if}}
 				</div>
 				<label for="upload-file-1" class="button">
-					<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 1
+					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 1 -->
+					<div class="upload-file-container">
+						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
+					</div>
 				</label>
 				<input class="upload-file-1 hidden" id="upload-file-1" name="upload-file-1" type="file">
 
@@ -109,7 +119,11 @@
 					{{/if}}
 				</div>
 				<label for="upload-file-2" class="button">
-					<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 2
+					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 2 -->
+					<div class="upload-file-container">
+						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
+					</div>
 				</label>
 				<input class="upload-file-2 hidden" id="upload-file-2" name="upload-file-2" type="file">
 
@@ -127,39 +141,38 @@
 
 				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
 
-				<section>
-					<label class="select-label">Topic</label>
-					<select class="cs-select cs-skin-slide">
-						<option value="sightseeing">Week 1: Tiles</option>
-						<option value="business">Week 2: Random</option>
-						<option value="honeymoon">Week 3: Pixels</option>
-						<option value="food">Week 4: Turtles</option>
-						<option value="shopping">Week 5: SVG</option>
-						<option value="shopping">Week 6: Animation</option>
-						<option value="shopping">Week 7: Quartz Composer </option>
-						<option value="shopping">Week 8: Sound Visualization</option>
-						<option value="shopping">Week 9: Sound Creation</option>
-						<option value="shopping">Week 10: Text</option>
-						<option value="shopping">Week 11: 3D</option>
-					</select>
-				</section>
 
 
 
 
 
-          <!-- trying to replace with animated form -->
+				{{> afQuickField name='lesson' options=lessons}}
+
+				<div class="inspiration inspiration_name">
+					{{> afQuickField name='inspiration_name' placeholder='Inspiration Name'}}
+				</div>
+
+				<div class="inspiration inspiration_url">
+					{{> afQuickField name='inspiration_url' placeholder='Paste URL here'}}
+				</div>
+
+				<div class="inspiration inspiration-button"> + </div>
+
+				{{> afQuickField name='description' rows=6 placeholder='Description'}}
+
+
 					<!-- {{> afQuickField name='lesson' options=lessons}} -->
-					{{> afQuickField name='inspiration_name'}}
+					<!-- {{> afQuickField name='inspiration_name'}}
 					{{> afQuickField name='inspiration_url'}}
-					{{> afQuickField name='description' rows=6}}
+					{{> afQuickField name='description' rows=6}} -->
 
 					<!-- {{> afQuickField name='posted'}} -->
 
 					{{#with post}}
-
-					<button type="submit" class="submit btn btn-primary">Update</button>
-					<button type="button" class="cancel btn">Cancel</button>
+					<div class="submit-cancel-container">
+						<button type="submit" class="submit btn btn-primary">Update</button>
+						<button type="button" class="cancel btn">Cancel</button>
+					</div>
 					{{/with}}
 				{{/autoForm}}
 
