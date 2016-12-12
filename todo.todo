@@ -1,18 +1,34 @@
-# BUGS
+###################################################
+### BUGS
 
 Brinna - button for creating a post doesnt open the form when clicked from user profile page
 Move Forms to Light Boxes
 Lesson Dropdown is text field on Post a Sketch
 Verify success before closing light box.
 
-# PLAN 3.1 33
 
-this if that
+
+###################################################
+### SHAME
+
+.fix shame:
+	.(this might be done, check) use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
+	.why no dropdown on the new post form? the edit post page has a dropdown. (missing helper for tools/whatever)
+	.currently no way to clear an image from post
+	.isotope works on avalanche, doesn't have event hooks on users. factor isotope and posts into posts.js?
+
+
+
+
+
+###################################################
+### CURRENT ASSIGNMENTS
+
 
 Brinna
 	.Post Sketch Form
 	.what justin likes for this. simple, clear, direct
-	.Post Summaris (avalanche)
+	.Post Summaries (avalanche)
 	.Header
 
 Justin
@@ -29,18 +45,23 @@ Justin
 	x.better observer on posts list (update isotope)
 	x.preferences system
 		x.lock out non admin
-
+		.create way to set admin ability on users through interface, need bootstrap solution (maybe first new user is an admin?)
 
 
 	.weekly post counting
 
 	.!CLEAR OUT LEAKED PASSWORD!
 
-Phase 1: Posting
+###################################################
+### FEATURE CATALOG
+
+### Phase 1: Posting
 	Users
 		Create Account
 		Edit Account
 		Profile Page
+		Roles: Admin | Not Admin
+		Roles: Faculty | TA | Student | Featured Guest | Anon
 
 	Posts
 		Create Post / Edit Post
@@ -58,119 +79,38 @@ Phase 1: Posting
 			Date (Auto)
 
 	Preferences System
-		Add in manual FFE on homepage
+		Just for admins
 		Set weekly topics
 		Set start/end ranges for reporting
+		Set new post defaults
+		Edit homepage message.
 
 	User Summary
 		Color Coded Tops
 		Weekly Counts
-
+		Sort by weekly count
 
 	Design Questions
-		Allow multiple inspiration
+		Allow multiple inspiration links?
+
+	Post Summary Views
+		Avalanche (pin board layout by date
+		Topic View (show grouped by topics, which is close to dates, but not the same!)
 
 	Post Counting/Reporting
+		Student semester total, weekly total
+		All students semester total, weekly total (don't count teacher, ta, or guest posts?)
 
 	Admin
 		Delete Account
 		Set Account as Admin
 		Toggle Admin active
 
-Phase 2: Social
+### Phase 2: Social
 	Voting
 	Replies?
-	1Inspiration Posts (external links)
+	Inspiration Only Posts (external links) Don't count a sketch posts...
 
-Phase 3: Special Media
+### Phase 3: Special Media
 	Sounds
 	Live Code
-
-
-
-## Active Tasks
-	.better roles
-		x.roles package
-		x.set up so user can have "admin mode" on or off
-		x.allow owner -or- users with admin mode to do stuffs
-			?.and helper for "owner" "admin" "owner or admin"
-
-
-	x.user list (summary)
-
-	.interface to replace media on post
-		x.(factoring: change "poster" to "media"?)
-
-
-Admin tools:
-	.home page message? Maybe I control the "Week 2: Random" headline directly + "alerts" or "notes"?
-	.Auto insert current lesson (maybe have a hidden post for admins to set defaults with?)
-
-
-.fix shame:
-	.#create-post-form label.button {
-	.use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
-
-	why no dropdown on the new post form? the edit post page has a dropdown. (missing helper for tools/whatever)
-
-	.no way to clear an image from post
-
-	.isotope works on avalanche, doesn't have event hooks on users. factor isotope and posts into posts.js?
-## Navigation
-.hamburger menu (list users, list topics?)
-	.list users
-	.list weekly themes
-	.list tools
-
-	.preferences system enhancements
-		.hide from non admin
-
-
-## Hosting
-x.Heroku (app/db)
-x.Cloudinary (images)
-
-## Posts
-x.hook up data (data in db, api, ui, viewing)
-x.crud basics
-	x.create (from form)
-	x.read
-	x.update
-	x.create from loggedin user info
-	x.delete
-
-
-
-## Accounts
-x.Allow Login
-x.Admin Role
-2.Student Role
-2.Guest Role
-?.Single Sign-on w/ Google
-@design.profile
-	x.picture
-	.better edit flow?
-	.description?
-	.other fields?
-
-## Views
-x.Avalanche (stub)
-x.User Detail (stub)
-x.Post Detail
-1.Overview
-1.Overview (Show chart of posts per week/student)
-
-## Web Uploads
-x.Upload images
-x.Create thumbnails/resize images
-x.Support PNG
-x.Support JPG
-x.Support GIF
-x.Upload Videos
-3.upload sounds
-3.Upload "dumb" files
-?.Remote storage S3
-
-## Realtime Code
-3.Edit/Paste Code Snippets
-3.Realtime running
