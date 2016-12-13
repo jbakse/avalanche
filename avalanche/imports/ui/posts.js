@@ -1,3 +1,4 @@
+import {getPrefs} from "../api/prefs.js";
 import {Posts} from "../api/posts.js";
 import "./posts.html";
 
@@ -65,8 +66,6 @@ function uploadFile(post, slot, files) {
 
 Template.edit_post_form.events({
 	"click .cancel": function() {
-		// console.log("hi cancel", this);
-		// console.log(this);
 		if (!this.posted) {
 			Meteor.call("posts.remove", this._id);
 		}
@@ -126,12 +125,22 @@ Template.edit_post_form.events({
 	// },,
 });
 
+
+
 Template.edit_post_form.helpers({
 	post() {
 		// console.log("hi", this.post_id);
 		return Posts.findOne(this.post_id);
 	},
 	lessons() {
-		return {art: "art", design: "design", science: "science"};
+
+		let p = getPrefs();
+		if (!p) {
+			return {};
+		}
+
+		let lessons = _.pluck(p.weeks, "topic");
+		lessons = _.object(lessons, lessons);
+		return lessons;
 	}
 });

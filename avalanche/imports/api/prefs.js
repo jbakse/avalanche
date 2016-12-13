@@ -47,6 +47,11 @@ let PrefsSchema = new SimpleSchema({
 
 
 export const Prefs = new Mongo.Collection("prefs");
+export const getPrefs = function(){
+	let prefs = Prefs.find({});
+	prefs = prefs.fetch()[0];
+	return prefs;
+};
 
 Prefs.attachSchema(PrefsSchema);
 

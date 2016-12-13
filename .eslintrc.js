@@ -22,6 +22,7 @@ module.exports = {
         "Session": true,
         "BlazeLayout": true,
         "AutoForm": true,
+        "_": true,
     },
     "rules": {
         "no-console": "off",

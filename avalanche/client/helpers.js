@@ -17,11 +17,11 @@ Template.registerHelper("json", function (data) {
 	return `<pre>${data}</pre>`;
 });
 
-import {Prefs} from "../imports/api/prefs.js";
-
+import {getPrefs} from "../imports/api/prefs.js";
 Template.registerHelper("prefs", function() {
-	let prefs = Prefs.find({});
-	return prefs.fetch()[0];
+	return getPrefs();
+	// let prefs = Prefs.find({});
+	// return prefs.fetch()[0];
 });
 
 
