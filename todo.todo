@@ -12,7 +12,7 @@ Verify success before closing light box.
 ### SHAME
 
 .fix shame:
-	.(this might be done, check) use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
+	x.(this might be done, check) use of session.get, probably the avalanche template should use it, then use a "with" block to set either the post or post id. The post form would use the this.id, etc instead of session. Would generalize things.
 	.why no dropdown on the new post form? the edit post page has a dropdown. (missing helper for tools/whatever)
 	.currently no way to clear an image from post
 	.isotope works on avalanche, doesn't have event hooks on users. factor isotope and posts into posts.js?

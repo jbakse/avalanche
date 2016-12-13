@@ -1,4 +1,4 @@
-import {Users} from "../api/users.js";
+// import {Users} from "../api/users.js";
 import "./users.html";
 
 Template.user_summaries.helpers({
@@ -11,7 +11,7 @@ Template.user_summaries.helpers({
 
 Template.edit_user_form.helpers({
 	user() {
-		return Meteor.users.findOne(Session.get("editing_user"));
+		return Meteor.users.findOne(this.user_id);
 	}
 });
 
@@ -21,8 +21,6 @@ Template.edit_user_form.helpers({
 
 Template.edit_user_form.events({
 	"click .cancel": function() {
-		// console.log("cancel");
-		//Meteor.call("posts.remove", Session.get("creating_post"));
 		Session.set("editing_user", false);
 	},
 
@@ -58,7 +56,7 @@ Template.edit_user_form.events({
 		// 	console.log("Upload Error:", err);
 		// 	console.log("Upload Result:", res);
 		// 	if (!err) {
-		// 		Meteor.call("posts.updateMedia", Session.get("creating_post"), res);
+
 		// 	}
 		// });
 

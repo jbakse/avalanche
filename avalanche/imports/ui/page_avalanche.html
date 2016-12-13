@@ -21,7 +21,7 @@
 				{{/each}}
 			</div>
 			{{#if previewing_post}}
-				{{> post_overlay}}
+				{{> post_overlay post_id=previewing_post}}
 			{{/if}}
 			{{#if editing_post}}
 				{{> edit_post_form post_id=editing_post}}

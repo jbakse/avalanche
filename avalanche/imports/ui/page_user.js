@@ -59,12 +59,9 @@ Template.page_user.events({
 
 
 	"click .edit-user": function(/*event*/){
-		console.log("edit-user", this._id);
+
 		Session.set("editing_user", this._id);
-		//Session.set("creating_post", true);
-		// Meteor.call("posts.insert", {}, function(error, id) {
-		// 	Session.set("creating_post", id);
-		// });
+		
 	},
 
 	"click .remove-user": function(/*event*/) {
