@@ -76,6 +76,18 @@ Template.edit_post_form.events({
 		// handled through autoform hooks
 	},
 
+	"click .remove-file-0": function() {
+		Meteor.call("posts.updateMedia", this.post_id, 0, {});
+	},
+
+	"click .remove-file-1": function() {
+		Meteor.call("posts.updateMedia", this.post_id, 1, {});
+	},
+
+	"click .remove-file-2": function() {
+		Meteor.call("posts.updateMedia", this.post_id, 2, {});
+	},
+
 	"change .upload-file-0": function(event, template) {
 		let post = this.post_id;
 		let slot = 0;

@@ -80,14 +80,17 @@
 						<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt="" />
 					{{/if}}
 				</div>
+				{{#if post.cloudinary_media.[0].resource_type}}
+					<button class="btn remove-file-0">
+						Remove Image
+					</button>
+				{{/if}}
 				<label for="upload-file-0" class="button">
 					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 0 -->
 					<div class="upload-file-container">
 						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
 						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
 					</div>
-
-
 				</label>
 				<input class="upload-file-0 hidden" id="upload-file-0" name="upload-file-0" type="file">
 
@@ -100,6 +103,11 @@
 						<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt="" />
 					{{/if}}
 				</div>
+				{{#if post.cloudinary_media.[1].resource_type}}
+					<button class="btn remove-file-1">
+						Remove Image
+					</button>
+				{{/if}}
 				<label for="upload-file-1" class="button">
 					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 1 -->
 					<div class="upload-file-container">
@@ -118,6 +126,11 @@
 						<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt="" />
 					{{/if}}
 				</div>
+				{{#if post.cloudinary_media.[2].resource_type}}
+					<button class="btn remove-file-2">
+						Remove Image
+					</button>
+				{{/if}}
 				<label for="upload-file-2" class="button">
 					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 2 -->
 					<div class="upload-file-container">
@@ -130,35 +143,23 @@
 
 
 
-				<script>
-				(function() {
-					[].slice.call( document.querySelectorAll( '#edit-post-form select.cs-select' ) ).forEach( function(el) {
-						new SelectFx(el);
-					} );
-				})();
-				</script>
+
 
 
 				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
+					{{> afQuickField name='lesson' options=lessons}}
 
+					<div class="inspiration inspiration_name">
+						{{> afQuickField name='inspiration_name' placeholder='Inspiration Name'}}
+					</div>
 
+					<div class="inspiration inspiration_url">
+						{{> afQuickField name='inspiration_url' placeholder='Paste URL here'}}
+					</div>
 
+					<div class="inspiration inspiration-button"> + </div>
 
-
-
-				{{> afQuickField name='lesson' options=lessons}}
-
-				<div class="inspiration inspiration_name">
-					{{> afQuickField name='inspiration_name' placeholder='Inspiration Name'}}
-				</div>
-
-				<div class="inspiration inspiration_url">
-					{{> afQuickField name='inspiration_url' placeholder='Paste URL here'}}
-				</div>
-
-				<div class="inspiration inspiration-button"> + </div>
-
-				{{> afQuickField name='description' rows=6 placeholder='Description'}}
+					{{> afQuickField name='description' rows=6 placeholder='Description'}}
 
 
 					<!-- {{> afQuickField name='lesson' options=lessons}} -->

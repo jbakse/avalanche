@@ -5,23 +5,23 @@ let PostSchema = new SimpleSchema({
 	author: {
 		type: String,
 		label: "Author",
-		defaultValue: ""
+		defaultValue: "",
 	},
 	author_id: {
 		type: String,
 		label: "Author ID",
 		defaultValue: "",
 		// optional: true,
-		// regex: SimpleSchema.RegEx.Id,,,,,,,,,,,
+		// regex: SimpleSchema.RegEx.Id,,,,,,,,,,,,
 	},
 	created_at: {
 		type: Date,
-		label: "Created At"
+		label: "Created At",
 	},
 	posted: {
 		type: Boolean,
 		label: "Posted",
-		defaultValue: false
+		defaultValue: false,
 	},
 	// poster: {
 	// 	type: String,
@@ -38,40 +38,40 @@ let PostSchema = new SimpleSchema({
 		type: [Object],
 		label: "Cloudinary Data",
 		blackbox: true,
-		defaultValue: [{}, {}, {}]
+		defaultValue: [
+			{}, {}, {},
+		],
 	},
 	lesson: {
 		type: String,
 		label: "Lesson",
-		defaultValue: ""
+		defaultValue: "",
 	},
 	title: {
 		type: String,
 		label: "Title",
 		defaultValue: "",
-		max: 10
+		max: 10,
 	},
 	description: {
 		type: String,
 		label: "Description",
-		defaultValue: ""
+		defaultValue: "",
 	},
 
 	inspiration_name: {
 		type: String,
 		label: "Inspiration Name",
 		optional: true,
-		defaultValue: ""
+		defaultValue: "",
 	},
 
 	inspiration_url: {
 		type: String,
 		label: "Inspiration URL",
 		optional: true,
-		defaultValue: ""
-	},
-
-
+		defaultValue: "",
+	}
 });
 
 export const Posts = new Mongo.Collection("posts");
@@ -103,7 +103,7 @@ Meteor.methods({
 			author_id: this.userId,
 			author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
 			lesson: "design",
-			created_at: new Date()
+			created_at: new Date(),
 		};
 
 		let id = Posts.insert(data);
@@ -118,7 +118,7 @@ Meteor.methods({
 			throw new Meteor.Error("unauthorized");
 		}
 
-		console.log("killing "+id);
+		console.log("killing " + id);
 		if (Meteor.isServer) {
 			// if (!post.poster) {
 			// 	Posts.remove(id);
@@ -130,13 +130,13 @@ Meteor.methods({
 			// 	}
 			// }));
 
-			if(post.cloudinary_media[0].public_id) {
+			if (post.cloudinary_media[0].public_id) {
 				Cloudinary.uploader.destroy(post.cloudinary_media[0].public_id);
 			}
-			if(post.cloudinary_media[1].public_id) {
+			if (post.cloudinary_media[1].public_id) {
 				Cloudinary.uploader.destroy(post.cloudinary_media[1].public_id);
 			}
-			if(post.cloudinary_media[2].public_id) {
+			if (post.cloudinary_media[2].public_id) {
 				Cloudinary.uploader.destroy(post.cloudinary_media[2].public_id);
 			}
 			Posts.remove(id);
@@ -155,19 +155,27 @@ Meteor.methods({
 		});
 	},
 
-
 	"posts.updateMedia" (id, slot, cloudinary_data) {
 		let post = Posts.findOne(id);
 		if (!postEditableBy(post, this.userId)) {
 			throw new Meteor.Error("unauthorized");
 		}
 
-		let key = "cloudinary_media."+slot;
-		let data = {};
-		data[key] = cloudinary_data;
+		// update slot with new data
+		post.cloudinary_media[slot] = cloudinary_data;
+
+		// shift media down to fill empty slots
+		for (let n = 0; n < 2; n++) {
+			if (_.isEmpty(post.cloudinary_media[n + 0]) && !_.isEmpty(post.cloudinary_media[n + 1])) {
+				post.cloudinary_media[n + 0] = post.cloudinary_media[n + 1];
+				post.cloudinary_media[n + 1] = {};
+			}
+		}
 
 		Posts.update(id, {
-			$set: data
+			$set: {
+				cloudinary_media: post.cloudinary_media
+			}
 		});
-	},
+	}
 });
