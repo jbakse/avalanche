@@ -1,0 +1,10 @@
+#layout-main
+    .page-avalanche
+        main
+            .avalanche-message
+            .user-summaries
+                .user-summary
+            .posts
+                .post
+            #edit-post-form
+            #post-overlay
