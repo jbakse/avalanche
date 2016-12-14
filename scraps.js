@@ -1,5 +1,8 @@
 // show file progress cloudinary
 
+files() {
+    return Cloudinary.collection.find({});
+}
 
 {{#each files}}
     {{percent_uploaded}}<br/>

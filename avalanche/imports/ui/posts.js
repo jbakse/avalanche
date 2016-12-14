@@ -2,8 +2,47 @@ import {getPrefs} from "../api/prefs.js";
 import {Posts} from "../api/posts.js";
 import "./posts.html";
 
+
+Template.post_list.rendered = function() {
+
+	let posts = this.find(".posts");
+
+	window.isotope = new Isotope(posts, {
+		itemSelector: ".post",
+		sortBy: "original-order",
+		transitionDuration: 0,
+		masonry: {
+			isFitWidth: true,
+		}
+	});
+
+	function relayoutIsotope() {
+		window.isotope.reloadItems();
+		window.isotope.arrange({sortBy: "original-order"});
+	}
+
+	let observer = new MutationObserver(function(/*mutations*/) {
+		relayoutIsotope();
+
+		$(posts).find("video").on("loadeddata", function() {
+			relayoutIsotope();
+		});
+
+		$(posts).find("img").on("load", function() {
+			relayoutIsotope();
+		});
+	});
+
+	observer.observe(posts, {
+		childList: true,
+		// subtree: true,
+	});
+};
+
+
+
 Template.post.events({
-	"click .poster-link": function(event) {
+	"click .poster-link": function() {
 		Session.set("previewing_post", this._id);
 		event.preventDefault();
 	},

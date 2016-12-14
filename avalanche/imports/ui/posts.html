@@ -1,45 +1,23 @@
+<template name="post_list">
+	<div class="posts">
+		{{#each posts}}
+			{{> post}}
+		{{/each}}
+	</div>
+</template>
+
 <template name="post">
 	<div class="post">
 
-		{{#if equals cloudinary_media.[0].resource_type "video"}}
-			<div class="poster-link" href="/posts/{{_id}}" >
-				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-			</div>
-		{{/if}}
-		{{#if equals cloudinary_media.[0].resource_type "image"}}
-			<div class="poster-link" href="/posts/{{_id}}" >
-				<img src="{{c.url cloudinary_media.[0].public_id width=400 crop='fill' quality=90}}" alt="" />
-			</div>
-		{{/if}}
-
-		{{#if equals cloudinary_media.[1].resource_type "video"}}
-			<div class="poster-link" href="/posts/{{_id}}" >
-				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-			</div>
-		{{/if}}
-		{{#if equals cloudinary_media.[1].resource_type "image"}}
-			<div class="poster-link" href="/posts/{{_id}}" >
-				<img src="{{c.url cloudinary_media.[1].public_id width=400 crop='fill' quality=90}}" alt="" />
-			</div>
-		{{/if}}
-
-		{{#if equals cloudinary_media.[2].resource_type "video"}}
-			<div class="poster-link" href="/posts/{{_id}}" >
-				<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-			</div>
-		{{/if}}
-		{{#if equals cloudinary_media.[2].resource_type "image"}}
-			<div class="poster-link" href="/posts/{{_id}}" >
-				<img src="{{c.url cloudinary_media.[2].public_id width=400 crop='fill' quality=90}}" alt="" />
-			</div>
-		{{/if}}
-
+		{{> post_poster _id=_id cloudinary_media=cloudinary_media.[0]}}
+		{{> post_poster _id=_id cloudinary_media=cloudinary_media.[1]}}
+		{{> post_poster _id=_id cloudinary_media=cloudinary_media.[2]}}
 		<div class="info">
 			{{#if inspiration_url}}
-			<div class="inspiration">
-				<span class="">Inspired by: </span>
-				<a href="{{inspiration_url}}">{{inspiration_name}}</a>
-			</div>
+				<div class="inspiration">
+					<span class="">Inspired by: </span>
+					<a href="{{inspiration_url}}">{{inspiration_name}}</a>
+				</div>
 			{{/if}}
 
 			<div class="author">
@@ -63,6 +41,18 @@
 	</div>
 </template>
 
+<template name="post_poster">
+	{{#if equals cloudinary_media.resource_type "video"}}
+		<div class="poster-link" href="/posts/{{_id}}" >
+			<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.public_id}}.mp4" autoplay=true loop=true muted=true></video>
+		</div>
+	{{/if}}
+	{{#if equals cloudinary_media.resource_type "image"}}
+		<div class="poster-link" href="/posts/{{_id}}" >
+			<img src="{{c.url cloudinary_media.public_id width=400 crop='fill' quality=90}}" alt="" />
+		</div>
+	{{/if}}
+</template>
 
 
 <template name="edit_post_form">
