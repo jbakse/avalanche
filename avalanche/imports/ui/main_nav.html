@@ -29,6 +29,11 @@
 						<li>
 							<a class="toggle-admin" href="#">Admin</a>
 						</li>
+						{{#if userIsAdmin}}
+							<li>
+								<a href="/prefs">Prefs</a>
+							</li>
+						{{/if}}
 						<li>
 							<a class="sign-out" href="#">Sign Out</a>
 						</li>

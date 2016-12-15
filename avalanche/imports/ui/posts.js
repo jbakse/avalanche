@@ -2,7 +2,6 @@ import {getPrefs} from "../api/prefs.js";
 import {Posts} from "../api/posts.js";
 import "./posts.html";
 
-
 Template.post_list.rendered = function() {
 
 	let posts = this.find(".posts");
@@ -12,8 +11,8 @@ Template.post_list.rendered = function() {
 		sortBy: "original-order",
 		transitionDuration: 0,
 		masonry: {
-			isFitWidth: true,
-		}
+			isFitWidth: true
+		},
 	});
 
 	function relayoutIsotope() {
@@ -35,11 +34,9 @@ Template.post_list.rendered = function() {
 
 	observer.observe(posts, {
 		childList: true,
-		// subtree: true,
+		// subtree: true,,
 	});
 };
-
-
 
 Template.post.events({
 	"click .poster-link": function() {
@@ -53,7 +50,7 @@ Template.post.events({
 
 	"click .edit-post": function() {
 		Session.set("editing_post", this._id);
-	},
+	}
 });
 
 Template.post_overlay.helpers({
@@ -75,24 +72,31 @@ AutoForm.hooks({
 			Meteor.call("posts.mark_posted", this.docId);
 			Session.set("editing_post", false);
 		},
-		"onError": function(formType, result) {
-		}
+		"onError": function(formType, result) {},
 	},
 
-
 	"updatePrefsForm": {
+		"before": {
+			update: function(doc) {
+				console.log("before", doc);
+				console.log(doc.$set.weeks);
+				doc.$set.weeks = _.sortBy(doc.$set.weeks, "start");
+
+				this.result(doc);
+			}
+		},
 		"onError": function(insertDoc, updateDoc, currentDoc) {
 			console.log(JSON.stringify(this.updateDoc));
 			this.event.preventDefault();
 			return false;
-		}
-	}
+		},
+	},
 });
 
 function uploadFile(post, slot, files) {
 	Cloudinary.upload(files, {
 		folder: "avalanche",
-		resource_type: "auto",
+		resource_type: "auto"
 	}, (err, res) => {
 		// console.log("Upload Error:", err);
 		// console.log("Upload Result:", res);
@@ -101,7 +105,6 @@ function uploadFile(post, slot, files) {
 		}
 	});
 }
-
 
 Template.edit_post_form.events({
 	"click .cancel": function() {
@@ -148,7 +151,6 @@ Template.edit_post_form.events({
 		uploadFile(post, slot, files);
 	},
 
-
 	// "change .create-post-file": function(event, template) {
 	//
 	// 	event.preventDefault();
@@ -173,10 +175,8 @@ Template.edit_post_form.events({
 	// 	});
 	//
 	//
-	// },,
+	// },,,
 });
-
-
 
 Template.edit_post_form.helpers({
 	post() {
@@ -193,5 +193,5 @@ Template.edit_post_form.helpers({
 		let lessons = _.pluck(p.weeks, "topic");
 		lessons = _.object(lessons, lessons);
 		return lessons;
-	}
+	},
 });
