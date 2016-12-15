@@ -15,7 +15,8 @@
 		<div class="info">
 			{{#if inspiration_url}}
 				<div class="inspiration">
-					<span class="">Inspired by: </span>
+					<span class="">Inspired by:
+					</span>
 					<a href="{{inspiration_url}}">{{inspiration_name}}</a>
 				</div>
 			{{/if}}
@@ -25,7 +26,8 @@
 			</div>
 
 			<div class="date">
-				{{formatDate post.created_at}}, {{formatTime post.created_at}}
+				{{formatDate post.created_at}},
+				{{formatTime post.created_at}}
 			</div>
 		</div>
 
@@ -43,22 +45,23 @@
 
 <template name="post_poster">
 	{{#if equals cloudinary_media.resource_type "video"}}
-		<div class="poster-link" href="/posts/{{_id}}" >
+		<div class="poster-link" href="/posts/{{_id}}">
 			<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.public_id}}.mp4" autoplay=true loop=true muted=true></video>
 		</div>
 	{{/if}}
 	{{#if equals cloudinary_media.resource_type "image"}}
-		<div class="poster-link" href="/posts/{{_id}}" >
-			<img src="{{c.url cloudinary_media.public_id width=400 crop='fill' quality=90}}" alt="" />
+		<div class="poster-link" href="/posts/{{_id}}">
+			<img src="{{c.url cloudinary_media.public_id width=400 crop='fill' quality=90}}" alt=""/>
 		</div>
 	{{/if}}
 </template>
 
-
 <template name="edit_post_form">
 	<div id="edit-post-form" class="overlay">
 		<div class="overlay-form">
-			<div class="title-bar">Edit Post {{post_id}} </div>
+			<div class="title-bar">Edit Post
+				{{post_id}}
+			</div>
 			<div class="content">
 
 				<!-- media item 0 -->
@@ -67,7 +70,7 @@
 						<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true></video>
 					{{/if}}
 					{{#if equals post.cloudinary_media.[0].resource_type "image"}}
-						<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt="" />
+						<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt=""/>
 					{{/if}}
 				</div>
 				{{#if post.cloudinary_media.[0].resource_type}}
@@ -79,7 +82,9 @@
 					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 0 -->
 					<div class="upload-file-container">
 						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
-						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
+						<div class="drag-drop-browse">Drag files here or
+							<span class="browse">browse</span>
+						</div>
 					</div>
 				</label>
 				<input class="upload-file-0 hidden" id="upload-file-0" name="upload-file-0" type="file">
@@ -90,7 +95,7 @@
 						<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true></video>
 					{{/if}}
 					{{#if equals post.cloudinary_media.[1].resource_type "image"}}
-						<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt="" />
+						<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt=""/>
 					{{/if}}
 				</div>
 				{{#if post.cloudinary_media.[1].resource_type}}
@@ -102,7 +107,9 @@
 					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 1 -->
 					<div class="upload-file-container">
 						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
-						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
+						<div class="drag-drop-browse">Drag files here or
+							<span class="browse">browse</span>
+						</div>
 					</div>
 				</label>
 				<input class="upload-file-1 hidden" id="upload-file-1" name="upload-file-1" type="file">
@@ -113,7 +120,7 @@
 						<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true></video>
 					{{/if}}
 					{{#if equals post.cloudinary_media.[2].resource_type "image"}}
-						<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt="" />
+						<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt=""/>
 					{{/if}}
 				</div>
 				{{#if post.cloudinary_media.[2].resource_type}}
@@ -125,16 +132,12 @@
 					<!-- <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i> Upload File 2 -->
 					<div class="upload-file-container">
 						<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
-						<div class="drag-drop-browse">Drag files here or <span class="browse">browse</span> </div>
+						<div class="drag-drop-browse">Drag files here or
+							<span class="browse">browse</span>
+						</div>
 					</div>
 				</label>
 				<input class="upload-file-2 hidden" id="upload-file-2" name="upload-file-2" type="file">
-
-
-
-
-
-
 
 				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
 					{{> afQuickField name='lesson' options=lessons}}
@@ -147,10 +150,11 @@
 						{{> afQuickField name='inspiration_url' placeholder='Paste URL here'}}
 					</div>
 
-					<div class="inspiration inspiration-button"> + </div>
+					<div class="inspiration inspiration-button">
+						+
+					</div>
 
 					{{> afQuickField name='description' rows=6 placeholder='Description'}}
-
 
 					<!-- {{> afQuickField name='lesson' options=lessons}} -->
 					<!-- {{> afQuickField name='inspiration_name'}}
@@ -160,10 +164,10 @@
 					<!-- {{> afQuickField name='posted'}} -->
 
 					{{#with post}}
-					<div class="submit-cancel-container">
-						<button type="submit" class="submit btn btn-primary">Update</button>
-						<button type="button" class="cancel btn">Cancel</button>
-					</div>
+						<div class="submit-cancel-container">
+							<button type="submit" class="submit btn btn-primary">Update</button>
+							<button type="button" class="cancel btn">Cancel</button>
+						</div>
 					{{/with}}
 				{{/autoForm}}
 
@@ -173,39 +177,41 @@
 	</div>
 </template>
 
-
 <template name="post_overlay">
 	<div id="post-overlay" class="overlay">
 		<div class="overlay-content">
 
 			<div class="name-value">
 				<span class="name">Author</span>
-				<span class="value"><a href="/users/{{post.author_id}}">{{post.author}}</a></span>
+				<span class="value">
+					<a href="/users/{{post.author_id}}">{{post.author}}</a>
+				</span>
 			</div>
 			<div class="name-value">
 				<span class="name">Posted</span>
-				<span class="value">{{formatDate post.created_at}}, {{formatTime post.created_at}}</span>
+				<span class="value">{{formatDate post.created_at}},
+					{{formatTime post.created_at}}</span>
 			</div>
 
 			{{#if equals post.cloudinary_media.[0].resource_type "video"}}
 				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true loop=true></video>
 			{{/if}}
 			{{#if equals post.cloudinary_media.[0].resource_type "image"}}
-				<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt="" />
+				<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt=""/>
 			{{/if}}
 
 			{{#if equals post.cloudinary_media.[1].resource_type "video"}}
 				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true></video>
 			{{/if}}
 			{{#if equals post.cloudinary_media.[1].resource_type "image"}}
-				<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt="" />
+				<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt=""/>
 			{{/if}}
 
 			{{#if equals post.cloudinary_media.[2].resource_type "video"}}
 				<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true></video>
 			{{/if}}
 			{{#if equals post.cloudinary_media.[2].resource_type "image"}}
-				<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt="" />
+				<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt=""/>
 			{{/if}}
 
 		</div>

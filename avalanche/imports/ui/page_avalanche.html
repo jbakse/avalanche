@@ -3,7 +3,7 @@
 		{{> main_nav}}
 
 		<main>
-			
+
 			<div class="avalanche-message">
 				{{{prefs.avalanche_message}}}
 			</div>
@@ -11,15 +11,15 @@
 			{{> user_summaries}}
 
 			{{> post_list posts=posts}}
-
-			{{#if previewing_post}}
-				{{> post_overlay post_id=previewing_post}}
-			{{/if}}
-
-			{{#if editing_post}}
-				{{> edit_post_form post_id=editing_post}}
-			{{/if}}
-
 		</main>
+
+		{{#if previewing_post}}
+			{{> post_overlay post_id=previewing_post}}
+		{{/if}}
+
+		{{#if editing_post}}
+			{{> edit_post_form post_id=editing_post}}
+		{{/if}}
+
 	</div>
 </template>

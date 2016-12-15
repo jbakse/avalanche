@@ -1,20 +1,28 @@
 <template name="page_user">
-	<div class = "page-user">
+	<div class="page-user">
 		{{> main_nav}}
 
-		<div class="user-info">
-			{{#with user}}
-				<img class="headshot" src="{{c.url user.profile.headshot width=250 height=250 crop='fill'}}" alt="" />
-				<h1 class="name">{{profile.first_name}} {{profile.last_name}}</h1>
-				<div class="description">{{profile.description}}</div>
-				<button class="btn edit-user">Edit Info</button>
-			{{/with}}
-		</div>
+		<main>
+			<div class="user-info">
+				{{#with user}}
+					<img class="headshot" src="{{c.url user.profile.headshot width=250 height=250 crop='fill'}}" alt=""/>
+					<h1 class="name">
+						{{profile.first_name}}
+						{{profile.last_name}}
+					</h1>
+					<div class="description">{{profile.description}}</div>
+					<button class="btn edit-user">Edit Info</button>
+				{{/with}}
+			</div>
 
-		<div class="sketch-count">{{sketch_count}} sketches</div>
+			<div class="sketch-count">
+				{{sketch_count}}
+				sketches
+			</div>
 
+			{{> post_list posts=posts}}
 
-		{{> post_list posts=posts}}
+		</main>
 
 		{{#if previewing_post}}
 			{{> post_overlay post_id=previewing_post}}
@@ -27,9 +35,6 @@
 		{{#if editing_user}}
 			{{> edit_user_form user_id=editing_user}}
 		{{/if}}
-
-
-
 
 	</div>
 </template>

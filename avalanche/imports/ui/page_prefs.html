@@ -1,12 +1,13 @@
-<template name = "page_prefs">
-	<div class = "page-prefs">
-        <h1>Edit Prefs</h1>
+<template name="page_prefs">
+	<div class="page-prefs">
+		{{> main_nav}}
 
+		<main>
+			{{> quickForm collection="Prefs" id="updatePrefsForm" doc=prefs type="update"}}
 
-        {{> quickForm collection="Prefs" id="updatePrefsForm" doc=prefs type="update"}}
-
-        <div class="debug-info">
-            {{{json prefs}}}
-        </div>
-    </div>
+			<div class="debug-info">
+				{{{json prefs}}}
+			</div>
+		</main>
+	</div>
 </template>
