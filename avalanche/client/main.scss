@@ -5,7 +5,7 @@ $brand-color: #50E3C2;
 $accent-color: red;
 
 ////////////////////////////////////////////////
-/// Layout
+/// Basics
 ////////////////////////////////////////////////
 
 * {
@@ -36,6 +36,34 @@ em,
 i {
 	font-style: italic;
 }
+
+main {
+	padding: 2em;
+}
+
+////////////////////////////////////////////////
+/// General Modules
+////////////////////////////////////////////////
+
+.message {
+	border: 1px solid $brand-color;
+	border-radius: 5px;
+	padding: 1em;
+	text-align: center;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+
+div.name-value {
+	.name {
+		display: block;
+	}
+
+	.value {
+		display: block;
+		margin-bottom: 10px;
+	}
+}
+
 ////////////////////////////////////////////////
 /// main_nav
 ////////////////////////////////////////////////
@@ -45,7 +73,6 @@ i {
 	flex: 0 auto;
 	background: white;
 	padding: 20px;
-	// border: 1px solid red;
 }
 
 .main-nav .right {
@@ -55,30 +82,7 @@ i {
 	padding: 10px;
 }
 
-.main-nav {
-	.button {
-		cursor: pointer;
-		margin: 0 10px;
-	}
-
-	a.button {
-		color: black;
-	}
-
-	.button:hover {
-		color: $accent-color;
-	}
-
-	.create-post-file {
-		display: none;
-	}
-}
-
-.create-post {
-	background: $brand-color;
-}
-
-.dropdown {
+.user-dropdown {
 	display: inline;
 }
 
@@ -102,13 +106,50 @@ i {
 }
 
 ////////////////////////////////////////////////
-/// posts
+/// Page Avalanche
 ////////////////////////////////////////////////
 
-#updatePrefsForm {
-	// border: 1px solid red;
+////////////////////////////////////////////////
+/// Page User
+////////////////////////////////////////////////
+
+.user-info {
+	padding: 10px;
+	background: white;
+	padding: 2em;
 	margin: 2em;
+	text-align: center;
+	position: relative;
 }
+
+.user-info .headshot {
+	border-radius: 50%;
+	margin-bottom: 1em;
+}
+
+.user-info .name {
+	font-size: 64px;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+.user-info .description {
+	font-size: 24px;
+}
+
+.user-info button.edit-user {
+	position: absolute;
+	right: 1em;
+	top: 1em;
+}
+
+.sketch-count {
+	text-align: center;
+}
+
+////////////////////////////////////////////////
+/// Page Prefs
+////////////////////////////////////////////////
 
 .debug-info {
 	margin: 2em;
@@ -131,29 +172,15 @@ i {
 	display: flex;
 	flex-wrap: wrap;
 	margin: auto;
-	// border: 1px solid red;
+
 }
-// .posts {
-//     display: flex;
-//     flex-wrap: wrap;
-//
-//     > .post {
-//
-//         flex: 1 1 auto;
-//         // margin-right: $grid;
-//         // margin-bottom: $grid;
-//     }
-// }
 
 .post {
 	width: 400px;
-	// border: 1px solid green;
-	// flex: 1 1 auto;
 	margin: 20px 10px;
 }
 
 .post .info {
-	// border: 1px solid #DDD;
 	background: white;
 	padding: 10px;
 	font-size: 14px;
@@ -161,114 +188,11 @@ i {
 
 .post img {
 	display: block;
-	// width: 250px;
-	// width: 100%;
-	// height: 250px;
 	object-fit: cover;
-
 }
 
 .post video {
-	// border: 1px solid red;
 	display: block;
-}
-
-////////////////////////////////////////////////
-/// Page Post
-////////////////////////////////////////////////
-.avalanche-message {
-	border: 1px solid $brand-color;
-	border-radius: 5px;
-	margin: 2em;
-	padding: 1em;
-	text-align: center;
-	box-shadow: 0 0 5px rgba(0,0,0,.2);
-}
-
-////////////////////////////////////////////////
-/// Page Post
-////////////////////////////////////////////////
-
-.page-post main {
-	position: absolute;
-	height: 100%;
-	display: flex;
-	opacity: 0;
-
-	.left {
-		padding: 10px;
-		width: 300px;
-		flex: 0 0 auto;
-	}
-
-	.right {
-		flex: 1 1 auto;
-		height: 100%;
-	}
-}
-
-.page-post .poster {
-	max-width: 100%;
-	max-height: 100%;
-	margin: 0;
-}
-////////////////////////////////////////////////
-/// Page User
-////////////////////////////////////////////////
-
-.user-info {
-	padding: 10px;
-	// border: 1px solid red;
-	background: white;
-	padding: 2em;
-	margin: 2em;
-	text-align: center;
-	position: relative;
-}
-
-.user-info .headshot {
-	// border: 1px solid red;
-	border-radius: 50%;
-	margin-bottom: 1em;
-}
-
-.user-info .name {
-	font-size: 64px;
-	font-weight: bold;
-	margin-bottom: 0.5em;
-}
-
-.user-info .description {
-	font-size: 24px;
-}
-
-.user-info button.edit-user {
-	position: absolute;
-	right: 1em;
-	top: 1em;
-}
-
-.page-user .sketch-count {
-	text-align: center;
-}
-
-#edit-user-form .headshot-wrap {
-	// border: 1px solid red;
-	width: 100%;
-	margin-bottom: 1em;
-	text-align: center;
-
-	img {
-		// border: 1px solid red;
-		border-radius: 50%;
-
-	}
-}
-
-#edit-user-form .upload {
-	// border: 1px solid red;
-	margin: auto;
-	text-align: center;
 }
 
 ////////////////////////////////////////////////
@@ -276,15 +200,12 @@ i {
 ////////////////////////////////////////////////
 
 .user-summaries {
-	// border: 1px solid red;
 	margin: 1em;
-	// margin: auto;
 	display: flex;
 	justify-content: center;
 }
 
 .user-summary {
-	// border: 1px solid red;
 	background: white;
 	padding: 5px 10px;
 	text-align: center;
@@ -305,30 +226,10 @@ i {
 }
 
 ////////////////////////////////////////////////
-/// Utils
-////////////////////////////////////////////////
-
-div.name-value {
-	.name {
-		display: block;
-	}
-
-	.value {
-		display: block;
-		margin-bottom: 10px;
-	}
-}
-
-////////////////////////////////////////////////
-/// forms
-////////////////////////////////////////////////
-
-////////////////////////////////////////////////
 /// overlay
 ////////////////////////////////////////////////
 
 .overlay {
-
 	background: rgba(203,223,255,.9);
 	position: fixed;
 	top: 0;
@@ -347,19 +248,10 @@ div.name-value {
 }
 
 .overlay-form .title-bar {
-	//background-color: $brand-color;
 	text-align: center;
 	font-size: 1em;
 	padding: 1em;
 }
-
-// #layout-main input {
-// 	border: none;
-// 	box-shadow: none;
-// 	border-radius: 0;
-// 	border-bottom: 1px solid lightgrey;
-// 	color: black;
-// }
 
 ////////////////////////////////////////////////
 /// #edit-post-form
@@ -404,49 +296,6 @@ div.name-value {
 
 	width: 100%;
 }
-
-// #edit-post-form .submit {
-// 	background-color: $brand-color;
-// 	border: none;
-// 	width: 100%;
-// 	color: black;
-// }
-//
-// #edit-post-form .cancel {
-// 	background-color: white;
-// 	width: 100%;
-// 	text-align: center;
-//
-// }
-//
-// #edit-post-form .content {
-// 	padding: 10px;
-// }
-
-// .input {
-// 	border-style: solid;
-// 	border-bottom: thick dotted #ff0000;
-// }
-
-// .info {
-// 	margin-top: 0;
-// }
-
-// .overlay {
-// 	background: rgba(0,0,0,.8);
-// 	width: 100%;
-// 	height: 100%;
-// 	z-index: 5;
-//
-// }
-
-// .post-detail {
-// 	background: white;
-// 	width: 80%;
-// 	margin: 50px auto 0;
-// }
-
-//370
 
 #edit-post-form .submit {
 	position: absolute;
@@ -566,10 +415,6 @@ div.name-value {
 	width: 50%;
 }
 
-.info {
-	margin-top: 0;
-}
-
 #layout-main form .form-group [name="inspiration_url"] {
 	width: 110%;
 }
@@ -578,8 +423,25 @@ div.name-value {
 	width: 100%;
 }
 
-.post-detail {
-	background: white;
-	width: 80%;
-	margin: 50px auto 0;
+////////////////////////////////////////////////
+/// misc forms for refactoring
+////////////////////////////////////////////////
+
+#edit-user-form .headshot-wrap {
+	// border: 1px solid red;
+	width: 100%;
+	margin-bottom: 1em;
+	text-align: center;
+
+	img {
+		// border: 1px solid red;
+		border-radius: 50%;
+
+	}
+}
+
+#edit-user-form .upload {
+	// border: 1px solid red;
+	margin: auto;
+	text-align: center;
 }
