@@ -20,6 +20,12 @@
 				sketches
 			</div>
 
+			<div class="user-weeks">
+				{{#each weeks}}
+					{{topic}}:{{count}}
+				{{/each}}
+			</div>
+
 			{{> post_list posts=posts}}
 
 		</main>

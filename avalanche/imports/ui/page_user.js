@@ -1,5 +1,7 @@
 import {Template} from "meteor/templating";
 import {Posts} from "../api/posts.js";
+import {getPrefs} from "../api/prefs.js";
+
 import "../api/users.js";
 import "./page_user.html";
 
@@ -23,12 +25,52 @@ Template.page_user.helpers({
 
 	sketch_count() {
 		let id = FlowRouter.getParam("userId");
-		let sketch_count = Posts.find({
-			author_id: id
-		}).count();
+		let sketch_count = Posts.find({author_id: id}).count();
 
 		return sketch_count;
-	}
+	},
+
+	weeks() {
+		let prefs = getPrefs();
+		if (!prefs)
+			return;
+
+
+		let userId = FlowRouter.getParam("userId");
+		console.log(userId);
+
+		let weeks = prefs.weeks;
+		let counts = [];
+
+		_.each(weeks, function(week) {
+
+			let posts = Posts.find({
+				"author_id": userId,
+				"created_at":
+				{
+					$gte: week.start,
+					$lt: week.end,
+				}
+
+			});
+
+			counts.push({
+				topic: week.topic,
+				start: week.start,
+				end: week.end,
+				week_posts: posts,
+				count: posts.count(),
+			});
+		});
+
+
+		return counts;
+
+		// return [{
+		// 	name: "magic",
+		// 	count: 3
+		// }];
+	},
 });
 
 Template.page_user.events({
@@ -39,7 +81,7 @@ Template.page_user.events({
 		let files = template.find(".upload-headshot-file").files;
 		Cloudinary.upload(files, {
 			folder: "avalanche",
-			resource_type: "image"
+			resource_type: "image",
 		}, (err, res) => {
 			console.log("Upload Error:", err);
 			console.log("Upload Result:", res);
@@ -47,7 +89,7 @@ Template.page_user.events({
 
 			let data = {
 				user_id: this._id,
-				res
+				res,
 			};
 			if (!err) {
 				console.log("data in", data);
@@ -57,11 +99,10 @@ Template.page_user.events({
 
 	},
 
-
-	"click .edit-user": function(/*event*/){
+	"click .edit-user": function(/*event*/) {
 
 		Session.set("editing_user", this._id);
-		
+
 	},
 
 	"click .remove-user": function(/*event*/) {
@@ -79,9 +120,9 @@ Template.page_user.events({
 		Meteor.call("users.updateName", {
 			user_id: this._id,
 			first_name,
-			last_name
+			last_name,
 		});
-	}
+	},
 });
 
 Template.page_user.rendered = function() {
@@ -94,8 +135,8 @@ Template.page_user.rendered = function() {
 		transitionDuration: 0,
 		masonry: {
 			isFitWidth: true,
-			// columnWidth: 250
-		}
+			// columnWidth: 250,
+		},
 	});
 
 };
