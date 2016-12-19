@@ -1,4 +1,4 @@
-@import url( 'https://fonts.googleapis.com/css?family=Muli');
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 @import '../imports/styles/reset.scss';
 $paper-color: #F3F3F3;
 $brand-color: #50E3C2;
@@ -17,7 +17,7 @@ $accent-color: red;
 ////////////////////////////////////////////////
 
 body {
-	font-family: 'Muli', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	background: $paper-color;
 	height: 100%;
 }
@@ -28,7 +28,7 @@ h1 {
 
 b,
 strong {
-	font-weight: 900;
+	font-weight: 500;
 	color: darken($brand-color, 20);
 }
 
@@ -72,18 +72,51 @@ div.name-value {
 	position: relative;
 	flex: 0 auto;
 	background: white;
-	padding: 20px;
+
+	height: 120px;
+	padding-left: 60px;
+	line-height: 120px;
+}
+
+.main-nav h1 {
+	font-size: 1.5em;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+
+	a {
+		color: inherit;
+	}
 }
 
 .main-nav .right {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: 10px;
+
+	height: 120px;
+	padding-right: 60px;
+	line-height: 120px;
 }
 
-.user-dropdown {
+.main-nav .headshot {
+	// border: 1px solid black;
+	height: 60px;
+	border-radius: 500px;
+	vertical-align: middle;
+}
+
+.main-nav button.create-post {
+	margin-right: 40px;
+}
+
+.main-nav .user-dropdown {
 	display: inline;
+}
+
+.main-nav .dropdown-menu {
+	// border: 1px solid red;
+	top: 50px;
 }
 
 .dropdown-menu.sign-in {
@@ -254,194 +287,237 @@ div.name-value {
 }
 
 ////////////////////////////////////////////////
+/// BOOTSTRAP DROPDOWN
+////////////////////////////////////////////////
+#layout-main .dropdown-menu-right:before {
+	position: absolute;
+	top: -10px;
+	right: 21px;
+	display: inline-block;
+	border-right: 9px solid transparent;
+	border-bottom: 9px solid #ccc;
+	border-left: 9px solid transparent;
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+	content: '';
+}
+
+#layout-main .dropdown-menu-right:after {
+	position: absolute;
+	top: -9px;
+	right: 21px;
+	display: inline-block;
+	border-right: 9px solid transparent;
+	border-bottom: 9px solid #ffffff;
+	border-left: 9px solid transparent;
+	content: '';
+}
+
+////////////////////////////////////////////////
+/// FORMS
+////////////////////////////////////////////////
+#layout-main .btn {
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 13px;
+	padding: 7px 20px;
+	letter-spacing: 0.1em;
+	background: transparent;
+	border: 1.5px solid black;
+	border-radius: 500px;
+
+	outline: red;
+}
+
+////////////////////////////////////////////////
 /// #edit-post-form
 ////////////////////////////////////////////////
-
-#edit-post-form .poster-wrap {
-	width: 100%;
-
-	margin: 0 auto;
-	text-align: center;
-
-	overflow: auto;
-	background-color: white;
-
-	margin-top: 1em;
-}
-
-#edit-post-form label.button {
-	cursor: pointer;
-	margin-bottom: 1em;
-	// background: blue;
-	// padding: 6px 12px;
-	// border-radius: 3px;
-	// font-size: 14px;
-
-	padding-top: 10px;
-	padding-bottom: 10px;
-	font-size: 24px;
-
-	font-weight: normal;
-	line-height: 1.42857143;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-
-	// color: #000;
-	// background-color: $brand-color;
-	// border-color: #2e6da4;
-
-	color: #6C7A89;
-	border-color: black;
-
-	width: 100%;
-}
-
-#edit-post-form .submit {
-	position: absolute;
-	background-color: $brand-color;
-	border: none;
-	width: 20%;
-	color: black;
-	right: 0;
-}
-
-#edit-post-form .cancel {
-	background-color: white;
-	width: 20%;
-	text-align: center;
-}
-
-#edit-post-form .content {
-	padding: 20px;
-}
-
-#edit-post-form .fa-cloud-upload {
-	font-size: 75px;
-	margin-bottom: 10px;
-	color: #D5E0FA;
-}
-
-#edit-post-form .submit-cancel-container {
-	position: relative;
-}
-
-.drag-drop-browse {
-	align: center;
-	margin: 0 auto;
-	width: 100%;
-	color: #D5E0FA;
-}
-
-.browse {
-	color: #539FFC;
-}
-
-#layout-main #edit-post-form .upload-file-container label {
-	margin: 0 auto;
-}
-
-.upload-file-container {
-	padding-top: 10%;
-	padding-bottom: 10%;
-	border-style: dashed;
-	border-width: 4px;
-	border-radius: 20px;
-	border-color: #D5E0FA;
-	width: 100%;
-}
-
-// #layout-main #edit-post-form form label {
-// 	display: none;
+//
+// #edit-post-form .poster-wrap {
+// 	width: 100%;
+//
+// 	margin: 0 auto;
+// 	text-align: center;
+//
+// 	overflow: auto;
+// 	background-color: white;
+//
+// 	margin-top: 1em;
 // }
-
-#layout-main form .inspiration {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-.inspiration-name input {
-	width: 33%;
-	display: inline-block;
-}
-
-.inspiration-url input {
-	display: inline-block;
-	width: 33%;
-}
-
-#edit-post-form .inspiration-button {
-	cursor: pointer;
-	box-shadow: none;
-	border: 1px solid lightgrey;
-	border-radius: 50%;
-	color: black;
-	width: 30px;
-	height: 30px;
-	text-align: center;
-	line-height: 25px;
-	margin-left: 10px;
-}
-
-#layout-main input {
-	border: none;
-	box-shadow: none;
-	border: 1px solid lightgrey;
-	border-radius: 10px;
-	color: black;
-}
-
-#layout-main label {
-	font-size: 10px;
-	padding: 10px;
-}
-
-#layout-main textarea {
-	border: none;
-	box-shadow: none;
-	border: 1px solid lightgrey;
-	border-radius: 10px;
-	color: black;
-
-}
-
-#layout-main select {
-	border: none;
-	box-shadow: none;
-	border: 1px solid lightgrey;
-	border-radius: 10px;
-	color: black;
-	// -webkit-appearance: none;
-	width: 50%;
-}
-
-#layout-main form .form-group [name="inspiration_url"] {
-	width: 110%;
-}
-
-#layout-main form .form-group [name="inspiration_name"] {
-	width: 100%;
-}
-
-////////////////////////////////////////////////
-/// misc forms for refactoring
-////////////////////////////////////////////////
-
-#edit-user-form .headshot-wrap {
-	// border: 1px solid red;
-	width: 100%;
-	margin-bottom: 1em;
-	text-align: center;
-
-	img {
-		// border: 1px solid red;
-		border-radius: 50%;
-
-	}
-}
-
-#edit-user-form .upload {
-	// border: 1px solid red;
-	margin: auto;
-	text-align: center;
-}
+//
+// #edit-post-form label.button {
+// 	cursor: pointer;
+// 	margin-bottom: 1em;
+// 	// background: blue;
+// 	// padding: 6px 12px;
+// 	// border-radius: 3px;
+// 	// font-size: 14px;
+//
+// 	padding-top: 10px;
+// 	padding-bottom: 10px;
+// 	font-size: 24px;
+//
+// 	font-weight: normal;
+// 	line-height: 1.42857143;
+// 	text-align: center;
+// 	white-space: nowrap;
+// 	vertical-align: middle;
+//
+// 	// color: #000;
+// 	// background-color: $brand-color;
+// 	// border-color: #2e6da4;
+//
+// 	color: #6C7A89;
+// 	border-color: black;
+//
+// 	width: 100%;
+// }
+//
+// #edit-post-form .submit {
+// 	position: absolute;
+// 	background-color: $brand-color;
+// 	border: none;
+// 	width: 20%;
+// 	color: black;
+// 	right: 0;
+// }
+//
+// #edit-post-form .cancel {
+// 	background-color: white;
+// 	width: 20%;
+// 	text-align: center;
+// }
+//
+// #edit-post-form .content {
+// 	padding: 20px;
+// }
+//
+// #edit-post-form .fa-cloud-upload {
+// 	font-size: 75px;
+// 	margin-bottom: 10px;
+// 	color: #D5E0FA;
+// }
+//
+// #edit-post-form .submit-cancel-container {
+// 	position: relative;
+// }
+//
+// .drag-drop-browse {
+// 	align: center;
+// 	margin: 0 auto;
+// 	width: 100%;
+// 	color: #D5E0FA;
+// }
+//
+// .browse {
+// 	color: #539FFC;
+// }
+//
+// #layout-main #edit-post-form .upload-file-container label {
+// 	margin: 0 auto;
+// }
+//
+// .upload-file-container {
+// 	padding-top: 10%;
+// 	padding-bottom: 10%;
+// 	border-style: dashed;
+// 	border-width: 4px;
+// 	border-radius: 20px;
+// 	border-color: #D5E0FA;
+// 	width: 100%;
+// }
+//
+// // #layout-main #edit-post-form form label {
+// // 	display: none;
+// // }
+//
+// #layout-main form .inspiration {
+// 	display: inline-block;
+// 	margin-right: 10px;
+// }
+//
+// .inspiration-name input {
+// 	width: 33%;
+// 	display: inline-block;
+// }
+//
+// .inspiration-url input {
+// 	display: inline-block;
+// 	width: 33%;
+// }
+//
+// #edit-post-form .inspiration-button {
+// 	cursor: pointer;
+// 	box-shadow: none;
+// 	border: 1px solid lightgrey;
+// 	border-radius: 50%;
+// 	color: black;
+// 	width: 30px;
+// 	height: 30px;
+// 	text-align: center;
+// 	line-height: 25px;
+// 	margin-left: 10px;
+// }
+//
+// #layout-main input {
+// 	border: none;
+// 	box-shadow: none;
+// 	border: 1px solid lightgrey;
+// 	border-radius: 10px;
+// 	color: black;
+// }
+//
+// #layout-main label {
+// 	font-size: 10px;
+// 	padding: 10px;
+// }
+//
+// #layout-main textarea {
+// 	border: none;
+// 	box-shadow: none;
+// 	border: 1px solid lightgrey;
+// 	border-radius: 10px;
+// 	color: black;
+//
+// }
+//
+// #layout-main select {
+// 	border: none;
+// 	box-shadow: none;
+// 	border: 1px solid lightgrey;
+// 	border-radius: 10px;
+// 	color: black;
+// 	// -webkit-appearance: none;
+// 	width: 50%;
+// }
+//
+// #layout-main form .form-group [name="inspiration_url"] {
+// 	width: 110%;
+// }
+//
+// #layout-main form .form-group [name="inspiration_name"] {
+// 	width: 100%;
+// }
+//
+// ////////////////////////////////////////////////
+// /// misc forms for refactoring
+// ////////////////////////////////////////////////
+//
+// #edit-user-form .headshot-wrap {
+// 	// border: 1px solid red;
+// 	width: 100%;
+// 	margin-bottom: 1em;
+// 	text-align: center;
+//
+// 	img {
+// 		// border: 1px solid red;
+// 		border-radius: 50%;
+//
+// 	}
+// }
+//
+// #edit-user-form .upload {
+// 	// border: 1px solid red;
+// 	margin: auto;
+// 	text-align: center;
+// }
