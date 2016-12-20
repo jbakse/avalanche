@@ -425,6 +425,7 @@ $post-margin: 20px;
 	text-align: center;
 	font-size: 1em;
 	padding: 1em;
+	text-transform: uppercase;
 }
 
 ////////////////////////////////////////////////
@@ -456,6 +457,9 @@ $post-margin: 20px;
 ////////////////////////////////////////////////
 /// FORMS
 ////////////////////////////////////////////////
+
+// Global Bootstrap Restyling
+
 #layout-main .btn {
 	font-size: 13px;
 	font-weight: 500;
@@ -470,7 +474,122 @@ $post-margin: 20px;
 	border: 1.5px solid black;
 	border-radius: 500px;
 	outline: none;
-	margin: 0 0.5em;
+}
+
+#layout-main .btn.cancel {
+	border: none;
+	float: right;
+	padding: 7px 0;
+}
+
+#layout-main label {
+	color: black;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: 5px;
+}
+
+// Overlay Forms
+.overlay-form form {
+	margin: 20px;
+}
+
+.overlay-form .title-bar {
+	background: black;
+	color: white;
+}
+
+.overlay-form .content {
+	padding-bottom: 1px;
+}
+
+// Specific Forms
+
+// Edit Post Form
+
+#edit-post-form .group {
+	// side by side fields (inspiration name | inspiration url)
+	display: flex;
+	justify-content: space-between;
+
+	> .form-group {
+		flex: 1 1 auto;
+		margin-right: 10px;
+	}
+
+	> .form-group:last-child {
+		margin-right: 0;
+	}
+
+	// a bit of shame, margins were not collapsing properly, help block not _that_ needed on optional
+	.help-block {
+		display: none;
+	}
+}
+
+#edit-post-form .posters {
+	margin: 20px;
+
+	display: flex;
+	justify-content: space-between;
+
+	> .poster-wrap {
+		flex: 1 1 auto;
+		margin-right: 10px;
+		position: relative;
+
+		img {
+			width: 100%;
+			height: 150px;
+			object-fit: cover;
+			border: 1px solid $line-color;
+			display: block;
+			position: absolute;
+			top: 0;
+		}
+
+		.upload {
+			width: 100%;
+			height: 150px;
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 0;
+			background-color: $line-color;
+
+			i {
+				font-size: 40px;
+				margin-bottom: 10px;
+				margin-top: 50px;
+			}
+		}
+
+		.upload:hover {
+			color: $accent-color;
+		}
+
+		.info {
+			padding: 5px 0;
+		}
+
+		.dimensions {
+			float: left;
+			font-size: 10px;
+			line-height: 20px;
+		}
+
+		.remove {
+			line-height: 20px;
+			vertical-align: middle;
+			padding: 0;
+			float: right;
+		}
+
+	}
+
+	> .poster-wrap:last-child {
+		margin-right: 0;
+	}
 }
 
 ////////////////////////////////////////////////

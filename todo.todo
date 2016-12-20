@@ -1,3 +1,5 @@
+.link to source
+
 ###################################################
 ### BUGS
 
@@ -5,6 +7,7 @@ x.user images don't upload
 x.user edit form not populated with values
 x.need avatar default for missing images
 .deleting other peoples posts doesn't seem to work even when admin
+.isotope doesn't always reflow after reload
 
 ###################################################
 ### SHAME
@@ -25,10 +28,9 @@ x.need avatar default for missing images
 
 
 Brinna
-	.Post Sketch Form
-	.what justin likes for this. simple, clear, direct
-	.Post Summaries (avalanche)
-	.Header
+	.user page
+	.topic menu
+
 
 Justin
 	x.bigger summaries
