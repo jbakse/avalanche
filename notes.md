@@ -1,6 +1,12 @@
 # Running Meteor
 `meteor --settings server/settings.json`
 
+# Updating Heroku settings
+`heroku config:add METEOR_SETTINGS="$(cat settings.json)"`
+
+# Publishing to Heroku
+`git push heroku master`
+
 # Reference
 
 [Creating a Photo Blog in Meteor](http://experimentsinmeteor.com/photo-blog-part-1/) Older tutorial.
@@ -66,5 +72,3 @@ Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 
 # Settings/Security
 [themeteorchef Settins.json](https://themeteorchef.com/snippets/making-use-of-settings-json/)
-
-heroku config:add METEOR_SETTINGS="$(cat settings.json)"
