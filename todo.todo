@@ -55,8 +55,11 @@ Justin
 
 	x.rollover actions bar on post-summaries
 	.forms
+		x.post
+		x.user
 	.avalanche count
 
+	.!move back to branch master!
 	.!CLEAR OUT LEAKED PASSWORD!
 
 ###################################################

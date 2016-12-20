@@ -592,6 +592,28 @@ $post-margin: 20px;
 	}
 }
 
+// Edit User Form
+
+#edit-user-form .headshot-wrap {
+	text-align: center;
+	margin: 1em;
+
+	img {
+		border-radius: 50%;
+	}
+}
+
+#edit-user-form .upload-button {
+	display: block;
+	cursor: pointer;
+	margin: 1em;
+	text-align: center;
+}
+
+#edit-user-form .upload-button:hover {
+	color: $accent-color;
+}
+
 ////////////////////////////////////////////////
 /// #edit-post-form
 ////////////////////////////////////////////////
@@ -766,24 +788,6 @@ $post-margin: 20px;
 // /// misc forms for refactoring
 // ////////////////////////////////////////////////
 //
-// #edit-user-form .headshot-wrap {
-// 	// border: 1px solid red;
-// 	width: 100%;
-// 	margin-bottom: 1em;
-// 	text-align: center;
-//
-// 	img {
-// 		// border: 1px solid red;
-// 		border-radius: 50%;
-//
-// 	}
-// }
-//
-// #edit-user-form .upload {
-// 	// border: 1px solid red;
-// 	margin: auto;
-// 	text-align: center;
-// }
 
 .shadow {
 	box-shadow: 0 0 15px darken($paper-color, 20);

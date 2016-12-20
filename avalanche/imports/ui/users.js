@@ -21,10 +21,12 @@ Template.edit_user_form.helpers({
 
 Template.edit_user_form.events({
 	"click .cancel": function() {
+		event.preventDefault();
 		Session.set("editing_user", false);
 	},
 
 	"click .submit": function(event, template) {
+		event.preventDefault();
 		// console.log("submit", this._id);
 		let first_name = template.find("#first-name").value || "Unknown";
 		let last_name = template.find("#last-name").value || "Author";
