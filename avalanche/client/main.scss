@@ -210,14 +210,17 @@ div.name-value {
 ////////////////////////////////////////////////
 
 .debug-info {
-	margin: 2em;
+	margin: 20px;
 	padding: 1em;
-	border: 1px solid $brand-color;
-	border-radius: 5px;
+	border: 1px solid $line-color;
+	// border-radius: 5px;
 	overflow: auto;
+	background-color: white;
 
 	pre {
 		overflow: hidden;
+		background-color: white;
+		font-family: monospace;
 	}
 }
 
@@ -612,6 +615,12 @@ $post-margin: 20px;
 
 #edit-user-form .upload-button:hover {
 	color: $accent-color;
+}
+
+// Edit Prefs Form
+
+#updatePrefsForm {
+	margin: 20px;
 }
 
 ////////////////////////////////////////////////
