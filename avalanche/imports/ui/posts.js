@@ -38,6 +38,16 @@ Template.post_list.rendered = function() {
 	});
 };
 
+Template.post.helpers({
+	mediaCount() {
+		console.log(this.cloudinary_media);
+		let items = _.pluck(this.cloudinary_media, "resource_type");
+		items = _.filter(items, function(item) {
+			return item;
+		});
+		return items.length;
+	},
+});
 Template.post.events({
 	"click .poster-link": function() {
 		Session.set("previewing_post", this._id);

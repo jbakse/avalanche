@@ -8,10 +8,12 @@
 
 <template name="post">
 	<div class="post">
+		<div class="posters posters-{{mediaCount}}">
+			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[0]}}
+			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[1]}}
+			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[2]}}
+		</div>
 
-		{{> post_poster _id=_id cloudinary_media=cloudinary_media.[0]}}
-		{{> post_poster _id=_id cloudinary_media=cloudinary_media.[1]}}
-		{{> post_poster _id=_id cloudinary_media=cloudinary_media.[2]}}
 		<div class="info">
 			{{#if inspiration_url}}
 				<div class="inspiration">

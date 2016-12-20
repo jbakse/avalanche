@@ -67,6 +67,13 @@ div.name-value {
 		margin-bottom: 10px;
 	}
 }
+@mixin clearfix {
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
 
 ////////////////////////////////////////////////
 /// main_nav
@@ -224,20 +231,52 @@ div.name-value {
 	background: white;
 }
 
+.posters {
+	@include clearfix;
+}
+
 .post .poster-link img {
 	display: block;
 	object-fit: cover;
-	outline: 1px solid $line-color;
+	// border: 1px solid $line-color;
+	max-height: 600px;
+	width: 100%;
+}
+
+.posters-2 .poster-link:nth-child(1) img,
+.posters-3 .poster-link:nth-child(1) img {
+	margin-bottom: 2px;
+}
+
+.posters-2 .poster-link:nth-child(2) img {
+	float: left;
+	object-fit: cover;
+	width: 400px;
+	height: 200px;
+}
+
+.posters-3 .poster-link:nth-child(2) img,
+.posters-3 .poster-link:nth-child(3) img {
+	float: left;
+
+	object-fit: cover;
+	width: 199px;
+	height: 200px;
+}
+
+.posters-3 .poster-link:nth-child(2) img {
+	margin-right: 2px;
 }
 
 .post .poster-link video {
 	display: block;
-	outline: 1px solid $line-color;
+	// outline: 1px solid $line-color;
 }
 
 $post-margin: 20px;
 
 .post .info {
+	border-top: 1px solid $line-color;
 	font-weight: 300;
 }
 
@@ -249,6 +288,7 @@ $post-margin: 20px;
 }
 
 .post .description {
+
 	margin-top: $post-margin;
 	margin-left: $post-margin;
 	font-size: 18px;
