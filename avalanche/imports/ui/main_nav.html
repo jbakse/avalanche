@@ -13,8 +13,11 @@
 				<input class="create-post-file hidden" id="create-post-file" name="create-post-file" type="file">
 
 				<div class="dropdown user-dropdown">
-					<img class="headshot dropdown-toggle" data-toggle="dropdown" src="{{c.url currentUser.profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-
+					{{#if currentUser.profile.headshot}}
+						<img class="headshot dropdown-toggle" data-toggle="dropdown" src="{{c.url currentUser.profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
+					{{else}}
+						<img class="headshot dropdown-toggle" data-toggle="dropdown" src="/images/avatar.png"/>
+					{{/if}}
 					<!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
 						{{#if userIsAdmin}}

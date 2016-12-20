@@ -1,11 +1,9 @@
 ###################################################
 ### BUGS
 
-x.Brinna - button for creating a post doesnt open the form when clicked from user profile page
-x.Move Forms to Light Boxes
-x.Lesson Dropdown is text field on Post a Sketch
-x.Verify success before closing light box.
-
+.user images don't upload
+.user edit form not populated with values
+.need avatar default for missing images
 
 
 ###################################################

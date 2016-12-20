@@ -1,14 +1,14 @@
 <template name="page_avalanche">
 	<div class="page-avalanche">
-		{{> main_nav}}
-
+		<div class="shadow">
+			{{> main_nav}}
+			{{> user_summaries}}
+		</div>
 		<main>
 
 			<div class="message">
 				{{{prefs.avalanche_message}}}
 			</div>
-
-			{{> user_summaries}}
 
 			{{> post_list posts=posts}}
 		</main>

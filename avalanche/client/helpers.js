@@ -25,6 +25,15 @@ Template.registerHelper("prefs", function() {
 });
 
 
+Template.registerHelper("authorHeadshot", function() {
+	let author = Meteor.users.findOne(this.author_id);
+	if (!author || !author.profile || !author.profile.headshot) {
+		return false;
+	}
+	return author.profile.headshot;
+});
+
+
 
 Template.registerHelper("editing_post",()=>{return Session.get("editing_post");});
 Template.registerHelper("editing_user",()=>{return Session.get("editing_user");});

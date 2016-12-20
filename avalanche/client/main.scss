@@ -1,8 +1,9 @@
-@import url( 'https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import '../imports/styles/reset.scss';
-$paper-color: #F3F3F3;
+$paper-color: #F5F8FD;
 $brand-color: #50E3C2;
 $accent-color: red;
+$line-color: #EEE;
 
 ////////////////////////////////////////////////
 /// Basics
@@ -38,7 +39,7 @@ i {
 }
 
 main {
-	padding: 2em;
+	// padding: 2em;
 }
 
 ////////////////////////////////////////////////
@@ -46,11 +47,14 @@ main {
 ////////////////////////////////////////////////
 
 .message {
-	border: 1px solid $brand-color;
-	border-radius: 5px;
-	padding: 1em;
+	// border: 1px solid $brand-color;
+	// border-radius: 5px;
+	margin: 2em;
+	// padding: 1em;
 	text-align: center;
-	box-shadow: 0 0 5px rgba(0,0,0,.2);
+	// box-shadow: 0 0 5px rgba(0,0,0,.2);
+	font-size: 18px;
+	line-height: 1.5em;
 }
 
 div.name-value {
@@ -102,7 +106,11 @@ div.name-value {
 .main-nav .headshot {
 	// border: 1px solid black;
 	height: 60px;
-	border-radius: 500px;
+	width: 60px;
+	background-color: $line-color;
+	border-radius: 100px;
+	// border: 1px solid red;
+	outline: none;
 	vertical-align: middle;
 }
 
@@ -210,39 +218,93 @@ div.name-value {
 
 .post {
 	width: 400px;
-	margin: 20px 10px;
-}
-
-.post .info {
+	margin: 0 10px 30px;
+	outline: 1px solid $line-color;
+	box-shadow: 3px 3px 8px darken($paper-color, 5);
 	background: white;
-	padding: 10px;
-	font-size: 14px;
 }
 
-.post img {
+.post .poster-link img {
 	display: block;
 	object-fit: cover;
+	outline: 1px solid $line-color;
 }
 
-.post video {
+.post .poster-link video {
 	display: block;
+	outline: 1px solid $line-color;
 }
 
+$post-margin: 20px;
+
+.post .info {
+	font-weight: 300;
+}
+
+.post .inspiration {
+	margin-top: $post-margin;
+	margin-left: $post-margin;
+	font-size: 12px;
+
+}
+
+.post .description {
+	margin-top: $post-margin;
+	margin-left: $post-margin;
+	font-size: 18px;
+
+}
+
+.post .group {
+	margin: $post-margin 0 $post-margin/2;
+	font-size: 8px;
+	line-height: 30px;
+	font-weight: 400;
+}
+
+.post .author {
+
+	margin-left: $post-margin;
+
+	.name {
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-left: 10px;
+	}
+
+	img {
+		vertical-align: middle;
+		height: 30px;
+		border-radius: 500px;
+	}
+}
+
+.post .date {
+	float: right;
+	margin-right: $post-margin;
+}
+
+.post .actions {
+	display: none;
+}
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////
 
 .user-summaries {
-	margin: 1em;
+	border-top: 1px solid $line-color;
+	background-color: white;
 	display: flex;
 	justify-content: center;
+	padding: 1em;
 }
 
 .user-summary {
-	background: white;
-	padding: 5px 10px;
+	// background: red;
+	// padding: 5px 10px;
 	text-align: center;
-	border-top: 10px solid aqua;
+	border-bottom: 5px solid aqua;
+	margin: 3px;
 }
 
 .user-summary a {
@@ -252,10 +314,13 @@ div.name-value {
 .user-summary .name {
 	font-size: 12px;
 	margin: 4px;
+	display: none;
 }
 
 .user-summary .headshot {
-	border-radius: 50%;
+	display: block;
+	// border-radius: 50%;
+	width: 50px;
 }
 
 ////////////////////////////////////////////////
@@ -521,3 +586,7 @@ div.name-value {
 // 	margin: auto;
 // 	text-align: center;
 // }
+
+.shadow {
+	box-shadow: 0 0 15px darken($paper-color, 20);
+}
