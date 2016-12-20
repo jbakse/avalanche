@@ -45,7 +45,56 @@ Template.edit_user_form.events({
 		Session.set("editing_user", false);
 	},
 
+	"change .upload-headshot-file": function(event, template) {
+
+		event.preventDefault();
+		console.log("upload", this);
+		let files = template.find(".upload-headshot-file").files;
+		Cloudinary.upload(files, {
+			folder: "avalanche",
+			resource_type: "image",
+		}, (err, res) => {
+			console.log("Upload Error:", err);
+			console.log("Upload Result:", res);
+			console.log(res);
+
+			let data = {
+				user_id: this._id,
+				res,
+			};
+			if (!err) {
+				console.log("data in", data);
+				Meteor.call("users.updateHeadshot", data);
+			}
+		});
+
+	},
+
+
 	"change .upload-file": function(event, template) {
+		event.preventDefault();
+		console.log("upload", this);
+
+		let files = template.find(".upload-file").files;
+		Cloudinary.upload(files, {
+			folder: "avalanche",
+			resource_type: "image",
+		}, (err, res) => {
+			console.log("Upload Error:", err);
+			console.log("Upload Result:", res);
+			console.log(res);
+
+			let data = {
+				user_id: this.user_id,
+				res,
+			};
+			if (!err) {
+				console.log("data in", data);
+				Meteor.call("users.updateHeadshot", data);
+			}
+		});
+
+
 		// console.log("clicknow");
 		//
 		// let files = template.find(".upload-file").files;

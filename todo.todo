@@ -1,9 +1,9 @@
 ###################################################
 ### BUGS
 
-.user images don't upload
-.user edit form not populated with values
-.need avatar default for missing images
+x.user images don't upload
+x.user edit form not populated with values
+x.need avatar default for missing images
 .deleting other peoples posts doesn't seem to work even when admin
 
 ###################################################

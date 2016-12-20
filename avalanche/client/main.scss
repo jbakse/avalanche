@@ -129,11 +129,10 @@ div.name-value {
 	// border: 1px solid red;
 	outline: none;
 	vertical-align: middle;
+	margin-left: 20px;
 }
 
-.main-nav button.create-post {
-	margin-right: 40px;
-}
+.main-nav button.create-post {}
 
 .main-nav .user-dropdown {
 	display: inline;
@@ -193,13 +192,14 @@ div.name-value {
 
 .user-info .description {
 	font-size: 24px;
+	margin-bottom: 1em;
 }
 
-.user-info button.edit-user {
-	position: absolute;
-	right: 1em;
-	top: 1em;
-}
+// .user-info button.edit-user {
+// 	position: absolute;
+// 	right: 1em;
+// 	top: 1em;
+// }
 
 .sketch-count {
 	text-align: center;
@@ -457,17 +457,20 @@ $post-margin: 20px;
 /// FORMS
 ////////////////////////////////////////////////
 #layout-main .btn {
-	text-transform: uppercase;
-	font-weight: 500;
 	font-size: 13px;
+	font-weight: 500;
 	line-height: 13px;
-	padding: 7px 20px;
+	text-transform: uppercase;
 	letter-spacing: 0.1em;
+
+	padding: 7px 20px;
+
 	background: transparent;
+	color: black;
 	border: 1.5px solid black;
 	border-radius: 500px;
-
-	outline: red;
+	outline: none;
+	margin: 0 0.5em;
 }
 
 ////////////////////////////////////////////////

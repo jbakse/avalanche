@@ -100,13 +100,11 @@ Template.page_user.events({
 	},
 
 	"click .edit-user": function(/*event*/) {
-
 		Session.set("editing_user", this._id);
-
 	},
 
 	"click .remove-user": function(/*event*/) {
-		console.log("dead", FlowRouter.getParam("userId"));
+		console.log("kill", FlowRouter.getParam("userId"));
 		Meteor.users.remove(FlowRouter.getParam("userId"));
 	},
 
@@ -125,18 +123,18 @@ Template.page_user.events({
 	},
 });
 
-Template.page_user.rendered = function() {
-	console.log("rendered posts");
-	let posts = this.find(".posts");
-	window.isotope = new Isotope(posts, {
-		// options...
-		itemSelector: ".post",
-		sortBy: "original-order",
-		transitionDuration: 0,
-		masonry: {
-			isFitWidth: true,
-			// columnWidth: 250,
-		},
-	});
-
-};
+// Template.page_user.rendered = function() {
+// 	console.log("rendered posts");
+// 	let posts = this.find(".posts");
+// 	window.isotope = new Isotope(posts, {
+// 		// options...
+// 		itemSelector: ".post",
+// 		sortBy: "original-order",
+// 		transitionDuration: 0,
+// 		masonry: {
+// 			isFitWidth: true,
+// 			// columnWidth: 250,
+// 		},
+// 	});
+//
+// };
