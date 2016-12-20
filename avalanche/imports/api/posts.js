@@ -89,12 +89,12 @@ Posts.allow({
 	}
 });
 
-function postEditableBy(post, user_id) {
+export const postEditableBy = function(post, user_id) {
 	if (!post) {
 		return false;
 	}
 	return (post.author_id === user_id) || userIsAdmin();
-}
+};
 
 Meteor.methods({
 	"posts.insert" () {

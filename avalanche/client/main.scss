@@ -75,6 +75,16 @@ div.name-value {
 	}
 }
 
+.icon-button {
+	// background-color: green;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.icon-button:hover {
+	color: $accent-color;
+}
+
 ////////////////////////////////////////////////
 /// main_nav
 ////////////////////////////////////////////////
@@ -238,6 +248,7 @@ div.name-value {
 .post .poster-link img {
 	display: block;
 	object-fit: cover;
+	cursor: pointer;
 	// border: 1px solid $line-color;
 	max-height: 600px;
 	width: 100%;
@@ -325,8 +336,33 @@ $post-margin: 20px;
 }
 
 .post .actions {
-	display: none;
+	width: 100%;
+	height: 30px;
+	padding: 0 $post-margin;
+
+	position: absolute;
+	bottom: $post-margin * 0.5;
+
+	background: white;
+	line-height: 30px;
+	text-align: right;
+	opacity: 0;
+	visibility: hidden;
+
+	transition: all 0.3s;
 }
+
+.post:hover .actions {
+	opacity: 1;
+	visibility: visible;
+}
+
+.post .actions .no-actions {
+	text-transform: uppercase;
+	font-size: 8px;
+	letter-spacing: 0.1em;
+}
+
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////

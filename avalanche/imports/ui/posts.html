@@ -46,12 +46,16 @@
 		</div>
 
 		<div class="actions">
-			<button class="btn btn-default remove-post">
-				<i class="fa fa-trash" aria-hidden="true"></i>
-			</button>
-			<button class="btn btn-default edit-post">
-				<i class="fa fa-pencil" aria-hidden="true"></i>
-			</button>
+			{{#if userCanEdit}}
+				<span class="icon-button remove-post">
+					<i class="fa fa-trash" aria-hidden="true"></i>
+				</span>
+				<span class="icon-button edit-post">
+					<i class="fa fa-pencil" aria-hidden="true"></i>
+				</span>
+			{{else}}
+				<span class="no-actions">No Actions Available</span>
+			{{/if}}
 		</div>
 
 	</div>

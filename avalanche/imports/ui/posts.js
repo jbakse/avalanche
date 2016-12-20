@@ -1,5 +1,5 @@
 import {getPrefs} from "../api/prefs.js";
-import {Posts} from "../api/posts.js";
+import {Posts, postEditableBy} from "../api/posts.js";
 import "./posts.html";
 
 Template.post_list.rendered = function() {
@@ -40,13 +40,18 @@ Template.post_list.rendered = function() {
 
 Template.post.helpers({
 	mediaCount() {
-		console.log(this.cloudinary_media);
+		// console.log(this.cloudinary_media);
 		let items = _.pluck(this.cloudinary_media, "resource_type");
 		items = _.filter(items, function(item) {
 			return item;
 		});
 		return items.length;
 	},
+
+	userCanEdit() {
+		return postEditableBy(this, Meteor.userId());
+		// return true;
+	}
 });
 Template.post.events({
 	"click .poster-link": function() {
@@ -88,15 +93,15 @@ AutoForm.hooks({
 	"updatePrefsForm": {
 		"before": {
 			update: function(doc) {
-				console.log("before", doc);
-				console.log(doc.$set.weeks);
+				// console.log("before", doc);
+				// console.log(doc.$set.weeks);
 				doc.$set.weeks = _.sortBy(doc.$set.weeks, "start");
 
 				this.result(doc);
 			}
 		},
 		"onError": function(insertDoc, updateDoc, currentDoc) {
-			console.log(JSON.stringify(this.updateDoc));
+			// console.log(JSON.stringify(this.updateDoc));
 			this.event.preventDefault();
 			return false;
 		},
