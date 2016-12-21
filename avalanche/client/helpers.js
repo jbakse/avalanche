@@ -26,7 +26,7 @@ Template.registerHelper("prefs", function() {
 
 
 Template.registerHelper("authorHeadshot", function() {
-	
+
 	let id = this.author_id;
 	let author = Meteor.users.findOne(id);
 	if (!author || !author.profile || !author.profile.headshot) {
@@ -40,6 +40,31 @@ Template.registerHelper("pluralize", function(num, string) {
 	return pluralize(string, num, true);
 });
 
+Template.registerHelper("formatDescription", function(num, string) {
+	string = stripHTML(string);
+	let converter = new Showdown.converter();
+	string = converter.makeHtml(string);
+
+	string = $.truncate(string, {
+		length: num,
+		words: true
+	});
+	return string;
+});
+
+// Template.registerHelper("formatText", function(string) {
+// 	console.log(string.split("\n\n"));
+//
+//
+//
+// 	return "!" + "<p>"+string.split("\n\n").join("</p></p>")+"</p>";
+// });
+
+function stripHTML(string){
+	let s = string.replace(/(<([^>]+)>)/ig, "");
+	return s;
+}
+Template.registerHelper("stripHTML", stripHTML);
 
 
 Template.registerHelper("editing_post",()=>{return Session.get("editing_post");});

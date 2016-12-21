@@ -66,6 +66,10 @@ Justin
 	.lightbox
 		x.basics
 
+	x.post descriptions need eliding
+	x.post descriptions need line-height
+	x.post descriptions need some basic formatting support (at least paragaraphs?)
+
 	loading bar on edit form
 	fix video uploading edit form display
 

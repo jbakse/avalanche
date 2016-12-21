@@ -301,11 +301,18 @@ $post-margin: 20px;
 
 }
 
+.post .description p {
+	display: inline;
+}
+
 .post-info .description {
 
 	margin-top: $post-margin;
 	margin-left: $post-margin;
+	margin-right: $post-margin;
+	font-weight: 300;
 	font-size: 18px;
+	line-height: 1.5;
 
 }
 
@@ -950,8 +957,12 @@ $color-6: #7F4;
 
 	.info {
 		flex: 0 0 auto;
-
-		width: 300px;
+		overflow-y: auto;
+		width: 350px;
 		background: white;
+	}
+
+	.info p {
+		margin: 0.5em 0;
 	}
 }
