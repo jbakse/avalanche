@@ -30,7 +30,7 @@ x.need avatar default for missing images
 Brinna
 	.user page
 	.topic menu
-
+	.close button?
 
 Justin
 	x.bigger summaries
@@ -70,8 +70,8 @@ Justin
 	x.post descriptions need line-height
 	x.post descriptions need some basic formatting support (at least paragaraphs?)
 
-	loading bar on edit form
-	fix video uploading edit form display
+	x.loading bar on edit form
+	x.fix video uploading edit form display
 
 	x.!move back to branch master!
 	.!CLEAR OUT LEAKED PASSWORD!

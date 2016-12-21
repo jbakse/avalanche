@@ -52,13 +52,18 @@ Template.registerHelper("formatDescription", function(num, string) {
 	return string;
 });
 
-// Template.registerHelper("formatText", function(string) {
-// 	console.log(string.split("\n\n"));
-//
-//
-//
-// 	return "!" + "<p>"+string.split("\n\n").join("</p></p>")+"</p>";
-// });
+Template.registerHelper("progress", function progress() {
+
+	let p = Cloudinary.collection.find({percent_uploaded: {$lt: 100}}).fetch();
+	
+	if (!p.length) {
+		return 0;
+	}
+	return p[0].percent_uploaded;
+
+
+});
+
 
 function stripHTML(string){
 	let s = string.replace(/(<([^>]+)>)/ig, "");

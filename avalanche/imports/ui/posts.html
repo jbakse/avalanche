@@ -80,7 +80,12 @@
 			<div class="title-bar">Edit Post</div>
 			<div class="content">
 
-				<!-- media item 0 -->
+				<!-- <div class="media-progress" style="width:30%"></div> -->
+
+				{{#if progress}}
+					<div class="media-progress" style="width:{{progress}}%"></div>
+				{{/if}}
+
 				<div class="posters">
 					<div class="poster-wrap">
 						<label for="upload-file-0" class="upload">
@@ -89,7 +94,7 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[0].resource_type "video"}}
-							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true></video>
+							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 						{{/if}}
 						{{#if equals post.cloudinary_media.[0].resource_type "image"}}
 							<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt=""/>
@@ -110,10 +115,11 @@
 						<label for="upload-file-1" class="upload">
 							<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
 							<br/>Upload Media
+
 						</label>
 
 						{{#if equals post.cloudinary_media.[1].resource_type "video"}}
-							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true></video>
+							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 						{{/if}}
 						{{#if equals post.cloudinary_media.[1].resource_type "image"}}
 							<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt=""/>
@@ -138,7 +144,7 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[2].resource_type "video"}}
-							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true></video>
+							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 						{{/if}}
 						{{#if equals post.cloudinary_media.[2].resource_type "image"}}
 							<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt=""/>
@@ -213,14 +219,14 @@
 				{{/if}}
 
 				{{#if equals post.cloudinary_media.[1].resource_type "video"}}
-					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true></video>
+					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
 				{{/if}}
 				{{#if equals post.cloudinary_media.[1].resource_type "image"}}
 					<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt=""/>
 				{{/if}}
 
 				{{#if equals post.cloudinary_media.[2].resource_type "video"}}
-					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true></video>
+					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
 				{{/if}}
 				{{#if equals post.cloudinary_media.[2].resource_type "image"}}
 					<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt=""/>
