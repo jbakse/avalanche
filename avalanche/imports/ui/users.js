@@ -26,11 +26,11 @@ Template.user_summary.helpers({
 			return;
 		}
 		let weeks = prefs.weeks;
-		console.log("weeks", weeks);
+		// console.log("weeks", weeks);
 		let week = _.find(weeks, function(week) {
 			return week.start < new Date() && week.end > new Date();
 		});
-		console.log(week);
+		// console.log(week);
 		if (!week) {
 			return;
 		}

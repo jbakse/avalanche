@@ -57,16 +57,16 @@ main {
 	line-height: 1.5em;
 }
 
-div.name-value {
-	.name {
-		display: block;
-	}
-
-	.value {
-		display: block;
-		margin-bottom: 10px;
-	}
-}
+// div.name-value {
+// 	.name {
+// 		display: block;
+// 	}
+//
+// 	.value {
+// 		display: block;
+// 		margin-bottom: 10px;
+// 	}
+// }
 @mixin clearfix {
 	&:after {
 		content: '';
@@ -294,14 +294,14 @@ $post-margin: 20px;
 	font-weight: 300;
 }
 
-.post .inspiration {
+.post-info .inspiration {
 	margin-top: $post-margin;
 	margin-left: $post-margin;
 	font-size: 12px;
 
 }
 
-.post .description {
+.post-info .description {
 
 	margin-top: $post-margin;
 	margin-left: $post-margin;
@@ -309,14 +309,14 @@ $post-margin: 20px;
 
 }
 
-.post .group {
+.post-info .group {
 	margin: $post-margin 0 $post-margin/2;
 	font-size: 8px;
 	line-height: 30px;
 	font-weight: 400;
 }
 
-.post .author {
+.post-info .author {
 
 	margin-left: $post-margin;
 
@@ -333,7 +333,7 @@ $post-margin: 20px;
 	}
 }
 
-.post .date {
+.post-info .date {
 	float: right;
 	margin-right: $post-margin;
 }
@@ -509,6 +509,10 @@ $color-6: #7F4;
 /// overlay
 ////////////////////////////////////////////////
 
+.no-scroll {
+	overflow: hidden;
+}
+
 .overlay {
 	background: rgba(203,223,255,.9);
 	position: fixed;
@@ -532,6 +536,15 @@ $color-6: #7F4;
 	font-size: 1em;
 	padding: 1em;
 	text-transform: uppercase;
+}
+
+.overlay-content {
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	right: 40px;
+	bottom: 40px;
+
 }
 
 ////////////////////////////////////////////////
@@ -903,4 +916,42 @@ $color-6: #7F4;
 
 .shadow {
 	box-shadow: 0 0 15px darken($paper-color, 20);
+}
+
+////////////////////////////////////////////////
+/// post overlay
+////////////////////////////////////////////////
+
+#post-overlay {
+	display: flex;
+}
+
+#post-overlay .overlay-content {
+	// border: 1px solid red;
+	box-shadow: 0 0 15px 3px rgba(0,0,150,.2);
+	display: flex;
+
+	.media {
+		overflow-y: auto;
+		flex: 1 1 auto;
+
+		background: black;
+
+		display: flex;
+		flex-direction: column;
+
+		img,
+		video {
+			display: block;
+			margin: auto;
+			max-width: 100%;
+		}
+	}
+
+	.info {
+		flex: 0 0 auto;
+
+		width: 300px;
+		background: white;
+	}
 }

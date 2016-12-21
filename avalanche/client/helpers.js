@@ -26,7 +26,9 @@ Template.registerHelper("prefs", function() {
 
 
 Template.registerHelper("authorHeadshot", function() {
-	let author = Meteor.users.findOne(this.author_id);
+	
+	let id = this.author_id;
+	let author = Meteor.users.findOne(id);
 	if (!author || !author.profile || !author.profile.headshot) {
 		return false;
 	}

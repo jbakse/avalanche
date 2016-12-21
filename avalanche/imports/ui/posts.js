@@ -2,6 +2,11 @@ import {getPrefs} from "../api/prefs.js";
 import {Posts, postEditableBy} from "../api/posts.js";
 import "./posts.html";
 
+
+
+
+
+
 Template.post_list.rendered = function() {
 
 	let posts = this.find(".posts");
@@ -55,6 +60,7 @@ Template.post.helpers({
 });
 Template.post.events({
 	"click .poster-link": function() {
+		$("body").addClass("no-scroll");
 		Session.set("previewing_post", this._id);
 		event.preventDefault();
 	},
@@ -68,6 +74,7 @@ Template.post.events({
 	}
 });
 
+
 Template.post_overlay.helpers({
 	post() {
 		let _id = this.post_id;
@@ -77,6 +84,7 @@ Template.post_overlay.helpers({
 
 Template.post_overlay.events({
 	"click #post-overlay": function() {
+		$("body").removeClass("no-scroll");
 		Session.set("previewing_post", false);
 	}
 });

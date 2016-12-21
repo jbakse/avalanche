@@ -20,7 +20,7 @@ x.need avatar default for missing images
 
 .deep shame:
 	.not removing old media when swapping or removing media from a post.
-
+		.consider moving to trash directory
 
 
 ###################################################
@@ -57,12 +57,19 @@ Justin
 	x.forms
 		x.post
 		x.user
-	.avalanche count
+	.counting
+		x.avalanche count
+		x.user summary weekly
+		x.user summary color code
+		x.user summary total
 
-	loading
+	.lightbox
+		x.basics
+
+	loading bar on edit form
 	fix video uploading edit form display
-	
-	.!move back to branch master!
+
+	x.!move back to branch master!
 	.!CLEAR OUT LEAKED PASSWORD!
 
 ###################################################
