@@ -379,27 +379,122 @@ $post-margin: 20px;
 }
 
 .user-summary {
-	// background: red;
-	// padding: 5px 10px;
-	text-align: center;
-	border-bottom: 5px solid aqua;
 	margin: 3px;
+	position: relative;
+}
+
+.user-summary.count-0 {
+	border-bottom: 5px solid red;
+}
+
+.user-summary.count-1 {
+	border-bottom: 5px solid red;
+}
+
+.user-summary.count-2 {
+	border-bottom: 5px solid orange;
+}
+
+.user-summary.count-3 {
+	border-bottom: 5px solid orange;
+}
+
+.user-summary.count-4 {
+	border-bottom: 5px solid yellow;
+}
+
+.user-summary.count-5 {
+	border-bottom: 5px solid green;
+}
+
+.user-summary {
+	border-bottom: 5px solid green;
 }
 
 .user-summary a {
 	color: black;
 }
 
-.user-summary .name {
-	font-size: 12px;
-	margin: 4px;
-	display: none;
-}
+// .user-summary .name {
+// 	font-size: 12px;
+// 	margin: 4px;
+// 	display: none;
+// }
 
 .user-summary .headshot {
 	display: block;
 	// border-radius: 50%;
 	width: 50px;
+}
+
+.user-summary .name,
+.user-summary .total,
+.user-summary .week {
+	font-size: 12px;
+	margin: 4px;
+	text-align: center;
+	display: block;
+	margin: 4px;
+}
+
+.user-summary .name {
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin: 6px;
+}
+
+.user-summary:hover .tooltip2 {
+	opacity: 1;
+}
+
+.user-summary .tooltip2 {
+	position: absolute;
+	margin-top: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 300px;
+
+	opacity: 0;
+	transition: opacity 0.7s;
+
+	display: flex;
+	justify-content: center;
+
+	.content {
+		background: white;
+		padding: 5px;
+		// border: 1px solid $line-color;
+		box-shadow: 0 2px 8px 2px rgba(0,0,150,.1);
+	}
+
+	.content:before {
+		position: absolute;
+		top: -12px;
+		left: 50%;
+		margin-left: -11px;
+		display: inline-block;
+		border-right: 12px solid transparent;
+		border-bottom: 12px solid $line-color;
+		border-left: 12px solid transparent;
+		content: '';
+	}
+
+	.content:after {
+		position: absolute;
+		top: -11px;
+		left: 50%;
+		margin-left: -11px;
+		display: inline-block;
+		border-right: 12px solid transparent;
+		border-bottom: 12px solid #ffffff;
+		border-left: 12px solid transparent;
+		content: '';
+	}
+}
+
+.user-summary:hover .tooltip2 {
+	opacity: 1;
 }
 
 ////////////////////////////////////////////////

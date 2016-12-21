@@ -1,11 +1,54 @@
 // import {Users} from "../api/users.js";
 import "./users.html";
+import {Posts} from "../api/posts.js";
+import {getPrefs} from "../api/prefs.js";
 
 Template.user_summaries.helpers({
 	users() {
 		let users = Meteor.users.find({});
 		// console.log(users);
 		return users;
+	}
+});
+
+Template.user_summary.helpers({
+	posts_total() {
+
+		let posts = Posts.find({
+			"author_id": this._id,
+		});
+		return posts.count();
+	},
+
+	posts_this_week() {
+		let prefs = getPrefs();
+		if (!prefs) {
+			return;
+		}
+		let weeks = prefs.weeks;
+		console.log("weeks", weeks);
+		let week = _.find(weeks, function(week) {
+			return week.start < new Date() && week.end > new Date();
+		});
+		console.log(week);
+		if (!week) {
+			return;
+		}
+
+
+
+		let posts = Posts.find({
+			"author_id": this._id,
+			"created_at":
+			{
+				$gte: week.start,
+				$lt: week.end,
+			}
+		});
+
+
+
+		return posts.count();
 	}
 });
 

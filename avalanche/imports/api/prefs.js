@@ -30,6 +30,7 @@ let PrefsSchema = new SimpleSchema({
 		type: String,
 		label: "Avalanche Message",
 		defaultValue: "Hello, Avalanche!",
+		optional: true,
 		autoform: {
 			rows: 10
 		},

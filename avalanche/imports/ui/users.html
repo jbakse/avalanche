@@ -9,18 +9,31 @@
 </template>
 
 <template name="user_summary">
-	<div class="user-summary">
+	<div class="user-summary count-{{posts_this_week}}">
 		<a href="users/{{_id}}">
-			<div class="name">{{profile.first_name}}</div>
-
 			{{#if profile.headshot}}
 				<img class="headshot" src="{{c.url profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
 			{{else}}
 				<img class="headshot" src="/images/avatar.png"/>
 			{{/if}}
-
-			<!-- <img class="headshot" src="{{c.url profile.headshot    width=100 height=100 gravity='face' quality=100 crop='fill'}}" alt=""/> -->
 		</a>
+		<div class="tooltip2">
+			<div class="content">
+				<span class="name">{{profile.first_name}}
+					{{profile.last_name}}
+				</span>
+
+				<span class="total">{{pluralize posts_total "sketches"}}</span>
+
+				{{#if posts_this_week}}
+					<span class="week">
+						{{posts_this_week}}
+						this week
+					</span>
+				{{/if}}
+
+			</div>
+		</div>
 	</div>
 </template>
 

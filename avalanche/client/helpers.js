@@ -34,6 +34,11 @@ Template.registerHelper("authorHeadshot", function() {
 });
 
 
+Template.registerHelper("pluralize", function(num, string) {
+	return pluralize(string, num, true);
+});
+
+
 
 Template.registerHelper("editing_post",()=>{return Session.get("editing_post");});
 Template.registerHelper("editing_user",()=>{return Session.get("editing_user");});

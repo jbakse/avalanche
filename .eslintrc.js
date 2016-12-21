@@ -23,6 +23,8 @@ module.exports = {
         "BlazeLayout": true,
         "AutoForm": true,
         "_": true,
+        "pluralize": true
+        
     },
     "rules": {
         "no-console": "off",
