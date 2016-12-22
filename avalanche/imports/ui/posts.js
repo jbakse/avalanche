@@ -83,10 +83,15 @@ Template.post_overlay.helpers({
 });
 
 Template.post_overlay.events({
-	"click #post-overlay": function() {
+	"click .overlay, click .close-overlay": function(event) {
+		if(event.target !== event.currentTarget) {
+			return;
+		}
 		$("body").removeClass("no-scroll");
 		Session.set("previewing_post", false);
-	}
+	},
+
+
 });
 
 AutoForm.hooks({

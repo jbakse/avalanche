@@ -1,9 +1,9 @@
 @import url( 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import '../imports/styles/reset.scss';
 $paper-color: #F5F8FD;
-$brand-color: #50E3C2;
-$accent-color: red;
 $line-color: #EEE;
+$accent-color: #9013FE;
+$link-color: #9013FE;
 
 ////////////////////////////////////////////////
 /// Basics
@@ -27,10 +27,20 @@ h1 {
 	font-size: 3em;
 }
 
+a {
+	color: $link-color;
+}
+
+a:hover {
+	color: $link-color;
+	text-decoration: none;
+	border-bottom: 1px solid $link-color;
+}
+
 b,
 strong {
-	font-weight: 500;
-	color: darken($brand-color, 20);
+	font-weight: 700;
+	// color: darken($brand-color, 20);
 }
 
 em,
@@ -47,26 +57,11 @@ main {
 ////////////////////////////////////////////////
 
 .message {
-	// border: 1px solid $brand-color;
-	// border-radius: 5px;
 	margin: 2em;
-	// padding: 1em;
 	text-align: center;
-	// box-shadow: 0 0 5px rgba(0,0,0,.2);
 	font-size: 18px;
 	line-height: 1.5em;
 }
-
-// div.name-value {
-// 	.name {
-// 		display: block;
-// 	}
-//
-// 	.value {
-// 		display: block;
-// 		margin-bottom: 10px;
-// 	}
-// }
 @mixin clearfix {
 	&:after {
 		content: '';
@@ -75,13 +70,23 @@ main {
 	}
 }
 
-.icon-button {
-	// background-color: green;
-	padding: 5px;
-	cursor: pointer;
+.actions {
+	margin-top: 10px;
+	padding: 0 10px;
+	height: 30px;
 }
 
-.icon-button:hover {
+.action-button {
+	line-height: 30px;
+	padding: 0 10px;
+	float: left;
+}
+
+.action-button.right {
+	float: right;
+}
+
+.action-button:hover {
 	color: $accent-color;
 }
 
@@ -107,6 +112,12 @@ main {
 
 	a {
 		color: inherit;
+
+	}
+
+	a:hover {
+		text-decoration: none;
+		border-bottom: 2px solid black;
 	}
 }
 
@@ -120,13 +131,21 @@ main {
 	line-height: 120px;
 }
 
+.dropdown-menu {
+	line-height: 1.5;
+}
+
+.dropdown-menu .btn-block {
+	// the login system tags the button with btn-block, but thats not our style
+	display: inline;
+	width: auto;
+}
+
 .main-nav .headshot {
-	// border: 1px solid black;
 	height: 60px;
 	width: 60px;
 	background-color: $line-color;
 	border-radius: 100px;
-	// border: 1px solid red;
 	outline: none;
 	vertical-align: middle;
 	margin-left: 20px;
@@ -139,12 +158,10 @@ main {
 }
 
 .main-nav .dropdown-menu {
-	// border: 1px solid red;
 	top: 50px;
 }
 
 .dropdown-menu.sign-in {
-	// border: 1px solid red;
 	width: 350px;
 
 	.at-form,
@@ -195,12 +212,6 @@ main {
 	margin-bottom: 1em;
 }
 
-// .user-info button.edit-user {
-// 	position: absolute;
-// 	right: 1em;
-// 	top: 1em;
-// }
-
 .sketch-count {
 	text-align: center;
 }
@@ -225,7 +236,7 @@ main {
 }
 
 ////////////////////////////////////////////////
-/// posts
+/// Posts Summaries
 ////////////////////////////////////////////////
 
 .posts {
@@ -309,7 +320,7 @@ $post-margin: 20px;
 
 	margin-top: $post-margin;
 	margin-left: $post-margin;
-	margin-right: $post-margin;
+	margin-right: $post-margin * 1.5;
 	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.5;
@@ -346,19 +357,15 @@ $post-margin: 20px;
 }
 
 .post .actions {
-	width: 100%;
-	height: 30px;
-	padding: 0 $post-margin;
-
 	position: absolute;
 	bottom: $post-margin * 0.5;
+	right: 0;
+	width: 50%;
 
 	background: white;
-	line-height: 30px;
-	text-align: right;
+
 	opacity: 0;
 	visibility: hidden;
-
 	transition: all 0.3s;
 }
 
@@ -368,6 +375,9 @@ $post-margin: 20px;
 }
 
 .post .actions .no-actions {
+	line-height: 30px;
+	float: right;
+	padding-right: 10px;
 	text-transform: uppercase;
 	font-size: 8px;
 	letter-spacing: 0.1em;
@@ -383,6 +393,7 @@ $post-margin: 20px;
 	display: flex;
 	justify-content: center;
 	padding: 1em;
+	box-shadow: 0 0 15px darken($paper-color, 20);
 }
 
 .user-summary {
@@ -430,15 +441,8 @@ $color-6: #7F4;
 	color: black;
 }
 
-// .user-summary .name {
-// 	font-size: 12px;
-// 	margin: 4px;
-// 	display: none;
-// }
-
 .user-summary .headshot {
 	display: block;
-	// border-radius: 50%;
 	width: 50px;
 }
 
@@ -479,7 +483,6 @@ $color-6: #7F4;
 	.content {
 		background: white;
 		padding: 5px;
-		// border: 1px solid $line-color;
 		box-shadow: 0 2px 8px 2px rgba(0,0,150,.1);
 	}
 
@@ -617,6 +620,7 @@ $color-6: #7F4;
 }
 
 // Overlay Forms
+
 .overlay-form form {
 	margin: 20px;
 }
@@ -630,9 +634,9 @@ $color-6: #7F4;
 	padding-bottom: 1px;
 }
 
-// Specific Forms
-
-// Edit Post Form
+////////////////////////////////////////////////
+/// EDIT POST FORM
+////////////////////////////////////////////////
 
 #edit-post-form .group {
 	// side by side fields (inspiration name | inspiration url)
@@ -687,6 +691,7 @@ $color-6: #7F4;
 			display: block;
 			position: absolute;
 			top: 0;
+
 		}
 
 		.upload {
@@ -732,7 +737,9 @@ $color-6: #7F4;
 	}
 }
 
-// Edit User Form
+////////////////////////////////////////////////
+/// EDIT USER FORM
+////////////////////////////////////////////////
 
 #edit-user-form .headshot-wrap {
 	text-align: center;
@@ -754,193 +761,16 @@ $color-6: #7F4;
 	color: $accent-color;
 }
 
-// Edit Prefs Form
+////////////////////////////////////////////////
+/// EDIT PREFS FORM
+////////////////////////////////////////////////
 
 #updatePrefsForm {
 	margin: 20px;
 }
 
 ////////////////////////////////////////////////
-/// #edit-post-form
-////////////////////////////////////////////////
-//
-// #edit-post-form .poster-wrap {
-// 	width: 100%;
-//
-// 	margin: 0 auto;
-// 	text-align: center;
-//
-// 	overflow: auto;
-// 	background-color: white;
-//
-// 	margin-top: 1em;
-// }
-//
-// #edit-post-form label.button {
-// 	cursor: pointer;
-// 	margin-bottom: 1em;
-// 	// background: blue;
-// 	// padding: 6px 12px;
-// 	// border-radius: 3px;
-// 	// font-size: 14px;
-//
-// 	padding-top: 10px;
-// 	padding-bottom: 10px;
-// 	font-size: 24px;
-//
-// 	font-weight: normal;
-// 	line-height: 1.42857143;
-// 	text-align: center;
-// 	white-space: nowrap;
-// 	vertical-align: middle;
-//
-// 	// color: #000;
-// 	// background-color: $brand-color;
-// 	// border-color: #2e6da4;
-//
-// 	color: #6C7A89;
-// 	border-color: black;
-//
-// 	width: 100%;
-// }
-//
-// #edit-post-form .submit {
-// 	position: absolute;
-// 	background-color: $brand-color;
-// 	border: none;
-// 	width: 20%;
-// 	color: black;
-// 	right: 0;
-// }
-//
-// #edit-post-form .cancel {
-// 	background-color: white;
-// 	width: 20%;
-// 	text-align: center;
-// }
-//
-// #edit-post-form .content {
-// 	padding: 20px;
-// }
-//
-// #edit-post-form .fa-cloud-upload {
-// 	font-size: 75px;
-// 	margin-bottom: 10px;
-// 	color: #D5E0FA;
-// }
-//
-// #edit-post-form .submit-cancel-container {
-// 	position: relative;
-// }
-//
-// .drag-drop-browse {
-// 	align: center;
-// 	margin: 0 auto;
-// 	width: 100%;
-// 	color: #D5E0FA;
-// }
-//
-// .browse {
-// 	color: #539FFC;
-// }
-//
-// #layout-main #edit-post-form .upload-file-container label {
-// 	margin: 0 auto;
-// }
-//
-// .upload-file-container {
-// 	padding-top: 10%;
-// 	padding-bottom: 10%;
-// 	border-style: dashed;
-// 	border-width: 4px;
-// 	border-radius: 20px;
-// 	border-color: #D5E0FA;
-// 	width: 100%;
-// }
-//
-// // #layout-main #edit-post-form form label {
-// // 	display: none;
-// // }
-//
-// #layout-main form .inspiration {
-// 	display: inline-block;
-// 	margin-right: 10px;
-// }
-//
-// .inspiration-name input {
-// 	width: 33%;
-// 	display: inline-block;
-// }
-//
-// .inspiration-url input {
-// 	display: inline-block;
-// 	width: 33%;
-// }
-//
-// #edit-post-form .inspiration-button {
-// 	cursor: pointer;
-// 	box-shadow: none;
-// 	border: 1px solid lightgrey;
-// 	border-radius: 50%;
-// 	color: black;
-// 	width: 30px;
-// 	height: 30px;
-// 	text-align: center;
-// 	line-height: 25px;
-// 	margin-left: 10px;
-// }
-//
-// #layout-main input {
-// 	border: none;
-// 	box-shadow: none;
-// 	border: 1px solid lightgrey;
-// 	border-radius: 10px;
-// 	color: black;
-// }
-//
-// #layout-main label {
-// 	font-size: 10px;
-// 	padding: 10px;
-// }
-//
-// #layout-main textarea {
-// 	border: none;
-// 	box-shadow: none;
-// 	border: 1px solid lightgrey;
-// 	border-radius: 10px;
-// 	color: black;
-//
-// }
-//
-// #layout-main select {
-// 	border: none;
-// 	box-shadow: none;
-// 	border: 1px solid lightgrey;
-// 	border-radius: 10px;
-// 	color: black;
-// 	// -webkit-appearance: none;
-// 	width: 50%;
-// }
-//
-// #layout-main form .form-group [name="inspiration_url"] {
-// 	width: 110%;
-// }
-//
-// #layout-main form .form-group [name="inspiration_name"] {
-// 	width: 100%;
-// }
-//
-// ////////////////////////////////////////////////
-// /// misc forms for refactoring
-// ////////////////////////////////////////////////
-//
-
-.shadow {
-	box-shadow: 0 0 15px darken($paper-color, 20);
-}
-
-////////////////////////////////////////////////
-/// post overlay
+/// POST OVERLAY
 ////////////////////////////////////////////////
 
 #post-overlay {
@@ -948,7 +778,7 @@ $color-6: #7F4;
 }
 
 #post-overlay .overlay-content {
-	// border: 1px solid red;
+
 	box-shadow: 0 0 15px 3px rgba(0,0,150,.2);
 	display: flex;
 
@@ -966,17 +796,41 @@ $color-6: #7F4;
 			display: block;
 			margin: auto;
 			max-width: 100%;
+
 		}
 	}
 
 	.info {
 		flex: 0 0 auto;
-		overflow-y: auto;
+
 		width: 350px;
 		background: white;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.description {
+		overflow-y: auto;
+		padding-right: 20px;
+		margin-right: 0;
 	}
 
 	.info p {
 		margin: 0.5em 0;
 	}
+}
+
+.overlay *::-webkit-scrollbar {
+	width: 14px;
+
+}
+
+.overlay *::-webkit-scrollbar-track {
+	background: white;
+}
+
+.overlay *::-webkit-scrollbar-thumb {
+	width: 10px;
+	background: $accent-color;
+	border: 2px solid white;
 }

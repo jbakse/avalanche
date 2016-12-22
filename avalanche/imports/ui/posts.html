@@ -47,12 +47,8 @@
 
 		<div class="actions">
 			{{#if userCanEdit}}
-				<span class="icon-button remove-post">
-					<i class="fa fa-trash" aria-hidden="true"></i>
-				</span>
-				<span class="icon-button edit-post">
-					<i class="fa fa-pencil" aria-hidden="true"></i>
-				</span>
+				<i class="action-button right remove-post fa fa-trash" aria-hidden="true"></i>
+				<i class="action-button right edit-post fa fa-pencil" aria-hidden="true"></i>
 			{{else}}
 				<span class="no-actions">No Actions Available</span>
 			{{/if}}
@@ -234,6 +230,11 @@
 			</div>
 
 			<div class="info post-info">
+				<div class="actions">
+					<!-- <i class="action-button previous-post fa fa-arrow-left" aria-hidden="true"></i> -->
+					<!-- <i class="action-button next-post fa fa-arrow-right" aria-hidden="true"></i> -->
+					<i class="action-button close-overlay fa fa-times right" aria-hidden="true"></i>
+				</div>
 				<div class="group">
 					<span class="author">
 						{{#with post}}
@@ -262,7 +263,6 @@
 				{{#if post.description}}
 					<div class="description">
 						{{#markdown}}{{formatDescription 10000 post.description}}{{/markdown}}
-
 					</div>
 				{{/if}}
 

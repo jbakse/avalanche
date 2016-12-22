@@ -33,47 +33,47 @@ Brinna
 	.close button?
 
 Justin
-	x.bigger summaries
-	x.prepare for three media items by migrating to array of cloudinary media items in post
-	x.three media items
-	x.edit-post overlay
-		no.make create post take title param, use for create and edit.
-		x.make template take post id param, this will be more flexibile than accessing the session variable directly.
-		x.in general make sure session variables are being abused as globals too much
+	.unsorted
+		.confirm deletes
+		.link styles are too agressive, they are getting non text links
 
-	x.make cancel button only delete unposted posts
-
-	x.better observer on posts list (update isotope)
-	x.preferences system
-		x.lock out non admin
+	.admin/prefs
+		.configure title of blog (try hosting two instances on heroku)
 		.create way to set admin ability on users through interface, need bootstrap solution (maybe first new user is an admin?)
+		.delete users?
+		.make sure you need to be admin to use
+		.hide from non admins
+		.Set new post defaults
+		.preferences markdown message
 
+	.forms
+		.show markdown hints?
+		.better upload feedback
 
-	.weekly post counting
-		x.users
-		.class
-
-	x.rollover actions bar on post-summaries
-	x.forms
-		x.post
-		x.user
 	.counting
-		x.avalanche count
-		x.user summary weekly
-		x.user summary color code
-		x.user summary total
+		.class posts this week vs all time
+		.overview of student week-by-week
+		.exclude non-student (teacher/ta/guest) posts from class counts?
+		.?make a helper that counts base on params "username/id", "role", "week"
 
 	.lightbox
-		x.basics
+		x.back button to close overlay
+		.next/back support in overlay?
 
-	x.post descriptions need eliding
-	x.post descriptions need line-height
-	x.post descriptions need some basic formatting support (at least paragaraphs?)
+		.scrollbar style
 
-	x.loading bar on edit form
-	x.fix video uploading edit form display
+	.users
+		.profile markdown
 
-	x.!move back to branch master!
+	.avalanche
+		.rough week milestone markers on the left.
+
+
+	.tooling
+		.pull mongo dump from Heroku
+		.stop tracking database in git
+		.get domain
+
 	.!CLEAR OUT LEAKED PASSWORD!
 
 ###################################################
@@ -110,25 +110,25 @@ Justin
 		Edit homepage message.
 
 	User Summary
-		Color Coded Tops
+		Color Coded
 		Weekly Counts
-		Sort by weekly count
-
-	Design Questions
-		Allow multiple inspiration links?
+		Sort by weekly count?
 
 	Post Summary Views
 		Avalanche (pin board layout by date
-		Topic View (show grouped by topics, which is close to dates, but not the same!)
+		?Topic View (show grouped by topics, which is close to dates, but not the same!)
 
 	Post Counting/Reporting
 		Student semester total, weekly total
 		All students semester total, weekly total (don't count teacher, ta, or guest posts?)
 
 	Admin
-		Delete Account
+		Delete Accounts
 		Set Account as Admin
 		Toggle Admin active
+
+	Design Questions
+		Allow multiple inspiration links?
 
 ### Phase 2: Social
 	Voting
