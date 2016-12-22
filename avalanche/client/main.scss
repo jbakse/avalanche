@@ -31,7 +31,8 @@ a {
 	color: $link-color;
 }
 
-a:hover {
+.copy a:hover,
+.post a:hover {
 	color: $link-color;
 	text-decoration: none;
 	border-bottom: 1px solid $link-color;
@@ -210,6 +211,34 @@ main {
 .user-info .description {
 	font-size: 24px;
 	margin-bottom: 1em;
+}
+
+.user-weeks {
+	// border: 1px solid red;
+
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+
+	.week {
+		// height: 30px
+		// line-height: 30px;
+		width: 30px;
+		text-align: center;
+	}
+
+	.topic {
+		font-size: 8px;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+		display: block;
+		// border: 1px solid red;
+
+	}
+
+	.count {
+		font-size: 18px;
+	}
 }
 
 .sketch-count {

@@ -35,7 +35,7 @@ Brinna
 Justin
 	.unsorted
 		.confirm deletes
-		.link styles are too agressive, they are getting non text links
+		x.link styles are too aggressive, they are getting non text links
 
 	.admin/prefs
 		.configure title of blog (try hosting two instances on heroku)
@@ -51,9 +51,9 @@ Justin
 		.better upload feedback
 
 	.counting
-		.class posts this week vs all time
-		.overview of student week-by-week
-		.exclude non-student (teacher/ta/guest) posts from class counts?
+		x.class posts this week vs all time
+		x.overview of student week-by-week
+		no.exclude non-student (teacher/ta/guest) posts from class counts?
 		.?make a helper that counts base on params "username/id", "role", "week"
 
 	.lightbox
@@ -63,7 +63,7 @@ Justin
 		x.scrollbar style
 
 	.users
-		x.profile markdown 
+		x.profile markdown
 
 	.avalanche
 		.rough week milestone markers on the left.

@@ -25,7 +25,11 @@
 
 			<div class="user-weeks">
 				{{#each weeks}}
-					{{topic}}:{{count}}
+					<div class="week">
+						<span class="topic">{{topic}}</span>
+						<span class="count">{{count}}</span>
+					</div>
+
 				{{/each}}
 			</div>
 
