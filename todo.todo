@@ -44,7 +44,7 @@ Justin
 		.make sure you need to be admin to use
 		.hide from non admins
 		.Set new post defaults
-		.preferences markdown message
+		x.preferences markdown message
 
 	.forms
 		.show markdown hints?
@@ -60,10 +60,10 @@ Justin
 		x.back button to close overlay
 		.next/back support in overlay?
 
-		.scrollbar style
+		x.scrollbar style
 
 	.users
-		.profile markdown
+		x.profile markdown 
 
 	.avalanche
 		.rough week milestone markers on the left.
