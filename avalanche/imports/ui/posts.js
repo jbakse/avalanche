@@ -66,6 +66,10 @@ Template.post.events({
 	},
 
 	"click .remove-post": function() {
+		let c = confirm("Delete post?");
+		if (!c) {
+			return;
+		}
 		Meteor.call("posts.remove", this._id);
 	},
 

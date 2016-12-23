@@ -34,7 +34,7 @@ Brinna
 
 Justin
 	.unsorted
-		.confirm deletes
+		x.confirm deletes
 		x.link styles are too aggressive, they are getting non text links
 
 	.admin/prefs
