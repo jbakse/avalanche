@@ -54,11 +54,11 @@ Justin
 		x.class posts this week vs all time
 		x.overview of student week-by-week
 		no.exclude non-student (teacher/ta/guest) posts from class counts?
-		.?make a helper that counts base on params "username/id", "role", "week"
+!		.?make a helper that counts base on params "username/id", "role", "week"
 
 	.lightbox
 		x.back button to close overlay
-		.next/back support in overlay?
+!		.next/back support in overlay?
 
 		x.scrollbar style
 

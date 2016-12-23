@@ -1,7 +1,5 @@
 ## Backup and Restore Test Database Content
-During development it will be helpful to have some content loaded into your local database.
-
-You can use the scripts `scrips/dump_mongo.sh` and `scripts/restore_mongo.sh` to backup and restore content. Restoring content will **overwrite** your local data, **be careful**.
+The scripts folder contains scripts to export/import data from the database. These scripts use `mongodump` and `mongorestore`.
 
 ## Initial Setup
 To use these scripts you will need mongodb and its utilities on your local machine.
@@ -26,7 +24,7 @@ First make sure your mongo app is running.
 
 In terminal `cd` yourself into the main avalanche directory. The script expects you to run it from this location, if you are in a different directory the script won't work properly. Then run:
 
-> `./scripts/dump_mongo.sh`
+> `./scripts/pull_mongo_local.sh`
 
 The script will remove the local `dump` folder and create a new one containing the info from the database. This folder will be committed to git. This will allow us to keep older versions of content for older versions of code, and will make it easy for us to share test code between us. We'll want to manage this data along with our codebase.
 
@@ -36,6 +34,6 @@ First make sure your mongo app is running.
 
 In terminal `cd` yourself into the main avalanche directory. The script expects you to run it from this location, if you are in a different directory the script won't work properly. Then run:
 
-> `./scripts/restore_mongo.sh`
+> `./scripts/push_mongo_local.sh`
 
 This script will drop all the info in your database, and load the information found in the local `dump` folder.
