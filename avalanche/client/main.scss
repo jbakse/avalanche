@@ -268,12 +268,30 @@ main {
 /// Posts Summaries
 ////////////////////////////////////////////////
 
+.posts-wrap {
+	// border: 1px solid green;
+	padding: 0;
+}
+
 .posts {
-	margin: 0 auto;
+
 	display: flex;
 	flex-wrap: wrap;
 	margin: auto;
+	// border: 1px solid red;
+}
 
+.posts-marker {
+	// border: 1px solid red;
+	position: fixed;
+	left: 20px;
+	top: 50%;
+	z-index: 100;
+	background: $paper-color;
+	text-transform: capitalize;
+	padding: 10px;
+	transform-origin: 0 0;
+	transform: rotate(-90deg);
 }
 
 .post {

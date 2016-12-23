@@ -2,7 +2,28 @@ import {getPrefs} from "../api/prefs.js";
 import {Posts, postEditableBy} from "../api/posts.js";
 import "./posts.html";
 
+function updateMarker() {
 
+	let last_visible = false;
+
+	$(".post").each(function(i, post) {
+		let y = $(post).offset().top;
+		y = y - $(window).scrollTop();
+		if (y > $(window).height()) {
+			return false;
+		}
+		last_visible = $(post).attr("id");
+	});
+
+	if (!last_visible) return;
+
+	let post = Posts.findOne(last_visible);
+	if (!post) return;
+
+	$(".posts-marker").html(post.lesson);
+}
+
+$(window).on("scroll", updateMarker);
 
 
 

@@ -65,13 +65,13 @@ Justin
 	.users
 		x.profile markdown
 
-	.avalanche
-		.rough week milestone markers on the left.
-
+	.milestone marker
+		x.rough week milestone markers on the left.
+		.currently shows topic, should show week (w/ topic)
 
 	.tooling
-		.pull mongo dump from Heroku
-		.stop tracking database in git
+		x.pull mongo dump from Heroku
+		x.stop tracking database in git
 		.get domain
 
 	.!CLEAR OUT LEAKED PASSWORD!

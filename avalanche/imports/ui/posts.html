@@ -1,13 +1,20 @@
 <template name="post_list">
-	<div class="posts">
-		{{#each posts}}
-			{{> post}}
-		{{/each}}
+	<div class="posts-marker">
+		MARKER
 	</div>
+	<div class="posts-wrap">
+
+		<div class="posts">
+			{{#each posts}}
+				{{> post}}
+			{{/each}}
+		</div>
+	</div>
+
 </template>
 
 <template name="post">
-	<div class="post">
+	<div id="{{_id}}" class="post">
 		<div class="posters posters-{{mediaCount}}">
 			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[0]}}
 			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[1]}}
