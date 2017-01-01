@@ -57,6 +57,7 @@ let PostSchema = new SimpleSchema({
 		type: String,
 		label: "Description",
 		defaultValue: "",
+		optional: true
 	},
 
 	inspiration_name: {

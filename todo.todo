@@ -8,10 +8,12 @@ x.user edit form not populated with values
 x.need avatar default for missing images
 .deleting other peoples posts doesn't seem to work even when admin
 .isotope doesn't always reflow after reload
+.needs some lazy loading of some kind. too much bandwidth. too much proc.
 
 x.lesson dropdown fails when posting from user page
 	x.way to many prefrences items, init isn't working right
-.needs some lazy loading of some kind. too much bandwidth. too much proc.
+
+x.Description on posts shouldn’t be required
 
 
 ###################################################
