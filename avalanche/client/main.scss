@@ -667,6 +667,11 @@ $color-6: #7F4;
 	padding: 7px 0;
 }
 
+#layout-main .btn.cancel:active {
+	color: $link-color;
+	box-shadow: none;
+}
+
 #layout-main label {
 	color: black;
 	font-size: 10px;
@@ -720,7 +725,7 @@ $color-6: #7F4;
 
 #edit-post-form .media-progress {
 	// border: 1px solid red;
-	background: black;
+	background: $accent-color;
 	position: absolute;
 	top: -20px;
 	height: 10px;
