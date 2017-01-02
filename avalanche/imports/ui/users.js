@@ -1,7 +1,7 @@
 // import {Users} from "../api/users.js";
 import "./users.html";
 import {Posts} from "../api/posts.js";
-import {getPrefs} from "../api/prefs.js";
+import {currentWeek} from "../api/prefs.js";
 
 Template.user_summaries.helpers({
 	users() {
@@ -21,16 +21,18 @@ Template.user_summary.helpers({
 	},
 
 	posts_this_week() {
-		let prefs = getPrefs();
-		if (!prefs) {
-			return;
-		}
-		let weeks = prefs.weeks;
-		// console.log("weeks", weeks);
-		let week = _.find(weeks, function(week) {
-			return week.start < new Date() && week.end > new Date();
-		});
-		// console.log(week);
+		// let prefs = getPrefs();
+		// if (!prefs) {
+		// 	return;
+		// }
+		// let weeks = prefs.weeks;
+		//
+		// let week = _.find(weeks, function(week) {
+		// 	return week.start < new Date() && week.end > new Date();
+		// });
+
+		let week = currentWeek();
+
 		if (!week) {
 			return;
 		}

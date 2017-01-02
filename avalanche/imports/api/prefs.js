@@ -17,7 +17,7 @@ let WeekSchema = new SimpleSchema({
 	},
 	end: {
 		type: Date,
-		label: "Start Date",
+		label: "End Date",
 		// defaultValue: new Date(),
 		// autoform: {
 		// 	type: "datetime-local"
@@ -66,3 +66,19 @@ Prefs.allow({
 		return false;
 	}
 });
+
+export const currentWeek = function() {
+	let prefs = getPrefs();
+	if (!prefs) {
+		return;
+	}
+
+	let weeks = prefs.weeks;
+	let week = _.find(weeks, function(week) {
+		return week.start < new Date() && week.end > new Date();
+	});
+	if (!week) {
+		return;
+	}
+	return week;
+};

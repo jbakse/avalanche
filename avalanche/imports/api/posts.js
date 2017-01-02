@@ -97,13 +97,21 @@ export const postEditableBy = function(post, user_id) {
 	return (post.author_id === user_id) || userIsAdmin();
 };
 
+
+import {currentWeek} from "../api/prefs.js";
+
 Meteor.methods({
 	"posts.insert" () {
+		let topic = "";
+		if (currentWeek()) {
+			topic = currentWeek().topic;
+		}
+
 		// create post
 		let data = {
 			author_id: this.userId,
 			author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
-			lesson: "design",
+			lesson: topic,
 			created_at: new Date(),
 		};
 

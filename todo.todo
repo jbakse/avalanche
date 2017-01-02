@@ -11,6 +11,8 @@ x.need avatar default for missing images
 .needs some lazy loading of some kind. too much bandwidth. too much proc.
 .admin mode indicator not showing
 
+way to delete accounts, set accounts admin
+
 
 x.lesson dropdown fails when posting from user page
 	x.way to many prefrences items, init isn't working right

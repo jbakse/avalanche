@@ -79,6 +79,7 @@ Template.post.helpers({
 		// return true;
 	}
 });
+
 Template.post.events({
 	"click .poster-link": function() {
 		$("body").addClass("no-scroll");
