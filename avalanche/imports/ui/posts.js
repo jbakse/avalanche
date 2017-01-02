@@ -147,6 +147,39 @@ AutoForm.hooks({
 });
 
 function uploadFile(post, slot, files) {
+
+	let maxImageFileSizeMB = 10 ;
+	let maxVideoFileSizeMB = 20 ;
+
+	let isImage = false;
+	let isVideo = false;
+
+	if(_.contains(["image/png","image/gif","image/jpeg"], files[0].type)) {
+		isImage = true;
+	}
+
+	if(_.contains(["video/mp4", "video/quicktime"], files[0].type)) {
+		isVideo = true;
+	}
+
+	console.log(files[0].type, files[0].size/1024/1024, isImage,  isVideo);
+
+	if (!isImage && !isVideo) {
+		alert(`Your file is not of a recognized type.\nImages must be formatted as .png, .gif, or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov`);
+		return;
+	}
+
+	if (isImage && (files[0].size > maxImageFileSizeMB * 1024 * 1024)) {
+		alert(`Your file is too large.\nImages must be under ${maxImageFileSizeMB} mb.`);
+		return;
+	}
+
+	if (isVideo && (files[0].size > maxVideoFileSizeMB * 1024 * 1024)) {
+		alert(`Your file is too large.\nVideos must be under ${maxVideoFileSizeMB} mb.`);
+		return;
+	}
+
+
 	Cloudinary.upload(files, {
 		folder: "avalanche",
 		resource_type: "auto"
