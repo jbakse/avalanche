@@ -42,6 +42,7 @@ Template.registerHelper("pluralize", function(num, string) {
 
 Template.registerHelper("formatDescription", function(num, string) {
 	string = stripHTML(string);
+	//{"simplifiedAutoLink": true}
 	let converter = new Showdown.converter();
 	string = converter.makeHtml(string);
 
@@ -55,7 +56,7 @@ Template.registerHelper("formatDescription", function(num, string) {
 Template.registerHelper("progress", function progress() {
 
 	let p = Cloudinary.collection.find({percent_uploaded: {$lt: 100}}).fetch();
-	
+
 	if (!p.length) {
 		return 0;
 	}

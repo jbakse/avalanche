@@ -31,7 +31,7 @@
 
 			{{#if description}}
 				<div class="description copy">
-					{{#markdown}}{{formatDescription 100 description}}{{/markdown}}
+					{{{formatDescription 100 description}}}
 				</div>
 			{{/if}}
 
@@ -273,7 +273,7 @@
 
 				{{#if post.description}}
 					<div class="description copy">
-						{{#markdown}}{{formatDescription 10000 post.description}}{{/markdown}}
+						{{{formatDescription 10000 post.description}}}
 					</div>
 				{{/if}}
 

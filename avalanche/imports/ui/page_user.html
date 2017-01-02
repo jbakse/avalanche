@@ -11,7 +11,7 @@
 						{{profile.last_name}}
 					</h1>
 					<div class="description copy">
-						{{#markdown}}{{profile.description}}{{/markdown}}
+						{{{formatDescription 1000 profile.description}}}
 					</div>
 					<button class="btn edit-user">Edit Profile</button>
 					<!-- <button class="btn remove-user">Remove User</button> -->
