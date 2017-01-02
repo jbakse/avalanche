@@ -382,7 +382,14 @@ $post-margin: 20px;
 }
 
 .post-info .author {
+	a {
+		color: inherit;
+	}
 
+	a:hover {
+		text-decoration: none;
+		border-bottom: none;
+	}
 	margin-left: $post-margin;
 
 	.name {

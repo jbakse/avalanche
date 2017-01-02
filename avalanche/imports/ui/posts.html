@@ -37,12 +37,14 @@
 
 			<div class="group">
 				<span class="author">
-					{{#if authorHeadshot}}
-						<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-					{{else}}
-						<img class="headshot" src="/images/avatar.png"/>
-					{{/if}}
-					<span class="name">{{author}}</span>
+					<a href="/users/{{author_id}}">
+						{{#if authorHeadshot}}
+							<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
+						{{else}}
+							<img class="headshot" src="/images/avatar.png"/>
+						{{/if}}
+						<span class="name">{{author}}</span>
+					</a>
 				</span>
 
 				<span class="date">
@@ -244,14 +246,16 @@
 				</div>
 				<div class="group">
 					<span class="author">
-						{{#with post}}
-							{{#if authorHeadshot}}
-								<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-							{{else}}
-								<img class="headshot" src="/images/avatar.png"/>
-							{{/if}}
-						{{/with}}
-						<span class="name">{{post.author}}</span>
+						<a href="/users/{{post.author_id}}">
+							{{#with post}}
+								{{#if authorHeadshot}}
+									<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
+								{{else}}
+									<img class="headshot" src="/images/avatar.png"/>
+								{{/if}}
+							{{/with}}
+							<span class="name">{{post.author}}</span>
+						</a>
 					</span>
 
 					<span class="date">
