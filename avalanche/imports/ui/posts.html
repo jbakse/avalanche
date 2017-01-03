@@ -74,7 +74,7 @@
 	{{/if}}
 	{{#if equals cloudinary_media.resource_type "image"}}
 		<div class="poster-link" href="/posts/{{_id}}">
-			<img src="{{c.url cloudinary_media.public_id width=400 crop='fill' quality=90}}" alt=""/>
+			<img src="{{c.url cloudinary_media.public_id width=400 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/>
 		</div>
 	{{/if}}
 </template>

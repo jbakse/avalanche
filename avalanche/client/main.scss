@@ -287,8 +287,8 @@ main {
 	// border: 1px solid red;
 	position: fixed;
 	left: 20px;
-	top: 50%;
-	z-index: 100;
+	top: 75%;
+	// z-index: 100;
 	background: $paper-color;
 	text-transform: capitalize;
 	padding: 10px;
@@ -860,8 +860,15 @@ $color-6: #7F4;
 
 		}
 
-		img:first-child {
+		img:first-child,
+		video:first-child {
 			margin-top: 4em;
+		}
+
+		img:last-child,
+		video:last-child {
+
+			margin-bottom: 4em;
 		}
 	}
 

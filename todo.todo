@@ -3,25 +3,8 @@
 ###################################################
 ### BUGS
 
-x.user images don't upload
-x.user edit form not populated with values
-x.need avatar default for missing images
-.deleting other peoples posts doesn't seem to work even when admin
 .isotope doesn't always reflow after reload
-.needs some lazy loading of some kind. too much bandwidth. too much proc.
-.admin mode indicator not showing
-
-way to delete accounts, set accounts admin
-
-
-x.lesson dropdown fails when posting from user page
-	x.way to many prefrences items, init isn't working right
-
-x .face cropping on user profile
-x.Description on posts shouldn’t be required
-
-.Links inserted into user description and post description should be clickable (lazy linking, not requiring []())
-.phone/small screen/responsive support
+.deleting other peoples posts doesn't seem to work even when admin
 
 ###################################################
 ### SHAME
@@ -42,33 +25,50 @@ x.Description on posts shouldn’t be required
 
 
 Brinna
-	.user page
-	.topic menu
-	.close button?
+
 
 Justin
 	.unsorted
 		x.confirm deletes
 		x.link styles are too aggressive, they are getting non text links
 
+
+	.maybe?
+		.topic pages?
+
+	.low priority
+		.phone/small screen/responsive support
+		.Links inserted into user description and post description should be clickable (lazy linking, not requiring []())
+
+	.performance
+!		.needs some lazy loading of some kind. too much bandwidth. too much proc.
+
+
 	.admin/prefs
-		.configure title of blog (try hosting two instances on heroku)
+	.		.admin mode indicator not showing
+
+	.robomongo
+		.way to delete accounts, set accounts admin
 		.create way to set admin ability on users through interface, need bootstrap solution (maybe first new user is an admin?)
 		.delete users?
+
+	.preferences
+		.configure title of blog (try hosting two instances on heroku)
 		.make sure you need to be admin to use
 		.hide from non admins
-		.Set new post defaults
+		.Set new post defaults?
 		x.preferences markdown message
 
 	.forms
 		.show markdown hints?
+		.show upload guidelines?
 		.better upload feedback
 
 	.counting
 		x.class posts this week vs all time
 		x.overview of student week-by-week
 		no.exclude non-student (teacher/ta/guest) posts from class counts?
-!		.?make a helper that counts base on params "username/id", "role", "week"
+		.?make a helper that counts base on params "username/id", "role", "week"
 
 	.lightbox
 		x.back button to close overlay
@@ -76,17 +76,21 @@ Justin
 
 		x.scrollbar style
 
+	.posts
+
 	.users
 		x.profile markdown
 
 	.milestone marker
 		x.rough week milestone markers on the left.
-		.currently shows topic, should show week (w/ topic)
+!		.currently shows topic, should show week (w/ topic)
+!		.margin
+!		.seems to be freaking out.
 
 	.tooling
 		x.pull mongo dump from Heroku
 		x.stop tracking database in git
-		.get domain
+!		.get domain
 
 	.!CLEAR OUT LEAKED PASSWORD!
 
