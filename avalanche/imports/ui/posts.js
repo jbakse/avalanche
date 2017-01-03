@@ -25,6 +25,50 @@ function updateMarker() {
 
 $(window).on("scroll", updateMarker);
 
+//https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling/488073#488073
+function isScrolledIntoView(elem)
+{
+	let docViewTop = $(window).scrollTop();
+	let docViewBottom = docViewTop + $(window).height();
+
+	let elemTop = $(elem).offset().top;
+	let elemBottom = elemTop + $(elem).height();
+
+	// return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+	return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+}
+
+function autoplayVideoPosters() {
+	let videos = $("video");
+
+	videos.each(function(e){
+		if (isScrolledIntoView(this)) {
+
+			this.play();
+		} else {
+			this.pause();
+			this.currentTime = 0;
+		}
+	});
+
+	setTimeout(autoplayVideoPosters, 1000);
+}
+$(window).on("scroll", autoplayVideoPosters);
+setTimeout(autoplayVideoPosters, 1000);
+
+
+function lazyLoadImages() {
+	console.log("loadem");
+	$("img.lazy").lazyload({
+		threshold: 200,
+		effect: "fadeIn",
+		failure_limit: 100000
+	}).removeClass("lazy");
+
+	setTimeout(lazyLoadImages, 1000);
+}
+setTimeout(lazyLoadImages, 1000);
+
 
 
 
@@ -155,7 +199,7 @@ function uploadFile(post, slot, files) {
 	let isImage = false;
 	let isVideo = false;
 
-	if(_.contains(["image/png","image/gif","image/jpeg"], files[0].type)) {
+	if(_.contains(["image/png","!image/gif","image/jpeg"], files[0].type)) {
 		isImage = true;
 	}
 
@@ -166,7 +210,7 @@ function uploadFile(post, slot, files) {
 	console.log(files[0].type, files[0].size/1024/1024, isImage,  isVideo);
 
 	if (!isImage && !isVideo) {
-		alert(`Your file is not of a recognized type.\nImages must be formatted as .png, .gif, or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov`);
+		alert(`Your file is not of a recognized type.\nImages must be formatted as .png or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov.\nDon't use .gif`);
 		return;
 	}
 

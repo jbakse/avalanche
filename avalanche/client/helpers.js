@@ -66,6 +66,17 @@ Template.registerHelper("progress", function progress() {
 });
 
 
+Template.registerHelper("sizeImg", function(imgW, imgH, targetW) {
+	imgH = Math.round(imgH / imgW * targetW);
+	imgW = targetW;
+	// return `width="${imgW}" height="${imgH}"`;
+	return {
+		width: imgW,
+		height: imgH
+	};
+});
+
+
 function stripHTML(string){
 	let s = string.replace(/(<([^>]+)>)/ig, "");
 	return s;
