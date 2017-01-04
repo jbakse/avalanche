@@ -44,7 +44,10 @@ function autoplayVideoPosters() {
 	videos.each(function(e){
 		if (isScrolledIntoView(this)) {
 
-			this.play();
+			this.play().catch( function(e) {
+				console.log("caught", e);
+			});
+
 		} else {
 			this.pause();
 			this.currentTime = 0;
