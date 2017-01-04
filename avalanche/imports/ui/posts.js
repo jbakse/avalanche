@@ -45,7 +45,12 @@ function autoplayVideoPosters() {
 		if (isScrolledIntoView(this)) {
 
 			this.play().catch( function(e) {
-				console.log("caught", e);
+				// console.log("caught", e);
+				// getting a "The play() request was interrupted by a call to pause()." exception on live server but not local
+				// flooding the console, but not impacting experience
+				// just throw this exception away.
+				// not sure if this is related to this problem:
+				// https://bugs.chromium.org/p/chromium/issues/detail?id=593273
 			});
 
 		} else {
@@ -54,10 +59,10 @@ function autoplayVideoPosters() {
 		}
 	});
 
-	setTimeout(autoplayVideoPosters, 100);
+	setTimeout(autoplayVideoPosters, 1000);
 }
-// https://bugs.chromium.org/p/chromium/issues/detail?id=593273
-// $(window).on("scroll", autoplayVideoPosters);
+
+$(window).on("scroll", autoplayVideoPosters);
 setTimeout(autoplayVideoPosters, 1000);
 
 
