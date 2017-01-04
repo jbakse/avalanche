@@ -51,9 +51,10 @@ function autoplayVideoPosters() {
 		}
 	});
 
-	setTimeout(autoplayVideoPosters, 1000);
+	setTimeout(autoplayVideoPosters, 100);
 }
-$(window).on("scroll", autoplayVideoPosters);
+// https://bugs.chromium.org/p/chromium/issues/detail?id=593273
+// $(window).on("scroll", autoplayVideoPosters);
 setTimeout(autoplayVideoPosters, 1000);
 
 
