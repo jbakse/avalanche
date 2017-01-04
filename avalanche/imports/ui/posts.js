@@ -58,7 +58,7 @@ setTimeout(autoplayVideoPosters, 1000);
 
 
 function lazyLoadImages() {
-	console.log("loadem");
+	// console.log("loadem");
 	$("img.lazy").lazyload({
 		threshold: 200,
 		effect: "fadeIn",
@@ -89,6 +89,7 @@ Template.post_list.rendered = function() {
 		window.isotope.reloadItems();
 		window.isotope.arrange({sortBy: "original-order"});
 	}
+	setInterval(relayoutIsotope, 500);
 
 	let observer = new MutationObserver(function(/*mutations*/) {
 		relayoutIsotope();

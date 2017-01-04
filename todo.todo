@@ -3,7 +3,7 @@
 ###################################################
 ### BUGS
 
-.isotope doesn't always reflow after reload
+? working now? .isotope doesn't always reflow after reload
 .deleting other peoples posts doesn't seem to work even when admin
 
 ###################################################
@@ -41,7 +41,7 @@ Justin
 		.Links inserted into user description and post description should be clickable (lazy linking, not requiring []())
 
 	.performance
-!		.needs some lazy loading of some kind. too much bandwidth. too much proc.
+x		.needs some lazy loading of some kind. too much bandwidth. too much proc.
 
 
 	.admin/prefs
