@@ -4,7 +4,7 @@ $paper-color: #F5F8FD;
 $line-color: #EEE;
 $accent-color: #9013FE;
 $link-color: #9013FE;
-
+$post-width: 350px;
 ////////////////////////////////////////////////
 /// Basics
 ////////////////////////////////////////////////
@@ -272,7 +272,8 @@ main {
 
 .posts-wrap {
 	// border: 1px solid green;
-	padding: 0;
+	padding: 50px;
+
 }
 
 .posts {
@@ -297,7 +298,7 @@ main {
 }
 
 .post {
-	width: 400px;
+	width: $post-width;
 	margin: 0 10px 30px;
 	outline: 1px solid $line-color;
 	box-shadow: 3px 3px 8px darken($paper-color, 5);
@@ -308,11 +309,11 @@ main {
 	@include clearfix;
 }
 
-.post .poster-link img {
+.post .poster-link img,
+.post .poster-link video {
 	display: block;
 	object-fit: cover;
 	cursor: pointer;
-	// border: 1px solid $line-color;
 	max-height: 600px;
 	width: 100%;
 }
@@ -325,8 +326,8 @@ main {
 .posters-2 .poster-link:nth-child(2) img {
 	float: left;
 	object-fit: cover;
-	width: 400px;
-	height: 200px;
+	width: $post-width;
+	height: $post-width *.5;
 }
 
 .posters-3 .poster-link:nth-child(2) img,
@@ -334,18 +335,20 @@ main {
 	float: left;
 
 	object-fit: cover;
-	width: 199px;
-	height: 200px;
+	width: $post-width *.5 - 1;
+	height: $post-width *.5;
 }
 
 .posters-3 .poster-link:nth-child(2) img {
 	margin-right: 2px;
 }
 
-.post .poster-link video {
-	display: block;
-	// outline: 1px solid $line-color;
-}
+// .post .poster-link video {
+// 	display: block;
+// 	cursor: pointer;
+// 	max-height: 600px;
+// 	width: 100%;
+// }
 
 $post-margin: 20px;
 
