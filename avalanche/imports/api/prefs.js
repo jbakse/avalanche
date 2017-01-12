@@ -67,15 +67,40 @@ Prefs.allow({
 	}
 });
 
+// export const currentWeek = function() {
+// 	let prefs = getPrefs();
+// 	if (!prefs) {
+// 		return;
+// 	}
+//
+// 	let weeks = prefs.weeks;
+// 	let week = _.find(weeks, function(week) {
+// 		return week.start < new Date() && week.end > new Date();
+// 	});
+// 	if (!week) {
+// 		return;
+// 	}
+// 	return week;
+// };
 export const currentWeek = function() {
+	return weekForDate(new Date());
+};
+
+export const weekForDate = function(_date) {
 	let prefs = getPrefs();
 	if (!prefs) {
 		return;
 	}
 
 	let weeks = prefs.weeks;
+	let i = 1;
+	_.map(weeks, function(week) {
+		week.num = i++;
+		return week;
+	});
+
 	let week = _.find(weeks, function(week) {
-		return week.start < new Date() && week.end > new Date();
+		return week.start < _date && week.end > _date;
 	});
 	if (!week) {
 		return;

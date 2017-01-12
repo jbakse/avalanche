@@ -13,6 +13,9 @@ $post-width: 350px;
 	box-sizing: border-box;
 }
 
+.debug-highlight {
+	border: 10px solid red;
+}
 /////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
@@ -288,8 +291,9 @@ main {
 	// border: 1px solid red;
 	position: fixed;
 	left: 20px;
-	top: 75%;
-	// z-index: 100;
+	// bottom: 20px;
+	top: 50%;
+	z-index: -10;
 	background: $paper-color;
 	text-transform: capitalize;
 	padding: 10px;

@@ -1,9 +1,14 @@
-import {getPrefs} from "../api/prefs.js";
+import {getPrefs, weekForDate} from "../api/prefs.js";
 import {Posts, postEditableBy} from "../api/posts.js";
 import "./posts.html";
 
 function updateMarker() {
-
+	if ($(window).scrollTop() < 500) {
+		$(".posts-marker").addClass("hidden");
+		return;
+	}else {
+		$(".posts-marker").removeClass("hidden");
+	}
 	let last_visible = false;
 
 	$(".post").each(function(i, post) {
@@ -12,15 +17,18 @@ function updateMarker() {
 		if (y > $(window).height()) {
 			return false;
 		}
-		last_visible = $(post).attr("id");
+		last_visible = $(post);
 	});
 
+	// console.log(last_visible);
 	if (!last_visible) return;
-
-	let post = Posts.findOne(last_visible);
+	$(".post").removeClass("debug-highlight");
+	last_visible.addClass("debug-highlight");
+	let post = Posts.findOne(last_visible.attr("id"));
 	if (!post) return;
 
-	$(".posts-marker").html(post.lesson);
+	let week = weekForDate(post.created_at);
+	$(".posts-marker").html(`Week ${week.num}: ${week.topic}`);
 }
 
 $(window).on("scroll", updateMarker);
