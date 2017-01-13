@@ -22,8 +22,8 @@ function updateMarker() {
 
 	// console.log(last_visible);
 	if (!last_visible) return;
-	$(".post").removeClass("debug-highlight");
-	last_visible.addClass("debug-highlight");
+	// $(".post").removeClass("debug-highlight");
+	// last_visible.addClass("debug-highlight");
 	let post = Posts.findOne(last_visible.attr("id"));
 	if (!post) return;
 

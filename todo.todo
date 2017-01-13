@@ -90,7 +90,7 @@ Justin
 	.tooling
 		x.pull mongo dump from Heroku
 		x.stop tracking database in git
-!		.get domain
+		x.get domain
 
 	.!CLEAR OUT LEAKED PASSWORD!
 

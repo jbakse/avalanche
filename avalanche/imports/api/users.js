@@ -49,10 +49,12 @@ Meteor.methods({
 	"toggleAdmin" () {
 		// let userIsAdmin = Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
 
-		if (userIsAdmin()) {
-			Roles.removeUsersFromRoles(Meteor.userId(), "admin", Roles.GLOBAL_GROUP);
-		} else {
+		let may_admin = Roles.userIsInRole(Meteor.userId(), ["may_admin"], Roles.GLOBAL_GROUP);
+
+		if (!userIsAdmin() && may_admin) {
 			Roles.addUsersToRoles(Meteor.userId(), "admin", Roles.GLOBAL_GROUP);
+		} else {
+			Roles.removeUsersFromRoles(Meteor.userId(), "admin", Roles.GLOBAL_GROUP);
 		}
 	},
 

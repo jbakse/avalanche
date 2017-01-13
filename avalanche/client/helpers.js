@@ -42,7 +42,7 @@ Template.registerHelper("pluralize", function(num, string) {
 
 Template.registerHelper("formatDescription", function(num, string) {
 	string = stripHTML(string);
-	//{"simplifiedAutoLink": true}
+	//{"simplifiedAutoLink": true} option doesn't work, appears to be a different showdown package
 	let converter = new Showdown.converter();
 	string = converter.makeHtml(string);
 
