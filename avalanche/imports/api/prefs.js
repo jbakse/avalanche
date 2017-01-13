@@ -36,6 +36,13 @@ let PrefsSchema = new SimpleSchema({
 		},
 	},
 
+	site_title: {
+		type: String,
+		label: "Site Title",
+		defaultValue: "Avalanche",
+		optional: false
+	},
+
 	weeks: {
 		type: [WeekSchema],
 		label: "Weeks",
