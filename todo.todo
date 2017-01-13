@@ -39,23 +39,23 @@ Justin
 	.low priority
 		.phone/small screen/responsive support
 		.Links inserted into user description and post description should be clickable (lazy linking, not requiring []())
+			.looks like the showdown package meteor uses is not showdownjs/showdown, the setOption function doesn't exist. might need to use different markdown to get this working
+
+	.low priority because can be done with robomongo
+		.way to delete accounts, set accounts admin
+		.create way to set admin ability on users through interface, need bootstrap solution (maybe first new user is an admin?)
+		.delete users	?
 
 	.performance
 		x.needs some lazy loading of some kind. too much bandwidth. too much proc.
 
-
 	.admin/prefs
-		.admin mode indicator not showing
-
-	.robomongo
-		.way to delete accounts, set accounts admin
-		.create way to set admin ability on users through interface, need bootstrap solution (maybe first new user is an admin?)
-		.delete users?
+		x.admin mode indicator not showing
 
 	.preferences
-		.configure title of blog (try hosting two instances on heroku)
-		.make sure you need to be admin to use
-		.hide from non admins
+!		.configure title of blog (try hosting two instances on heroku)
+		x.make sure you need to be admin to use
+		x.hide from non admins (through url)
 		.Set new post defaults?
 		x.preferences markdown message
 
@@ -88,11 +88,13 @@ Justin
 		x.seems to be freaking out.
 
 	.tooling
+!		.two herokus
 		x.pull mongo dump from Heroku
 		x.stop tracking database in git
 		x.get domain
 
-	.!CLEAR OUT LEAKED PASSWORD!
+	x.clear  out leaked password
+
 
 ###################################################
 ### FEATURE CATALOG

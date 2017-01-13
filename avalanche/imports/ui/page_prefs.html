@@ -3,11 +3,18 @@
 		{{> main_nav}}
 
 		<main>
-			{{> quickForm collection="Prefs" id="updatePrefsForm" doc=prefs type="update"}}
+			{{#if userIsAdmin}}
+				{{> quickForm collection="Prefs" id="updatePrefsForm" doc=prefs type="update"}}
 
-			<div class="debug-info">
-				{{{json prefs}}}
-			</div>
+				<div class="debug-info">
+					{{{json prefs}}}
+				</div>
+			{{else}}
+				<div class="message copy">
+					You need to be an admin to set application prefs.
+				</div>
+
+			{{/if}}
 		</main>
 	</div>
 </template>
