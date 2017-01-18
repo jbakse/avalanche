@@ -234,20 +234,30 @@ main {
 	.week {
 		// height: 30px
 		// line-height: 30px;
-		width: 30px;
+		// border: 1px solid red;
+		margin: 5px;
+		width: 50px;
 		text-align: center;
 	}
 
 	.topic {
+		// border: 1px solid red;
 		font-size: 8px;
 		text-transform: uppercase;
 		margin-bottom: 4px;
 		display: block;
+		height: 20px;
+		// border: 1px solid red;
+		// display: table-cell;
+		vertical-align: bottom;
+		// width: 50px;
+
 		// border: 1px solid red;
 
 	}
 
 	.count {
+		// padding-top: 10px;
 		font-size: 18px;
 	}
 }
