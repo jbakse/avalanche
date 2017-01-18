@@ -139,7 +139,35 @@ Template.post.helpers({
 	userCanEdit() {
 		return postEditableBy(this, Meteor.userId());
 		// return true;
+	},
+
+	votedPretty() {
+		let post = Posts.findOne(this._id);
+		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "pretty"}).length === 0) {
+			return "";
+		}else {
+			return "voted";
+		}
+	},
+
+	votedNerdy() {
+		let post = Posts.findOne(this._id);
+		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "nerdy"}).length === 0) {
+			return "";
+		}else {
+			return "voted";
+		}
+	},
+
+	votedFunny() {
+		let post = Posts.findOne(this._id);
+		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "funny"}).length === 0) {
+			return "";
+		}else {
+			return "voted";
+		}
 	}
+
 });
 
 Template.post.events({
@@ -159,6 +187,21 @@ Template.post.events({
 
 	"click .edit-post": function() {
 		Session.set("editing_post", this._id);
+	},
+
+	"click .vote-pretty": function() {
+		// console.log("vote pretty");
+		Meteor.call("posts.vote", this._id, "pretty");
+	},
+
+	"click .vote-nerdy": function() {
+		// console.log("vote nerdy");
+		Meteor.call("posts.vote", this._id, "nerdy");
+	},
+
+	"click .vote-funny": function() {
+		// console.log("vote funny");
+		Meteor.call("posts.vote", this._id, "funny");
 	}
 });
 

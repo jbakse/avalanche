@@ -1,4 +1,6 @@
 push_mongo_heroku.sh
 pull_mongo_heroku.sh
+push_mongo_staging.sh
+pull_mongo_staging.sh
 dump
 dump.mongo

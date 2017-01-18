@@ -42,6 +42,12 @@ let PostSchema = new SimpleSchema({
 			{}, {}, {},
 		],
 	},
+	votes: {
+		type: [Object],
+		label: "Votes",
+		blackbox: true,
+		defaultValue: []
+	},
 	lesson: {
 		type: String,
 		label: "Lesson",
@@ -184,6 +190,27 @@ Meteor.methods({
 		Posts.update(id, {
 			$set: {
 				cloudinary_media: post.cloudinary_media
+			}
+		});
+	},
+
+	"posts.vote" (id, category) {
+		let voter_id = this.userId;
+		// console.log("hi");
+		// console.log(`${voter_id} votes ${category} for ${id}`);
+		let post = Posts.findOne(id);
+
+
+
+		if (_.where(post.votes, {voter_id: voter_id, category: category}).length > 0) return;
+
+		Posts.update(id, {
+			$push: {
+				votes: {
+					voter_id: voter_id,
+					category: category,
+					created_at: new Date()
+				}
 			}
 		});
 	}

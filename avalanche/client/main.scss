@@ -81,8 +81,9 @@ main {
 }
 
 .action-button {
+	cursor: pointer;
 	line-height: 30px;
-	padding: 0 10px;
+	padding: 0 5px;
 	float: left;
 }
 
@@ -388,6 +389,15 @@ $post-margin: 20px;
 
 }
 
+.post-info .votes {
+	// border: 1px solid red;
+	margin: $post-margin/2 $post-margin;
+}
+
+.post-info .votes li {
+	display: inline;
+}
+
 .post-info .group {
 	margin: $post-margin 0 $post-margin/2;
 	font-size: 8px;
@@ -440,6 +450,19 @@ $post-margin: 20px;
 .post:hover .actions {
 	opacity: 1;
 	visibility: visible;
+	overflow: hidden;
+}
+
+.post .emoji {
+	// border: 1px solid red;
+	vertical-align: top;
+	// padding-top: 2px;
+	padding: 2px 5px 5px;
+	cursor: pointer;
+}
+
+.post .emoji.voted {
+	opacity: 0.35;
 }
 
 .post .actions .no-actions {
