@@ -35,7 +35,11 @@ let PrefsSchema = new SimpleSchema({
 			rows: 10
 		},
 	},
-
+	voting_enabled: {
+		type: Boolean,
+		label: "Enable Voting",
+		defaultValue: true
+	},
 	site_title: {
 		type: String,
 		label: "Site Title",

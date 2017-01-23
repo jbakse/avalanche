@@ -5,7 +5,11 @@
 `heroku config:add METEOR_SETTINGS="$(cat settings.json)"`
 
 # Publishing to Heroku
-`git push heroku master`
+`git push heroku master` (live)
+https://sketches.compform.net
+
+`git push stage master` (staging)
+https://avalanche-staging.herokuapp.com/
 
 # Reference
 

@@ -6,6 +6,10 @@
 ? working now? .isotope doesn't always reflow after reload
 x.deleting other peoples posts doesn't seem to work even when admin
 
+.anon voting works, should not
+.hover to see who liked your work
+.preference to hide voting
+
 ###################################################
 ### SHAME
 

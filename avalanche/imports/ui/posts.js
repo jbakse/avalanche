@@ -28,6 +28,7 @@ function updateMarker() {
 	if (!post) return;
 
 	let week = weekForDate(post.created_at);
+	if (!week) return;
 	$(".posts-marker").html(`Week ${week.num}: ${week.topic}`);
 }
 

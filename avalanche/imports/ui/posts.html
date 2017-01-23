@@ -61,19 +61,21 @@
 				</span>
 			</div>
 		</div>
-
+		<!-- {{{json prefs}}} -->
 		<div class="actions">
 
 			{{#if userCanEdit}}
 				<i class="action-button right remove-post fa fa-trash" aria-hidden="true"></i>
 				<i class="action-button right edit-post fa fa-pencil" aria-hidden="true"></i>
 			{{else}}
-				<span class="no-actions">No Actions Available</span>
+				<!-- <span class="no-actions">No Actions Available</span> -->
 			{{/if}}
-			<span class="action-button right emoji vote-nerdy {{votedNerdy}}" aria-hidden="true">🤓</span>
-			<span class="action-button right emoji vote-funny {{votedFunny}}" aria-hidden="true">😂</span>
-			<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
 
+			{{#if prefs.voting_enabled}}
+				<span class="action-button right emoji vote-nerdy {{votedNerdy}}" aria-hidden="true">🤓</span>
+				<span class="action-button right emoji vote-funny {{votedFunny}}" aria-hidden="true">😂</span>
+				<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
+			{{/if}}
 		</div>
 
 	</div>
