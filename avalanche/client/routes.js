@@ -17,6 +17,8 @@ FlowRouter.route("/posts/:postId", {
 FlowRouter.route("/users/:userId", {
 	name: "user",
 	action: function(/*params*/) {
+		$("body").removeClass("no-scroll");
+		Session.set("previewing_post", false);
 		BlazeLayout.render("layout_main", {content: "page_user"});
 	}
 });

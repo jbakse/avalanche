@@ -2,7 +2,7 @@
 
 	<nav class="main-nav">
 		<h1>
-			<a href="/">Computational Form</a>
+			<a href="/">{{{prefs.site_title}}}</a>
 		</h1>
 
 		<div class="right">
@@ -14,9 +14,9 @@
 
 				<div class="dropdown user-dropdown">
 					{{#if currentUser.profile.headshot}}
-						<img class="headshot dropdown-toggle" data-toggle="dropdown" src="{{c.url currentUser.profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
+						<img class="headshot dropdown-toggle {{#if userIsAdmin}}admin{{/if}}" data-toggle="dropdown" src="{{c.url currentUser.profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
 					{{else}}
-						<img class="headshot dropdown-toggle" data-toggle="dropdown" src="/images/avatar.png"/>
+						<img class="headshot dropdown-toggle {{#if userIsAdmin}}admin{{/if}}" data-toggle="dropdown" src="/images/avatar.png"/>
 					{{/if}}
 					<!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
@@ -34,12 +34,16 @@
 							<a href="/users/{{currentUser._id}}">Your Profile</a>
 						</li>
 						<li role="separator" class="divider"></li>
-						<li>
-							<a class="toggle-admin" href="#">Admin</a>
-						</li>
+						{{#if userMayAdmin}}
+							<li>
+								<a class="toggle-admin" href="#">
+									{{#if userIsAdmin}}Turn Admin Off{{else}}Turn Admin On{{/if}}
+								</a>
+							</li>
+						{{/if}}
 						{{#if userIsAdmin}}
 							<li>
-								<a href="/prefs">Prefs</a>
+								<a href="/prefs">Configure Prefs</a>
 							</li>
 						{{/if}}
 						<li>

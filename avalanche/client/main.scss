@@ -4,7 +4,7 @@ $paper-color: #F5F8FD;
 $line-color: #EEE;
 $accent-color: #9013FE;
 $link-color: #9013FE;
-
+$post-width: 350px;
 ////////////////////////////////////////////////
 /// Basics
 ////////////////////////////////////////////////
@@ -13,6 +13,9 @@ $link-color: #9013FE;
 	box-sizing: border-box;
 }
 
+.debug-highlight {
+	border: 10px solid red;
+}
 /////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
@@ -78,8 +81,9 @@ main {
 }
 
 .action-button {
+	cursor: pointer;
 	line-height: 30px;
-	padding: 0 10px;
+	padding: 0 5px;
 	float: left;
 }
 
@@ -152,6 +156,11 @@ main {
 	margin-left: 20px;
 }
 
+.main-nav .headshot.admin {
+	border: 4px solid red;
+	// background: black;
+}
+
 .main-nav button.create-post {}
 
 .main-nav .user-dropdown {
@@ -210,7 +219,9 @@ main {
 
 .user-info .description {
 	font-size: 24px;
-	margin-bottom: 1em;
+	margin: 0 3em 1em;
+	// margin-bottom: 1em;
+	line-height: 1.5;
 }
 
 .user-weeks {
@@ -223,20 +234,30 @@ main {
 	.week {
 		// height: 30px
 		// line-height: 30px;
-		width: 30px;
+		// border: 1px solid red;
+		margin: 5px;
+		width: 50px;
 		text-align: center;
 	}
 
 	.topic {
+		// border: 1px solid red;
 		font-size: 8px;
 		text-transform: uppercase;
 		margin-bottom: 4px;
 		display: block;
+		height: 20px;
+		// border: 1px solid red;
+		// display: table-cell;
+		vertical-align: bottom;
+		// width: 50px;
+
 		// border: 1px solid red;
 
 	}
 
 	.count {
+		// padding-top: 10px;
 		font-size: 18px;
 	}
 }
@@ -270,7 +291,8 @@ main {
 
 .posts-wrap {
 	// border: 1px solid green;
-	padding: 0;
+	padding: 50px;
+
 }
 
 .posts {
@@ -285,8 +307,9 @@ main {
 	// border: 1px solid red;
 	position: fixed;
 	left: 20px;
+	// bottom: 20px;
 	top: 50%;
-	z-index: 100;
+	z-index: -10;
 	background: $paper-color;
 	text-transform: capitalize;
 	padding: 10px;
@@ -295,7 +318,7 @@ main {
 }
 
 .post {
-	width: 400px;
+	width: $post-width;
 	margin: 0 10px 30px;
 	outline: 1px solid $line-color;
 	box-shadow: 3px 3px 8px darken($paper-color, 5);
@@ -306,11 +329,11 @@ main {
 	@include clearfix;
 }
 
-.post .poster-link img {
+.post .poster-link img,
+.post .poster-link video {
 	display: block;
 	object-fit: cover;
 	cursor: pointer;
-	// border: 1px solid $line-color;
 	max-height: 600px;
 	width: 100%;
 }
@@ -323,8 +346,8 @@ main {
 .posters-2 .poster-link:nth-child(2) img {
 	float: left;
 	object-fit: cover;
-	width: 400px;
-	height: 200px;
+	width: $post-width;
+	height: $post-width *.5;
 }
 
 .posters-3 .poster-link:nth-child(2) img,
@@ -332,18 +355,20 @@ main {
 	float: left;
 
 	object-fit: cover;
-	width: 199px;
-	height: 200px;
+	width: $post-width *.5 - 1;
+	height: $post-width *.5;
 }
 
 .posters-3 .poster-link:nth-child(2) img {
 	margin-right: 2px;
 }
 
-.post .poster-link video {
-	display: block;
-	// outline: 1px solid $line-color;
-}
+// .post .poster-link video {
+// 	display: block;
+// 	cursor: pointer;
+// 	max-height: 600px;
+// 	width: 100%;
+// }
 
 $post-margin: 20px;
 
@@ -374,6 +399,15 @@ $post-margin: 20px;
 
 }
 
+.post-info .votes {
+	// border: 1px solid red;
+	margin: $post-margin/2 $post-margin;
+}
+
+.post-info .votes li {
+	display: inline;
+}
+
 .post-info .group {
 	margin: $post-margin 0 $post-margin/2;
 	font-size: 8px;
@@ -382,7 +416,14 @@ $post-margin: 20px;
 }
 
 .post-info .author {
+	a {
+		color: inherit;
+	}
 
+	a:hover {
+		text-decoration: none;
+		border-bottom: none;
+	}
 	margin-left: $post-margin;
 
 	.name {
@@ -419,6 +460,19 @@ $post-margin: 20px;
 .post:hover .actions {
 	opacity: 1;
 	visibility: visible;
+	overflow: hidden;
+}
+
+.post .emoji {
+	// border: 1px solid red;
+	vertical-align: top;
+	// padding-top: 2px;
+	padding: 2px 5px 5px;
+	cursor: pointer;
+}
+
+.post .emoji.voted {
+	opacity: 0.35;
 }
 
 .post .actions .no-actions {
@@ -658,6 +712,11 @@ $color-6: #7F4;
 	padding: 7px 0;
 }
 
+#layout-main .btn.cancel:active {
+	color: $link-color;
+	box-shadow: none;
+}
+
 #layout-main label {
 	color: black;
 	font-size: 10px;
@@ -711,7 +770,7 @@ $color-6: #7F4;
 
 #edit-post-form .media-progress {
 	// border: 1px solid red;
-	background: black;
+	background: $accent-color;
 	position: absolute;
 	top: -20px;
 	height: 10px;
@@ -841,9 +900,20 @@ $color-6: #7F4;
 		img,
 		video {
 			display: block;
-			margin: auto;
+			margin: 1em auto;
 			max-width: 100%;
 
+		}
+
+		img:first-child,
+		video:first-child {
+			margin-top: 4em;
+		}
+
+		img:last-child,
+		video:last-child {
+
+			margin-bottom: 4em;
 		}
 	}
 
@@ -880,4 +950,13 @@ $color-6: #7F4;
 	width: 10px;
 	background: $accent-color;
 	border: 2px solid white;
+}
+
+.overlay .media::-webkit-scrollbar-track {
+	background: black;
+}
+
+.overlay .media::-webkit-scrollbar-thumb {
+
+	border: 2px solid black;
 }

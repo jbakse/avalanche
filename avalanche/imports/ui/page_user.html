@@ -5,13 +5,13 @@
 		<main>
 			<div class="user-info">
 				{{#with user}}
-					<img class="headshot" src="{{c.url user.profile.headshot width=250 height=250 crop='fill'}}" alt=""/>
+					<img class="headshot" src="{{c.url user.profile.headshot gravity='face' width=250 height=250 crop='fill'}}" alt=""/>
 					<h1 class="name">
 						{{profile.first_name}}
 						{{profile.last_name}}
 					</h1>
 					<div class="description copy">
-						{{#markdown}}{{profile.description}}{{/markdown}}
+						{{{formatDescription 1000 profile.description}}}
 					</div>
 					<button class="btn edit-user">Edit Profile</button>
 					<!-- <button class="btn remove-user">Remove User</button> -->

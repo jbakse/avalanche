@@ -1,9 +1,14 @@
-import {getPrefs} from "../api/prefs.js";
+import {getPrefs, weekForDate} from "../api/prefs.js";
 import {Posts, postEditableBy} from "../api/posts.js";
 import "./posts.html";
 
 function updateMarker() {
-
+	if ($(window).scrollTop() < 500) {
+		$(".posts-marker").addClass("hidden");
+		return;
+	}else {
+		$(".posts-marker").removeClass("hidden");
+	}
 	let last_visible = false;
 
 	$(".post").each(function(i, post) {
@@ -12,18 +17,75 @@ function updateMarker() {
 		if (y > $(window).height()) {
 			return false;
 		}
-		last_visible = $(post).attr("id");
+		last_visible = $(post);
 	});
 
+	// console.log(last_visible);
 	if (!last_visible) return;
-
-	let post = Posts.findOne(last_visible);
+	// $(".post").removeClass("debug-highlight");
+	// last_visible.addClass("debug-highlight");
+	let post = Posts.findOne(last_visible.attr("id"));
 	if (!post) return;
 
-	$(".posts-marker").html(post.lesson);
+	let week = weekForDate(post.created_at);
+	if (!week) return;
+	$(".posts-marker").html(`Week ${week.num}: ${week.topic}`);
 }
 
 $(window).on("scroll", updateMarker);
+
+//https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling/488073#488073
+function isScrolledIntoView(elem)
+{
+	let docViewTop = $(window).scrollTop();
+	let docViewBottom = docViewTop + $(window).height();
+
+	let elemTop = $(elem).offset().top;
+	let elemBottom = elemTop + $(elem).height();
+
+	// return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+	return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+}
+
+function autoplayVideoPosters() {
+	let videos = $("video");
+
+	videos.each(function(e){
+		if (isScrolledIntoView(this)) {
+
+			this.play().catch( function(e) {
+				// console.log("caught", e);
+				// getting a "The play() request was interrupted by a call to pause()." exception on live server but not local
+				// flooding the console, but not impacting experience
+				// just throw this exception away.
+				// not sure if this is related to this problem:
+				// https://bugs.chromium.org/p/chromium/issues/detail?id=593273
+			});
+
+		} else {
+			this.pause();
+			this.currentTime = 0;
+		}
+	});
+
+	setTimeout(autoplayVideoPosters, 1000);
+}
+
+$(window).on("scroll", autoplayVideoPosters);
+setTimeout(autoplayVideoPosters, 1000);
+
+
+function lazyLoadImages() {
+	// console.log("loadem");
+	$("img.lazy").lazyload({
+		threshold: 200,
+		effect: "fadeIn",
+		failure_limit: 100000
+	}).removeClass("lazy");
+
+	setTimeout(lazyLoadImages, 1000);
+}
+setTimeout(lazyLoadImages, 1000);
 
 
 
@@ -45,6 +107,7 @@ Template.post_list.rendered = function() {
 		window.isotope.reloadItems();
 		window.isotope.arrange({sortBy: "original-order"});
 	}
+	setInterval(relayoutIsotope, 500);
 
 	let observer = new MutationObserver(function(/*mutations*/) {
 		relayoutIsotope();
@@ -77,8 +140,37 @@ Template.post.helpers({
 	userCanEdit() {
 		return postEditableBy(this, Meteor.userId());
 		// return true;
+	},
+
+	votedPretty() {
+		let post = Posts.findOne(this._id);
+		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "pretty"}).length === 0) {
+			return "";
+		}else {
+			return "voted";
+		}
+	},
+
+	votedNerdy() {
+		let post = Posts.findOne(this._id);
+		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "nerdy"}).length === 0) {
+			return "";
+		}else {
+			return "voted";
+		}
+	},
+
+	votedFunny() {
+		let post = Posts.findOne(this._id);
+		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "funny"}).length === 0) {
+			return "";
+		}else {
+			return "voted";
+		}
 	}
+
 });
+
 Template.post.events({
 	"click .poster-link": function() {
 		$("body").addClass("no-scroll");
@@ -96,6 +188,21 @@ Template.post.events({
 
 	"click .edit-post": function() {
 		Session.set("editing_post", this._id);
+	},
+
+	"click .vote-pretty": function() {
+		// console.log("vote pretty");
+		Meteor.call("posts.vote", this._id, "pretty");
+	},
+
+	"click .vote-nerdy": function() {
+		// console.log("vote nerdy");
+		Meteor.call("posts.vote", this._id, "nerdy");
+	},
+
+	"click .vote-funny": function() {
+		// console.log("vote funny");
+		Meteor.call("posts.vote", this._id, "funny");
 	}
 });
 
@@ -147,6 +254,39 @@ AutoForm.hooks({
 });
 
 function uploadFile(post, slot, files) {
+
+	let maxImageFileSizeMB = 10 ;
+	let maxVideoFileSizeMB = 20 ;
+
+	let isImage = false;
+	let isVideo = false;
+
+	if(_.contains(["image/png","!image/gif","image/jpeg"], files[0].type)) {
+		isImage = true;
+	}
+
+	if(_.contains(["video/mp4", "video/quicktime"], files[0].type)) {
+		isVideo = true;
+	}
+
+	console.log(files[0].type, files[0].size/1024/1024, isImage,  isVideo);
+
+	if (!isImage && !isVideo) {
+		alert(`Your file is not of a recognized type.\nImages must be formatted as .png or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov.\nDon't use .gif`);
+		return;
+	}
+
+	if (isImage && (files[0].size > maxImageFileSizeMB * 1024 * 1024)) {
+		alert(`Your file is too large.\nImages must be under ${maxImageFileSizeMB} mb.`);
+		return;
+	}
+
+	if (isVideo && (files[0].size > maxVideoFileSizeMB * 1024 * 1024)) {
+		alert(`Your file is too large.\nVideos must be under ${maxVideoFileSizeMB} mb.`);
+		return;
+	}
+
+
 	Cloudinary.upload(files, {
 		folder: "avalanche",
 		resource_type: "auto"

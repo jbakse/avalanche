@@ -42,6 +42,12 @@ let PostSchema = new SimpleSchema({
 			{}, {}, {},
 		],
 	},
+	votes: {
+		type: [Object],
+		label: "Votes",
+		blackbox: true,
+		defaultValue: []
+	},
 	lesson: {
 		type: String,
 		label: "Lesson",
@@ -57,6 +63,7 @@ let PostSchema = new SimpleSchema({
 		type: String,
 		label: "Description",
 		defaultValue: "",
+		optional: true
 	},
 
 	inspiration_name: {
@@ -96,13 +103,21 @@ export const postEditableBy = function(post, user_id) {
 	return (post.author_id === user_id) || userIsAdmin();
 };
 
+
+import {currentWeek} from "../api/prefs.js";
+
 Meteor.methods({
 	"posts.insert" () {
+		let topic = "";
+		if (currentWeek()) {
+			topic = currentWeek().topic;
+		}
+
 		// create post
 		let data = {
 			author_id: this.userId,
 			author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
-			lesson: "design",
+			lesson: topic,
 			created_at: new Date(),
 		};
 
@@ -175,6 +190,27 @@ Meteor.methods({
 		Posts.update(id, {
 			$set: {
 				cloudinary_media: post.cloudinary_media
+			}
+		});
+	},
+
+	"posts.vote" (id, category) {
+		let voter_id = this.userId;
+		// console.log("hi");
+		// console.log(`${voter_id} votes ${category} for ${id}`);
+		let post = Posts.findOne(id);
+
+
+
+		if (_.where(post.votes, {voter_id: voter_id, category: category}).length > 0) return;
+
+		Posts.update(id, {
+			$push: {
+				votes: {
+					voter_id: voter_id,
+					category: category,
+					created_at: new Date()
+				}
 			}
 		});
 	}

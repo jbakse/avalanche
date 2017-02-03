@@ -1,7 +1,5 @@
 <template name="post_list">
-	<div class="posts-marker">
-		MARKER
-	</div>
+	<div class="posts-marker"></div>
 	<div class="posts-wrap">
 
 		<div class="posts">
@@ -22,6 +20,16 @@
 		</div>
 
 		<div class="info post-info">
+			<ul class="votes">
+				{{#each votes}}
+					<li>
+						{{#if equals category "nerdy"}}🤓{{/if}}
+						{{#if equals category "funny"}}😂{{/if}}
+						{{#if equals category "pretty"}}😍{{/if}}
+					</li>
+				{{/each}}
+			</ul>
+
 			{{#if inspiration_url}}
 				<div class="inspiration">
 					<span class="">Inspired by</span>
@@ -31,18 +39,20 @@
 
 			{{#if description}}
 				<div class="description copy">
-					{{#markdown}}{{formatDescription 100 description}}{{/markdown}}
+					{{{formatDescription 100 description}}}
 				</div>
 			{{/if}}
 
 			<div class="group">
 				<span class="author">
-					{{#if authorHeadshot}}
-						<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-					{{else}}
-						<img class="headshot" src="/images/avatar.png"/>
-					{{/if}}
-					<span class="name">{{author}}</span>
+					<a href="/users/{{author_id}}">
+						{{#if authorHeadshot}}
+							<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
+						{{else}}
+							<img class="headshot" src="/images/avatar.png"/>
+						{{/if}}
+						<span class="name">{{author}}</span>
+					</a>
 				</span>
 
 				<span class="date">
@@ -51,13 +61,20 @@
 				</span>
 			</div>
 		</div>
-
+		<!-- {{{json prefs}}} -->
 		<div class="actions">
+
 			{{#if userCanEdit}}
 				<i class="action-button right remove-post fa fa-trash" aria-hidden="true"></i>
 				<i class="action-button right edit-post fa fa-pencil" aria-hidden="true"></i>
 			{{else}}
-				<span class="no-actions">No Actions Available</span>
+				<!-- <span class="no-actions">No Actions Available</span> -->
+			{{/if}}
+
+			{{#if prefs.voting_enabled}}
+				<span class="action-button right emoji vote-nerdy {{votedNerdy}}" aria-hidden="true">🤓</span>
+				<span class="action-button right emoji vote-funny {{votedFunny}}" aria-hidden="true">😂</span>
+				<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
 			{{/if}}
 		</div>
 
@@ -67,12 +84,20 @@
 <template name="post_poster">
 	{{#if equals cloudinary_media.resource_type "video"}}
 		<div class="poster-link" href="/posts/{{_id}}">
-			<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{cloudinary_media.public_id}}.mp4" autoplay=true loop=true muted=true></video>
+			<video poster="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg" loop muted>
+
+				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.webm" type="video/webm"/>
+				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.mp4" type="video/mp4"/>
+				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.ogv" type="video/ogg"/>
+
+			</video>
 		</div>
 	{{/if}}
 	{{#if equals cloudinary_media.resource_type "image"}}
 		<div class="poster-link" href="/posts/{{_id}}">
-			<img src="{{c.url cloudinary_media.public_id width=400 crop='fill' quality=90}}" alt=""/>
+
+			<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}} data-original="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/>
+			<!-- <img src="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/> -->
 		</div>
 	{{/if}}
 </template>
@@ -97,7 +122,7 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[0].resource_type "video"}}
-							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
+							<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 						{{/if}}
 						{{#if equals post.cloudinary_media.[0].resource_type "image"}}
 							<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt=""/>
@@ -122,7 +147,7 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[1].resource_type "video"}}
-							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true muted=true></video>
+							<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 						{{/if}}
 						{{#if equals post.cloudinary_media.[1].resource_type "image"}}
 							<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt=""/>
@@ -147,7 +172,7 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[2].resource_type "video"}}
-							<video src="http://res.cloudinary.com/jbakse/video/upload/w_400/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true muted=true></video>
+							<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true muted=true></video>
 						{{/if}}
 						{{#if equals post.cloudinary_media.[2].resource_type "image"}}
 							<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt=""/>
@@ -215,21 +240,21 @@
 		<div class="overlay-content">
 			<div class="media">
 				{{#if equals post.cloudinary_media.[0].resource_type "video"}}
-					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true loop=true></video>
+					<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true loop=true></video>
 				{{/if}}
 				{{#if equals post.cloudinary_media.[0].resource_type "image"}}
 					<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt=""/>
 				{{/if}}
 
 				{{#if equals post.cloudinary_media.[1].resource_type "video"}}
-					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
+					<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
 				{{/if}}
 				{{#if equals post.cloudinary_media.[1].resource_type "image"}}
 					<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt=""/>
 				{{/if}}
 
 				{{#if equals post.cloudinary_media.[2].resource_type "video"}}
-					<video src="http://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
+					<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
 				{{/if}}
 				{{#if equals post.cloudinary_media.[2].resource_type "image"}}
 					<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt=""/>
@@ -244,14 +269,16 @@
 				</div>
 				<div class="group">
 					<span class="author">
-						{{#with post}}
-							{{#if authorHeadshot}}
-								<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-							{{else}}
-								<img class="headshot" src="/images/avatar.png"/>
-							{{/if}}
-						{{/with}}
-						<span class="name">{{post.author}}</span>
+						<a href="/users/{{post.author_id}}">
+							{{#with post}}
+								{{#if authorHeadshot}}
+									<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
+								{{else}}
+									<img class="headshot" src="/images/avatar.png"/>
+								{{/if}}
+							{{/with}}
+							<span class="name">{{post.author}}</span>
+						</a>
 					</span>
 
 					<span class="date">
@@ -269,7 +296,7 @@
 
 				{{#if post.description}}
 					<div class="description copy">
-						{{#markdown}}{{formatDescription 10000 post.description}}{{/markdown}}
+						{{{formatDescription 10000 post.description}}}
 					</div>
 				{{/if}}
 

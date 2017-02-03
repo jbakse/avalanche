@@ -37,7 +37,7 @@ Template.page_user.helpers({
 
 
 		let userId = FlowRouter.getParam("userId");
-		console.log(userId);
+		// console.log(userId);
 
 		let weeks = prefs.weeks;
 		let counts = [];
@@ -77,22 +77,20 @@ Template.page_user.events({
 	"change .upload-headshot-file": function(event, template) {
 
 		event.preventDefault();
-		console.log("upload", this);
+		// console.log("upload", this);
 		let files = template.find(".upload-headshot-file").files;
 		Cloudinary.upload(files, {
 			folder: "avalanche",
 			resource_type: "image",
 		}, (err, res) => {
-			console.log("Upload Error:", err);
-			console.log("Upload Result:", res);
-			console.log(res);
+			// console.log("Upload Error:", err);
+			// console.log("Upload Result:", res);
 
 			let data = {
 				user_id: this._id,
 				res,
 			};
 			if (!err) {
-				console.log("data in", data);
 				Meteor.call("users.updateHeadshot", data);
 			}
 		});
@@ -104,13 +102,13 @@ Template.page_user.events({
 	},
 
 	"click .remove-user": function(/*event*/) {
-		console.log("kill", FlowRouter.getParam("userId"));
+		// console.log("kill", FlowRouter.getParam("userId"));
 		Meteor.users.remove(FlowRouter.getParam("userId"));
 	},
 
 	"submit #updateUserForm": function(event, template) {
 		event.preventDefault();
-		console.log("submit #updateUserForm");
+		// console.log("submit #updateUserForm");
 
 		let first_name = template.find(".first-name").value || "Unknown";
 		let last_name = template.find(".last-name").value || "Author";

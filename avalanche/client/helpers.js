@@ -42,6 +42,7 @@ Template.registerHelper("pluralize", function(num, string) {
 
 Template.registerHelper("formatDescription", function(num, string) {
 	string = stripHTML(string);
+	//{"simplifiedAutoLink": true} option doesn't work, appears to be a different showdown package
 	let converter = new Showdown.converter();
 	string = converter.makeHtml(string);
 
@@ -55,13 +56,24 @@ Template.registerHelper("formatDescription", function(num, string) {
 Template.registerHelper("progress", function progress() {
 
 	let p = Cloudinary.collection.find({percent_uploaded: {$lt: 100}}).fetch();
-	
+
 	if (!p.length) {
 		return 0;
 	}
 	return p[0].percent_uploaded;
 
 
+});
+
+
+Template.registerHelper("sizeImg", function(imgW, imgH, targetW) {
+	imgH = Math.round(imgH / imgW * targetW);
+	imgW = targetW;
+	// return `width="${imgW}" height="${imgH}"`;
+	return {
+		width: imgW,
+		height: imgH
+	};
 });
 
 

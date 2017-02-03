@@ -53,6 +53,9 @@ Template.main_nav.events({
 Template.main_nav.helpers({
 	userIsAdmin() {
 		return Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
+	},
+	userMayAdmin() {
+		return Roles.userIsInRole(Meteor.userId(), ["may_admin"], Roles.GLOBAL_GROUP);
 	}
 
 });
