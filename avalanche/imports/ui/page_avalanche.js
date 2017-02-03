@@ -1,3 +1,4 @@
+
 import {Template} from "meteor/templating";
 
 import {getPrefs} from "../api/prefs.js";
@@ -20,6 +21,7 @@ Template.page_avalanche.helpers({
 		return posts();
 	},
 	postsCount() {
+
 		return posts().count();
 	},
 	posts_this_week() {
@@ -38,7 +40,7 @@ Template.page_avalanche.helpers({
 
 
 		let posts = Posts.find({
-			
+
 			"created_at":
 			{
 				$gte: week.start,
@@ -46,7 +48,7 @@ Template.page_avalanche.helpers({
 			}
 		});
 
-
+		
 
 		return posts.count();
 	}

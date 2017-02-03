@@ -19,7 +19,16 @@ Template.user_summary.helpers({
 		});
 		return posts.count();
 	},
-
+	no_bar() {
+		
+		if (this.profile && this.profile.first_name === "Justin") {
+			return "no-bar";
+		}
+		if (this.profile && this.profile.first_name === "Brinna") {
+			return "no-bar";
+		}
+		return "";
+	},
 	posts_this_week() {
 		// let prefs = getPrefs();
 		// if (!prefs) {

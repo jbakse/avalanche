@@ -534,6 +534,10 @@ $color-6: #7F4;
 	border-bottom: 5px solid $color-5;
 }
 
+.user-summary.no-bar {
+	border-bottom: none;
+}
+
 .user-summary {
 	border-bottom: 5px solid $color-6;
 }
