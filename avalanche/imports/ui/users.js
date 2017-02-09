@@ -11,6 +11,8 @@ Template.user_summaries.helpers({
 		users = users.fetch();
 		_.each(users, function(user) {
 			user.sort_by = posts_this_week(user._id);
+
+
 			if (user.profile.first_name == "Justin") {
 				user.sort_by = -10;
 			}
@@ -19,6 +21,12 @@ Template.user_summaries.helpers({
 			}
 		});
 
+
+
+		users = _.reject(users, function(user) {
+			let drops = ["Aaron", "Lauren", "Terricka", "Aimee", "Chao"];
+			return _.contains(drops, user.profile.first_name);
+		});
 
 		users = _.sortBy(users, "sort_by");
 		users.reverse();
