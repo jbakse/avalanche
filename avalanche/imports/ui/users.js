@@ -3,6 +3,7 @@ import "./users.html";
 import {Posts} from "../api/posts.js";
 import {currentWeek} from "../api/prefs.js";
 
+
 Template.user_summaries.helpers({
 	users() {
 		let users = Meteor.users.find({});
@@ -61,8 +62,6 @@ Template.user_summary.helpers({
 		});
 		return posts.count();
 	},
-
-	
 
 	posts_this_week() {
 		let posts = posts_this_week(this._id);

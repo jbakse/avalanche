@@ -9,7 +9,9 @@
 </template>
 
 <template name="user_summary">
+
 	<div class="user-summary count-{{posts_this_week}} user-{{profile.first_name}}">
+
 		<a href="users/{{_id}}">
 			{{#if profile.headshot}}
 				<img class="headshot" src="{{c.url profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
