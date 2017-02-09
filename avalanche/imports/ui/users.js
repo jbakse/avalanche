@@ -6,10 +6,52 @@ import {currentWeek} from "../api/prefs.js";
 Template.user_summaries.helpers({
 	users() {
 		let users = Meteor.users.find({});
+
+		users = users.fetch();
+		_.each(users, function(user) {
+			user.sort_by = posts_this_week(user._id);
+			if (user.profile.first_name == "Justin") {
+				user.sort_by = -10;
+			}
+			if (user.profile.first_name == "Brinna") {
+				user.sort_by = -5;
+			}
+		});
+
+
+		users = _.sortBy(users, "sort_by");
+		users.reverse();
+
+
+
+		console.log(users);
 		// console.log(users);
 		return users;
 	}
 });
+
+
+function posts_this_week(user) {
+	let week = currentWeek();
+
+	if (!week) {
+		return;
+	}
+
+	let posts = Posts.find({
+		"author_id": user,
+		"created_at":
+		{
+			$gte: week.start,
+			$lt: week.end,
+		}
+	});
+
+
+
+	return posts.count();
+}
+
 
 Template.user_summary.helpers({
 	posts_total() {
@@ -20,37 +62,34 @@ Template.user_summary.helpers({
 		return posts.count();
 	},
 
+	
+
 	posts_this_week() {
-		// let prefs = getPrefs();
-		// if (!prefs) {
+		let posts = posts_this_week(this._id);
+		return posts;
+
+		//
+		//
+		// let week = currentWeek();
+		//
+		// if (!week) {
 		// 	return;
 		// }
-		// let weeks = prefs.weeks;
 		//
-		// let week = _.find(weeks, function(week) {
-		// 	return week.start < new Date() && week.end > new Date();
+		//
+		//
+		// let posts = Posts.find({
+		// 	"author_id": this._id,
+		// 	"created_at":
+		// 	{
+		// 		$gte: week.start,
+		// 		$lt: week.end,
+		// 	}
 		// });
-
-		let week = currentWeek();
-
-		if (!week) {
-			return;
-		}
-
-
-
-		let posts = Posts.find({
-			"author_id": this._id,
-			"created_at":
-			{
-				$gte: week.start,
-				$lt: week.end,
-			}
-		});
-
-
-
-		return posts.count();
+		//
+		//
+		//
+		// return posts.count();
 	}
 });
 
