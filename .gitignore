@@ -5,3 +5,4 @@ pull_mongo_staging.sh
 dump
 dump.mongo
 dump_bu
+dump*

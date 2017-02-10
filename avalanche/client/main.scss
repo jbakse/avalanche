@@ -329,6 +329,10 @@ main {
 	@include clearfix;
 }
 
+.post .poster-link {
+	overflow: hidden;
+}
+
 .post .poster-link img,
 .post .poster-link video {
 	display: block;
@@ -339,11 +343,14 @@ main {
 }
 
 .posters-2 .poster-link:nth-child(1) img,
-.posters-3 .poster-link:nth-child(1) img {
+.posters-3 .poster-link:nth-child(1) img,
+.posters-2 .poster-link:nth-child(1) video,
+.posters-3 .poster-link:nth-child(1) video {
 	margin-bottom: 2px;
 }
 
-.posters-2 .poster-link:nth-child(2) img {
+.posters-2 .poster-link:nth-child(2) img,
+.posters-2 .poster-link:nth-child(2) video {
 	float: left;
 	object-fit: cover;
 	width: $post-width;
@@ -351,7 +358,9 @@ main {
 }
 
 .posters-3 .poster-link:nth-child(2) img,
-.posters-3 .poster-link:nth-child(3) img {
+.posters-3 .poster-link:nth-child(3) img,
+.posters-3 .poster-link:nth-child(2) video,
+.posters-3 .poster-link:nth-child(3) video {
 	float: left;
 
 	object-fit: cover;
@@ -359,7 +368,8 @@ main {
 	height: $post-width *.5;
 }
 
-.posters-3 .poster-link:nth-child(2) img {
+.posters-3 .poster-link:nth-child(2) img,
+.posters-3 .poster-link:nth-child(2) video {
 	margin-right: 2px;
 }
 
