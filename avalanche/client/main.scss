@@ -329,6 +329,11 @@ main {
 	@include clearfix;
 }
 
+.post .poster-link
+{
+	position: relative;
+}
+
 .post .poster-link img,
 .post .poster-link video {
 	display: block;
@@ -369,6 +374,23 @@ main {
 // 	max-height: 600px;
 // 	width: 100%;
 // }
+
+.video-icon {
+	cursor: pointer;
+	text-shadow: 1px 1px 5px rgba(0,0,0,.4);
+	// border: 1px solid red;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	margin-left: -50px;
+	margin-top: -50px;
+	width: 100px;
+	height: 100px;
+	// z-index: 10;
+	color: white;
+	font-size: 100px;
+}
+
 
 $post-margin: 20px;
 
