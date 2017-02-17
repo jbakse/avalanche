@@ -331,6 +331,8 @@ main {
 
 .post .poster-link {
 	overflow: hidden;
+
+	position: relative;
 }
 
 .post .poster-link img,
@@ -343,8 +345,8 @@ main {
 }
 
 .posters-2 .poster-link:nth-child(1) img,
-.posters-3 .poster-link:nth-child(1) img,
 .posters-2 .poster-link:nth-child(1) video,
+.posters-3 .poster-link:nth-child(1) img,
 .posters-3 .poster-link:nth-child(1) video {
 	margin-bottom: 2px;
 }
@@ -358,8 +360,8 @@ main {
 }
 
 .posters-3 .poster-link:nth-child(2) img,
-.posters-3 .poster-link:nth-child(3) img,
 .posters-3 .poster-link:nth-child(2) video,
+.posters-3 .poster-link:nth-child(3) img,
 .posters-3 .poster-link:nth-child(3) video {
 	float: left;
 
@@ -379,6 +381,22 @@ main {
 // 	max-height: 600px;
 // 	width: 100%;
 // }
+
+.video-icon {
+	cursor: pointer;
+	text-shadow: 1px 1px 5px rgba(0,0,0,.4);
+	// border: 1px solid red;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	margin-top: -20px;
+	width: 50px;
+	height: 50px;
+	// z-index: 10;
+	color: white;
+	font-size: 50px;
+}
 
 $post-margin: 20px;
 

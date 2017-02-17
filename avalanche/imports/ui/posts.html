@@ -84,19 +84,27 @@
 <template name="post_poster">
 	{{#if equals cloudinary_media.resource_type "video"}}
 		<div class="poster-link" href="/posts/{{_id}}">
-			<video poster="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg" loop muted>
+			<!-- <video poster="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg" loop muted>
 
 				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.webm" type="video/webm"/>
 				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.mp4" type="video/mp4"/>
 				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.ogv" type="video/ogg"/>
 
-			</video>
+			</video> -->
+
+			<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}}
+			data-original="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg"
+			alt=""/>
+
+			<div class="video-icon"><i class="fa fa-play" aria-hidden="true"></i></div>
+
 		</div>
 	{{/if}}
 	{{#if equals cloudinary_media.resource_type "image"}}
 		<div class="poster-link" href="/posts/{{_id}}">
 
 			<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}} data-original="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/>
+
 			<!-- <img src="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/> -->
 		</div>
 	{{/if}}

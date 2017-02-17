@@ -48,11 +48,14 @@ function isScrolledIntoView(elem)
 }
 
 function autoplayVideoPosters() {
+	// console.log("autoplay");
 	let videos = $("video");
 
+	// let playCount = 0;
+	// let pauseCount = 0;
 	videos.each(function(e){
 		if (isScrolledIntoView(this)) {
-
+			// playCount++;
 			this.play().catch( function(e) {
 				// console.log("caught", e);
 				// getting a "The play() request was interrupted by a call to pause()." exception on live server but not local
@@ -63,16 +66,18 @@ function autoplayVideoPosters() {
 			});
 
 		} else {
+			// pauseCount++;
 			this.pause();
 			this.currentTime = 0;
 		}
 	});
 
-	setTimeout(autoplayVideoPosters, 1000);
+	// console.log("p/p", playCount, pauseCount);
+
 }
 
 $(window).on("scroll", autoplayVideoPosters);
-setTimeout(autoplayVideoPosters, 1000);
+setInterval(autoplayVideoPosters, 1000);
 
 
 function lazyLoadImages() {
