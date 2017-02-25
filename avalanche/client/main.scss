@@ -331,8 +331,8 @@ main {
 
 .post .poster-link {
 	overflow: hidden;
-
 	position: relative;
+
 }
 
 .post .poster-link img,
@@ -359,8 +359,10 @@ main {
 	height: $post-width *.5;
 }
 
+.posters-3 .poster-link:nth-child(2),
 .posters-3 .poster-link:nth-child(2) img,
 .posters-3 .poster-link:nth-child(2) video,
+.posters-3 .poster-link:nth-child(3),
 .posters-3 .poster-link:nth-child(3) img,
 .posters-3 .poster-link:nth-child(3) video {
 	float: left;
