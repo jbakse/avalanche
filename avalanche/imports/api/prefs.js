@@ -59,6 +59,17 @@ let PrefsSchema = new SimpleSchema({
 
 
 export const Prefs = new Mongo.Collection("prefs");
+
+
+if (Meteor.isServer) {
+	// This code only runs on the server
+	Meteor.publish("prefs", function usersPublication() {
+		return Prefs.find();
+	});
+}
+
+
+
 export const getPrefs = function(){
 	let prefs = Prefs.find({});
 	prefs = prefs.fetch()[0];

@@ -109,20 +109,21 @@ Template.post_list.rendered = function() {
 	});
 
 	function relayoutIsotope() {
+		// console.log("isotope reload");
 		window.isotope.reloadItems();
 		window.isotope.arrange({sortBy: "original-order"});
 	}
 	setInterval(relayoutIsotope, 500);
 
 	let observer = new MutationObserver(function(/*mutations*/) {
-		relayoutIsotope();
+		_.debounce(relayoutIsotope, 500, true);
 
 		$(posts).find("video").on("loadeddata", function() {
-			relayoutIsotope();
+			_.debounce(relayoutIsotope, 500, true);
 		});
 
 		$(posts).find("img").on("load", function() {
-			relayoutIsotope();
+			_.debounce(relayoutIsotope, 500, true);
 		});
 	});
 

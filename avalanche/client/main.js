@@ -52,3 +52,11 @@ AccountsTemplates.addField({
 	displayName: "Last Name",
 	required: true
 });
+
+
+Meteor.subscribe("users");
+Meteor.subscribe("prefs");
+Meteor.subscribe("recent_posts");
+setTimeout( function() {
+	Meteor.subscribe("posts");
+}, 3000);

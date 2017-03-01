@@ -4,6 +4,8 @@ import {Posts} from "../api/posts.js";
 import {currentWeek} from "../api/prefs.js";
 
 
+Meteor.subscribe("users");
+
 Template.user_summaries.helpers({
 	users() {
 		let users = Meteor.users.find({});
@@ -33,7 +35,7 @@ Template.user_summaries.helpers({
 
 
 
-		console.log(users);
+		// console.log(users);
 		// console.log(users);
 		return users;
 	}
@@ -141,7 +143,7 @@ Template.edit_user_form.events({
 	"change .upload-headshot-file": function(event, template) {
 
 		event.preventDefault();
-		console.log("upload", this);
+		// console.log("upload", this);
 		let files = template.find(".upload-headshot-file").files;
 		Cloudinary.upload(files, {
 			folder: "avalanche",

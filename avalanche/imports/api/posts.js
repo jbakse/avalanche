@@ -5,23 +5,23 @@ let PostSchema = new SimpleSchema({
 	author: {
 		type: String,
 		label: "Author",
-		defaultValue: "",
+		defaultValue: ""
 	},
 	author_id: {
 		type: String,
 		label: "Author ID",
 		defaultValue: "",
 		// optional: true,
-		// regex: SimpleSchema.RegEx.Id,,,,,,,,,,,,
+		// regex: SimpleSchema.RegEx.Id,,,,,,,,,,,,,
 	},
 	created_at: {
 		type: Date,
-		label: "Created At",
+		label: "Created At"
 	},
 	posted: {
 		type: Boolean,
 		label: "Posted",
-		defaultValue: false,
+		defaultValue: false
 	},
 	// poster: {
 	// 	type: String,
@@ -38,51 +38,83 @@ let PostSchema = new SimpleSchema({
 		type: [Object],
 		label: "Cloudinary Data",
 		blackbox: true,
-		defaultValue: [
-			{}, {}, {},
-		],
+		defaultValue: [{}, {}, {},]
 	},
 	votes: {
 		type: [Object],
 		label: "Votes",
 		blackbox: true,
-		defaultValue: []
+		defaultValue: [],
 	},
 	lesson: {
 		type: String,
 		label: "Lesson",
-		defaultValue: "",
+		defaultValue: ""
 	},
 	title: {
 		type: String,
 		label: "Title",
 		defaultValue: "",
-		max: 10,
+		max: 10
 	},
 	description: {
 		type: String,
 		label: "Description",
 		defaultValue: "",
-		optional: true
+		optional: true,
 	},
 
 	inspiration_name: {
 		type: String,
 		label: "Inspiration Name",
 		optional: true,
-		defaultValue: "",
+		defaultValue: ""
 	},
 
 	inspiration_url: {
 		type: String,
 		label: "Inspiration URL",
 		optional: true,
-		defaultValue: "",
-	}
+		defaultValue: ""
+	},
 });
 
 export const Posts = new Mongo.Collection("posts");
 Posts.attachSchema(PostSchema);
+
+if (Meteor.isServer) {
+	// This code only runs on the server
+	Meteor.publish("posts", function usersPublication() {
+		return Posts.find();
+	});
+
+	// kinda silly hack, to allow loading just themost recent first, then all of them after a few seconds
+	Meteor.publish("recent_posts", function usersPublication() {
+		return Posts.find({
+			posted: true
+		}, {
+			sort: {
+				created_at: -1
+			},
+			fields: {
+				"cloudinary_media.tags": 0,
+				"cloudinary_media.pages": 0,
+				"cloudinary_media.bytes": 0,
+				"cloudinary_media.type": 0,
+				"cloudinary_media.etag": 0,
+				"cloudinary_media.url": 0,
+				"cloudinary_media.secure_url": 0,
+				"cloudinary_media.audio": 0,
+				"cloudinary_media.video": 0,
+				"cloudinary_media.frame_rate": 0,
+				"cloudinary_media.bit_rate": 0,
+				"cloudinary_media.duration": 0,
+				"cloudinary_media.rotation": 0,
+			},
+			limit: 20,
+		});
+	});
+}
 
 Posts.allow({
 	update: function(userId, doc/*, fields, modifier*/) {
@@ -103,7 +135,6 @@ export const postEditableBy = function(post, user_id) {
 	return (post.author_id === user_id) || userIsAdmin();
 };
 
-
 import {currentWeek} from "../api/prefs.js";
 
 Meteor.methods({
@@ -118,7 +149,7 @@ Meteor.methods({
 			author_id: this.userId,
 			author: Meteor.user().profile.first_name + " " + Meteor.user().profile.last_name,
 			lesson: topic,
-			created_at: new Date(),
+			created_at: new Date()
 		};
 
 		let id = Posts.insert(data);
@@ -200,18 +231,20 @@ Meteor.methods({
 		// console.log(`${voter_id} votes ${category} for ${id}`);
 		let post = Posts.findOne(id);
 
-
-
-		if (_.where(post.votes, {voter_id: voter_id, category: category}).length > 0) return;
+		if (_.where(post.votes, {
+			voter_id: voter_id,
+			category: category,
+		}).length > 0)
+			return;
 
 		Posts.update(id, {
 			$push: {
 				votes: {
 					voter_id: voter_id,
 					category: category,
-					created_at: new Date()
+					created_at: new Date(),
 				}
 			}
 		});
-	}
+	},
 });
