@@ -4,26 +4,36 @@
 		<main>
 			{{> user_summaries}}
 
+			<div class="class-weeks">
+				{{#each weeks}} {{#if count}}
+				<div class="week show-week">
+					<span class="topic">{{topic}}</span>
+					<span class="count">{{count}}</span>
+				</div>
+				{{/if}} {{/each}}
+			</div>
+
+
+			<div class="message">
+				<div class="show-all">
+					{{postsCount}} Sketches Total {{#if posts_this_week}} — {{posts_this_week}} This Week {{/if}}
+				</div>
+				{{#if this_week}}
+				<div>
+					{{this_week.count}} {{this_week.topic}} Sketches
+				</div>
+				{{/if}}
+			</div>
+
+
 			<div class="message copy">
 				{{#markdown}}{{{prefs.avalanche_message}}}{{/markdown}}
-			</div>
-			<div class="message">
-				{{postsCount}}
-				Sketches Total —
-				{{posts_this_week}}
-				This Week
-
 			</div>
 
 			{{> post_list posts=posts}}
 		</main>
 
-		{{#if previewing_post}}
-			{{> post_overlay post_id=previewing_post}}
-		{{/if}}
-
-		{{#if editing_post}}
-			{{> edit_post_form post_id=editing_post}}
+		{{#if previewing_post}} {{> post_overlay post_id=previewing_post}} {{/if}} {{#if editing_post}} {{> edit_post_form post_id=editing_post}}
 		{{/if}}
 
 	</div>

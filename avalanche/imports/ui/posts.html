@@ -3,9 +3,7 @@
 	<div class="posts-wrap">
 
 		<div class="posts">
-			{{#each posts}}
-				{{> post}}
-			{{/each}}
+			{{#each posts}} {{> post}} {{/each}}
 		</div>
 	</div>
 
@@ -14,50 +12,42 @@
 <template name="post">
 	<div id="{{_id}}" class="post">
 		<div class="posters posters-{{mediaCount}}">
-			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[0]}}
-			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[1]}}
+			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[0]}} {{> post_poster _id=_id cloudinary_media=cloudinary_media.[1]}}
 			{{> post_poster _id=_id cloudinary_media=cloudinary_media.[2]}}
 		</div>
 
 		<div class="info post-info">
 			<ul class="votes">
 				{{#each votes}}
-					<li>
-						{{#if equals category "nerdy"}}🤓{{/if}}
-						{{#if equals category "funny"}}😂{{/if}}
-						{{#if equals category "pretty"}}😍{{/if}}
-					</li>
+				<li>
+					{{#if equals category "nerdy"}}🤓{{/if}} {{#if equals category "funny"}}😂{{/if}} {{#if equals category "pretty"}}😍{{/if}}
+				</li>
 				{{/each}}
 			</ul>
 
 			{{#if inspiration_url}}
-				<div class="inspiration">
-					<span class="">Inspired by</span>
-					<a href="{{inspiration_url}}">{{inspiration_name}}</a>
-				</div>
-			{{/if}}
-
-			{{#if description}}
-				<div class="description copy">
-					{{{formatDescription 100 description}}}
-				</div>
+			<div class="inspiration">
+				<span class="">Inspired by</span>
+				<a href="{{inspiration_url}}">{{inspiration_name}}</a>
+			</div>
+			{{/if}} {{#if description}}
+			<div class="description copy">
+				{{{formatDescription 100 description}}}
+			</div>
 			{{/if}}
 
 			<div class="group">
 				<span class="author">
 					<a href="/users/{{author_id}}">
 						{{#if authorHeadshot}}
-							<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-						{{else}}
-							<img class="headshot" src="/images/avatar.png"/>
-						{{/if}}
+						<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt="" /> {{else}}
+						<img class="headshot" src="/images/avatar.png" /> {{/if}}
 						<span class="name">{{author}}</span>
 					</a>
 				</span>
 
 				<span class="date">
-					{{formatDate created_at}},
-					{{formatTime created_at}}
+					{{formatDate created_at}}, {{formatTime created_at}}
 				</span>
 			</div>
 		</div>
@@ -65,16 +55,14 @@
 		<div class="actions">
 
 			{{#if userCanEdit}}
-				<i class="action-button right remove-post fa fa-trash" aria-hidden="true"></i>
-				<i class="action-button right edit-post fa fa-pencil" aria-hidden="true"></i>
+			<i class="action-button right remove-post fa fa-trash" aria-hidden="true"></i>
+			<i class="action-button right edit-post fa fa-pencil" aria-hidden="true"></i>
 			{{else}}
-				<!-- <span class="no-actions">No Actions Available</span> -->
-			{{/if}}
-
-			{{#if prefs.voting_enabled}}
-				<span class="action-button right emoji vote-nerdy {{votedNerdy}}" aria-hidden="true">🤓</span>
-				<span class="action-button right emoji vote-funny {{votedFunny}}" aria-hidden="true">😂</span>
-				<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
+			<!-- <span class="no-actions">No Actions Available</span> -->
+			{{/if}} {{#if prefs.voting_enabled}}
+			<span class="action-button right emoji vote-nerdy {{votedNerdy}}" aria-hidden="true">🤓</span>
+			<span class="action-button right emoji vote-funny {{votedFunny}}" aria-hidden="true">😂</span>
+			<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
 			{{/if}}
 		</div>
 
@@ -83,8 +71,8 @@
 
 <template name="post_poster">
 	{{#if equals cloudinary_media.resource_type "video"}}
-		<div class="poster-link" href="/posts/{{_id}}">
-			<!-- <video poster="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg" loop muted>
+	<div class="poster-link" href="/posts/{{_id}}">
+		<!-- <video poster="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg" loop muted>
 
 				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.webm" type="video/webm"/>
 				<source src="https://res.cloudinary.com/jbakse/video/upload/w_350,eo_5,q_74,ac_none/{{cloudinary_media.public_id}}.mp4" type="video/mp4"/>
@@ -92,21 +80,22 @@
 
 			</video> -->
 
-			<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}}
-			data-original="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg"
-			alt=""/>
+		<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}} data-original="https://res.cloudinary.com/jbakse/video/upload/w_350/{{cloudinary_media.public_id}}.jpg"
+		    alt="" />
 
-			<div class="video-icon"><i class="fa fa-play" aria-hidden="true"></i></div>
-
+		<div class="video-icon">
+			<i class="fa fa-play" aria-hidden="true"></i>
 		</div>
-	{{/if}}
-	{{#if equals cloudinary_media.resource_type "image"}}
-		<div class="poster-link" href="/posts/{{_id}}">
 
-			<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}} data-original="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/>
+	</div>
+	{{/if}} {{#if equals cloudinary_media.resource_type "image"}}
+	<div class="poster-link" href="/posts/{{_id}}">
 
-			<!-- <img src="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/> -->
-		</div>
+		<img class="lazy" {{sizeImg cloudinary_media.width cloudinary_media.height 350}} data-original="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}"
+		    alt="" />
+
+		<!-- <img src="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/> -->
+	</div>
 	{{/if}}
 </template>
 
@@ -119,7 +108,7 @@
 				<!-- <div class="media-progress" style="width:30%"></div> -->
 
 				{{#if progress}}
-					<div class="media-progress" style="width:{{progress}}%"></div>
+				<div class="media-progress" style="width:{{progress}}%"></div>
 				{{/if}}
 
 				<div class="posters">
@@ -130,21 +119,18 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[0].resource_type "video"}}
-							<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-						{{/if}}
-						{{#if equals post.cloudinary_media.[0].resource_type "image"}}
-							<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt=""/>
-						{{/if}}
-
-						{{#if post.cloudinary_media.[0].resource_type}}
-							<div class="info">
-								<div class="dimensions">
-									{{post.cloudinary_media.[0].width}}x{{post.cloudinary_media.[0].height}}
-								</div>
-								<span class="icon-button remove remove-file-0">
-									<i class="fa fa-times-circle" aria-hidden="true"></i>
-								</span>
+						<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[0].public_id}}.mp4" autoplay=true
+						    loop=true muted=true></video>
+						{{/if}} {{#if equals post.cloudinary_media.[0].resource_type "image"}}
+						<img src="{{c.url post.cloudinary_media.[0].public_id height=250 crop='fill' quality=90}}" alt="" /> {{/if}} {{#if post.cloudinary_media.[0].resource_type}}
+						<div class="info">
+							<div class="dimensions">
+								{{post.cloudinary_media.[0].width}}x{{post.cloudinary_media.[0].height}}
 							</div>
+							<span class="icon-button remove remove-file-0">
+								<i class="fa fa-times-circle" aria-hidden="true"></i>
+							</span>
+						</div>
 						{{/if}}
 					</div>
 					<div class="poster-wrap">
@@ -155,21 +141,18 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[1].resource_type "video"}}
-							<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-						{{/if}}
-						{{#if equals post.cloudinary_media.[1].resource_type "image"}}
-							<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt=""/>
-						{{/if}}
-
-						{{#if post.cloudinary_media.[1].resource_type}}
-							<div class="info">
-								<div class="dimensions">
-									{{post.cloudinary_media.[1].width}}x{{post.cloudinary_media.[1].height}}
-								</div>
-								<span class="icon-button remove remove-file-1">
-									<i class="fa fa-times-circle" aria-hidden="true"></i>
-								</span>
+						<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[1].public_id}}.mp4" autoplay=true
+						    loop=true muted=true></video>
+						{{/if}} {{#if equals post.cloudinary_media.[1].resource_type "image"}}
+						<img src="{{c.url post.cloudinary_media.[1].public_id height=250 crop='fill' quality=90}}" alt="" /> {{/if}} {{#if post.cloudinary_media.[1].resource_type}}
+						<div class="info">
+							<div class="dimensions">
+								{{post.cloudinary_media.[1].width}}x{{post.cloudinary_media.[1].height}}
 							</div>
+							<span class="icon-button remove remove-file-1">
+								<i class="fa fa-times-circle" aria-hidden="true"></i>
+							</span>
+						</div>
 						{{/if}}
 
 					</div>
@@ -180,62 +163,56 @@
 						</label>
 
 						{{#if equals post.cloudinary_media.[2].resource_type "video"}}
-							<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true loop=true muted=true></video>
-						{{/if}}
-						{{#if equals post.cloudinary_media.[2].resource_type "image"}}
-							<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt=""/>
-						{{/if}}
-						{{#if post.cloudinary_media.[2].resource_type}}
-							<div class="info">
-								<div class="dimensions">
-									{{post.cloudinary_media.[2].width}}x{{post.cloudinary_media.[2].height}}
-								</div>
-								<span class="icon-button remove remove-file-2">
-									<i class="fa fa-times-circle" aria-hidden="true"></i>
-								</span>
+						<video src="https://res.cloudinary.com/jbakse/video/upload/w_350/{{post.cloudinary_media.[2].public_id}}.mp4" autoplay=true
+						    loop=true muted=true></video>
+						{{/if}} {{#if equals post.cloudinary_media.[2].resource_type "image"}}
+						<img src="{{c.url post.cloudinary_media.[2].public_id height=250 crop='fill' quality=90}}" alt="" /> {{/if}} {{#if post.cloudinary_media.[2].resource_type}}
+						<div class="info">
+							<div class="dimensions">
+								{{post.cloudinary_media.[2].width}}x{{post.cloudinary_media.[2].height}}
 							</div>
+							<span class="icon-button remove remove-file-2">
+								<i class="fa fa-times-circle" aria-hidden="true"></i>
+							</span>
+						</div>
 						{{/if}}
 					</div>
 				</div>
 
 				<input class="upload-file-0 hidden" id="upload-file-0" name="upload-file-0" type="file">
 				<input class="upload-file-1 hidden" id="upload-file-1" name="upload-file-1" type="file">
-				<input class="upload-file-2 hidden" id="upload-file-2" name="upload-file-2" type="file">
+				<input class="upload-file-2 hidden" id="upload-file-2" name="upload-file-2" type="file"> {{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}} {{> afQuickField name='lesson' options=lessons}}
 
-				{{#autoForm collection="Posts" doc=post id="updatePostForm" type="update"}}
-					{{> afQuickField name='lesson' options=lessons}}
+				<div class="group">
+					<!-- <div class="inspiration inspiration_name"> -->
+					{{> afQuickField name='inspiration_name' placeholder='Inspiration Name'}}
+					<!-- </div> -->
 
-					<div class="group">
-						<!-- <div class="inspiration inspiration_name"> -->
-						{{> afQuickField name='inspiration_name' placeholder='Inspiration Name'}}
-						<!-- </div> -->
+					<!-- <div class="inspiration inspiration_url"> -->
+					{{> afQuickField name='inspiration_url' placeholder='Paste URL here'}}
+					<!-- </div> -->
 
-						<!-- <div class="inspiration inspiration_url"> -->
-						{{> afQuickField name='inspiration_url' placeholder='Paste URL here'}}
-						<!-- </div> -->
+				</div>
 
-					</div>
-
-					<!-- <div class="inspiration inspiration-button">
+				<!-- <div class="inspiration inspiration-button">
 						+
 					</div> -->
 
-					{{> afQuickField name='description' rows=6 placeholder='Description'}}
+				{{> afQuickField name='description' rows=6 placeholder='Description'}}
 
-					<!-- {{> afQuickField name='lesson' options=lessons}} -->
-					<!-- {{> afQuickField name='inspiration_name'}}
+				<!-- {{> afQuickField name='lesson' options=lessons}} -->
+				<!-- {{> afQuickField name='inspiration_name'}}
 					{{> afQuickField name='inspiration_url'}}
 					{{> afQuickField name='description' rows=6}} -->
 
-					<!-- {{> afQuickField name='posted'}} -->
+				<!-- {{> afQuickField name='posted'}} -->
 
-					{{#with post}}
-						<div class="submit-cancel-container">
-							<button type="submit" class="submit btn btn-primary">Update</button>
-							<button type="button" class="cancel btn">Cancel</button>
-						</div>
-					{{/with}}
-				{{/autoForm}}
+				{{#with post}}
+				<div class="submit-cancel-container">
+					<button type="submit" class="submit btn btn-primary">Update</button>
+					<button type="button" class="cancel btn">Cancel</button>
+				</div>
+				{{/with}} {{/autoForm}}
 
 			</div>
 
@@ -248,25 +225,18 @@
 		<div class="overlay-content">
 			<div class="media">
 				{{#if equals post.cloudinary_media.[0].resource_type "video"}}
-					<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true loop=true></video>
-				{{/if}}
-				{{#if equals post.cloudinary_media.[0].resource_type "image"}}
-					<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt=""/>
-				{{/if}}
-
-				{{#if equals post.cloudinary_media.[1].resource_type "video"}}
-					<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
-				{{/if}}
-				{{#if equals post.cloudinary_media.[1].resource_type "image"}}
-					<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt=""/>
-				{{/if}}
-
-				{{#if equals post.cloudinary_media.[2].resource_type "video"}}
-					<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true loop=true muted=true></video>
-				{{/if}}
-				{{#if equals post.cloudinary_media.[2].resource_type "image"}}
-					<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt=""/>
-				{{/if}}
+				<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[0].public_id}}.mp4" controls=true autoplay=true
+				    loop=true></video>
+				{{/if}} {{#if equals post.cloudinary_media.[0].resource_type "image"}}
+				<img class="poster" src="{{c.url post.cloudinary_media.[0].public_id}}" alt="" /> {{/if}} {{#if equals post.cloudinary_media.[1].resource_type "video"}}
+				<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[1].public_id}}.mp4" controls=true autoplay=true
+				    loop=true muted=true></video>
+				{{/if}} {{#if equals post.cloudinary_media.[1].resource_type "image"}}
+				<img class="poster" src="{{c.url post.cloudinary_media.[1].public_id}}" alt="" /> {{/if}} {{#if equals post.cloudinary_media.[2].resource_type "video"}}
+				<video src="https://res.cloudinary.com/jbakse/video/upload/{{post.cloudinary_media.[2].public_id}}.mp4" controls=true autoplay=true
+				    loop=true muted=true></video>
+				{{/if}} {{#if equals post.cloudinary_media.[2].resource_type "image"}}
+				<img class="poster" src="{{c.url post.cloudinary_media.[2].public_id}}" alt="" /> {{/if}}
 			</div>
 
 			<div class="info post-info">
@@ -278,34 +248,27 @@
 				<div class="group">
 					<span class="author">
 						<a href="/users/{{post.author_id}}">
-							{{#with post}}
-								{{#if authorHeadshot}}
-									<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-								{{else}}
-									<img class="headshot" src="/images/avatar.png"/>
-								{{/if}}
-							{{/with}}
+							{{#with post}} {{#if authorHeadshot}}
+							<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt="" /> {{else}}
+							<img class="headshot" src="/images/avatar.png" /> {{/if}} {{/with}}
 							<span class="name">{{post.author}}</span>
 						</a>
 					</span>
 
 					<span class="date">
-						{{formatDate post.created_at}},
-						{{formatTime post.created_at}}
+						{{formatDate post.created_at}}, {{formatTime post.created_at}}
 					</span>
 				</div>
 
 				{{#if post.inspiration_url}}
-					<div class="inspiration">
-						<span class="">Inspired by</span>
-						<a href="{{post.inspiration_url}}">{{post.inspiration_name}}</a>
-					</div>
-				{{/if}}
-
-				{{#if post.description}}
-					<div class="description copy">
-						{{{formatDescription 10000 post.description}}}
-					</div>
+				<div class="inspiration">
+					<span class="">Inspired by</span>
+					<a href="{{post.inspiration_url}}">{{post.inspiration_name}}</a>
+				</div>
+				{{/if}} {{#if post.description}}
+				<div class="description copy">
+					{{{formatDescription 10000 post.description}}}
+				</div>
 				{{/if}}
 
 			</div>

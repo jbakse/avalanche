@@ -5,30 +5,28 @@
 		<main>
 			<div class="user-info">
 				{{#with user}}
-					<img class="headshot" src="{{c.url user.profile.headshot gravity='face' width=250 height=250 crop='fill'}}" alt=""/>
-					<h1 class="name">
-						{{profile.first_name}}
-						{{profile.last_name}}
-					</h1>
-					<div class="description copy">
-						{{{formatDescription 1000 profile.description}}}
-					</div>
-					<button class="btn edit-user">Edit Profile</button>
-					<!-- <button class="btn remove-user">Remove User</button> -->
+				<img class="headshot" src="{{c.url user.profile.headshot gravity='face' width=250 height=250 crop='fill'}}" alt="" />
+				<h1 class="name">
+					{{profile.first_name}} {{profile.last_name}}
+				</h1>
+				<div class="description copy">
+					{{{formatDescription 1000 profile.description}}}
+				</div>
+				<button class="btn edit-user">Edit Profile</button>
+				<!-- <button class="btn remove-user">Remove User</button> -->
 				{{/with}}
 			</div>
 
 			<div class="sketch-count">
-				{{sketch_count}}
-				sketches
+				{{sketch_count}} sketches
 			</div>
 
 			<div class="user-weeks">
 				{{#each weeks}}
-					<div class="week">
-						<span class="topic">{{topic}}</span>
-						<span class="count">{{count}}</span>
-					</div>
+				<div class="week">
+					<span class="topic">{{topic}}</span>
+					<span class="count">{{count}}</span>
+				</div>
 
 				{{/each}}
 			</div>
@@ -37,17 +35,8 @@
 
 		</main>
 
-		{{#if previewing_post}}
-			{{> post_overlay post_id=previewing_post}}
-		{{/if}}
-
-		{{#if editing_post}}
-			{{> edit_post_form post_id=editing_post}}
-		{{/if}}
-
-		{{#if editing_user}}
-			{{> edit_user_form user_id=editing_user}}
-		{{/if}}
+		{{#if previewing_post}} {{> post_overlay post_id=previewing_post}} {{/if}} {{#if editing_post}} {{> edit_post_form post_id=editing_post}}
+		{{/if}} {{#if editing_user}} {{> edit_user_form user_id=editing_user}} {{/if}}
 
 	</div>
 </template>

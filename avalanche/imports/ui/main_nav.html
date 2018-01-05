@@ -8,17 +8,16 @@
 		<div class="right">
 
 			{{#if currentUser}}
-				<button class="create-post btn">Post a Sketch</button>
+			<button class="create-post btn">Post a Sketch</button>
 
-				<input class="create-post-file hidden" id="create-post-file" name="create-post-file" type="file">
+			<input class="create-post-file hidden" id="create-post-file" name="create-post-file" type="file">
 
-				<div class="dropdown user-dropdown">
-					{{#if currentUser.profile.headshot}}
-						<img class="headshot dropdown-toggle {{#if userIsAdmin}}admin{{/if}}" data-toggle="dropdown" src="{{c.url currentUser.profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-					{{else}}
-						<img class="headshot dropdown-toggle {{#if userIsAdmin}}admin{{/if}}" data-toggle="dropdown" src="/images/avatar.png"/>
-					{{/if}}
-					<!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			<div class="dropdown user-dropdown">
+				{{#if currentUser.profile.headshot}}
+				<img class="headshot dropdown-toggle {{#if userIsAdmin}}admin{{/if}}" data-toggle="dropdown" src="{{c.url currentUser.profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}"
+				    alt="" /> {{else}}
+				<img class="headshot dropdown-toggle {{#if userIsAdmin}}admin{{/if}}" data-toggle="dropdown" src="/images/avatar.png" /> {{/if}}
+				<!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
 						{{#if userIsAdmin}}
 							<i class="fa fa-exclamation fa-lg" aria-hidden="true"></i>
@@ -29,40 +28,40 @@
 						<span class="caret"></span>
 
 					</button> -->
-					<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-						<li>
-							<a href="/users/{{currentUser._id}}">Your Profile</a>
-						</li>
-						<li role="separator" class="divider"></li>
-						{{#if userMayAdmin}}
-							<li>
-								<a class="toggle-admin" href="#">
-									{{#if userIsAdmin}}Turn Admin Off{{else}}Turn Admin On{{/if}}
-								</a>
-							</li>
-						{{/if}}
-						{{#if userIsAdmin}}
-							<li>
-								<a href="/prefs">Configure Prefs</a>
-							</li>
-						{{/if}}
-						<li>
-							<a class="sign-out" href="#">Sign Out</a>
-						</li>
-					</ul>
-				</div>
+				<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+					<li>
+						<a href="/users/{{currentUser._id}}">Your Profile</a>
+					</li>
+					<li role="separator" class="divider"></li>
+					{{#if userMayAdmin}}
+					<li>
+						<a class="toggle-admin" href="#">
+							{{#if userIsAdmin}}Turn Admin Off{{else}}Turn Admin On{{/if}}
+						</a>
+					</li>
+					{{/if}} {{#if userIsAdmin}}
+					<li>
+						<a href="/prefs">Configure Prefs</a>
+					</li>
+					{{/if}}
+					<li>
+						<a class="sign-out" href="#">Sign Out</a>
+					</li>
+				</ul>
+			</div>
 
 			{{else}}
-				<div class="dropdown user-dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						<!-- <i class="fa fa-user fa-lg" aria-hidden="true"></i> -->
-						Sign In
-						<!-- <span class="caret"></span> -->
-					</button>
-					<div class="dropdown-menu dropdown-menu-right sign-in" aria-labelledby="dropdownMenu1">
-						{{> atForm}}
-					</div>
+			<div class="dropdown user-dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+				    aria-expanded="true">
+					<!-- <i class="fa fa-user fa-lg" aria-hidden="true"></i> -->
+					Sign In
+					<!-- <span class="caret"></span> -->
+				</button>
+				<div class="dropdown-menu dropdown-menu-right sign-in" aria-labelledby="dropdownMenu1">
+					{{> atForm}}
 				</div>
+			</div>
 
 			{{/if}}
 		</div>

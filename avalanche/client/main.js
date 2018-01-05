@@ -22,11 +22,11 @@ import "../imports/ui/users.js";
 import "../imports/ui/classie.js";
 import "../imports/ui/selectFx.js";
 
-$.cloudinary.config( {
-	cloud_name:"jbakse"
+$.cloudinary.config({
+	cloud_name: "jbakse"
 });
 
-AccountsTemplates.configure( {
+AccountsTemplates.configure({
 	enablePasswordChange: true,
 	sendVerificationEmail: true,
 	showForgotPasswordLink: true,
@@ -57,6 +57,6 @@ AccountsTemplates.addField({
 Meteor.subscribe("users");
 Meteor.subscribe("prefs");
 Meteor.subscribe("recent_posts");
-setTimeout( function() {
+setTimeout(function () {
 	Meteor.subscribe("posts");
 }, 3000);

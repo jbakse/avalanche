@@ -1,4 +1,4 @@
-@import url( 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import '../imports/styles/reset.scss';
 $paper-color: #F5F8FD;
 $line-color: #EEE;
@@ -8,7 +8,6 @@ $post-width: 350px;
 ////////////////////////////////////////////////
 /// Basics
 ////////////////////////////////////////////////
-
 * {
 	box-sizing: border-box;
 }
@@ -16,10 +15,10 @@ $post-width: 350px;
 .debug-highlight {
 	border: 10px solid red;
 }
+
 /////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
-
 body {
 	font-family: 'Roboto', sans-serif;
 	background: $paper-color;
@@ -43,8 +42,7 @@ a {
 
 b,
 strong {
-	font-weight: 700;
-	// color: darken($brand-color, 20);
+	font-weight: 700; // color: darken($brand-color, 20);
 }
 
 em,
@@ -59,13 +57,13 @@ main {
 ////////////////////////////////////////////////
 /// General Modules
 ////////////////////////////////////////////////
-
 .message {
 	margin: 2em;
 	text-align: center;
 	font-size: 18px;
 	line-height: 1.5em;
 }
+
 @mixin clearfix {
 	&:after {
 		content: '';
@@ -98,12 +96,10 @@ main {
 ////////////////////////////////////////////////
 /// main_nav
 ////////////////////////////////////////////////
-
 .main-nav {
 	position: relative;
 	flex: 0 auto;
 	background: white;
-
 	height: 120px;
 	padding-left: 60px;
 	line-height: 120px;
@@ -114,12 +110,9 @@ main {
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 0.05em;
-
 	a {
 		color: inherit;
-
 	}
-
 	a:hover {
 		text-decoration: none;
 		border-bottom: 2px solid black;
@@ -130,7 +123,6 @@ main {
 	position: absolute;
 	top: 0;
 	right: 0;
-
 	height: 120px;
 	padding-right: 60px;
 	line-height: 120px;
@@ -157,8 +149,7 @@ main {
 }
 
 .main-nav .headshot.admin {
-	border: 4px solid red;
-	// background: black;
+	border: 4px solid red; // background: black;
 }
 
 .main-nav button.create-post {}
@@ -173,16 +164,13 @@ main {
 
 .dropdown-menu.sign-in {
 	width: 350px;
-
 	.at-form,
 	form {
 		margin: 0;
 	}
-
 	.at-title {
 		display: none;
 	}
-
 	.at-signin-link,
 	.at-signup-link {
 		margin-bottom: 0;
@@ -192,11 +180,9 @@ main {
 ////////////////////////////////////////////////
 /// Page Avalanche
 ////////////////////////////////////////////////
-
 ////////////////////////////////////////////////
 /// Page User
 ////////////////////////////////////////////////
-
 .user-info {
 	padding: 10px;
 	background: white;
@@ -219,18 +205,16 @@ main {
 
 .user-info .description {
 	font-size: 24px;
-	margin: 0 3em 1em;
-	// margin-bottom: 1em;
+	margin: 0 3em 1em; // margin-bottom: 1em;
 	line-height: 1.5;
 }
 
-.user-weeks {
+.user-weeks,
+.class-weeks {
 	// border: 1px solid red;
-
 	margin: 20px;
 	display: flex;
 	justify-content: center;
-
 	.week {
 		// height: 30px
 		// line-height: 30px;
@@ -239,27 +223,26 @@ main {
 		width: 50px;
 		text-align: center;
 	}
-
 	.topic {
 		// border: 1px solid red;
 		font-size: 8px;
 		text-transform: uppercase;
 		margin-bottom: 4px;
 		display: block;
-		height: 20px;
-		// border: 1px solid red;
+		word-spacing: 10em;
+		height: 20px; // border: 1px solid red;
 		// display: table-cell;
-		vertical-align: bottom;
-		// width: 50px;
-
+		vertical-align: bottom; // width: 50px;
 		// border: 1px solid red;
-
 	}
-
 	.count {
 		// padding-top: 10px;
 		font-size: 18px;
 	}
+}
+
+.class-weeks .week {
+	cursor: pointer;
 }
 
 .sketch-count {
@@ -269,15 +252,12 @@ main {
 ////////////////////////////////////////////////
 /// Page Prefs
 ////////////////////////////////////////////////
-
 .debug-info {
 	margin: 20px;
 	padding: 1em;
-	border: 1px solid $line-color;
-	// border-radius: 5px;
+	border: 1px solid $line-color; // border-radius: 5px;
 	overflow: auto;
 	background-color: white;
-
 	pre {
 		overflow: hidden;
 		background-color: white;
@@ -288,26 +268,21 @@ main {
 ////////////////////////////////////////////////
 /// Posts Summaries
 ////////////////////////////////////////////////
-
 .posts-wrap {
 	// border: 1px solid green;
 	padding: 50px;
-
 }
 
 .posts {
-
 	display: flex;
 	flex-wrap: wrap;
-	margin: auto;
-	// border: 1px solid red;
+	margin: auto; // border: 1px solid red;
 }
 
 .posts-marker {
 	// border: 1px solid red;
 	position: fixed;
-	left: 20px;
-	// bottom: 20px;
+	left: 20px; // bottom: 20px;
 	top: 50%;
 	z-index: -10;
 	background: $paper-color;
@@ -332,7 +307,6 @@ main {
 .post .poster-link {
 	overflow: hidden;
 	position: relative;
-
 }
 
 .post .poster-link img,
@@ -366,7 +340,6 @@ main {
 .posters-3 .poster-link:nth-child(3) img,
 .posters-3 .poster-link:nth-child(3) video {
 	float: left;
-
 	object-fit: cover;
 	width: $post-width *.5 - 1;
 	height: $post-width *.5;
@@ -383,25 +356,21 @@ main {
 // 	max-height: 600px;
 // 	width: 100%;
 // }
-
 .video-icon {
 	cursor: pointer;
-	text-shadow: 1px 1px 5px rgba(0,0,0,.4);
-	// border: 1px solid red;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, .4); // border: 1px solid red;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-left: -20px;
 	margin-top: -20px;
 	width: 50px;
-	height: 50px;
-	// z-index: 10;
+	height: 50px; // z-index: 10;
 	color: white;
 	font-size: 50px;
 }
 
 $post-margin: 20px;
-
 .post .info {
 	border-top: 1px solid $line-color;
 	font-weight: 300;
@@ -411,7 +380,6 @@ $post-margin: 20px;
 	margin-top: $post-margin;
 	margin-left: $post-margin;
 	font-size: 12px;
-
 }
 
 .post .description p {
@@ -419,14 +387,12 @@ $post-margin: 20px;
 }
 
 .post-info .description {
-
 	margin-top: $post-margin;
 	margin-left: $post-margin;
 	margin-right: $post-margin * 1.5;
 	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.5;
-
 }
 
 .post-info .votes {
@@ -449,19 +415,16 @@ $post-margin: 20px;
 	a {
 		color: inherit;
 	}
-
 	a:hover {
 		text-decoration: none;
 		border-bottom: none;
 	}
 	margin-left: $post-margin;
-
 	.name {
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		margin-left: 10px;
 	}
-
 	img {
 		vertical-align: middle;
 		height: 30px;
@@ -479,9 +442,7 @@ $post-margin: 20px;
 	bottom: $post-margin * 0.5;
 	right: 0;
 	width: 50%;
-
 	background: white;
-
 	opacity: 0;
 	visibility: hidden;
 	transition: all 0.3s;
@@ -495,8 +456,7 @@ $post-margin: 20px;
 
 .post .emoji {
 	// border: 1px solid red;
-	vertical-align: top;
-	// padding-top: 2px;
+	vertical-align: top; // padding-top: 2px;
 	padding: 2px 5px 5px;
 	cursor: pointer;
 }
@@ -517,7 +477,6 @@ $post-margin: 20px;
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////
-
 .user-summaries {
 	border-top: 1px solid $line-color;
 	background-color: white;
@@ -539,7 +498,6 @@ $color-3: #FB3;
 $color-4: #EE2;
 $color-5: #7F4;
 $color-6: #7F4;
-
 .user-summary.count-0 {
 	border-bottom: 5px solid $color-0;
 }
@@ -612,19 +570,15 @@ $color-6: #7F4;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 300px;
-
 	opacity: 0;
 	transition: opacity 0.7s;
-
 	display: flex;
 	justify-content: center;
-
 	.content {
 		background: white;
 		padding: 5px;
-		box-shadow: 0 2px 8px 2px rgba(0,0,150,.1);
+		box-shadow: 0 2px 8px 2px rgba(0, 0, 150, .1);
 	}
-
 	.content:before {
 		position: absolute;
 		top: -12px;
@@ -636,7 +590,6 @@ $color-6: #7F4;
 		border-left: 12px solid transparent;
 		content: '';
 	}
-
 	.content:after {
 		position: absolute;
 		top: -11px;
@@ -657,13 +610,12 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 /// overlay
 ////////////////////////////////////////////////
-
 .no-scroll {
 	overflow: hidden;
 }
 
 .overlay {
-	background: rgba(203,223,255,.9);
+	background: rgba(203, 223, 255, .9);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -693,7 +645,6 @@ $color-6: #7F4;
 	top: 40px;
 	right: 40px;
 	bottom: 40px;
-
 }
 
 ////////////////////////////////////////////////
@@ -725,18 +676,14 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 /// FORMS
 ////////////////////////////////////////////////
-
 // Global Bootstrap Restyling
-
 #layout-main .btn {
 	font-size: 13px;
 	font-weight: 500;
 	line-height: 13px;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-
 	padding: 7px 20px;
-
 	background: transparent;
 	color: black;
 	border: 1.5px solid black;
@@ -764,7 +711,6 @@ $color-6: #7F4;
 }
 
 // Overlay Forms
-
 .overlay-form form {
 	margin: 20px;
 }
@@ -781,22 +727,17 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 /// EDIT POST FORM
 ////////////////////////////////////////////////
-
 #edit-post-form .group {
 	// side by side fields (inspiration name | inspiration url)
 	display: flex;
 	justify-content: space-between;
-
-	> .form-group {
+	>.form-group {
 		flex: 1 1 auto;
 		margin-right: 10px;
 	}
-
-	> .form-group:last-child {
+	>.form-group:last-child {
 		margin-right: 0;
-	}
-
-	// a bit of shame, margins were not collapsing properly, help block not _that_ needed on optional
+	} // a bit of shame, margins were not collapsing properly, help block not _that_ needed on optional
 	.help-block {
 		display: none;
 	}
@@ -816,16 +757,13 @@ $color-6: #7F4;
 
 #edit-post-form .posters {
 	margin: 20px;
-
 	display: flex;
 	justify-content: space-between;
-
-	> .poster-wrap {
+	>.poster-wrap {
 		flex: 1 1 auto;
 		margin-right: 10px;
 		position: relative;
 		overflow: hidden;
-
 		img,
 		video {
 			width: 100%;
@@ -835,9 +773,7 @@ $color-6: #7F4;
 			display: block;
 			position: absolute;
 			top: 0;
-
 		}
-
 		.upload {
 			width: 100%;
 			height: 150px;
@@ -845,38 +781,31 @@ $color-6: #7F4;
 			cursor: pointer;
 			margin-bottom: 0;
 			background-color: $line-color;
-
 			i {
 				font-size: 40px;
 				margin-bottom: 10px;
 				margin-top: 50px;
 			}
 		}
-
 		.upload:hover {
 			color: $accent-color;
 		}
-
 		.info {
 			padding: 5px 0;
 		}
-
 		.dimensions {
 			float: left;
 			font-size: 10px;
 			line-height: 20px;
 		}
-
 		.remove {
 			line-height: 20px;
 			vertical-align: middle;
 			padding: 0;
 			float: right;
 		}
-
 	}
-
-	> .poster-wrap:last-child {
+	>.poster-wrap:last-child {
 		margin-right: 0;
 	}
 }
@@ -884,11 +813,9 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 /// EDIT USER FORM
 ////////////////////////////////////////////////
-
 #edit-user-form .headshot-wrap {
 	text-align: center;
 	margin: 1em;
-
 	img {
 		border-radius: 50%;
 	}
@@ -908,7 +835,6 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 /// EDIT PREFS FORM
 ////////////////////////////////////////////////
-
 #updatePrefsForm {
 	margin: 20px;
 }
@@ -916,60 +842,46 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 /// POST OVERLAY
 ////////////////////////////////////////////////
-
 #post-overlay {
 	display: flex;
 }
 
 #post-overlay .overlay-content {
-
-	box-shadow: 0 0 15px 3px rgba(0,0,150,.2);
+	box-shadow: 0 0 15px 3px rgba(0, 0, 150, .2);
 	display: flex;
-
 	.media {
 		overflow-y: auto;
 		flex: 1 1 auto;
-
 		background: black;
-
 		display: flex;
 		flex-direction: column;
-
 		img,
 		video {
 			display: block;
 			margin: 1em auto;
 			max-width: 100%;
-
 		}
-
 		img:first-child,
 		video:first-child {
 			margin-top: 4em;
 		}
-
 		img:last-child,
 		video:last-child {
-
 			margin-bottom: 4em;
 		}
 	}
-
 	.info {
 		flex: 0 0 auto;
-
 		width: 350px;
 		background: white;
 		display: flex;
 		flex-direction: column;
 	}
-
 	.description {
 		overflow-y: auto;
 		padding-right: 20px;
 		margin-right: 0;
 	}
-
 	.info p {
 		margin: 0.5em 0;
 	}
@@ -977,7 +889,6 @@ $color-6: #7F4;
 
 .overlay *::-webkit-scrollbar {
 	width: 14px;
-
 }
 
 .overlay *::-webkit-scrollbar-track {
@@ -995,6 +906,5 @@ $color-6: #7F4;
 }
 
 .overlay .media::-webkit-scrollbar-thumb {
-
 	border: 2px solid black;
 }
