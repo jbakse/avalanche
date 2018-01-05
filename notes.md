@@ -1,16 +1,3 @@
-# Running Meteor
-`meteor --settings server/settings.json`
-
-# Updating Heroku settings
-`heroku config:add METEOR_SETTINGS="$(cat settings.json)"`
-
-# Publishing to Heroku
-`git push heroku master` (live)
-https://sketches.compform.net
-
-`git push stage master` (staging)
-https://avalanche-staging.herokuapp.com/
-
 # Reference
 
 [Creating a Photo Blog in Meteor](http://experimentsinmeteor.com/photo-blog-part-1/) Older tutorial.
@@ -81,22 +68,3 @@ Avalanche uses `flowRouter` and `blaze-layout` from Kadira for routing.
 #Scroll Blocking Lightbox
 http://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
 
-
-#creating heroku app for avalanche
-
-- log in to heroku
-    - create app
-    - add resource: mLab MongoDB :: Mongodb
-    - settings: config vars: METEOR_APP_DIR -> avalanche
-    - settings: config vars: ROOT_URL -> url of app
-    - settings: buildpacks: add https://github.com/AdmitHub/meteor-buildpack-horse.git
-- terminal
-    - heroku config:add METEOR_SETTINGS="$(cat settings.json)"
-
-
-
-http://sketches.compform.net/
-https://desolate-cliffs-53268.herokuapp.com/
-
-
-https://avalanche-staging.herokuapp.com/

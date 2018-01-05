@@ -22,6 +22,8 @@ The terminal should reply with the location of the mongo app, something like: `/
 
 First make sure your mongo app is running.
 
+> `meteor --settings server/settings.json`
+
 In terminal `cd` yourself into the main avalanche directory. The script expects you to run it from this location, if you are in a different directory the script won't work properly. Then run:
 
 > `./scripts/pull_mongo_local.sh`

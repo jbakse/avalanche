@@ -12,6 +12,11 @@ function initPrefs() {
 
 initPrefs();
 
+//justin
+// Accounts.setPassword("joe4aiE9joCw5nBDW", "!");
+//dorothy
+//let x = Accounts.setPassword("k6gnCbB6zdzToxdPC", "cd_april_291");
+//console.log("x" + x);
 
 
 // import "./secrets.js";
