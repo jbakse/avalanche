@@ -56,7 +56,11 @@ AccountsTemplates.addField({
 
 Meteor.subscribe("users");
 Meteor.subscribe("prefs");
-Meteor.subscribe("recent_posts");
-setTimeout(function () {
-	Meteor.subscribe("posts");
-}, 3000);
+
+Meteor.subscribe("posts");
+
+// Meteor.subscribe("recent_posts");
+
+// setTimeout(function () {
+// 	Meteor.subscribe("posts");
+// }, 3000);

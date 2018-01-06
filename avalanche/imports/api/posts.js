@@ -1,5 +1,5 @@
-import {Mongo} from "meteor/mongo";
-import {userIsAdmin} from "./users.js";
+import { Mongo } from "meteor/mongo";
+import { userIsAdmin } from "./users.js";
 
 let PostSchema = new SimpleSchema({
 	author: {
@@ -38,7 +38,7 @@ let PostSchema = new SimpleSchema({
 		type: [Object],
 		label: "Cloudinary Data",
 		blackbox: true,
-		defaultValue: [{}, {}, {},]
+		defaultValue: [{}, {}, {}, ]
 	},
 	votes: {
 		type: [Object],
@@ -83,13 +83,17 @@ export const Posts = new Mongo.Collection("posts");
 Posts.attachSchema(PostSchema);
 
 if (Meteor.isServer) {
+
+
 	// This code only runs on the server
-	Meteor.publish("posts", function usersPublication() {
+
+
+	Meteor.publish("posts", function publishPosts() {
 		return Posts.find();
 	});
 
-	// kinda silly hack, to allow loading just themost recent first, then all of them after a few seconds
-	Meteor.publish("recent_posts", function usersPublication() {
+	// kinda silly hack, to allow loading just the most recent first, then all of them after a few seconds
+	Meteor.publish("recent_posts", function publishRecentPosts() {
 		return Posts.find({
 			posted: true
 		}, {
@@ -114,10 +118,36 @@ if (Meteor.isServer) {
 			limit: 20,
 		});
 	});
+
+	Meteor.publish("posts", function publishPostsMeta() {
+		return Posts.find({
+			posted: true
+		}, {
+			sort: {
+				created_at: -1
+			},
+			fields: {
+				"cloudinary_media.tags": 0,
+				"cloudinary_media.pages": 0,
+				"cloudinary_media.bytes": 0,
+				"cloudinary_media.type": 0,
+				"cloudinary_media.etag": 0,
+				"cloudinary_media.url": 0,
+				"cloudinary_media.secure_url": 0,
+				"cloudinary_media.audio": 0,
+				"cloudinary_media.video": 0,
+				"cloudinary_media.frame_rate": 0,
+				"cloudinary_media.bit_rate": 0,
+				"cloudinary_media.duration": 0,
+				"cloudinary_media.rotation": 0,
+			}
+		});
+	});
+
 }
 
 Posts.allow({
-	update: function(userId, doc/*, fields, modifier*/) {
+	update: function(userId, doc /*, fields, modifier*/ ) {
 		if (userIsAdmin()) {
 			return true;
 		}
@@ -135,7 +165,7 @@ export const postEditableBy = function(post, user_id) {
 	return (post.author_id === user_id) || userIsAdmin();
 };
 
-import {currentWeek} from "../api/prefs.js";
+import { currentWeek } from "../api/prefs.js";
 
 Meteor.methods({
 	"posts.insert" () {
@@ -232,9 +262,9 @@ Meteor.methods({
 		let post = Posts.findOne(id);
 
 		if (_.where(post.votes, {
-			voter_id: voter_id,
-			category: category,
-		}).length > 0)
+				voter_id: voter_id,
+				category: category,
+			}).length > 0)
 			return;
 
 		Posts.update(id, {
