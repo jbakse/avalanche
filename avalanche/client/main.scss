@@ -220,8 +220,22 @@ main {
 		// line-height: 30px;
 		// border: 1px solid red;
 		margin: 5px;
-		width: 50px;
+		width: 70px;
 		text-align: center;
+		padding: 5px;
+		position: relative;
+	}
+	.week.active:after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 30px;
+		margin-left: -5px;
+		width: 0;
+		height: 0;
+		border-top: solid 10px #000;
+		border-left: solid 10px transparent;
+		border-right: solid 10px transparent;
 	}
 	.topic {
 		// border: 1px solid red;
@@ -239,6 +253,10 @@ main {
 		// padding-top: 10px;
 		font-size: 18px;
 	}
+}
+
+.class-weeks .week:hover {
+	background-color: rgba(0, 0, 0, .1);
 }
 
 .class-weeks .week {
@@ -574,6 +592,7 @@ $color-6: #7F4;
 	transition: opacity 0.7s;
 	display: flex;
 	justify-content: center;
+	pointer-events: none;
 	.content {
 		background: white;
 		padding: 5px;

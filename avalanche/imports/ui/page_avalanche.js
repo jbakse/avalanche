@@ -53,6 +53,14 @@ function topic_posts(topic) {
 
 
 Template.page_avalanche.helpers({
+
+	active() {
+		console.log("this active", this);
+		if (this.topic === Session.get("show_topic")) {
+			return "active";
+		}
+	},
+
 	posts() {
 		let show_topic = Session.get("show_topic");
 		if (!show_topic) {

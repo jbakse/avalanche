@@ -6,7 +6,7 @@
 
 			<div class="class-weeks">
 				{{#each weeks}} {{#if count}}
-				<div class="week show-week">
+				<div class="week show-week {{active}}">
 					<span class="topic">{{topic}}</span>
 					<span class="count">{{count}}</span>
 				</div>
@@ -15,14 +15,12 @@
 
 
 			<div class="message">
+
+
 				<div class="show-all">
-					{{postsCount}} Sketches Total {{#if posts_this_week}} — {{posts_this_week}} This Week {{/if}}
+					{{postsCount}} Sketches Total {{#if this_week}} — {{this_week.count}} {{this_week.topic}} Sketches {{/if}}
 				</div>
-				{{#if this_week}}
-				<div>
-					{{this_week.count}} {{this_week.topic}} Sketches
-				</div>
-				{{/if}}
+
 			</div>
 
 
@@ -37,4 +35,8 @@
 		{{/if}}
 
 	</div>
+</template>
+
+<template name="unused_scraps">
+	{{#if posts_this_week}} — {{posts_this_week}} This Week {{/if}}
 </template>
