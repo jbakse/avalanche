@@ -121,7 +121,7 @@ if (Meteor.isServer) {
 
 	Meteor.publish("posts", function publishPostsMeta() {
 		return Posts.find({
-			posted: true
+			// posted: true
 		}, {
 			sort: {
 				created_at: -1
