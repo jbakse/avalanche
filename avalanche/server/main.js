@@ -19,7 +19,6 @@ initPrefs();
 
 
 
-
 // import "./secrets.js";
 
 Cloudinary.config({
@@ -27,6 +26,7 @@ Cloudinary.config({
 	api_key: Meteor.settings.api_key,
 	api_secret: Meteor.settings.api_secret,
 });
+
 
 
 // import { Meteor } from 'meteor/meteor';

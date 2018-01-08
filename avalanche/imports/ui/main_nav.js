@@ -8,7 +8,7 @@ Template.main_nav.events({
 
 		event.preventDefault();
 
-		Meteor.call("posts.insert", {}, function(error, id){
+		Meteor.call("posts.insert", {}, function(error, id) {
 			if (error) {
 				console.error(error);
 				return;
@@ -16,7 +16,7 @@ Template.main_nav.events({
 			// upload image + add to post
 			let files = template.find(".create-post-file").files;
 			Cloudinary.upload(files, {
-				folder: "avalanche",
+				folder: Meteor.settings.public.cloudinary_folder,
 				resource_type: "auto"
 			}, (err, res) => {
 				console.log("Upload Error:", err);
@@ -29,7 +29,7 @@ Template.main_nav.events({
 
 
 	},
-	"click .create-post": function(/*event*/){
+	"click .create-post": function( /*event*/ ) {
 		Meteor.call("posts.insert", {}, function(error, id) {
 			Session.set("editing_post", id);
 		});
@@ -43,7 +43,7 @@ Template.main_nav.events({
 		Meteor.call("toggleAdmin");
 	},
 
-	"click #at-signIn, click #at-signUp": function (event) {
+	"click #at-signIn, click #at-signUp": function(event) {
 		console.log("click");
 		event.stopPropagation();
 		event.preventDefault();

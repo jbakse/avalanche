@@ -88,9 +88,9 @@ if (Meteor.isServer) {
 	// This code only runs on the server
 
 
-	Meteor.publish("posts", function publishPosts() {
-		return Posts.find();
-	});
+	// Meteor.publish("posts", function publishPosts() {
+	// 	return Posts.find();
+	// });
 
 	// kinda silly hack, to allow loading just the most recent first, then all of them after a few seconds
 	Meteor.publish("recent_posts", function publishRecentPosts() {

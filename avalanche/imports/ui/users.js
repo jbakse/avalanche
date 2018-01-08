@@ -1,7 +1,7 @@
 // import {Users} from "../api/users.js";
 import "./users.html";
-import {Posts} from "../api/posts.js";
-import {currentWeek} from "../api/prefs.js";
+import { Posts } from "../api/posts.js";
+import { currentWeek } from "../api/prefs.js";
 
 
 Meteor.subscribe("users");
@@ -51,8 +51,7 @@ function posts_this_week(user) {
 
 	let posts = Posts.find({
 		"author_id": user,
-		"created_at":
-		{
+		"created_at": {
 			$gte: week.start,
 			$lt: week.end,
 		}
@@ -110,8 +109,6 @@ Template.edit_user_form.helpers({
 
 
 
-
-
 Template.edit_user_form.events({
 	"click .cancel": function() {
 		event.preventDefault();
@@ -146,7 +143,7 @@ Template.edit_user_form.events({
 		// console.log("upload", this);
 		let files = template.find(".upload-headshot-file").files;
 		Cloudinary.upload(files, {
-			folder: "avalanche",
+			folder: Meteor.settings.public.cloudinary_folder,
 			resource_type: "image",
 		}, (err, res) => {
 			console.log("Upload Error:", err);
@@ -172,7 +169,7 @@ Template.edit_user_form.events({
 
 		let files = template.find(".upload-file").files;
 		Cloudinary.upload(files, {
-			folder: "avalanche",
+			folder: Meteor.settings.public.cloudinary_folder,
 			resource_type: "image",
 		}, (err, res) => {
 			console.log("Upload Error:", err);

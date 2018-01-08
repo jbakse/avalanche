@@ -1,6 +1,6 @@
-import {Template} from "meteor/templating";
-import {Posts} from "../api/posts.js";
-import {getPrefs} from "../api/prefs.js";
+import { Template } from "meteor/templating";
+import { Posts } from "../api/posts.js";
+import { getPrefs } from "../api/prefs.js";
 
 import "../api/users.js";
 import "./page_user.html";
@@ -25,7 +25,7 @@ Template.page_user.helpers({
 
 	sketch_count() {
 		let id = FlowRouter.getParam("userId");
-		let sketch_count = Posts.find({author_id: id}).count();
+		let sketch_count = Posts.find({ author_id: id }).count();
 
 		return sketch_count;
 	},
@@ -46,8 +46,7 @@ Template.page_user.helpers({
 
 			let posts = Posts.find({
 				"author_id": userId,
-				"created_at":
-				{
+				"created_at": {
 					$gte: week.start,
 					$lt: week.end,
 				}
@@ -80,7 +79,7 @@ Template.page_user.events({
 		// console.log("upload", this);
 		let files = template.find(".upload-headshot-file").files;
 		Cloudinary.upload(files, {
-			folder: "avalanche",
+			folder: Meteor.settings.public.cloudinary_folder,
 			resource_type: "image",
 		}, (err, res) => {
 			// console.log("Upload Error:", err);
@@ -97,11 +96,11 @@ Template.page_user.events({
 
 	},
 
-	"click .edit-user": function(/*event*/) {
+	"click .edit-user": function( /*event*/ ) {
 		Session.set("editing_user", this._id);
 	},
 
-	"click .remove-user": function(/*event*/) {
+	"click .remove-user": function( /*event*/ ) {
 		// console.log("kill", FlowRouter.getParam("userId"));
 		Meteor.users.remove(FlowRouter.getParam("userId"));
 	},

@@ -26,6 +26,8 @@ $.cloudinary.config({
 	cloud_name: "jbakse"
 });
 
+
+
 AccountsTemplates.configure({
 	enablePasswordChange: true,
 	sendVerificationEmail: true,

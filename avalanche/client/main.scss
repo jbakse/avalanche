@@ -223,14 +223,14 @@ main {
 		width: 70px;
 		text-align: center;
 		padding: 5px;
-		position: relative;
+		position: relative; //bordeR: 1px solid red;
 	}
 	.week.active:after {
 		content: '';
 		position: absolute;
 		top: 100%;
-		left: 30px;
-		margin-left: -5px;
+		left: 50%;
+		margin-left: -10px;
 		width: 0;
 		height: 0;
 		border-top: solid 10px #000;

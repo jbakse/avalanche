@@ -1,12 +1,12 @@
-import {getPrefs, weekForDate} from "../api/prefs.js";
-import {Posts, postEditableBy} from "../api/posts.js";
+import { getPrefs, weekForDate } from "../api/prefs.js";
+import { Posts, postEditableBy } from "../api/posts.js";
 import "./posts.html";
 
 function updateMarker() {
 	if ($(window).scrollTop() < 500) {
 		$(".posts-marker").addClass("hidden");
 		return;
-	}else {
+	} else {
 		$(".posts-marker").removeClass("hidden");
 	}
 	let last_visible = false;
@@ -35,8 +35,7 @@ function updateMarker() {
 $(window).on("scroll", updateMarker);
 
 //https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling/488073#488073
-function isScrolledIntoView(elem)
-{
+function isScrolledIntoView(elem) {
 	let docViewTop = $(window).scrollTop();
 	let docViewBottom = docViewTop + $(window).height();
 
@@ -53,10 +52,10 @@ function autoplayVideoPosters() {
 
 	// let playCount = 0;
 	// let pauseCount = 0;
-	videos.each(function(e){
+	videos.each(function(e) {
 		if (isScrolledIntoView(this)) {
 			// playCount++;
-			this.play().catch( function(e) {
+			this.play().catch(function(e) {
 				// console.log("caught", e);
 				// getting a "The play() request was interrupted by a call to pause()." exception on live server but not local
 				// flooding the console, but not impacting experience
@@ -94,7 +93,6 @@ setTimeout(lazyLoadImages, 1000);
 
 
 
-
 Template.post_list.rendered = function() {
 
 	let posts = this.find(".posts");
@@ -111,11 +109,11 @@ Template.post_list.rendered = function() {
 	function relayoutIsotope() {
 		// console.log("isotope reload");
 		window.isotope.reloadItems();
-		window.isotope.arrange({sortBy: "original-order"});
+		window.isotope.arrange({ sortBy: "original-order" });
 	}
 	setInterval(relayoutIsotope, 500);
 
-	let observer = new MutationObserver(function(/*mutations*/) {
+	let observer = new MutationObserver(function( /*mutations*/ ) {
 		_.debounce(relayoutIsotope, 500, true);
 
 		$(posts).find("video").on("loadeddata", function() {
@@ -150,27 +148,27 @@ Template.post.helpers({
 
 	votedPretty() {
 		let post = Posts.findOne(this._id);
-		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "pretty"}).length === 0) {
+		if (!post || _.where(post.votes, { voter_id: Meteor.userId(), category: "pretty" }).length === 0) {
 			return "";
-		}else {
+		} else {
 			return "voted";
 		}
 	},
 
 	votedNerdy() {
 		let post = Posts.findOne(this._id);
-		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "nerdy"}).length === 0) {
+		if (!post || _.where(post.votes, { voter_id: Meteor.userId(), category: "nerdy" }).length === 0) {
 			return "";
-		}else {
+		} else {
 			return "voted";
 		}
 	},
 
 	votedFunny() {
 		let post = Posts.findOne(this._id);
-		if (!post || _.where(post.votes, {voter_id: Meteor.userId(), category: "funny"}).length === 0) {
+		if (!post || _.where(post.votes, { voter_id: Meteor.userId(), category: "funny" }).length === 0) {
 			return "";
-		}else {
+		} else {
 			return "voted";
 		}
 	}
@@ -222,7 +220,7 @@ Template.post_overlay.helpers({
 
 Template.post_overlay.events({
 	"click .overlay, click .close-overlay": function(event) {
-		if(event.target !== event.currentTarget) {
+		if (event.target !== event.currentTarget) {
 			return;
 		}
 		$("body").removeClass("no-scroll");
@@ -261,21 +259,21 @@ AutoForm.hooks({
 
 function uploadFile(post, slot, files) {
 
-	let maxImageFileSizeMB = 10 ;
-	let maxVideoFileSizeMB = 20 ;
+	let maxImageFileSizeMB = 10;
+	let maxVideoFileSizeMB = 20;
 
 	let isImage = false;
 	let isVideo = false;
 
-	if(_.contains(["image/png","!image/gif","image/jpeg"], files[0].type)) {
+	if (_.contains(["image/png", "!image/gif", "image/jpeg"], files[0].type)) {
 		isImage = true;
 	}
 
-	if(_.contains(["video/mp4", "video/quicktime"], files[0].type)) {
+	if (_.contains(["video/mp4", "video/quicktime"], files[0].type)) {
 		isVideo = true;
 	}
 
-	console.log(files[0].type, files[0].size/1024/1024, isImage,  isVideo);
+	console.log(files[0].type, files[0].size / 1024 / 1024, isImage, isVideo);
 
 	if (!isImage && !isVideo) {
 		alert(`Your file is not of a recognized type.\nImages must be formatted as .png or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov.\nDon't use .gif`);
@@ -294,7 +292,7 @@ function uploadFile(post, slot, files) {
 
 
 	Cloudinary.upload(files, {
-		folder: "avalanche",
+		folder: Meteor.settings.public.cloudinary_folder,
 		resource_type: "auto"
 	}, (err, res) => {
 		// console.log("Upload Error:", err);
@@ -304,6 +302,7 @@ function uploadFile(post, slot, files) {
 		}
 	});
 }
+
 
 Template.edit_post_form.events({
 	"click .cancel": function() {
