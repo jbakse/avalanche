@@ -9,6 +9,10 @@
 				<h1 class="name">
 					{{profile.first_name}} {{profile.last_name}}
 				</h1>
+				 
+				{{#if userIsAdmin}}
+					{{_id}}
+				{{/if}}
 				<div class="description copy">
 					{{{formatDescription 1000 profile.description}}}
 				</div>

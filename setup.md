@@ -21,6 +21,10 @@ https://avalanche-staging.herokuapp.com/
 # App Hosting on Heroku
 [Heroku Login](https://dashboard.heroku.com)
 
+# Email SMTP sending hosted by Mailjet
+https://app.mailjet.com/account/
+
+
 ## Creating a new Heroku App for Avalanche
 
 - Log into Heroku
@@ -44,7 +48,12 @@ https://avalanche-staging.herokuapp.com/
 ## Updating Heroku Config Settings
 See [Heroku Config Vars Docs](https://devcenter.heroku.com/articles/config-vars)
 
+If we only had one app:
 `heroku config:add METEOR_SETTINGS="$(cat settings.json)"`
+
+But we have production and staging, so something like this:
+`heroku config:add METEOR_SETTINGS="$(cat ./avalanche/server/settings.json)" --remote heroku`
+
 
 This will create a single setting named `METEOR_SETTINGS` with a value that is the JSON object in `settings.json`
 

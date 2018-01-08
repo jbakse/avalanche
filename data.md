@@ -48,3 +48,11 @@ This script will drop all the info in your database, and load the information fo
 
 
 The `.scripts` folder als has scripts that will push and pull data to the stanging and production servers.
+
+
+
+# Robomongo / Robo 3T
+
+You can use Robo 3T to browse and edit the database directly.
+
+To use Robo 3T, the meteor app needs to be running. You can then connect at `localhost:3001`

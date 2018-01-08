@@ -8,8 +8,11 @@ import "./page_user.html";
 Template.page_user.helpers({
 	user() {
 		let id = FlowRouter.getParam("userId");
-		// console.log(Meteor.users.findOne(id));
 		return Meteor.users.findOne(id);
+	},
+
+	userIsAdmin() {
+		return Roles.userIsInRole(Meteor.userId(), ["admin"], Roles.GLOBAL_GROUP);
 	},
 
 	posts() {
