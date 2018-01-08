@@ -39,6 +39,7 @@ AccountsTemplates.configure({
 	negativeFeedback: true,
 	positiveFeedback: true,
 	showValidating: true,
+
 });
 
 AccountsTemplates.addField({

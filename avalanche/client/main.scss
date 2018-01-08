@@ -593,6 +593,7 @@ $color-6: #7F4;
 	display: flex;
 	justify-content: center;
 	pointer-events: none;
+	z-index: 1000;
 	.content {
 		background: white;
 		padding: 5px;

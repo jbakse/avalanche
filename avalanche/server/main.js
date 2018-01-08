@@ -12,7 +12,22 @@ function initPrefs() {
 	Prefs.insert({});
 }
 
+
 initPrefs();
+
+
+
+Accounts.emailTemplates.from = "Justin Bakse <baksej@newschool.edu>";
+// console.log("Accounts", Accounts);
+// console.log("settings", Meteor.settings);
+
+// this is dumb, but i'm not sure what the right way to set the env variable is
+process.env.MAIL_URL = Meteor.settings.MAIL_URL;
+
+
+// console.log("env", process.env);
+
+
 
 //justin
 // Accounts.setPassword("joe4aiE9joCw5nBDW", "!");
