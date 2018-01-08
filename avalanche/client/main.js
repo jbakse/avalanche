@@ -23,7 +23,8 @@ import "../imports/ui/classie.js";
 import "../imports/ui/selectFx.js";
 
 $.cloudinary.config({
-	cloud_name: "jbakse"
+	// cloud_name: "jbakse"
+	cloud_name: Meteor.settings.public.cloud_name
 });
 
 

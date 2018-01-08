@@ -1,10 +1,11 @@
-import {Template} from "meteor/templating";
-import {Posts} from "../api/posts.js";
+import { Template } from "meteor/templating";
+import { Posts } from "../api/posts.js";
 import "./page_post.html";
 
 window.Posts = Posts;
 
 Template.page_post.helpers({
+
 	post() {
 		let id = FlowRouter.getParam("postId");
 		let post = Posts.findOne(id);
@@ -13,6 +14,6 @@ Template.page_post.helpers({
 	},
 
 	lessons() {
-		return {art: "art", design: "design", science: "science"};
+		return { art: "art", design: "design", science: "science" };
 	}
 });

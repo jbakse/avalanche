@@ -110,9 +110,10 @@ Template.page_avalanche.helpers({
 			Session.setDefault("active_topic", current_week.topic);
 		}
 
-
+		console.log(weeks);
 		// otherwise set most recent week active
-		Session.setDefault("active_topic", _.last(weeks).topic);
+		Session.setDefault("active_topic", _.first(weeks).topic);
+		// Session.setDefault("active_topic", _.findLast(weeks, {}).topic);
 
 
 

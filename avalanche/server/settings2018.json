@@ -1,0 +1,12 @@
+{
+	"cloud_name": "compform2018",
+	"api_key": "767118492336736",
+	"api_secret": "PJEwmjwV-PDvk3qrX3WAaffSb9U",
+	"public": {
+		"cloud_name": "compform2018",
+		"cloudinary_folder": "avalanche2018"
+	},
+	"OLD_MAIL_URL": "smtp://justin%40tsfim.com:password@smtp.gmail.com:465/",
+	"OLD_MAIL_FROM": "baksej@newschool.edu",
+	"MAIL_URL": "smtps://586f9815fe172fb3b2ed4420f32e3f5f:4a1af25a6eb43bdaff6640e02d24cfdd@in-v3.mailjet.com:465/"
+}

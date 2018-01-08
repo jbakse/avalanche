@@ -1,3 +1,8 @@
+Template.registerHelper("cloud_name", function cloud_name() {
+	return Meteor.settings.public.cloud_name;
+});
+
+
 
 Template.registerHelper("formatDate", function(date) {
 	return moment(date).format("MMMM Do");
@@ -7,17 +12,17 @@ Template.registerHelper("formatTime", function(date) {
 	return moment(date).format("h:mm a");
 });
 
-Template.registerHelper("equals", function (a, b) {
+Template.registerHelper("equals", function(a, b) {
 	return a === b;
 });
 
 
-Template.registerHelper("json", function (data) {
+Template.registerHelper("json", function(data) {
 	data = JSON.stringify(data, null, "\t");
 	return `<pre>${data}</pre>`;
 });
 
-import {getPrefs} from "../imports/api/prefs.js";
+import { getPrefs } from "../imports/api/prefs.js";
 Template.registerHelper("prefs", function() {
 	return getPrefs();
 	// let prefs = Prefs.find({});
@@ -55,7 +60,7 @@ Template.registerHelper("formatDescription", function(num, string) {
 
 Template.registerHelper("progress", function progress() {
 
-	let p = Cloudinary.collection.find({percent_uploaded: {$lt: 100}}).fetch();
+	let p = Cloudinary.collection.find({ percent_uploaded: { $lt: 100 } }).fetch();
 
 	if (!p.length) {
 		return 0;
@@ -77,16 +82,16 @@ Template.registerHelper("sizeImg", function(imgW, imgH, targetW) {
 });
 
 
-function stripHTML(string){
+function stripHTML(string) {
 	let s = string.replace(/(<([^>]+)>)/ig, "");
 	return s;
 }
 Template.registerHelper("stripHTML", stripHTML);
 
 
-Template.registerHelper("editing_post",()=>{return Session.get("editing_post");});
-Template.registerHelper("editing_user",()=>{return Session.get("editing_user");});
-Template.registerHelper("previewing_post",()=>{return Session.get("previewing_post");});
+Template.registerHelper("editing_post", () => { return Session.get("editing_post"); });
+Template.registerHelper("editing_user", () => { return Session.get("editing_user"); });
+Template.registerHelper("previewing_post", () => { return Session.get("previewing_post"); });
 
 // Template.registerHelper("user_profile", function () {
 // 	return Meteor.user().profile;
