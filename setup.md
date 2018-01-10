@@ -28,16 +28,19 @@ https://app.mailjet.com/account/
 ## Creating a new Heroku App for Avalanche
 
 - Log into Heroku
-- Create an App `New->Create New App`
-- Add Resource `mLab MongoDB :: Mongodb`
+- Create an App `New->Create New App` 
+- Add the remote to the repo `heroku git:remote -a <app_name> -r <remote_name>`
+- Add Resource add-on `mLab MongoDB :: Mongodb` -> Sandbox-Free
 - Add/Set Settings > Config Variables
     - `METEOR_APP_DIR` = `avalanche`
-    - `ROOT_URL` = url of app (e.g. `https://desolate-cliffs-53268.herokuapp.com`)
+    - `ROOT_URL` = url of app (e.g. `https://<app_name>.herokuapp.com`)
 - Add Settings > Buildpacks
     - `https://github.com/AdmitHub/meteor-buildpack-horse.git`
 - Config Heroku with local settings
-    - `heroku config:add METEOR_SETTINGS="$(cat settings.json)"`
+    - `heroku config:add METEOR_SETTINGS="$(cat settings.json)" --app <app_name>`
 
+- Push app via git
+- Push data via `./scripts`
 
 ## List Heroku Apps
 `heroku apps --all`
@@ -82,4 +85,16 @@ stage   https://git.heroku.com/avalanche-staging.git (fetch)
 
 view at:
 https://avalanche-staging.herokuapp.com/
+
+***Staging Server**
+git command: 
+`git push compform2018 master`
+
+git remote:
+...
+
+view at:
+https://compform2018.herokuapp.com/
+
+
 
