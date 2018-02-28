@@ -57,7 +57,7 @@
 
 
 				{{#if equals post.resource_type "video"}}
-					<video src="http://res.cloudinary.com/{{cloud_name}}/video/upload/{{post.poster}}.mp4" controls autoplay=true loop=true></video>
+					<video src="http://res.cloudinary.com/{{cloud_name}}/video/upload/{{post.poster}}.mp4" controls notautoplay=false loop=true></video>
 					<!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{post.poster}}.jpg" alt="" /> -->
 					<!-- <img src="http://res.cloudinary.com/jbakse/video/upload/w_250/{{post.poster}}.gif" alt="" /> -->
 				{{else}}

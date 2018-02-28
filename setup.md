@@ -13,7 +13,8 @@ https://avalanche-staging.herokuapp.com/
 # Running Avalanche Locally
 `cd avalanche`
 `meteor --settings server/settings.json`
-
+or
+`meteor --settings server/settings2018.json`
 
 # Images hosted on Cloudinary
 [Cloudinary Login](https://cloudinary.com/users/login)

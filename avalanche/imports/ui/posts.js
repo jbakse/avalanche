@@ -46,37 +46,39 @@ function isScrolledIntoView(elem) {
 	return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
 }
 
-function autoplayVideoPosters() {
-	// console.log("autoplay");
-	let videos = $("video");
+// function autoplayVideoPosters() {
+// 	console.log("autoplay");
+// 	let videos = $("video");
 
-	// let playCount = 0;
-	// let pauseCount = 0;
-	videos.each(function(e) {
-		if (isScrolledIntoView(this)) {
-			// playCount++;
-			this.play().catch(function(e) {
-				// console.log("caught", e);
-				// getting a "The play() request was interrupted by a call to pause()." exception on live server but not local
-				// flooding the console, but not impacting experience
-				// just throw this exception away.
-				// not sure if this is related to this problem:
-				// https://bugs.chromium.org/p/chromium/issues/detail?id=593273
-			});
 
-		} else {
-			// pauseCount++;
-			this.pause();
-			this.currentTime = 0;
-		}
-	});
+// 	// let playCount = 0;
+// 	// let pauseCount = 0;
+// 	videos.each(function(e) {
+// 		if (isScrolledIntoView(this)) {
+// 			console.log("test");
+// 			// playCount++;
+// 			this.play().catch(function(e) {
+// 				// console.log("caught", e);
+// 				// getting a "The play() request was interrupted by a call to pause()." exception on live server but not local
+// 				// flooding the console, but not impacting experience
+// 				// just throw this exception away.
+// 				// not sure if this is related to this problem:
+// 				// https://bugs.chromium.org/p/chromium/issues/detail?id=593273
+// 			});
 
-	// console.log("p/p", playCount, pauseCount);
+// 		} else {
+// 			// pauseCount++;
+// 			this.pause();
+// 			this.currentTime = 0;
+// 		}
+// 	});
 
-}
+// 	// console.log("p/p", playCount, pauseCount);
 
-$(window).on("scroll", autoplayVideoPosters);
-setInterval(autoplayVideoPosters, 1000);
+// }
+
+// $(window).on("scroll", autoplayVideoPosters);
+// setInterval(autoplayVideoPosters, 1000);
 
 
 function lazyLoadImages() {
@@ -176,7 +178,7 @@ Template.post.helpers({
 });
 
 Template.post.events({
-	"click .poster-link": function() {
+	"click .poster-link": function(event) {
 		$("body").addClass("no-scroll");
 		Session.set("previewing_post", this._id);
 		event.preventDefault();
