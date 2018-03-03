@@ -30,6 +30,11 @@
 				<span class="">Inspired by</span>
 				<a href="{{inspiration_url}}">{{inspiration_name}}</a>
 			</div>
+			{{/if}} {{#if code}}
+			<div class="code">
+				<span class="">Experimental:</span>
+				<a class="code-link" target="_blank" href="http://compform.net/js_lab/js_lab.html?{{server}}/posts/{{_id}}/code">View Code</a>
+			</div>
 			{{/if}} {{#if description}}
 			<div class="description copy">
 				{{{formatDescription 100 description}}}
@@ -205,6 +210,7 @@
 
 				{{> afQuickField name='description' rows=6 placeholder='Description'}}
 
+ 				{{> afQuickField name='code' rows=6 placeholder='This is an experimental feature. You can help test it out by posting your code here. You can include p5.js and other libraries with a special comment at the top like this:\n\n // require https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js'}}
 				<!-- {{> afQuickField name='lesson' options=lessons}} -->
 				<!-- {{> afQuickField name='inspiration_name'}}
 					{{> afQuickField name='inspiration_url'}}
@@ -278,11 +284,16 @@
 					<span class="">Inspired by</span>
 					<a href="{{post.inspiration_url}}">{{post.inspiration_name}}</a>
 				</div>
+				{{/if}} {{#if post.code}}
+				<div class="code">
+					<span class="">Experimental:</span>
+					<a class="code-link" target="_blank" href="http://compform.net/js_lab/js_lab.html?{{server}}/posts/{{post._id}}/code">View Code</a>
+				</div>
 				{{/if}} {{#if post.description}}
 				<div class="description copy">
 					{{{formatDescription 10000 post.description}}}
 				</div>
-				{{/if}}
+				{{/if}} 
 
 			</div>
 

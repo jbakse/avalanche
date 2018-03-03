@@ -173,6 +173,13 @@ Template.post.helpers({
 		} else {
 			return "voted";
 		}
+	},
+
+	server() {
+		if (window) {
+			return `http://${window.location.host}`;
+		}
+		return "http://localhost:3000";
 	}
 
 });
@@ -217,6 +224,13 @@ Template.post_overlay.helpers({
 	post() {
 		let _id = this.post_id;
 		return Posts.findOne(_id);
+	},
+
+	server() {
+		if (window) {
+			return `http://${window.location.host}`;
+		}
+		return "http://localhost:3000";
 	}
 });
 

@@ -77,6 +77,13 @@ let PostSchema = new SimpleSchema({
 		optional: true,
 		defaultValue: ""
 	},
+
+	code: {
+		type: String,
+		label: "Code (Experimental)",
+		optional: true,
+		defaultValue: ""
+	}
 });
 
 export const Posts = new Mongo.Collection("posts");

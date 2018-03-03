@@ -1,8 +1,7 @@
 import "../imports/api/posts.js";
 import "../imports/api/users.js";
-import {
-	Prefs
-} from "../imports/api/prefs.js";
+import { Prefs } from "../imports/api/prefs.js";
+import { Posts } from "../imports/api/posts.js";
 
 function initPrefs() {
 	let prefs = Prefs.find({});
@@ -49,3 +48,11 @@ Cloudinary.config({
 // Meteor.startup(() => {
 //   // code to run on server at startup
 // });
+
+
+Picker.route('/posts/:_id/code', function(params, req, res, next) {
+	var post = Posts.findOne(params._id);
+	res.setHeader('content-type', 'application/javascript');
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.end(post.code);
+});

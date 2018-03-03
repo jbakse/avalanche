@@ -394,7 +394,8 @@ $post-margin: 20px;
 	font-weight: 300;
 }
 
-.post-info .inspiration {
+.post-info .inspiration,
+.post-info .code {
 	margin-top: $post-margin;
 	margin-left: $post-margin;
 	font-size: 12px;
@@ -905,6 +906,8 @@ $color-6: #7F4;
 	.info p {
 		margin: 0.5em 0;
 	}
+
+
 }
 
 .overlay *::-webkit-scrollbar {

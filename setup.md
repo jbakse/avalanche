@@ -99,3 +99,8 @@ https://compform2018.herokuapp.com/
 
 
 
+
+## Moving Databases
+
+The `./scripts/` folder contains scripts for copying database content between (the dev, staging, and production servers) and (a local file). 
+
