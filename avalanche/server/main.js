@@ -15,6 +15,12 @@ function initPrefs() {
 initPrefs();
 
 
+// this will grant admin to the user with the goldenEmail
+// let goldenEmail = Accounts.findUserByEmail("baksej@newschool.edu");
+// console.log("goldenEmail", goldenEmail);
+// if (goldenEmail) {
+// 	Roles.addUsersToRoles(goldenEmail, "may_admin", Roles.GLOBAL_GROUP);
+// }
 
 Accounts.emailTemplates.from = "Justin Bakse <baksej@newschool.edu>";
 // console.log("Accounts", Accounts);
@@ -50,9 +56,9 @@ Cloudinary.config({
 // });
 
 
-Picker.route('/posts/:_id/code', function(params, req, res, next) {
-	var post = Posts.findOne(params._id);
-	res.setHeader('content-type', 'application/javascript');
-	res.setHeader('Access-Control-Allow-Origin', '*');
+Picker.route("/posts/:_id/code", function(params, req, res, next) {
+	let post = Posts.findOne(params._id);
+	res.setHeader("content-type", "application/javascript");
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.end(post.code);
 });

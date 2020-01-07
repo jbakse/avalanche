@@ -87,12 +87,12 @@ stage   https://git.heroku.com/avalanche-staging.git (fetch)
 view at:
 https://avalanche-staging.herokuapp.com/
 
-***Staging Server**
+***compform2018 Server**
 git command: 
 `git push compform2018 master`
 
 git remote:
-...
+https://git.heroku.com/compform2018.git 
 
 view at:
 https://compform2018.herokuapp.com/
@@ -104,3 +104,25 @@ https://compform2018.herokuapp.com/
 
 The `./scripts/` folder contains scripts for copying database content between (the dev, staging, and production servers) and (a local file). 
 
+Run scripts from `/avalanche` like this `./scripts/SCRIPT.sh`
+
+
+## Managing Database
+
+I use Robo 3T/Robomongo to admin the local db.
+
+
+## Nuking Local Database
+
+`meteor reset` will delete the local mongo db starting you at 0
+
+## Remotes
+
+compform2018	https://git.heroku.com/compform2018.git (fetch)
+compform2018	https://git.heroku.com/compform2018.git (push)
+heroku	https://git.heroku.com/desolate-cliffs-53268.git (fetch)
+heroku	https://git.heroku.com/desolate-cliffs-53268.git (push)
+origin	https://github.com/jbakse/avalanche.git (fetch)
+origin	https://github.com/jbakse/avalanche.git (push)
+stage	https://git.heroku.com/avalanche-staging.git (fetch)
+stage	https://git.heroku.com/avalanche-staging.git (push)
