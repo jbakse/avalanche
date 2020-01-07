@@ -4,6 +4,7 @@
 
 		<main>
 			{{#if userIsAdmin}}
+				Note: Dates represent the midnight starting the date GMT.
 				{{> quickForm collection="Prefs" id="updatePrefsForm" doc=prefs type="update"}}
 
 				<div class="debug-info">

@@ -93,7 +93,20 @@ Template.page_avalanche.helpers({
 	// 	return posts.count();
 	// },
 
+	// now() {
+	// 	return new Date();
+	// },
 
+	// start() {
+	// 	let prefs = getPrefs();
+	// 	if (!prefs) {
+	// 		return;
+	// 	}
+
+	// 	let weeks = prefs.weeks;
+	// 	return weeks[0].start;
+	// },
+	
 	weeks() {
 		let prefs = getPrefs();
 		if (!prefs) {
@@ -163,7 +176,7 @@ Template.page_avalanche.helpers({
 			end: week.end,
 			week_posts: posts,
 			count: posts.count(),
-		}
+		};
 
 
 

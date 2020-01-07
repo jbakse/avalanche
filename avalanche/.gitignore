@@ -2,3 +2,6 @@ node_modules/
 secrets.js
 settings.json
 settings2018.json
+settings2019.json
+settings2020.json
+settings*.json

@@ -1,42 +1,37 @@
 <template name="page_avalanche">
-	<div class="page-avalanche">
-		{{> main_nav}}
-		<main>
-			{{> user_summaries}}
+  <div class="page-avalanche">
+    {{> main_nav}}
+    <main>
+      {{> user_summaries}}
 
-			<div class="class-weeks">
-				{{#each weeks}} {{#if count}}
-				<div class="week show-week {{active}}">
-					<span class="topic">{{topic}}</span>
-					<span class="count">{{count}}</span>
-				</div>
-				{{/if}} {{/each}}
-			</div>
+      <div class="class-weeks">
+        {{#each weeks}}
+        <div class="week show-week {{active}}">
+          <span class="topic">{{topic}}</span>
+          <span class="count">{{count}}</span>
+        </div>
+        {{#if count}} {{/if}} {{/each}}
+      </div>
 
+      <div class="message">
+        <div class="show-all">
+          {{postsCount}} Sketches Total {{#if active_week}} —
+          {{active_week.count}} {{active_week.topic}} Sketches {{/if}}
+        </div>
+      </div>
 
-			<div class="message">
+      <div class="message copy">
+        {{#markdown}}{{{prefs.avalanche_message}}}{{/markdown}}
+      </div>
 
+      {{> post_list posts=posts}}
+    </main>
 
-				<div class="show-all">
-					{{postsCount}} Sketches Total {{#if active_week}} — {{active_week.count}} {{active_week.topic}} Sketches {{/if}}
-				</div>
-
-			</div>
-
-
-			<div class="message copy">
-				{{#markdown}}{{{prefs.avalanche_message}}}{{/markdown}}
-			</div>
-
-			{{> post_list posts=posts}}
-		</main>
-
-		{{#if previewing_post}} {{> post_overlay post_id=previewing_post}} {{/if}} {{#if editing_post}} {{> edit_post_form post_id=editing_post}}
-		{{/if}}
-
-	</div>
+    {{#if previewing_post}} {{> post_overlay post_id=previewing_post}} {{/if}}
+    {{#if editing_post}} {{> edit_post_form post_id=editing_post}} {{/if}}
+  </div>
 </template>
 
 <template name="unused_scraps">
-	{{#if posts_this_week}} — {{posts_this_week}} This Week {{/if}}
+  {{#if posts_this_week}} — {{posts_this_week}} This Week {{/if}}
 </template>

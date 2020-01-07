@@ -1,5 +1,5 @@
-import {Mongo} from "meteor/mongo";
-import {userIsAdmin} from "./users.js";
+import { Mongo } from "meteor/mongo";
+import { userIsAdmin } from "./users.js";
 
 let WeekSchema = new SimpleSchema({
 	topic: {
@@ -9,7 +9,7 @@ let WeekSchema = new SimpleSchema({
 	},
 	start: {
 		type: Date,
-		label: "Start Date",
+		label: "Start Date"
 
 		// autoform: {
 		// 	type: "datetime-local"
@@ -17,12 +17,12 @@ let WeekSchema = new SimpleSchema({
 	},
 	end: {
 		type: Date,
-		label: "End Date",
+		label: "End Date"
 		// defaultValue: new Date(),
 		// autoform: {
 		// 	type: "datetime-local"
 		// },
-	},
+	}
 });
 
 let PrefsSchema = new SimpleSchema({
@@ -33,7 +33,7 @@ let PrefsSchema = new SimpleSchema({
 		optional: true,
 		autoform: {
 			rows: 10
-		},
+		}
 	},
 	voting_enabled: {
 		type: Boolean,
@@ -51,15 +51,11 @@ let PrefsSchema = new SimpleSchema({
 		type: [WeekSchema],
 		label: "Weeks",
 		optional: true,
-		defaultValue: [],
-	},
+		defaultValue: []
+	}
 });
 
-
-
-
 export const Prefs = new Mongo.Collection("prefs");
-
 
 if (Meteor.isServer) {
 	// This code only runs on the server
@@ -68,9 +64,7 @@ if (Meteor.isServer) {
 	});
 }
 
-
-
-export const getPrefs = function(){
+export const getPrefs = function() {
 	let prefs = Prefs.find({});
 	prefs = prefs.fetch()[0];
 	return prefs;
@@ -120,7 +114,7 @@ export const weekForDate = function(_date) {
 		week.num = i++;
 		return week;
 	});
-
+	
 	let week = _.find(weeks, function(week) {
 		return week.start < _date && week.end > _date;
 	});
