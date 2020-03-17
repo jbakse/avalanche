@@ -831,6 +831,16 @@ $color-6: #7f4;
     margin-right: 0;
   }
 }
+////////////////////////////////////////////////
+/// COMMENT POST FORM
+////////////////////////////////////////////////
+#comment-post-form .group {
+  margin: 20px;
+}
+
+#comment-post-form #comment-text {
+  height: 150px;
+}
 
 ////////////////////////////////////////////////
 /// EDIT USER FORM

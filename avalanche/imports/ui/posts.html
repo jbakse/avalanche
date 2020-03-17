@@ -107,6 +107,31 @@
 	{{/if}}
 </template>
 
+<template name="comment_post_form">
+	<div id="comment-post-form" class="overlay">
+		<div class="overlay-form">
+			<div class="title-bar">Add Comment</div>
+			<div class="content">
+				<form action="" class="comment-post">
+				<div class="group">
+				<textarea class="form-control" id="commenttext"></textarea>
+				
+				</div>
+				<div class="group">
+				<div class="submit-cancel-container">
+					<button type="submit" class="submit btn btn-primary">Add Comment</button>
+					<button type="button" class="cancel btn">Cancel</button>
+				</div>
+			
+				</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</template>
+
 <template name="edit_post_form">
 	<div id="edit-post-form" class="overlay">
 		<div class="overlay-form">

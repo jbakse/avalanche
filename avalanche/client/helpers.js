@@ -92,6 +92,7 @@ Template.registerHelper("stripHTML", stripHTML);
 Template.registerHelper("editing_post", () => { return Session.get("editing_post"); });
 Template.registerHelper("editing_user", () => { return Session.get("editing_user"); });
 Template.registerHelper("previewing_post", () => { return Session.get("previewing_post"); });
+Template.registerHelper("commenting_post", () => { return Session.get("commenting_post"); });
 
 // Template.registerHelper("user_profile", function () {
 // 	return Meteor.user().profile;
