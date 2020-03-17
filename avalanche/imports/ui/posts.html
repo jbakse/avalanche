@@ -58,7 +58,7 @@
 		</div>
 		<!-- {{{json prefs}}} -->
 		<div class="actions">
-
+		
 			{{#if userCanEdit}}
 			<i class="action-button right remove-post fa fa-trash" aria-hidden="true"></i>
 			<i class="action-button right edit-post fa fa-pencil" aria-hidden="true"></i>
@@ -69,6 +69,9 @@
 			<span class="action-button right emoji vote-funny {{votedFunny}}" aria-hidden="true">😂</span>
 			<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
 			{{/if}}
+			{{#if userCanComment}}
+      		<i class="action-button right comment-post fa fa-comment" aria-hidden="true"></i>
+	  		{{/if}}
 		</div>
 
 	</div>

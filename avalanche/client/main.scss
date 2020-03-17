@@ -1,180 +1,181 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
-@import '../imports/styles/reset.scss';
-$paper-color: #F5F8FD;
-$line-color: #EEE;
-$accent-color: #9013FE;
-$link-color: #9013FE;
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import "../imports/styles/reset.scss";
+$paper-color: #f5f8fd;
+$line-color: #eee;
+$accent-color: #9013fe;
+$link-color: #9013fe;
 $post-width: 350px;
 ////////////////////////////////////////////////
 /// Basics
 ////////////////////////////////////////////////
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .debug-highlight {
-	border: 10px solid red;
+  border: 10px solid red;
 }
 
 /////////////////////////////////////////
 /// Appearance
 ////////////////////////////////////////////////
 body {
-	font-family: 'Roboto', sans-serif;
-	background: $paper-color;
-	height: 100%;
+  font-family: "Roboto", sans-serif;
+  background: $paper-color;
+  height: 100%;
 }
 
 h1 {
-	font-size: 3em;
+  font-size: 3em;
 }
 
 a {
-	color: $link-color;
+  color: $link-color;
 }
 
 .copy a:hover,
 .post a:hover {
-	color: $link-color;
-	text-decoration: none;
-	border-bottom: 1px solid $link-color;
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 1px solid $link-color;
 }
 
 b,
 strong {
-	font-weight: 700; // color: darken($brand-color, 20);
+  font-weight: 700; // color: darken($brand-color, 20);
 }
 
 em,
 i {
-	font-style: italic;
+  font-style: italic;
 }
 
 main {
-	// padding: 2em;
+  // padding: 2em;
 }
 
 ////////////////////////////////////////////////
 /// General Modules
 ////////////////////////////////////////////////
 .message {
-	margin: 2em;
-	text-align: center;
-	font-size: 18px;
-	line-height: 1.5em;
+  margin: 2em;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5em;
 }
 
 @mixin clearfix {
-	&:after {
-		content: '';
-		display: table;
-		clear: both;
-	}
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 .actions {
-	margin-top: 10px;
-	padding: 0 10px;
-	height: 30px;
+  margin-top: 10px;
+  padding: 0 10px;
+  height: 30px;
 }
 
 .action-button {
-	cursor: pointer;
-	line-height: 30px;
-	padding: 0 5px;
-	float: left;
+  cursor: pointer;
+  line-height: 30px;
+  padding: 0 5px;
+  float: left;
 }
 
 .action-button.right {
-	float: right;
+  float: right;
 }
 
 .action-button:hover {
-	color: $accent-color;
+  color: $accent-color;
 }
 
 ////////////////////////////////////////////////
 /// main_nav
 ////////////////////////////////////////////////
 .main-nav {
-	position: relative;
-	flex: 0 auto;
-	background: white;
-	height: 120px;
-	padding-left: 60px;
-	line-height: 120px;
+  position: relative;
+  flex: 0 auto;
+  background: white;
+  height: 120px;
+  padding-left: 60px;
+  line-height: 120px;
 }
 
 .main-nav h1 {
-	font-size: 1.5em;
-	text-transform: uppercase;
-	font-weight: 700;
-	letter-spacing: 0.05em;
-	a {
-		color: inherit;
-	}
-	a:hover {
-		text-decoration: none;
-		border-bottom: 2px solid black;
-	}
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  a {
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    border-bottom: 2px solid black;
+  }
 }
 
 .main-nav .right {
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 120px;
-	padding-right: 60px;
-	line-height: 120px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 120px;
+  padding-right: 60px;
+  line-height: 120px;
 }
 
 .dropdown-menu {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 .dropdown-menu .btn-block {
-	// the login system tags the button with btn-block, but thats not our style
-	display: inline;
-	width: auto;
+  // the login system tags the button with btn-block, but thats not our style
+  display: inline;
+  width: auto;
 }
 
 .main-nav .headshot {
-	height: 60px;
-	width: 60px;
-	background-color: $line-color;
-	border-radius: 100px;
-	outline: none;
-	vertical-align: middle;
-	margin-left: 20px;
+  height: 60px;
+  width: 60px;
+  background-color: $line-color;
+  border-radius: 100px;
+  outline: none;
+  vertical-align: middle;
+  margin-left: 20px;
 }
 
 .main-nav .headshot.admin {
-	border: 4px solid red; // background: black;
+  border: 4px solid red; // background: black;
 }
 
-.main-nav button.create-post {}
+.main-nav button.create-post {
+}
 
 .main-nav .user-dropdown {
-	display: inline;
+  display: inline;
 }
 
 .main-nav .dropdown-menu {
-	top: 50px;
+  top: 50px;
 }
 
 .dropdown-menu.sign-in {
-	width: 350px;
-	.at-form,
-	form {
-		margin: 0;
-	}
-	.at-title {
-		display: none;
-	}
-	.at-signin-link,
-	.at-signup-link {
-		margin-bottom: 0;
-	}
+  width: 350px;
+  .at-form,
+  form {
+    margin: 0;
+  }
+  .at-title {
+    display: none;
+  }
+  .at-signin-link,
+  .at-signup-link {
+    margin-bottom: 0;
+  }
 }
 
 ////////////////////////////////////////////////
@@ -184,171 +185,171 @@ main {
 /// Page User
 ////////////////////////////////////////////////
 .user-info {
-	padding: 10px;
-	background: white;
-	padding: 2em;
-	margin: 2em;
-	text-align: center;
-	position: relative;
+  padding: 10px;
+  background: white;
+  padding: 2em;
+  margin: 2em;
+  text-align: center;
+  position: relative;
 }
 
 .user-info .headshot {
-	border-radius: 50%;
-	margin-bottom: 1em;
+  border-radius: 50%;
+  margin-bottom: 1em;
 }
 
 .user-info .name {
-	font-size: 64px;
-	font-weight: bold;
-	margin-bottom: 0.5em;
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
 .user-info .description {
-	font-size: 24px;
-	margin: 0 3em 1em; // margin-bottom: 1em;
-	line-height: 1.5;
+  font-size: 24px;
+  margin: 0 3em 1em; // margin-bottom: 1em;
+  line-height: 1.5;
 }
 
 .user-weeks,
 .class-weeks {
-	// border: 1px solid red;
-	margin: 20px;
-	display: flex;
-	justify-content: center;
-	.week {
-		// height: 30px
-		// line-height: 30px;
-		// border: 1px solid red;
-		margin: 5px;
-		width: 70px;
-		text-align: center;
-		padding: 5px;
-		position: relative; //bordeR: 1px solid red;
-	}
-	.week.active:after {
-		content: '';
-		position: absolute;
-		top: 100%;
-		left: 50%;
-		margin-left: -10px;
-		width: 0;
-		height: 0;
-		border-top: solid 10px #000;
-		border-left: solid 10px transparent;
-		border-right: solid 10px transparent;
-	}
-	.topic {
-		// border: 1px solid red;
-		font-size: 8px;
-		text-transform: uppercase;
-		margin-bottom: 4px;
-		display: block;
-		word-spacing: 10em;
-		height: 20px; // border: 1px solid red;
-		// display: table-cell;
-		vertical-align: bottom; // width: 50px;
-		// border: 1px solid red;
-	}
-	.count {
-		// padding-top: 10px;
-		font-size: 18px;
-	}
+  // border: 1px solid red;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  .week {
+    // height: 30px
+    // line-height: 30px;
+    // border: 1px solid red;
+    margin: 5px;
+    width: 70px;
+    text-align: center;
+    padding: 5px;
+    position: relative; //bordeR: 1px solid red;
+  }
+  .week.active:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-top: solid 10px #000;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+  }
+  .topic {
+    // border: 1px solid red;
+    font-size: 8px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+    word-spacing: 10em;
+    height: 20px; // border: 1px solid red;
+    // display: table-cell;
+    vertical-align: bottom; // width: 50px;
+    // border: 1px solid red;
+  }
+  .count {
+    // padding-top: 10px;
+    font-size: 18px;
+  }
 }
 
 .class-weeks .week:hover {
-	background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .class-weeks .week {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .sketch-count {
-	text-align: center;
+  text-align: center;
 }
 
 ////////////////////////////////////////////////
 /// Page Prefs
 ////////////////////////////////////////////////
 .debug-info {
-	margin: 20px;
-	padding: 1em;
-	border: 1px solid $line-color; // border-radius: 5px;
-	overflow: auto;
-	background-color: white;
-	pre {
-		overflow: hidden;
-		background-color: white;
-		font-family: monospace;
-	}
+  margin: 20px;
+  padding: 1em;
+  border: 1px solid $line-color; // border-radius: 5px;
+  overflow: auto;
+  background-color: white;
+  pre {
+    overflow: hidden;
+    background-color: white;
+    font-family: monospace;
+  }
 }
 
 ////////////////////////////////////////////////
 /// Posts Summaries
 ////////////////////////////////////////////////
 .posts-wrap {
-	// border: 1px solid green;
-	padding: 50px;
+  // border: 1px solid green;
+  padding: 50px;
 }
 
 .posts {
-	display: flex;
-	flex-wrap: wrap;
-	margin: auto; // border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto; // border: 1px solid red;
 }
 
 .posts-marker {
-	// border: 1px solid red;
-	position: fixed;
-	left: 20px; // bottom: 20px;
-	top: 50%;
-	z-index: -10;
-	background: $paper-color;
-	text-transform: capitalize;
-	padding: 10px;
-	transform-origin: 0 0;
-	transform: rotate(-90deg);
+  // border: 1px solid red;
+  position: fixed;
+  left: 20px; // bottom: 20px;
+  top: 50%;
+  z-index: -10;
+  background: $paper-color;
+  text-transform: capitalize;
+  padding: 10px;
+  transform-origin: 0 0;
+  transform: rotate(-90deg);
 }
 
 .post {
-	width: $post-width;
-	margin: 0 10px 30px;
-	outline: 1px solid $line-color;
-	box-shadow: 3px 3px 8px darken($paper-color, 5);
-	background: white;
+  width: $post-width;
+  margin: 0 10px 30px;
+  outline: 1px solid $line-color;
+  box-shadow: 3px 3px 8px darken($paper-color, 5);
+  background: white;
 }
 
 .posters {
-	@include clearfix;
+  @include clearfix;
 }
 
 .post .poster-link {
-	overflow: hidden;
-	position: relative;
+  overflow: hidden;
+  position: relative;
 }
 
 .post .poster-link img,
 .post .poster-link video {
-	display: block;
-	object-fit: cover;
-	cursor: pointer;
-	max-height: 600px;
-	width: 100%;
+  display: block;
+  object-fit: cover;
+  cursor: pointer;
+  max-height: 600px;
+  width: 100%;
 }
 
 .posters-2 .poster-link:nth-child(1) img,
 .posters-2 .poster-link:nth-child(1) video,
 .posters-3 .poster-link:nth-child(1) img,
 .posters-3 .poster-link:nth-child(1) video {
-	margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .posters-2 .poster-link:nth-child(2) img,
 .posters-2 .poster-link:nth-child(2) video {
-	float: left;
-	object-fit: cover;
-	width: $post-width;
-	height: $post-width *.5;
+  float: left;
+  object-fit: cover;
+  width: $post-width;
+  height: $post-width * 0.5;
 }
 
 .posters-3 .poster-link:nth-child(2),
@@ -357,15 +358,15 @@ main {
 .posters-3 .poster-link:nth-child(3),
 .posters-3 .poster-link:nth-child(3) img,
 .posters-3 .poster-link:nth-child(3) video {
-	float: left;
-	object-fit: cover;
-	width: $post-width *.5 - 1;
-	height: $post-width *.5;
+  float: left;
+  object-fit: cover;
+  width: $post-width * 0.5 - 1;
+  height: $post-width * 0.5;
 }
 
 .posters-3 .poster-link:nth-child(2) img,
 .posters-3 .poster-link:nth-child(2) video {
-	margin-right: 2px;
+  margin-right: 2px;
 }
 
 // .post .poster-link video {
@@ -375,323 +376,323 @@ main {
 // 	width: 100%;
 // }
 .video-icon {
-	cursor: pointer;
-	text-shadow: 1px 1px 5px rgba(0, 0, 0, .4); // border: 1px solid red;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -20px;
-	margin-top: -20px;
-	width: 50px;
-	height: 50px; // z-index: 10;
-	color: white;
-	font-size: 50px;
+  cursor: pointer;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4); // border: 1px solid red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -20px;
+  margin-top: -20px;
+  width: 50px;
+  height: 50px; // z-index: 10;
+  color: white;
+  font-size: 50px;
 }
 
 $post-margin: 20px;
 .post .info {
-	border-top: 1px solid $line-color;
-	font-weight: 300;
+  border-top: 1px solid $line-color;
+  font-weight: 300;
 }
 
 .post-info .inspiration,
 .post-info .code {
-	margin-top: $post-margin;
-	margin-left: $post-margin;
-	font-size: 12px;
+  margin-top: $post-margin;
+  margin-left: $post-margin;
+  font-size: 12px;
 }
 
 .post .description p {
-	display: inline;
+  display: inline;
 }
 
 .post-info .description {
-	margin-top: $post-margin;
-	margin-left: $post-margin;
-	margin-right: $post-margin * 1.5;
-	font-weight: 300;
-	font-size: 18px;
-	line-height: 1.5;
+  margin-top: $post-margin;
+  margin-left: $post-margin;
+  margin-right: $post-margin * 1.5;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .post-info .votes {
-	// border: 1px solid red;
-	margin: $post-margin/2 $post-margin;
+  // border: 1px solid red;
+  margin: $post-margin/2 $post-margin;
 }
 
 .post-info .votes li {
-	display: inline;
+  display: inline;
 }
 
 .post-info .group {
-	margin: $post-margin 0 $post-margin/2;
-	font-size: 8px;
-	line-height: 30px;
-	font-weight: 400;
+  margin: $post-margin 0 $post-margin/2;
+  font-size: 8px;
+  line-height: 30px;
+  font-weight: 400;
 }
 
 .post-info .author {
-	a {
-		color: inherit;
-	}
-	a:hover {
-		text-decoration: none;
-		border-bottom: none;
-	}
-	margin-left: $post-margin;
-	.name {
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		margin-left: 10px;
-	}
-	img {
-		vertical-align: middle;
-		height: 30px;
-		border-radius: 500px;
-	}
+  a {
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    border-bottom: none;
+  }
+  margin-left: $post-margin;
+  .name {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-left: 10px;
+  }
+  img {
+    vertical-align: middle;
+    height: 30px;
+    border-radius: 500px;
+  }
 }
 
 .post-info .date {
-	float: right;
-	margin-right: $post-margin;
+  float: right;
+  margin-right: $post-margin;
 }
 
 .post .actions {
-	position: absolute;
-	bottom: $post-margin * 0.5;
-	right: 0;
-	width: 50%;
-	background: white;
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.3s;
+  position: absolute;
+  bottom: $post-margin * 0.5;
+  right: 0;
+  width: 60%;
+  background: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
 }
 
 .post:hover .actions {
-	opacity: 1;
-	visibility: visible;
-	overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
 }
 
 .post .emoji {
-	// border: 1px solid red;
-	vertical-align: top; // padding-top: 2px;
-	padding: 2px 5px 5px;
-	cursor: pointer;
+  // border: 1px solid red;
+  vertical-align: top; // padding-top: 2px;
+  padding: 2px 5px 5px;
+  cursor: pointer;
 }
 
 .post .emoji.voted {
-	opacity: 0.35;
+  opacity: 0.35;
 }
 
 .post .actions .no-actions {
-	line-height: 30px;
-	float: right;
-	padding-right: 10px;
-	text-transform: uppercase;
-	font-size: 8px;
-	letter-spacing: 0.1em;
+  line-height: 30px;
+  float: right;
+  padding-right: 10px;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 0.1em;
 }
 
 ////////////////////////////////////////////////
 /// user-summary
 ////////////////////////////////////////////////
 .user-summaries {
-	border-top: 1px solid $line-color;
-	background-color: white;
-	display: flex;
-	justify-content: center;
-	padding: 1em;
-	box-shadow: 0 0 15px darken($paper-color, 20);
+  border-top: 1px solid $line-color;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  box-shadow: 0 0 15px darken($paper-color, 20);
 }
 
 .user-summary {
-	margin: 3px;
-	position: relative;
+  margin: 3px;
+  position: relative;
 }
 
-$color-0: #F00;
-$color-1: #F00;
-$color-2: #FB2;
-$color-3: #FB3;
-$color-4: #EE2;
-$color-5: #7F4;
-$color-6: #7F4;
+$color-0: #f00;
+$color-1: #f00;
+$color-2: #fb2;
+$color-3: #fb3;
+$color-4: #ee2;
+$color-5: #7f4;
+$color-6: #7f4;
 .user-summary.count-0 {
-	border-bottom: 5px solid $color-0;
+  border-bottom: 5px solid $color-0;
 }
 
 .user-summary.count-1 {
-	border-bottom: 5px solid $color-1;
+  border-bottom: 5px solid $color-1;
 }
 
 .user-summary.count-2 {
-	border-bottom: 5px solid $color-2;
+  border-bottom: 5px solid $color-2;
 }
 
 .user-summary.count-3 {
-	border-bottom: 5px solid $color-3;
+  border-bottom: 5px solid $color-3;
 }
 
 .user-summary.count-4 {
-	border-bottom: 5px solid $color-4;
+  border-bottom: 5px solid $color-4;
 }
 
 .user-summary.count-5 {
-	border-bottom: 5px solid $color-5;
+  border-bottom: 5px solid $color-5;
 }
 
 .user-summary.user-Brinna {
-	border-bottom: none;
+  border-bottom: none;
 }
 
 .user-summary.user-Justin {
-	border-bottom: none;
+  border-bottom: none;
 }
 
 .user-summary {
-	border-bottom: 5px solid $color-6;
+  border-bottom: 5px solid $color-6;
 }
 
 .user-summary a {
-	color: black;
+  color: black;
 }
 
 .user-summary .headshot {
-	display: block;
-	width: 50px;
+  display: block;
+  width: 50px;
 }
 
 .user-summary .name,
 .user-summary .total,
 .user-summary .week {
-	font-size: 12px;
-	margin: 4px;
-	text-align: center;
-	display: block;
-	margin: 4px;
+  font-size: 12px;
+  margin: 4px;
+  text-align: center;
+  display: block;
+  margin: 4px;
 }
 
 .user-summary .name {
-	font-weight: 500;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	margin: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 6px;
 }
 
 .user-summary:hover .tooltip2 {
-	opacity: 1;
+  opacity: 1;
 }
 
 .user-summary .tooltip2 {
-	position: absolute;
-	margin-top: 8px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 300px;
-	opacity: 0;
-	transition: opacity 0.7s;
-	display: flex;
-	justify-content: center;
-	pointer-events: none;
-	z-index: 1000;
-	.content {
-		background: white;
-		padding: 5px;
-		box-shadow: 0 2px 8px 2px rgba(0, 0, 150, .1);
-	}
-	.content:before {
-		position: absolute;
-		top: -12px;
-		left: 50%;
-		margin-left: -11px;
-		display: inline-block;
-		border-right: 12px solid transparent;
-		border-bottom: 12px solid $line-color;
-		border-left: 12px solid transparent;
-		content: '';
-	}
-	.content:after {
-		position: absolute;
-		top: -11px;
-		left: 50%;
-		margin-left: -11px;
-		display: inline-block;
-		border-right: 12px solid transparent;
-		border-bottom: 12px solid #ffffff;
-		border-left: 12px solid transparent;
-		content: '';
-	}
+  position: absolute;
+  margin-top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  opacity: 0;
+  transition: opacity 0.7s;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1000;
+  .content {
+    background: white;
+    padding: 5px;
+    box-shadow: 0 2px 8px 2px rgba(0, 0, 150, 0.1);
+  }
+  .content:before {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    margin-left: -11px;
+    display: inline-block;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid $line-color;
+    border-left: 12px solid transparent;
+    content: "";
+  }
+  .content:after {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    display: inline-block;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid #ffffff;
+    border-left: 12px solid transparent;
+    content: "";
+  }
 }
 
 .user-summary:hover .tooltip2 {
-	opacity: 1;
+  opacity: 1;
 }
 
 ////////////////////////////////////////////////
 /// overlay
 ////////////////////////////////////////////////
 .no-scroll {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .overlay {
-	background: rgba(203, 223, 255, .9);
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow-y: auto;
+  background: rgba(203, 223, 255, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .overlay-form {
-	width: 500px;
-	margin: 3em auto;
-	background: white;
-	margin-bottom: 50px;
-	box-shadow: 1px 5px 30px #81A7D9;
+  width: 500px;
+  margin: 3em auto;
+  background: white;
+  margin-bottom: 50px;
+  box-shadow: 1px 5px 30px #81a7d9;
 }
 
 .overlay-form .title-bar {
-	text-align: center;
-	font-size: 1em;
-	padding: 1em;
-	text-transform: uppercase;
+  text-align: center;
+  font-size: 1em;
+  padding: 1em;
+  text-transform: uppercase;
 }
 
 .overlay-content {
-	position: absolute;
-	left: 40px;
-	top: 40px;
-	right: 40px;
-	bottom: 40px;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  right: 40px;
+  bottom: 40px;
 }
 
 ////////////////////////////////////////////////
 /// BOOTSTRAP DROPDOWN
 ////////////////////////////////////////////////
 #layout-main .dropdown-menu-right:before {
-	position: absolute;
-	top: -10px;
-	right: 21px;
-	display: inline-block;
-	border-right: 9px solid transparent;
-	border-bottom: 9px solid #ccc;
-	border-left: 9px solid transparent;
-	border-bottom-color: rgba(0, 0, 0, 0.2);
-	content: '';
+  position: absolute;
+  top: -10px;
+  right: 21px;
+  display: inline-block;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #ccc;
+  border-left: 9px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: "";
 }
 
 #layout-main .dropdown-menu-right:after {
-	position: absolute;
-	top: -9px;
-	right: 21px;
-	display: inline-block;
-	border-right: 9px solid transparent;
-	border-bottom: 9px solid #ffffff;
-	border-left: 9px solid transparent;
-	content: '';
+  position: absolute;
+  top: -9px;
+  right: 21px;
+  display: inline-block;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #ffffff;
+  border-left: 9px solid transparent;
+  content: "";
 }
 
 ////////////////////////////////////////////////
@@ -699,235 +700,233 @@ $color-6: #7F4;
 ////////////////////////////////////////////////
 // Global Bootstrap Restyling
 #layout-main .btn {
-	font-size: 13px;
-	font-weight: 500;
-	line-height: 13px;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	padding: 7px 20px;
-	background: transparent;
-	color: black;
-	border: 1.5px solid black;
-	border-radius: 500px;
-	outline: none;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 7px 20px;
+  background: transparent;
+  color: black;
+  border: 1.5px solid black;
+  border-radius: 500px;
+  outline: none;
 }
 
 #layout-main .btn.cancel {
-	border: none;
-	float: right;
-	padding: 7px 0;
+  border: none;
+  float: right;
+  padding: 7px 0;
 }
 
 #layout-main .btn.cancel:active {
-	color: $link-color;
-	box-shadow: none;
+  color: $link-color;
+  box-shadow: none;
 }
 
 #layout-main label {
-	color: black;
-	font-size: 10px;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	margin-bottom: 5px;
+  color: black;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
 }
 
 // Overlay Forms
 .overlay-form form {
-	margin: 20px;
+  margin: 20px;
 }
 
 .overlay-form .title-bar {
-	background: black;
-	color: white;
+  background: black;
+  color: white;
 }
 
 .overlay-form .content {
-	padding-bottom: 1px;
+  padding-bottom: 1px;
 }
 
 ////////////////////////////////////////////////
 /// EDIT POST FORM
 ////////////////////////////////////////////////
 #edit-post-form .group {
-	// side by side fields (inspiration name | inspiration url)
-	display: flex;
-	justify-content: space-between;
-	>.form-group {
-		flex: 1 1 auto;
-		margin-right: 10px;
-	}
-	>.form-group:last-child {
-		margin-right: 0;
-	} // a bit of shame, margins were not collapsing properly, help block not _that_ needed on optional
-	.help-block {
-		display: none;
-	}
+  // side by side fields (inspiration name | inspiration url)
+  display: flex;
+  justify-content: space-between;
+  > .form-group {
+    flex: 1 1 auto;
+    margin-right: 10px;
+  }
+  > .form-group:last-child {
+    margin-right: 0;
+  } // a bit of shame, margins were not collapsing properly, help block not _that_ needed on optional
+  .help-block {
+    display: none;
+  }
 }
 
 #edit-post-form .content {
-	position: relative;
+  position: relative;
 }
 
 #edit-post-form .media-progress {
-	// border: 1px solid red;
-	background: $accent-color;
-	position: absolute;
-	top: -20px;
-	height: 10px;
+  // border: 1px solid red;
+  background: $accent-color;
+  position: absolute;
+  top: -20px;
+  height: 10px;
 }
 
 #edit-post-form .posters {
-	margin: 20px;
-	display: flex;
-	justify-content: space-between;
-	>.poster-wrap {
-		flex: 1 1 auto;
-		margin-right: 10px;
-		position: relative;
-		overflow: hidden;
-		img,
-		video {
-			width: 100%;
-			height: 150px;
-			object-fit: cover;
-			border: 1px solid $line-color;
-			display: block;
-			position: absolute;
-			top: 0;
-		}
-		.upload {
-			width: 100%;
-			height: 150px;
-			text-align: center;
-			cursor: pointer;
-			margin-bottom: 0;
-			background-color: $line-color;
-			i {
-				font-size: 40px;
-				margin-bottom: 10px;
-				margin-top: 50px;
-			}
-		}
-		.upload:hover {
-			color: $accent-color;
-		}
-		.info {
-			padding: 5px 0;
-		}
-		.dimensions {
-			float: left;
-			font-size: 10px;
-			line-height: 20px;
-		}
-		.remove {
-			line-height: 20px;
-			vertical-align: middle;
-			padding: 0;
-			float: right;
-		}
-	}
-	>.poster-wrap:last-child {
-		margin-right: 0;
-	}
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  > .poster-wrap {
+    flex: 1 1 auto;
+    margin-right: 10px;
+    position: relative;
+    overflow: hidden;
+    img,
+    video {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border: 1px solid $line-color;
+      display: block;
+      position: absolute;
+      top: 0;
+    }
+    .upload {
+      width: 100%;
+      height: 150px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 0;
+      background-color: $line-color;
+      i {
+        font-size: 40px;
+        margin-bottom: 10px;
+        margin-top: 50px;
+      }
+    }
+    .upload:hover {
+      color: $accent-color;
+    }
+    .info {
+      padding: 5px 0;
+    }
+    .dimensions {
+      float: left;
+      font-size: 10px;
+      line-height: 20px;
+    }
+    .remove {
+      line-height: 20px;
+      vertical-align: middle;
+      padding: 0;
+      float: right;
+    }
+  }
+  > .poster-wrap:last-child {
+    margin-right: 0;
+  }
 }
 
 ////////////////////////////////////////////////
 /// EDIT USER FORM
 ////////////////////////////////////////////////
 #edit-user-form .headshot-wrap {
-	text-align: center;
-	margin: 1em;
-	img {
-		border-radius: 50%;
-	}
+  text-align: center;
+  margin: 1em;
+  img {
+    border-radius: 50%;
+  }
 }
 
 #edit-user-form .upload-button {
-	display: block;
-	cursor: pointer;
-	margin: 1em;
-	text-align: center;
+  display: block;
+  cursor: pointer;
+  margin: 1em;
+  text-align: center;
 }
 
 #edit-user-form .upload-button:hover {
-	color: $accent-color;
+  color: $accent-color;
 }
 
 ////////////////////////////////////////////////
 /// EDIT PREFS FORM
 ////////////////////////////////////////////////
 #updatePrefsForm {
-	margin: 20px;
+  margin: 20px;
 }
 
 ////////////////////////////////////////////////
 /// POST OVERLAY
 ////////////////////////////////////////////////
 #post-overlay {
-	display: flex;
+  display: flex;
 }
 
 #post-overlay .overlay-content {
-	box-shadow: 0 0 15px 3px rgba(0, 0, 150, .2);
-	display: flex;
-	.media {
-		overflow-y: auto;
-		flex: 1 1 auto;
-		background: black;
-		display: flex;
-		flex-direction: column;
-		img,
-		video {
-			display: block;
-			margin: 1em auto;
-			max-width: 100%;
-		}
-		img:first-child,
-		video:first-child {
-			margin-top: 4em;
-		}
-		img:last-child,
-		video:last-child {
-			margin-bottom: 4em;
-		}
-	}
-	.info {
-		flex: 0 0 auto;
-		width: 350px;
-		background: white;
-		display: flex;
-		flex-direction: column;
-	}
-	.description {
-		overflow-y: auto;
-		padding-right: 20px;
-		margin-right: 0;
-	}
-	.info p {
-		margin: 0.5em 0;
-	}
-
-
+  box-shadow: 0 0 15px 3px rgba(0, 0, 150, 0.2);
+  display: flex;
+  .media {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    img,
+    video {
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+    }
+    img:first-child,
+    video:first-child {
+      margin-top: 4em;
+    }
+    img:last-child,
+    video:last-child {
+      margin-bottom: 4em;
+    }
+  }
+  .info {
+    flex: 0 0 auto;
+    width: 350px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+  }
+  .description {
+    overflow-y: auto;
+    padding-right: 20px;
+    margin-right: 0;
+  }
+  .info p {
+    margin: 0.5em 0;
+  }
 }
 
 .overlay *::-webkit-scrollbar {
-	width: 14px;
+  width: 14px;
 }
 
 .overlay *::-webkit-scrollbar-track {
-	background: white;
+  background: white;
 }
 
 .overlay *::-webkit-scrollbar-thumb {
-	width: 10px;
-	background: $accent-color;
-	border: 2px solid white;
+  width: 10px;
+  background: $accent-color;
+  border: 2px solid white;
 }
 
 .overlay .media::-webkit-scrollbar-track {
-	background: black;
+  background: black;
 }
 
 .overlay .media::-webkit-scrollbar-thumb {
-	border: 2px solid black;
+  border: 2px solid black;
 }

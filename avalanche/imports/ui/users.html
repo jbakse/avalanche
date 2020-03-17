@@ -1,59 +1,58 @@
 <template name="user_summaries">
-	<div class="user-summaries">
-
-		{{#each users}}
-			{{> user_summary}}
-		{{/each}}
-
-	</div>
+  <div class="user-summaries">
+    {{#each users}} {{> user_summary}} {{/each}}
+  </div>
 </template>
 
 <template name="user_summary">
+  <div
+    class="user-summary count-{{posts_this_week}} user-{{profile.first_name}}"
+  >
+    <a href="users/{{_id}}">
+      {{#if profile.headshot}}
+      <img
+        class="headshot"
+        src="{{c.url profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}"
+        alt=""
+      />
+      {{else}}
+      <img class="headshot" src="/images/avatar.png" />
+      {{/if}}
+    </a>
+    <div class="tooltip2">
+      <div class="content">
+        <span class="name">{{profile.first_name}} {{profile.last_name}} </span>
 
-	<div class="user-summary count-{{posts_this_week}} user-{{profile.first_name}}">
+        <span class="total">{{pluralize posts_total "sketches"}}</span>
 
-		<a href="users/{{_id}}">
-			{{#if profile.headshot}}
-				<img class="headshot" src="{{c.url profile.headshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt=""/>
-			{{else}}
-				<img class="headshot" src="/images/avatar.png"/>
-			{{/if}}
-		</a>
-		<div class="tooltip2">
-			<div class="content">
-				<span class="name">{{profile.first_name}}
-					{{profile.last_name}}
-				</span>
-
-				<span class="total">{{pluralize posts_total "sketches"}}</span>
-
-				{{#if posts_this_week}}
-					<span class="week">
-						{{posts_this_week}}
-						this week
-					</span>
-				{{/if}}
-
-			</div>
-		</div>
-	</div>
+        {{#if posts_this_week}}
+        <span class="week">
+          {{posts_this_week}} this week
+        </span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="edit_user_form">
-	<div id="edit-user-form" class="overlay">
-		<div class="overlay-form">
-			<div class="title-bar">Edit Profile</div>
+  <div id="edit-user-form" class="overlay">
+    <div class="overlay-form">
+      <div class="title-bar">Edit Profile</div>
 
-			<div class="content">
-				<div class="headshot-wrap">
-					<img src="{{c.url user.profile.headshot gravity='face' height=250 width=250 crop='fill' quality=90}}" alt=""/>
-				</div>
-				<label class="upload-button" for="upload-file">
-					<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
-					Upload Profile Picture
-				</label>
+      <div class="content">
+        <div class="headshot-wrap">
+          <img
+            src="{{c.url user.profile.headshot gravity='face' height=250 width=250 crop='fill' quality=90}}"
+            alt=""
+          />
+        </div>
+        <label class="upload-button" for="upload-file">
+          <i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+          Upload Profile Picture
+        </label>
 
-				<!-- <div class="headshot-wrap">
+        <!-- <div class="headshot-wrap">
 					<img src="{{c.url user.profile.headshot height=250 width=250 crop='fill' quality=90}}" alt=""/>
 				</div>
 
@@ -64,40 +63,54 @@
 					</label>
 
 				</div> -->
-				<input class="upload-file hidden" id="upload-file" name="upload-file" type="file">
+        <input
+          class="upload-file hidden"
+          id="upload-file"
+          name="upload-file"
+          type="file"
+        />
 
-				<form>
+        <form>
+          <div class="form-group">
+            <label for="first-name" class="control-label">First Name</label>
 
-					<div class="form-group">
-						<label for="first-name" class="control-label">First Name</label>
+            <input
+              type="text"
+              id="first-name"
+              class="form-control"
+              value="{{user.profile.first_name}}"
+            />
+            <span class="help-block"></span>
+          </div>
 
-						<input type="text" id="first-name" class="form-control" value="{{user.profile.first_name}}">
-						<span class="help-block"></span>
-					</div>
+          <div class="form-group">
+            <label for="last-name" class="control-label">Last Name</label>
+            <input
+              type="text"
+              id="last-name"
+              class="form-control"
+              value="{{user.profile.last_name}}"
+            />
+            <span class="help-block"></span>
+          </div>
 
-					<div class="form-group">
-						<label for="last-name" class="control-label">Last Name</label>
-						<input type="text" id="last-name" class="form-control" value="{{user.profile.last_name}}">
-						<span class="help-block"></span>
-					</div>
+          <div class="form-group">
+            <label for="description" class="control-label">Description</label>
+            <!-- <input type="text" id="description" class="form-control"> -->
+            <textarea id="description" class="form-control" rows="6">
+{{user.profile.description}}</textarea
+            >
+            <span class="help-block"></span>
+          </div>
 
-					<div class="form-group">
-						<label for="description" class="control-label">Description</label>
-						<!-- <input type="text" id="description" class="form-control"> -->
-						<textarea id="description" class="form-control" rows=6>{{user.profile.description}}</textarea>
-						<span class="help-block"></span>
-					</div>
-
-					<div>
-						{{#with user}}
-							<button type="button" class="cancel btn">Cancel</button>
-							<button type="submit" class="submit btn btn-primary">Update</button>
-						{{/with}}
-					</div>
-				</form>
-
-			</div>
-
-		</div>
-	</div>
+          <div>
+            {{#with user}}
+            <button type="button" class="cancel btn">Cancel</button>
+            <button type="submit" class="submit btn btn-primary">Update</button>
+            {{/with}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
