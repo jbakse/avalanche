@@ -126,7 +126,9 @@
 				
 					<textarea class="form-control" id="comment-text" name="comment" placeholder=""></textarea>
 					<br/>
-					Comments accept <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>.
+					<span class="note">
+						Comments accept <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>.
+					</span>
 				
 				</div>
 				<div class="group">
@@ -249,7 +251,10 @@
 					</div> -->
 
 				{{> afQuickField name='description' rows=6 placeholder='Description'}}
-
+					<span class="note">
+						Descriptions accept <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>.
+						<br/><br/>
+					</span>
  				{{> afQuickField name='code' rows=6 placeholder='This is an experimental feature. You can help test it out by posting your code here. You can include p5.js and other libraries with a special comment at the top like this:\n\n // require https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js'}}
 				<!-- {{> afQuickField name='lesson' options=lessons}} -->
 				<!-- {{> afQuickField name='inspiration_name'}}
