@@ -23,6 +23,13 @@
 					{{#if equals category "nerdy"}}🤓{{/if}} {{#if equals category "funny"}}😂{{/if}} {{#if equals category "pretty"}}😍{{/if}}
 				</li>
 				{{/each}}
+				
+				{{#each comments}}
+				<li>
+					💬
+				</li>
+					<!-- <i class="action-button comment-post fa fa-comment" aria-hidden="true"></i> -->
+				{{/each}}
 			</ul>
 
 			{{#if inspiration_url}}
@@ -70,7 +77,9 @@
 			<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
 			{{/if}}
 			{{#if userCanComment}}
-      		<i class="action-button right comment-post fa fa-comment" aria-hidden="true"></i>
+			<span class="action-button right comment-post emoji" aria-hidden="true">💬</span>
+			
+      		<!-- <i class="action-button right comment-post fa fa-comment" aria-hidden="true"></i> -->
 	  		{{/if}}
 		</div>
 
@@ -114,7 +123,7 @@
 			<div class="content">
 				<form action="" class="comment-post">
 				<div class="group">
-				<textarea class="form-control" id="commenttext"></textarea>
+				<textarea class="form-control" id="comment-text" name="comment"></textarea>
 				
 				</div>
 				<div class="group">
@@ -295,9 +304,13 @@
 				<div class="group">
 					<span class="author">
 						<a href="/users/{{post.author_id}}">
-							{{#with post}} {{#if authorHeadshot}}
-							<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt="" /> {{else}}
-							<img class="headshot" src="/images/avatar.png" /> {{/if}} {{/with}}
+							{{#with post}} 
+								{{#if authorHeadshot}}
+								<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt="" />
+								{{else}}
+								<img class="headshot" src="/images/avatar.png" />
+								{{/if}} 
+							{{/with}}
 							<span class="name">{{post.author}}</span>
 						</a>
 					</span>
@@ -317,11 +330,22 @@
 					<span class="">Experimental:</span>
 					<a class="code-link" target="_blank" href="http://compform.net/js_lab/js_lab.html?{{server}}/posts/{{post._id}}/code">View Code</a>
 				</div>
-				{{/if}} {{#if post.description}}
+				{{/if}} 
+				
+				<div class="scroll">
+				{{#if post.description}}
 				<div class="description copy">
 					{{{formatDescription 10000 post.description}}}
 				</div>
 				{{/if}} 
+
+				{{#each post.comments}}
+				<div class="comment">
+					<div class="comment-author">{{{userName commenter_id}}}</div>
+					<div class="comment-text">{{{formatDescription 10000 comment}}}</div>
+				</div>
+				{{/each}}
+				</div>
 
 			</div>
 

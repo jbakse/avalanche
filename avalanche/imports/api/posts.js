@@ -307,5 +307,15 @@ Meteor.methods({
     console.log(id);
     console.log(user_id);
     console.log(comment);
+
+    Posts.update(id, {
+      $push: {
+        comments: {
+          commenter_id: user_id,
+          comment: comment,
+          created_at: new Date()
+        }
+      }
+    });
   }
 });

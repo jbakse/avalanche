@@ -202,7 +202,7 @@ Template.post.helpers({
 });
 
 Template.post.events({
-  "click .poster-link": function(event) {
+  "click .poster-link, click .votes": function(event) {
     $("body").addClass("no-scroll");
     Session.set("previewing_post", this._id);
     event.preventDefault();
@@ -445,13 +445,13 @@ Template.comment_post_form.events({
     const user_id = Meteor.userId();
 
     console.log(`Post comment by ${user_id} to ${this.post_id}`);
-    console.log(e.target.commenttext.value);
+    console.log(e.target.comment.value); //["comment-text"].value
 
     Meteor.call(
       "posts.addComment",
       this.post_id,
       user_id,
-      e.target.commenttext.value
+      e.target.comment.value
     );
 
     Session.set("commenting_post", false);

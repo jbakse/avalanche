@@ -419,7 +419,9 @@ $post-margin: 20px;
   // border: 1px solid red;
   margin: $post-margin/2 $post-margin;
 }
-
+.post-info .votes li {
+  cursor: pointer;
+}
 .post-info .votes li {
   display: inline;
 }
@@ -910,12 +912,28 @@ $color-6: #7f4;
     flex-direction: column;
   }
   .description {
-    overflow-y: auto;
     padding-right: 20px;
     margin-right: 0;
+    margin-top: 0;
   }
   .info p {
-    margin: 0.5em 0;
+    // margin: 0.5em 0;
+  }
+  .comment {
+    // font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  .comment-author {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1em;
+  }
+  .scroll {
+    margin-top: 20px;
+    overflow-y: auto;
   }
 }
 
