@@ -931,6 +931,24 @@ $color-6: #7f4;
     letter-spacing: 0.1em;
     margin-bottom: 1em;
   }
+
+  .comment-date {
+    float: right;
+    margin-right: $post-margin;
+    font-size: 8px;
+    // text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .comment-text * {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .comment-text h1,
+  .comment-text h2,
+  .comment-text h3 {
+    font-weight: bold;
+  }
   .scroll {
     margin-top: 20px;
     overflow-y: auto;
