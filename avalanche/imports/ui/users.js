@@ -1,7 +1,7 @@
 // import {Users} from "../api/users.js";
 import "./users.html";
 import { Posts } from "../api/posts.js";
-import { currentWeek } from "../api/prefs.js";
+import { currentWeek, getPrefs } from "../api/prefs.js";
 
 Meteor.subscribe("users");
 
@@ -44,7 +44,16 @@ Template.user_summaries.helpers({
 });
 
 function posts_this_week(user) {
-  let week = currentWeek();
+  // let week = currentWeek();
+
+  let prefs = getPrefs();
+  if (!prefs) {
+    return;
+  }
+
+  let week = _.find(prefs.weeks, week => {
+    return week.topic === Session.get("active_topic");
+  });
 
   if (!week) {
     return;
