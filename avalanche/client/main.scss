@@ -953,6 +953,12 @@ $color-6: #7f4;
   .comment-text h3 {
     font-weight: bold;
   }
+  .delete-comment {
+    // border: 1px solid red;
+    color: $accent-color;
+    font-size: 10px;
+    cursor: pointer;
+  }
   .scroll {
     margin-top: 20px;
     overflow-y: auto;

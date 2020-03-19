@@ -28,7 +28,7 @@
 				<li>
 					💬
 				</li>
-					<!-- <i class="action-button comment-post fa fa-comment" aria-hidden="true"></i> -->
+					
 				{{/each}}
 			</ul>
 
@@ -354,6 +354,9 @@
 					</span>
 					<div class="comment-author">{{{userName commenter_id}}}</div>
 					<div class="comment-text">{{{formatDescription 10000 comment}}}</div>
+					{{#if userCanDeleteComment this}}
+						<span class="delete-comment">Delete Comment</span>
+					{{/if}}
 				</div>
 				{{/each}}
 				</div>

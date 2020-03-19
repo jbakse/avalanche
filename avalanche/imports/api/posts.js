@@ -181,6 +181,13 @@ export const postEditableBy = function(post, user_id) {
   return post.author_id === user_id || userIsAdmin();
 };
 
+export const commentEditableBy = function(comment, user_id) {
+  if (!comment) {
+    return false;
+  }
+  return comment.commenter_id === user_id || userIsAdmin();
+};
+
 import { currentWeek } from "../api/prefs.js";
 
 Meteor.methods({
@@ -303,10 +310,10 @@ Meteor.methods({
   },
 
   "posts.addComment"(id, user_id, comment) {
-    console.log("add a comment");
-    console.log(id);
-    console.log(user_id);
-    console.log(comment);
+    // console.log("add a comment");
+    // console.log(id);
+    // console.log(user_id);
+    // console.log(comment);
 
     Posts.update(id, {
       $push: {
@@ -315,6 +322,17 @@ Meteor.methods({
           comment: comment,
           created_at: new Date()
         }
+      }
+    });
+  },
+
+  "posts.deleteComment"(post_id, comment) {
+    // let post = Posts.findOne(post_id);
+
+    console.log("delete Comment");
+    Posts.update(post_id, {
+      $pull: {
+        comments: comment
       }
     });
   }

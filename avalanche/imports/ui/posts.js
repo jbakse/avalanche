@@ -1,5 +1,5 @@
 import { getPrefs, weekForDate } from "../api/prefs.js";
-import { Posts, postEditableBy } from "../api/posts.js";
+import { Posts, postEditableBy, commentEditableBy } from "../api/posts.js";
 import "./posts.html";
 
 function updateMarker() {
@@ -251,6 +251,10 @@ Template.post_overlay.helpers({
       return `http://${window.location.host}`;
     }
     return "http://localhost:3000";
+  },
+
+  userCanDeleteComment(comment) {
+    return commentEditableBy(comment, Meteor.userId());
   }
 });
 
@@ -261,6 +265,11 @@ Template.post_overlay.events({
     }
     $("body").removeClass("no-scroll");
     Session.set("previewing_post", false);
+  },
+
+  "click .delete-comment": function(event, a, b) {
+    console.log("delete", a.data.post_id, this);
+    Meteor.call("posts.deleteComment", a.data.post_id, this);
   }
 });
 
