@@ -39,8 +39,11 @@
 
 		</main>
 
-		{{#if previewing_post}} {{> post_overlay post_id=previewing_post}} {{/if}} {{#if editing_post}} {{> edit_post_form post_id=editing_post}}
-		{{/if}} {{#if editing_user}} {{> edit_user_form user_id=editing_user}} {{/if}}
+		{{#if previewing_post}} {{> post_overlay post_id=previewing_post}} {{/if}}
+		{{#if editing_post}} {{> edit_post_form post_id=editing_post}} {{/if}} 
+		{{#if editing_user}} {{> edit_user_form user_id=editing_user}} {{/if}}
+		{{#if commenting_post}} {{> comment_post_form post_id=commenting_post}} {{/if}}
+
 
 	</div>
 </template>

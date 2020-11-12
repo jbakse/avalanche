@@ -1,5 +1,5 @@
 import { getPrefs, weekForDate } from "../api/prefs.js";
-import { Posts, postEditableBy } from "../api/posts.js";
+import { Posts, postEditableBy, commentEditableBy } from "../api/posts.js";
 import "./posts.html";
 
 function updateMarker() {
@@ -150,8 +150,8 @@ Template.post.helpers({
   },
 
   userCanComment() {
-    // return !!Meteor.userId();
-    return true;
+    return Meteor.userId() !== null;
+    // return true;
   },
 
   votedPretty() {
@@ -202,7 +202,7 @@ Template.post.helpers({
 });
 
 Template.post.events({
-  "click .poster-link": function(event) {
+  "click .poster-link, click .votes": function(event) {
     $("body").addClass("no-scroll");
     Session.set("previewing_post", this._id);
     event.preventDefault();
@@ -218,6 +218,10 @@ Template.post.events({
 
   "click .edit-post": function() {
     Session.set("editing_post", this._id);
+  },
+
+  "click .comment-post": function() {
+    Session.set("commenting_post", this._id);
   },
 
   "click .vote-pretty": function() {
@@ -247,6 +251,10 @@ Template.post_overlay.helpers({
       return `http://${window.location.host}`;
     }
     return "http://localhost:3000";
+  },
+
+  userCanDeleteComment(comment) {
+    return commentEditableBy(comment, Meteor.userId());
   }
 });
 
@@ -257,6 +265,11 @@ Template.post_overlay.events({
     }
     $("body").removeClass("no-scroll");
     Session.set("previewing_post", false);
+  },
+
+  "click .delete-comment": function(event, a, b) {
+    console.log("delete", a.data.post_id, this);
+    Meteor.call("posts.deleteComment", a.data.post_id, this);
   }
 });
 
@@ -427,5 +440,37 @@ Template.edit_post_form.helpers({
     let lessons = _.pluck(p.weeks, "topic");
     lessons = _.object(lessons, lessons);
     return lessons;
+  }
+});
+
+Template.comment_post_form.events({
+  "click .cancel": function() {
+    Session.set("commenting_post", false);
+  },
+
+  "submit .comment-post": function(e) {
+    e.preventDefault();
+
+    const user_id = Meteor.userId();
+
+    console.log(`Post comment by ${user_id} to ${this.post_id}`);
+    console.log(e.target.comment.value); //["comment-text"].value
+
+    Meteor.call(
+      "posts.addComment",
+      this.post_id,
+      user_id,
+      e.target.comment.value
+    );
+
+    Session.set("commenting_post", false);
+  }
+});
+
+Template.comment_post_form.helpers({
+  post() {
+    // console.log("hi", this.post_id);
+    console.log(Posts.findOne(this.post_id));
+    return Posts.findOne(this.post_id);
   }
 });

@@ -23,6 +23,13 @@
 					{{#if equals category "nerdy"}}🤓{{/if}} {{#if equals category "funny"}}😂{{/if}} {{#if equals category "pretty"}}😍{{/if}}
 				</li>
 				{{/each}}
+				
+				{{#each comments}}
+				<li>
+					💬
+				</li>
+					
+				{{/each}}
 			</ul>
 
 			{{#if inspiration_url}}
@@ -70,7 +77,9 @@
 			<span class="action-button right emoji vote-pretty {{votedPretty}}" aria-hidden="true">😍</span>
 			{{/if}}
 			{{#if userCanComment}}
-      		<i class="action-button right comment-post fa fa-comment" aria-hidden="true"></i>
+			<span class="action-button right comment-post emoji" aria-hidden="true">💬</span>
+			
+      		<!-- <i class="action-button right comment-post fa fa-comment" aria-hidden="true"></i> -->
 	  		{{/if}}
 		</div>
 
@@ -105,6 +114,36 @@
 		<!-- <img src="{{c.url cloudinary_media.public_id width=350 crop='fill' quality='auto:best' fetch_format='auto'}}" alt=""/> -->
 	</div>
 	{{/if}}
+</template>
+
+<template name="comment_post_form">
+	<div id="comment-post-form" class="overlay">
+		<div class="overlay-form">
+			<div class="title-bar">Add Comment</div>
+			<div class="content">
+				<form action="" class="comment-post">
+				<div class="group">
+				
+					<textarea class="form-control" id="comment-text" name="comment" placeholder=""></textarea>
+					<br/>
+					<span class="note">
+						Comments accept <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>.
+					</span>
+				
+				</div>
+				<div class="group">
+				<div class="submit-cancel-container">
+					<button type="submit" class="submit btn btn-primary">Add Comment</button>
+					<button type="button" class="cancel btn">Cancel</button>
+				</div>
+			
+				</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
 </template>
 
 <template name="edit_post_form">
@@ -212,7 +251,10 @@
 					</div> -->
 
 				{{> afQuickField name='description' rows=6 placeholder='Description'}}
-
+					<span class="note">
+						Descriptions accept <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>.
+						<br/><br/>
+					</span>
  				{{> afQuickField name='code' rows=6 placeholder='This is an experimental feature. You can help test it out by posting your code here. You can include p5.js and other libraries with a special comment at the top like this:\n\n // require https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js'}}
 				<!-- {{> afQuickField name='lesson' options=lessons}} -->
 				<!-- {{> afQuickField name='inspiration_name'}}
@@ -270,9 +312,13 @@
 				<div class="group">
 					<span class="author">
 						<a href="/users/{{post.author_id}}">
-							{{#with post}} {{#if authorHeadshot}}
-							<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt="" /> {{else}}
-							<img class="headshot" src="/images/avatar.png" /> {{/if}} {{/with}}
+							{{#with post}} 
+								{{#if authorHeadshot}}
+								<img class="headshot" src="{{c.url authorHeadshot gravity='face' width=100 height=100 quality=100 crop='fill'}}" alt="" />
+								{{else}}
+								<img class="headshot" src="/images/avatar.png" />
+								{{/if}} 
+							{{/with}}
 							<span class="name">{{post.author}}</span>
 						</a>
 					</span>
@@ -292,11 +338,28 @@
 					<span class="">Experimental:</span>
 					<a class="code-link" target="_blank" href="http://compform.net/js_lab/js_lab.html?{{server}}/posts/{{post._id}}/code">View Code</a>
 				</div>
-				{{/if}} {{#if post.description}}
+				{{/if}} 
+				
+				<div class="scroll">
+				{{#if post.description}}
 				<div class="description copy">
 					{{{formatDescription 10000 post.description}}}
 				</div>
 				{{/if}} 
+
+				{{#each post.comments}}
+				<div class="comment">
+					<span class="comment-date">
+						{{formatDate created_at}}, {{formatTime created_at}}
+					</span>
+					<div class="comment-author">{{{userName commenter_id}}}</div>
+					<div class="comment-text">{{{formatDescription 10000 comment}}}</div>
+					{{#if userCanDeleteComment this}}
+						<span class="delete-comment">Delete Comment</span>
+					{{/if}}
+				</div>
+				{{/each}}
+				</div>
 
 			</div>
 
