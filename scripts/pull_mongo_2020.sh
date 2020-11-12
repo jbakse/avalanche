@@ -1,6 +1,6 @@
 echo "Pull Mongo 2020"
 
-rm -rf dump
+# rm -rf dump
 
 mongodump \
     --host "ds261238.mlab.com":"61238" \
@@ -9,6 +9,6 @@ mongodump \
     --password "hqslmo088vhvsn0tdmhd5chscg" \
     --out "dump"
 
-mv "dump/heroku_3hqb4xsl" "dump/meteor"
+# mv "dump/heroku_3hqb4xsl" "dump/meteor"
 
 
