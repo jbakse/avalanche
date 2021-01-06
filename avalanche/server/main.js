@@ -4,23 +4,21 @@ import { Prefs } from "../imports/api/prefs.js";
 import { Posts } from "../imports/api/posts.js";
 
 function initPrefs() {
-	let prefs = Prefs.find({});
-	if (prefs.count() > 0) {
-		return;
-	}
-	Prefs.insert({});
+  let prefs = Prefs.find({});
+  if (prefs.count() > 0) {
+    return;
+  }
+  Prefs.insert({});
 }
-
 
 initPrefs();
 
-
 // this will grant admin to the user with the goldenEmail
-// let goldenEmail = Accounts.findUserByEmail("baksej@newschool.edu");
-// console.log("goldenEmail", goldenEmail);
-// if (goldenEmail) {
-// 	Roles.addUsersToRoles(goldenEmail, "may_admin", Roles.GLOBAL_GROUP);
-// }
+let goldenEmail = Accounts.findUserByEmail("baksej@newschool.edu");
+console.log("goldenEmail", goldenEmail);
+if (goldenEmail) {
+  Roles.addUsersToRoles(goldenEmail, "may_admin", Roles.GLOBAL_GROUP);
+}
 
 Accounts.emailTemplates.from = "Justin Bakse <baksej@newschool.edu>";
 // console.log("Accounts", Accounts);
@@ -29,25 +27,18 @@ Accounts.emailTemplates.from = "Justin Bakse <baksej@newschool.edu>";
 // this is dumb, but i'm not sure what the right way to set the env variable is
 process.env.MAIL_URL = Meteor.settings.MAIL_URL;
 
-
 // console.log("env", process.env);
-
-
 
 //justin
 // Accounts.setPassword("joe4aiE9joCw5nBDW", "!");
 
-
-
 // import "./secrets.js";
 
 Cloudinary.config({
-	cloud_name: Meteor.settings.cloud_name,
-	api_key: Meteor.settings.api_key,
-	api_secret: Meteor.settings.api_secret,
+  cloud_name: Meteor.settings.cloud_name,
+  api_key: Meteor.settings.api_key,
+  api_secret: Meteor.settings.api_secret,
 });
-
-
 
 // import { Meteor } from 'meteor/meteor';
 //
@@ -55,10 +46,9 @@ Cloudinary.config({
 //   // code to run on server at startup
 // });
 
-
-Picker.route("/posts/:_id/code", function(params, req, res, next) {
-	let post = Posts.findOne(params._id);
-	res.setHeader("content-type", "application/javascript");
-	res.setHeader("Access-Control-Allow-Origin", "*");
-	res.end(post.code);
+Picker.route("/posts/:_id/code", function (params, req, res, next) {
+  let post = Posts.findOne(params._id);
+  res.setHeader("content-type", "application/javascript");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.end(post.code);
 });

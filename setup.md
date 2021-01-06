@@ -41,15 +41,41 @@ https://app.mailjet.com/account/
 - Log into Heroku
 - Create an App `New->Create New App`
 - Add the remote to the repo `heroku git:remote -a <app_name> -r <remote_name>` (note: you probably want to name the remote after the app)
+
+OLD WAY:
+
 - Add Resource add-on `mLab MongoDB :: Mongodb` -> Sandbox-Free
 - Add/Set Settings > Config Variables
   - `METEOR_APP_DIR` = `avalanche`
   - `ROOT_URL` = url of app (e.g. `https://<app_name>.herokuapp.com`)
+
+NEW WAY:
+
+- Log in to mongo hosted on vultr
+  `mongo -u "admin" -p "mongo_admin_11_14" 144.202.20.152:27017/admin`
+
+- Create user + give permission for new db
+  `db.createUser({user: 'compform', pwd: 'mlab_recovery1', roles: [{ role: 'readWrite', db:'${db_name}'}] })`
+
+- You might need to put something in the db to "touch" it....
+
+- Add/Set Settings > Config Variables
+
+  - `METEOR_APP_DIR` = `avalance`
+  - `MONGODB_URI` = `mongodb://compform:mlab_recovery1@144.202.20.152:27017/${db_name}`
+  - `ROOT_URL` = `https://${appname}.herokuapp.com`
+
+---
+
 - Add Settings > Buildpacks
   - `https://github.com/AdmitHub/meteor-buildpack-horse.git`
 - Config Heroku with local settings
 
-  - `heroku config:add METEOR_SETTINGS="$(cat server/<settings file>.json)" --app <app_name>`
+- create a new cloudinary account
+
+- create a settings file in avalanche/server, modify the specifics
+
+  - push to heroku `heroku config:add METEOR_SETTINGS="$(cat server/<settings file>.json)" --app <app_name>`
 
 - Push app via git `git push <remote> master`
 - Push/pull data via `./scripts`. These scripts pull data from local/staging/production to a local cache, and push the cache to local/staging/production.
