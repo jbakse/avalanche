@@ -11,7 +11,7 @@ function updateMarker() {
   }
   let last_visible = false;
 
-  $(".post").each(function(i, post) {
+  $(".post").each(function (i, post) {
     let y = $(post).offset().top;
     y = y - $(window).scrollTop();
     if (y > $(window).height()) {
@@ -85,7 +85,7 @@ function lazyLoadImages() {
     .lazyload({
       threshold: 200,
       effect: "fadeIn",
-      failure_limit: 100000
+      failure_limit: 100000,
     })
     .removeClass("lazy");
 
@@ -93,7 +93,7 @@ function lazyLoadImages() {
 }
 setTimeout(lazyLoadImages, 1000);
 
-Template.post_list.rendered = function() {
+Template.post_list.rendered = function () {
   let posts = this.find(".posts");
 
   window.isotope = new Isotope(posts, {
@@ -101,8 +101,8 @@ Template.post_list.rendered = function() {
     sortBy: "original-order",
     transitionDuration: 0,
     masonry: {
-      isFitWidth: true
-    }
+      isFitWidth: true,
+    },
   });
 
   function relayoutIsotope() {
@@ -112,24 +112,24 @@ Template.post_list.rendered = function() {
   }
   setInterval(relayoutIsotope, 500);
 
-  let observer = new MutationObserver(function(/*mutations*/) {
+  let observer = new MutationObserver(function (/*mutations*/) {
     _.debounce(relayoutIsotope, 500, true);
 
     $(posts)
       .find("video")
-      .on("loadeddata", function() {
+      .on("loadeddata", function () {
         _.debounce(relayoutIsotope, 500, true);
       });
 
     $(posts)
       .find("img")
-      .on("load", function() {
+      .on("load", function () {
         _.debounce(relayoutIsotope, 500, true);
       });
   });
 
   observer.observe(posts, {
-    childList: true
+    childList: true,
     // subtree: true,,
   });
 };
@@ -138,7 +138,7 @@ Template.post.helpers({
   mediaCount() {
     // console.log(this.cloudinary_media);
     let items = _.pluck(this.cloudinary_media, "resource_type");
-    items = _.filter(items, function(item) {
+    items = _.filter(items, function (item) {
       return item;
     });
     return items.length;
@@ -198,17 +198,17 @@ Template.post.helpers({
       return `http://${window.location.host}`;
     }
     return "http://localhost:3000";
-  }
+  },
 });
 
 Template.post.events({
-  "click .poster-link, click .votes": function(event) {
+  "click .poster-link, click .votes": function (event) {
     $("body").addClass("no-scroll");
     Session.set("previewing_post", this._id);
     event.preventDefault();
   },
 
-  "click .remove-post": function() {
+  "click .remove-post": function () {
     let c = confirm("Delete post?");
     if (!c) {
       return;
@@ -216,28 +216,28 @@ Template.post.events({
     Meteor.call("posts.remove", this._id);
   },
 
-  "click .edit-post": function() {
+  "click .edit-post": function () {
     Session.set("editing_post", this._id);
   },
 
-  "click .comment-post": function() {
+  "click .comment-post": function () {
     Session.set("commenting_post", this._id);
   },
 
-  "click .vote-pretty": function() {
+  "click .vote-pretty": function () {
     // console.log("vote pretty");
     Meteor.call("posts.vote", this._id, "pretty");
   },
 
-  "click .vote-nerdy": function() {
+  "click .vote-nerdy": function () {
     // console.log("vote nerdy");
     Meteor.call("posts.vote", this._id, "nerdy");
   },
 
-  "click .vote-funny": function() {
+  "click .vote-funny": function () {
     // console.log("vote funny");
     Meteor.call("posts.vote", this._id, "funny");
-  }
+  },
 });
 
 Template.post_overlay.helpers({
@@ -248,18 +248,18 @@ Template.post_overlay.helpers({
 
   server() {
     if (window) {
-      return `http://${window.location.host}`;
+      return `https://${window.location.host}`;
     }
     return "http://localhost:3000";
   },
 
   userCanDeleteComment(comment) {
     return commentEditableBy(comment, Meteor.userId());
-  }
+  },
 });
 
 Template.post_overlay.events({
-  "click .overlay, click .close-overlay": function(event) {
+  "click .overlay, click .close-overlay": function (event) {
     if (event.target !== event.currentTarget) {
       return;
     }
@@ -267,37 +267,37 @@ Template.post_overlay.events({
     Session.set("previewing_post", false);
   },
 
-  "click .delete-comment": function(event, a, b) {
+  "click .delete-comment": function (event, a, b) {
     console.log("delete", a.data.post_id, this);
     Meteor.call("posts.deleteComment", a.data.post_id, this);
-  }
+  },
 });
 
 AutoForm.hooks({
   updatePostForm: {
-    onSuccess: function(formType, result) {
+    onSuccess: function (formType, result) {
       Meteor.call("posts.mark_posted", this.docId);
       Session.set("editing_post", false);
     },
-    onError: function(formType, result) {}
+    onError: function (formType, result) {},
   },
 
   updatePrefsForm: {
     before: {
-      update: function(doc) {
+      update: function (doc) {
         // console.log("before", doc);
         // console.log(doc.$set.weeks);
         doc.$set.weeks = _.sortBy(doc.$set.weeks, "start");
 
         this.result(doc);
-      }
+      },
     },
-    onError: function(insertDoc, updateDoc, currentDoc) {
+    onError: function (insertDoc, updateDoc, currentDoc) {
       // console.log(JSON.stringify(this.updateDoc));
       this.event.preventDefault();
       return false;
-    }
-  }
+    },
+  },
 });
 
 function uploadFile(post, slot, files) {
@@ -342,7 +342,7 @@ function uploadFile(post, slot, files) {
     files,
     {
       folder: Meteor.settings.public.cloudinary_folder,
-      resource_type: "auto"
+      resource_type: "auto",
     },
     (err, res) => {
       // console.log("Upload Error:", err);
@@ -355,49 +355,49 @@ function uploadFile(post, slot, files) {
 }
 
 Template.edit_post_form.events({
-  "click .cancel": function() {
+  "click .cancel": function () {
     if (!this.posted) {
       Meteor.call("posts.remove", this._id);
     }
     Session.set("editing_post", false);
   },
 
-  "click .submit": function() {
+  "click .submit": function () {
     // handled through autoform hooks
   },
 
-  "click .remove-file-0": function() {
+  "click .remove-file-0": function () {
     Meteor.call("posts.updateMedia", this.post_id, 0, {});
   },
 
-  "click .remove-file-1": function() {
+  "click .remove-file-1": function () {
     Meteor.call("posts.updateMedia", this.post_id, 1, {});
   },
 
-  "click .remove-file-2": function() {
+  "click .remove-file-2": function () {
     Meteor.call("posts.updateMedia", this.post_id, 2, {});
   },
 
-  "change .upload-file-0": function(event, template) {
+  "change .upload-file-0": function (event, template) {
     let post = this.post_id;
     let slot = 0;
     let files = template.find(".upload-file-0").files;
     uploadFile(post, slot, files);
   },
 
-  "change .upload-file-1": function(event, template) {
+  "change .upload-file-1": function (event, template) {
     let post = this.post_id;
     let slot = 1;
     let files = template.find(".upload-file-1").files;
     uploadFile(post, slot, files);
   },
 
-  "change .upload-file-2": function(event, template) {
+  "change .upload-file-2": function (event, template) {
     let post = this.post_id;
     let slot = 2;
     let files = template.find(".upload-file-2").files;
     uploadFile(post, slot, files);
-  }
+  },
 
   // "change .create-post-file": function(event, template) {
   //
@@ -440,15 +440,15 @@ Template.edit_post_form.helpers({
     let lessons = _.pluck(p.weeks, "topic");
     lessons = _.object(lessons, lessons);
     return lessons;
-  }
+  },
 });
 
 Template.comment_post_form.events({
-  "click .cancel": function() {
+  "click .cancel": function () {
     Session.set("commenting_post", false);
   },
 
-  "submit .comment-post": function(e) {
+  "submit .comment-post": function (e) {
     e.preventDefault();
 
     const user_id = Meteor.userId();
@@ -464,7 +464,7 @@ Template.comment_post_form.events({
     );
 
     Session.set("commenting_post", false);
-  }
+  },
 });
 
 Template.comment_post_form.helpers({
@@ -472,5 +472,5 @@ Template.comment_post_form.helpers({
     // console.log("hi", this.post_id);
     console.log(Posts.findOne(this.post_id));
     return Posts.findOne(this.post_id);
-  }
+  },
 });
