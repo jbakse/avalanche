@@ -195,9 +195,9 @@ Template.post.helpers({
 
   server() {
     if (window) {
-      return `http://${window.location.host}`;
+      return `https://${window.location.host}`;
     }
-    return "http://localhost:3000";
+    return "https://localhost:3000";
   },
 });
 
@@ -250,7 +250,7 @@ Template.post_overlay.helpers({
     if (window) {
       return `https://${window.location.host}`;
     }
-    return "http://localhost:3000";
+    return "https://localhost:3000";
   },
 
   userCanDeleteComment(comment) {
