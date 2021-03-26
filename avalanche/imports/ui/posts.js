@@ -311,7 +311,9 @@ function uploadFile(post, slot, files) {
     isImage = true;
   }
 
-  if (_.contains(["video/mp4", "video/quicktime"], files[0].type)) {
+  if (
+    _.contains(["video/mp4", "video/quicktime", "video/webm"], files[0].type)
+  ) {
     isVideo = true;
   }
 
@@ -319,7 +321,7 @@ function uploadFile(post, slot, files) {
 
   if (!isImage && !isVideo) {
     alert(
-      `Your file is not of a recognized type.\nImages must be formatted as .png or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov.\nDon't use .gif`
+      `Your file is not of a recognized type.\nImages must be formatted as .png or .jpg.\nVideos must be formatted as .mp4., .m4v, .mov, or .webm.\nDon't use .gif`
     );
     return;
   }
